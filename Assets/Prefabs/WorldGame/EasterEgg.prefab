@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2904197422569218579
+--- !u!1001 &910085044409666721
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1163621627709007119, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5819969839278357055, guid: 4bb69f0d2f442be48b7160a57e46443f, type: 3}
+    - target: {fileID: 1658467484484255886, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2381464842855114799, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,9 +56,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2515126139071213921, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515126139071213921, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515126139071213921, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.52
+      objectReference: {fileID: 0}
     - target: {fileID: 4126714307232940746, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: EasterEgg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

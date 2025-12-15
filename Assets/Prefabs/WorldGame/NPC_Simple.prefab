@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 1358066008383373909, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 1e4f4b9d26bccff4b8311938c8c67cdf, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2381464842855114799, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4126714307232940746, guid: 52351b9137cf8254698a9124c9ec60fd, type: 3}
       propertyPath: m_Name
-      value: NPC_Carolina
+      value: NPC_Simple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
