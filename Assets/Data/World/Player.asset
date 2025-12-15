@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::SOPlayerData
   playerName: Player
-  moveSpeed: 4
+  moveSpeed: 8

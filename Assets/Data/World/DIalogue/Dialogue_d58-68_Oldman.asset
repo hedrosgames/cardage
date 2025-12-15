@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df4f3958d9edbf48aae181961486908, type: 3}
+  m_Name: Dialogue_d58-68_Oldman
+  m_EditorClassIdentifier: Assembly-CSharp::SODialogueSequence
+  lines:
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D58
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: PLAYER_NAME
+    text: DIALOGUE_D59
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D60
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: PLAYER_NAME
+    text: DIALOGUE_D61
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D62
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: PLAYER_NAME
+    text: DIALOGUE_D63
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D64
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D65
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: PLAYER_NAME
+    text: DIALOGUE_D66
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D67
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}
+  - speaker: DIALOGUE_SPEAKER_25
+    text: DIALOGUE_D68
+    portrait: {fileID: 6793536141932697840, guid: fca55a4ba48163c48ab07ac5c039b1f5, type: 3}

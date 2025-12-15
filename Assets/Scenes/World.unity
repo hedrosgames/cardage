@@ -2320,7 +2320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 304329714}
   m_Layer: 0
-  m_Name: Zone_5_GirrHouse
+  m_Name: Zone_5_CarolinaHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3147,6 +3147,68 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &443191955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 894531701}
+    m_Modifications:
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930583964778070802, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+      propertyPath: m_Name
+      value: NPC_Carolina
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+--- !u!4 &443191956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
+  m_PrefabInstance: {fileID: 443191955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446997795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 894531701}
   m_Layer: 0
-  m_Name: GirlHouse
+  m_Name: CarolinaHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5791,6 +5853,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2142798557}
+  - {fileID: 443191956}
   - {fileID: 1982953989}
   - {fileID: 471594762}
   - {fileID: 2708500}
@@ -15660,6 +15723,79 @@ Transform:
   - {fileID: 2291058607095558770}
   m_Father: {fileID: 6487140822005004036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1608961548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.418848
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3497151
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666921435140327996, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227442998538903769, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_Name
+      value: NPC_Oldman
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065566975568987932, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065566975568987932, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065566975568987932, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221308804088635462, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 401c63611b090634a9b4c312aa8d42a5, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b295ad5f0c29dc47bac2118f13b28e5, type: 3}
 --- !u!1 &1628984614
 GameObject:
   m_ObjectHideFlags: 0
@@ -19508,7 +19644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703312731647454580, guid: e7d291420e9081641ba5818da67eb723, type: 3}
       propertyPath: m_Name
-      value: girlDoor
+      value: carolinaDoor
       objectReference: {fileID: 0}
     - target: {fileID: 7729122286785040879, guid: e7d291420e9081641ba5818da67eb723, type: 3}
       propertyPath: unlockFlag
@@ -27057,3 +27193,4 @@ SceneRoots:
   - {fileID: 6116745}
   - {fileID: 2122081602}
   - {fileID: 1288726106}
+  - {fileID: 1608961548}
