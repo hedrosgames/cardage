@@ -5,6 +5,7 @@ public class PlayerInteract : MonoBehaviour
     PlayerMove move;
     Animator anim;
     Transform interactionPoint;
+    Collider2D playerCollider;
     Interactable target;
     int mask;
     InputAction interactAction;
@@ -13,6 +14,9 @@ public class PlayerInteract : MonoBehaviour
         move = GetComponent<PlayerMove>();
         anim = GetComponentInChildren<Animator>();
         interactionPoint = transform.Find("InteractionPoint");
+        playerCollider = GetComponent<Collider2D>();
+        if (playerCollider == null)
+        playerCollider = GetComponentInChildren<Collider2D>();
         mask = LayerMask.GetMask("Interactable");
         interactAction = new InputAction("Interact", type: InputActionType.Button, binding: "<Keyboard>/e");
         interactAction.AddBinding("<Gamepad>/buttonWest");
@@ -43,15 +47,41 @@ public class PlayerInteract : MonoBehaviour
     }
     void DetectInteractable()
     {
-        Collider2D col = Physics2D.OverlapCircle(interactionPoint.position, 0.4f, mask);
+        // Verifica se o InteractionPoint existe - se não existir, não detecta nada
+        if (interactionPoint == null)
+        {
+            // Tenta encontrar novamente
+            interactionPoint = transform.Find("InteractionPoint");
+            if (interactionPoint == null) return;
+        }
+        
+        Vector2 detectionPoint = interactionPoint.position;
+        float detectionRadius = 0.3f;
+        
+        Collider2D col = Physics2D.OverlapCircle(detectionPoint, detectionRadius, mask);
         Interactable newTarget = null;
         if (col != null)
-        newTarget = col.GetComponent<Interactable>();
+        {
+            newTarget = col.GetComponent<Interactable>();
+            // Verifica se o objeto ainda existe e está ativo
+            if (newTarget != null && newTarget.gameObject != null && newTarget.gameObject.activeInHierarchy)
+            {
+                // Objeto válido
+            }
+            else
+            {
+                newTarget = null;
+            }
+        }
+        
         if (newTarget != target)
         {
-            if (target != null) target.OnBlur();
+            if (target != null && target.gameObject != null)
+            {
+                target.OnBlur();
+            }
             target = newTarget;
-            if (target != null)
+            if (target != null && target.gameObject != null)
             {
                 target.OnFocus();
                 if (target.autoInteract && Time.timeScale > 0)
@@ -63,15 +93,15 @@ public class PlayerInteract : MonoBehaviour
     }
     void Interact()
     {
+        if (target == null || move == null) return;
         Vector2 dir = move.LastDirection;
-        if (target != null && !target.autoInteract)
+        if (!target.autoInteract && anim != null)
         {
             anim.ResetTrigger("Interact");
             anim.SetTrigger("Interact");
             anim.SetFloat("directionX", dir.x);
             anim.SetFloat("directionY", dir.y);
         }
-        if (target != null)
         target.OnInteract();
     }
 }

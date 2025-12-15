@@ -22640,6 +22640,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 2139535086}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: tutorialFirstInteraction
+      value: 
+      objectReference: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
     - target: {fileID: 3006458715603208237, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: m_Name
       value: _GameFlowManager
@@ -23777,24 +23781,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2019956768740269292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4160185096486308870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5231916352491584037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8d012f622f34b4b802b561913ea2e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
-  autoInteract: 0
-  interactionIcon: {fileID: 8509819606669026249}
-  dialogue: {fileID: 11400000, guid: 286b976b74bce0a478520c82cde8cd4f, type: 2}
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &4185355593330188903
 SpriteRenderer:
   serializedVersion: 2
@@ -24510,7 +24496,7 @@ GameObject:
   - component: {fileID: 1322671551230748075}
   - component: {fileID: 4185355593330188903}
   - component: {fileID: 5629607261869170310}
-  - component: {fileID: 4160185096486308870}
+  - component: {fileID: 5629607261869170311}
   m_Layer: 6
   m_Name: Cartas
   m_TagString: Untagged
@@ -24775,6 +24761,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6948767, y: 1.2089937}
   m_EdgeRadius: 0
+--- !u!114 &5629607261869170311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231916352491584037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b705b064b5ab204eab1d6becbe16f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableTutorial
+  autoInteract: 0
+  interactionIcon: {fileID: 8509819606669026249}
+  tutorial: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
+  tutorialFlag: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 286b976b74bce0a478520c82cde8cd4f, type: 2}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &5640934722256151127
 Transform:
   m_ObjectHideFlags: 0
@@ -26490,24 +26496,6 @@ Transform:
   - {fileID: 2669430993220855431}
   m_Father: {fileID: 283237615356824707}
   m_LocalEulerAnglesHint: {x: 0.078, y: 0.382, z: -11.506}
---- !u!114 &7601430447989746793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7837328026762272922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8d012f622f34b4b802b561913ea2e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
-  autoInteract: 0
-  interactionIcon: {fileID: 2880517682463015936}
-  dialogue: {fileID: 11400000, guid: e00eda7958e74524e8af1f3f10a61396, type: 2}
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &7624460383063362780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26806,7 +26794,7 @@ GameObject:
   - component: {fileID: 7583867225521659405}
   - component: {fileID: 4685341771335473376}
   - component: {fileID: 8867597766065101784}
-  - component: {fileID: 7601430447989746793}
+  - component: {fileID: 8867597766065101785}
   m_Layer: 6
   m_Name: Deck
   m_TagString: Untagged
@@ -27634,6 +27622,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.55, y: 0.52}
   m_EdgeRadius: 0
+--- !u!114 &8867597766065101785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7837328026762272922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b705b064b5ab204eab1d6becbe16f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableTutorial
+  autoInteract: 0
+  interactionIcon: {fileID: 2880517682463015936}
+  tutorial: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
+  tutorialFlag: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: e00eda7958e74524e8af1f3f10a61396, type: 2}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8912159447855862318
 GameObject:
   m_ObjectHideFlags: 0

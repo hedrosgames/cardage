@@ -26,6 +26,7 @@ public class ManagerPhone : MonoBehaviour
     public SODialogueSequence dialogueOnClose;
     private bool isOpen = false;
     private bool hasPlayedCloseDialogueSession = false;
+    private bool tabBlocked = false;
     private SaveClientZone _saveZone;
     private PlayerControl _playerControl;
     private ManagerDialogue _managerDialogue;
@@ -57,8 +58,13 @@ public class ManagerPhone : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (Keyboard.current.escapeKey.wasPressedThisFrame && !isOpen) return;
+            if (Keyboard.current.tabKey.wasPressedThisFrame && tabBlocked) return;
             TogglePhone();
         }
+    }
+    public void SetTabBlocked(bool blocked)
+    {
+        tabBlocked = blocked;
     }
     public void TogglePhone()
     {

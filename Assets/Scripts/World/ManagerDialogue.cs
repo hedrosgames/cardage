@@ -6,8 +6,13 @@ public class ManagerDialogue : MonoBehaviour
     public SODialogueSequence currentSequence;
     public int currentIndex { get; private set; }
     bool isRunning;
+    private PlayerControl playerControl;
     public event Action<SODialogueSequence> OnSequenceStarted;
     public event Action<SODialogueSequence.DialogueLine> OnLineShown;
+    void Awake()
+    {
+        playerControl = FindFirstObjectByType<PlayerControl>();
+    }
     void OnEnable()
     {
         GameEvents.OnRequestDialogue += StartSequence;
@@ -26,6 +31,14 @@ public class ManagerDialogue : MonoBehaviour
         currentSequence = sequence;
         currentIndex = 0;
         isRunning = true;
+        
+        // Trava o movimento do player quando inicia um diálogo
+        if (playerControl == null) playerControl = FindFirstObjectByType<PlayerControl>();
+        if (playerControl != null)
+        {
+            playerControl.SetMovement(false);
+        }
+        
         ShowCurrentLine();
         OnSequenceStarted?.Invoke(currentSequence);
     }
@@ -56,6 +69,17 @@ public class ManagerDialogue : MonoBehaviour
         isRunning = false;
         var finishedSequence = currentSequence;
         currentSequence = null;
+        
+        // Reabilita o movimento do player quando termina o diálogo
+        // (só se o telefone não estiver aberto)
+        if (playerControl != null)
+        {
+            if (ManagerPhone.Instance == null || !ManagerPhone.Instance.IsOpen)
+            {
+                playerControl.SetMovement(true);
+            }
+        }
+        
         GameEvents.OnDialogueFinished?.Invoke(finishedSequence);
     }
 }

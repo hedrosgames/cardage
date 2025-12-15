@@ -30,5 +30,6 @@ public static class GameEvents
     public static Action<SODialogueSequence> OnRequestDialogue;
     public static Action<SODialogueSequence> OnDialogueFinished;
     public static Action<string> OnDebugVisualConfirmation;
+    public static Action<Interactable> OnInteractableFocused;
 }
 

@@ -38,8 +38,12 @@ public class Interactable : MonoBehaviour
     public virtual void OnInteract() { }
     public virtual void OnFocus()
     {
-        if (!autoInteract && interactionIcon != null)
-        interactionIcon.SetActive(true);
+        if (this == null || gameObject == null) return;
+        if (!autoInteract && interactionIcon != null && interactionIcon.activeSelf != true)
+        {
+            interactionIcon.SetActive(true);
+        }
+        GameEvents.OnInteractableFocused?.Invoke(this);
     }
     public virtual void OnBlur()
     {
