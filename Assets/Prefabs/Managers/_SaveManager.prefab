@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6533388253181073329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7907779566517253824}
+  - component: {fileID: 6368517073785416939}
+  - component: {fileID: 8485521162462639239}
+  - component: {fileID: 3041233866593208719}
+  - component: {fileID: 5299385234500691569}
+  - component: {fileID: 6527885251428018592}
+  - component: {fileID: 2636112344374939081}
+  m_Layer: 0
+  m_Name: _SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7907779566517253824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6368517073785416939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58359b2c4430bb4aac5d23496b5dcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManagerSave
+  definitions:
+  - {fileID: 11400000, guid: 58adbca078e8bae43843aa0a89fedd0a, type: 2}
+  - {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
+  - {fileID: 11400000, guid: a94da1d2a33a649428ac643879fbd75b, type: 2}
+  - {fileID: 11400000, guid: 4a79c6a74eea175499913df5743d5228, type: 2}
+  - {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
+  - {fileID: 11400000, guid: e713b66d2358736488b4d52e3264cb05, type: 2}
+  - {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
+--- !u!114 &8485521162462639239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1309ae09f70ee64d8bb9d4d765fc46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientCard
+  saveDefinition: {fileID: 11400000, guid: a94da1d2a33a649428ac643879fbd75b, type: 2}
+  setup: {fileID: 0}
+  ruleSet: {fileID: 0}
+--- !u!114 &3041233866593208719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4622da81e9da3bc449aab3c06bd963df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientMenu
+  saveDefinition: {fileID: 11400000, guid: 58adbca078e8bae43843aa0a89fedd0a, type: 2}
+  playButtonLocalizer: {fileID: 0}
+  hasSaveFile: 0
+--- !u!114 &5299385234500691569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22d11317c7943847a4067b0e3392a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientWorld
+  saveDefinition: {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
+--- !u!114 &6527885251428018592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7123ff01263e079408794fef16dd49a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientSettings
+  saveDefinition: {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
+  musicVolume: 0.5
+  sfxVolume: 0.5
+  language: EN
+  resolution: 
+--- !u!114 &2636112344374939081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c490bef95920c4b928c718cb95fde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientAchievements
+  saveDefinition: {fileID: 11400000, guid: e713b66d2358736488b4d52e3264cb05, type: 2}
+  unlockedAchievements: []

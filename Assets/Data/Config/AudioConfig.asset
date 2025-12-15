@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac1fd23c467ac8408645b583c830a41, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SOAudioConfig
+  mainMenuMusic: {fileID: 8300000, guid: 34197d6a2610c7f41900987e76a27328, type: 3}
+  worldTheme: {fileID: 8300000, guid: e3124a8321db9d148aebd0d9b963ed98, type: 3}
+  cardGameTheme: {fileID: 8300000, guid: 70b113b4bc58272418bc521af8fee065, type: 3}
+  uiClick: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  uiHover: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
+  uiBack: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  cardDraw: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
+  cardPlace: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
+  cardCapture: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
+  matchWin: {fileID: 8300000, guid: abdbbfd33a46f4549987385f85c536b5, type: 3}
+  matchLose: {fileID: 8300000, guid: d1afd3f4d23c24f418ffc315afb04965, type: 3}
+  matchDraw: {fileID: 8300000, guid: aa967a280457c054bb646d57611f5bd0, type: 3}

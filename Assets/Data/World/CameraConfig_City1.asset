@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999b034657202534caaeea296c73aa62, type: 3}
+  m_Name: CameraConfig_City1
+  m_EditorClassIdentifier: Assembly-CSharp::SOCameraConfig
+  boundaryLibrary: {fileID: 11400000, guid: a4f9197c47e56c247b611a5be9b21266, type: 2}
+  globalFollowOffset: {x: 0, y: 0}
+  areas:
+  - name: City1_PlayerHouse
+    id: 3
+    followPlayer: 0
+    fixedPosition: {x: 0, y: 0, z: -10}
+    boundaryId: 0
+  - name: City1_OldHouse
+    id: 9
+    followPlayer: 0
+    fixedPosition: {x: 25, y: 0, z: -10}
+    boundaryId: 0
+  - name: City1_CatHouse
+    id: 7
+    followPlayer: 0
+    fixedPosition: {x: 50, y: 0, z: -10}
+    boundaryId: 0
+  - name: City1_GirlHouse
+    id: 11
+    followPlayer: 0
+    fixedPosition: {x: 75, y: 0, z: -10}
+    boundaryId: 0
+  - name: City1_RivalHouse
+    id: 5
+    followPlayer: 0
+    fixedPosition: {x: 100, y: 0, z: -10}
+    boundaryId: 0
+  - name: City1_Store
+    id: 1
+    followPlayer: 1
+    fixedPosition: {x: 125, y: 0, z: -10}
+    boundaryId: 2
+  - name: City1_ext_PlayerHouse
+    id: 4
+    followPlayer: 1
+    fixedPosition: {x: -10, y: 25, z: -10}
+    boundaryId: 1
+  - name: City1_ext_CatHouse
+    id: 8
+    followPlayer: 1
+    fixedPosition: {x: -7, y: 25, z: -10}
+    boundaryId: 1
+  - name: City1_ext_OldHouse
+    id: 10
+    followPlayer: 1
+    fixedPosition: {x: 3, y: 25, z: -10}
+    boundaryId: 1
+  - name: City1_ext_Store
+    id: 2
+    followPlayer: 1
+    fixedPosition: {x: 13, y: 25, z: -10}
+    boundaryId: 2
+  - name: City1_ext_RivalHouse
+    id: 6
+    followPlayer: 1
+    fixedPosition: {x: 15.5, y: 32, z: -10}
+    boundaryId: 1
+  - name: City1_ext_GirlHouse
+    id: 12
+    followPlayer: 1
+    fixedPosition: {x: -11, y: 32, z: -10}
+    boundaryId: 1

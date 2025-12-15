@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4740017670325935865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6775221187250028772}
+  - component: {fileID: 1361206127739666609}
+  m_Layer: 0
+  m_Name: _PhoneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6775221187250028772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740017670325935865}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.9818, y: -0.23588, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361206127739666609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740017670325935865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dced5685395db9741b8cbb723a66dcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManagerPhone
+  phoneCanvasGroup: {fileID: 0}
+  homeScreenGroup: {fileID: 0}
+  btnHome: {fileID: 0}
+  btnClose: {fileID: 0}
+  pnlBank: {fileID: 0}
+  pnlZap: {fileID: 0}
+  pnlDrive: {fileID: 0}
+  unlockFlag: {fileID: 11400000, guid: 028b4e4785e04b64d9896cc97d7ad356, type: 2}
+  fadeDuration: 0.3
+  flagConditionToPlayDialogue: {fileID: 11400000, guid: 93c76fdc2e96a814eacb764caa95a62d, type: 2}
+  dialogueOnClose: {fileID: 11400000, guid: 2859edea60ad15240b1096db8994f95e, type: 2}

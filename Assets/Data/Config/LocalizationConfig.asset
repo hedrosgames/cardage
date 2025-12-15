@@ -1,0 +1,1396 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8101580fbb3c10740b70c33bd0a96eba, type: 3}
+  m_Name: LocalizationConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SOLocalizationData
+  sheets:
+  - sheetName: Menu
+    entries:
+    - languageCode: PT
+      keys:
+      - MENU_LANGUAGETITLE
+      - MENU_NEW_GAME
+      - MENU_LOAD_GAME
+      - MENU_SETTINGS
+      - MENU_ACHIEVEMENTS
+      - MENU_QUIT
+      - MENU_BACK
+      - MENU_YES
+      - MENU_NO
+      - MENU_TXTQUIT_1
+      - MENU_TXTQUIT_2
+      - MENU_TXTQUIT_3
+      - MENU_LANGUAGE
+      - MENU_MUSIC
+      - MENU_RESOLUTION
+      - MENU_SFX
+      - MENU_TESTE
+      - ACHIEVEMENT_TITLE_1
+      - ACHIEVEMENT_INFO_1
+      - ACHIEVEMENT_TITLE_2
+      - ACHIEVEMENT_INFO_2
+      - ACHIEVEMENT_TITLE_3
+      - ACHIEVEMENT_INFO_3
+      - ACHIEVEMENT_TITLE_4
+      - ACHIEVEMENT_INFO_4
+      - ACHIEVEMENT_TITLE_5
+      - ACHIEVEMENT_INFO_5
+      - ACHIEVEMENT_TITLE_6
+      - ACHIEVEMENT_INFO_6
+      - ACHIEVEMENT_TITLE_7
+      - ACHIEVEMENT_INFO_7
+      - ACHIEVEMENT_TITLE_8
+      - ACHIEVEMENT_INFO_8
+      - ACHIEVEMENT_TITLE_9
+      - ACHIEVEMENT_INFO_9
+      - ACHIEVEMENT_TITLE_10
+      - ACHIEVEMENT_INFO_10
+      - ACHIEVEMENT_TITLE_11
+      - ACHIEVEMENT_INFO_11
+      - ACHIEVEMENT_TITLE_12
+      - ACHIEVEMENT_INFO_12
+      - ACHIEVEMENT_TITLE_13
+      - ACHIEVEMENT_INFO_13
+      - ACHIEVEMENT_TITLE_14
+      - ACHIEVEMENT_INFO_14
+      - ACHIEVEMENT_TITLE_15
+      - ACHIEVEMENT_INFO_15
+      - ACHIEVEMENT_TITLE_16
+      - ACHIEVEMENT_INFO_16
+      - ACHIEVEMENT_TITLE_17
+      - ACHIEVEMENT_INFO_17
+      - ACHIEVEMENT_TITLE_18
+      - ACHIEVEMENT_INFO_18
+      texts:
+      - "Portugu\xEAs"
+      - Novo Jogo
+      - Carregar Jogo
+      - "Configura\xE7\xF5es"
+      - Conquistas
+      - Sair
+      - Voltar
+      - Sim
+      - "N\xE3o"
+      - "Tem certeza que voc\xEA quer sair?"
+      - "Voc\xEA n\xE3o pode sair! \nTem certeza?"
+      - "Os devs n\xE3o implementaram essa fun\xE7\xE3o!"
+      - Idioma
+      - "M\xFAsica"
+      - "Resolu\xE7\xE3o"
+      - SFX
+      - TESTE
+      - ACHIEVEMENT 1
+      - "SALSICH\xC3O E OVOS 1"
+      - ACHIEVEMENT 2
+      - "SALSICH\xC3O E OVOS 2"
+      - ACHIEVEMENT 3
+      - "SALSICH\xC3O E OVOS 3"
+      - ACHIEVEMENT 4
+      - "SALSICH\xC3O E OVOS 4"
+      - ACHIEVEMENT 5
+      - "SALSICH\xC3O E OVOS 5"
+      - ACHIEVEMENT 6
+      - "SALSICH\xC3O E OVOS 6"
+      - ACHIEVEMENT 7
+      - "SALSICH\xC3O E OVOS 7"
+      - ACHIEVEMENT 8
+      - "SALSICH\xC3O E OVOS 8"
+      - ACHIEVEMENT 9
+      - "SALSICH\xC3O E OVOS 9"
+      - ACHIEVEMENT 10
+      - "SALSICH\xC3O E OVOS 10"
+      - ACHIEVEMENT 11
+      - "SALSICH\xC3O E OVOS 11"
+      - ACHIEVEMENT 12
+      - "SALSICH\xC3O E OVOS 12"
+      - ACHIEVEMENT 13
+      - "SALSICH\xC3O E OVOS 13"
+      - ACHIEVEMENT 14
+      - "SALSICH\xC3O E OVOS 14"
+      - ACHIEVEMENT 15
+      - "SALSICH\xC3O E OVOS 15"
+      - ACHIEVEMENT 16
+      - "SALSICH\xC3O E OVOS 16"
+      - ACHIEVEMENT 17
+      - "SALSICH\xC3O E OVOS 17"
+      - ACHIEVEMENT 18
+      - "SALSICH\xC3O E OVOS 18"
+    - languageCode: EN
+      keys:
+      - MENU_LANGUAGETITLE
+      - MENU_NEW_GAME
+      - MENU_LOAD_GAME
+      - MENU_SETTINGS
+      - MENU_ACHIEVEMENTS
+      - MENU_QUIT
+      - MENU_BACK
+      - MENU_YES
+      - MENU_NO
+      - MENU_TXTQUIT_1
+      - MENU_TXTQUIT_2
+      - MENU_TXTQUIT_3
+      - MENU_LANGUAGE
+      - MENU_MUSIC
+      - MENU_RESOLUTION
+      - MENU_SFX
+      - MENU_TESTE
+      - ACHIEVEMENT_TITLE_1
+      - ACHIEVEMENT_INFO_1
+      - ACHIEVEMENT_TITLE_2
+      - ACHIEVEMENT_INFO_2
+      - ACHIEVEMENT_TITLE_3
+      - ACHIEVEMENT_INFO_3
+      - ACHIEVEMENT_TITLE_4
+      - ACHIEVEMENT_INFO_4
+      - ACHIEVEMENT_TITLE_5
+      - ACHIEVEMENT_INFO_5
+      - ACHIEVEMENT_TITLE_6
+      - ACHIEVEMENT_INFO_6
+      - ACHIEVEMENT_TITLE_7
+      - ACHIEVEMENT_INFO_7
+      - ACHIEVEMENT_TITLE_8
+      - ACHIEVEMENT_INFO_8
+      - ACHIEVEMENT_TITLE_9
+      - ACHIEVEMENT_INFO_9
+      - ACHIEVEMENT_TITLE_10
+      - ACHIEVEMENT_INFO_10
+      - ACHIEVEMENT_TITLE_11
+      - ACHIEVEMENT_INFO_11
+      - ACHIEVEMENT_TITLE_12
+      - ACHIEVEMENT_INFO_12
+      - ACHIEVEMENT_TITLE_13
+      - ACHIEVEMENT_INFO_13
+      - ACHIEVEMENT_TITLE_14
+      - ACHIEVEMENT_INFO_14
+      - ACHIEVEMENT_TITLE_15
+      - ACHIEVEMENT_INFO_15
+      - ACHIEVEMENT_TITLE_16
+      - ACHIEVEMENT_INFO_16
+      - ACHIEVEMENT_TITLE_17
+      - ACHIEVEMENT_INFO_17
+      - ACHIEVEMENT_TITLE_18
+      - ACHIEVEMENT_INFO_18
+      texts:
+      - English
+      - New Game
+      - Load Game
+      - Settings
+      - Achievements
+      - Quit
+      - Back
+      - Yes
+      - No
+      - Are you sure you want to quit?
+      - "You can't leave! \nAre you Sure?"
+      - The devs didn't implement this feature!
+      - Language
+      - Music
+      - Resolution
+      - SFX
+      - TESTE
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+  - sheetName: World
+    entries:
+    - languageCode: PT
+      keys:
+      - PLAYER_NAME
+      - OPPONENT_NAME
+      - SPECIAL_NAME_1
+      - SPECIAL_NAME_2
+      - SPECIAL_NAME_3
+      - SPECIAL_NAME_4
+      - SPECIAL_NAME_5
+      - SPECIAL_NAME_6
+      - SPECIAL_NAME_7
+      - SPECIAL_NAME_8
+      - SPECIAL_NAME_9
+      - SPECIAL_NAME_10
+      texts:
+      - 
+      - 
+      - Eu Motivo
+      - "Di\xE1rio do Pistonauta"
+      - 'Fun Fun Formato '
+      - "Bode Mont\xEAs"
+      - The 100-cards Zone
+      - "Tonaarian do Col\xE9gio"
+      - Peixe Dourado NTG
+      - Uso Azul Escondido
+      - Peixonauta
+      - Energia Preta NTG
+    - languageCode: EN
+      keys:
+      - PLAYER_NAME
+      - OPPONENT_NAME
+      - SPECIAL_NAME_1
+      - SPECIAL_NAME_2
+      - SPECIAL_NAME_3
+      - SPECIAL_NAME_4
+      - SPECIAL_NAME_5
+      - SPECIAL_NAME_6
+      - SPECIAL_NAME_7
+      - SPECIAL_NAME_8
+      - SPECIAL_NAME_9
+      - SPECIAL_NAME_10
+      texts:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+  - sheetName: CardGame
+    entries:
+    - languageCode: PT
+      keys:
+      - TURN
+      - MATCH_WIN
+      - MATCH_LOSE
+      - MATCH_DRAW
+      - SCORE_FORMAT
+      - BTN_REMATCH
+      - BTN_MENU
+      texts:
+      - 
+      - VENCEU
+      - PERDEU
+      - EMPATOU
+      - 
+      - 
+      - 
+    - languageCode: EN
+      keys:
+      - TURN
+      - MATCH_WIN
+      - MATCH_LOSE
+      - MATCH_DRAW
+      - SCORE_FORMAT
+      - BTN_REMATCH
+      - BTN_MENU
+      texts:
+      - 
+      - VENCEU
+      - PERDEU
+      - EMPATOU
+      - 
+      - 
+      - 
+  - sheetName: Dialogues
+    entries:
+    - languageCode: PT
+      keys:
+      - DIALOGUE_SPEAKER_1
+      - DIALOGUE_SPEAKER_2
+      - DIALOGUE_SPEAKER_3
+      - DIALOGUE_SPEAKER_4
+      - DIALOGUE_SPEAKER_5
+      - DIALOGUE_SPEAKER_6
+      - DIALOGUE_SPEAKER_7
+      - DIALOGUE_SPEAKER_8
+      - DIALOGUE_SPEAKER_9
+      - DIALOGUE_SPEAKER_10
+      - DIALOGUE_SPEAKER_11
+      - DIALOGUE_SPEAKER_12
+      - DIALOGUE_SPEAKER_13
+      - DIALOGUE_SPEAKER_14
+      - DIALOGUE_SPEAKER_15
+      - DIALOGUE_SPEAKER_16
+      - DIALOGUE_SPEAKER_17
+      - DIALOGUE_SPEAKER_18
+      - DIALOGUE_SPEAKER_19
+      - DIALOGUE_SPEAKER_20
+      - DIALOGUE_SPEAKER_21
+      - DIALOGUE_SPEAKER_22
+      - DIALOGUE_SPEAKER_23
+      - DIALOGUE_SPEAKER_24
+      - DIALOGUE_SPEAKER_25
+      - DIALOGUE_SPEAKER_26
+      - DIALOGUE_SPEAKER_27
+      - DIALOGUE_SPEAKER_28
+      - DIALOGUE_SPEAKER_29
+      - DIALOGUE_SPEAKER_30
+      - DIALOGUE_SPEAKER_31
+      - DIALOGUE_SPEAKER_32
+      - DIALOGUE_SPEAKER_33
+      - DIALOGUE_SPEAKER_34
+      - DIALOGUE_SPEAKER_35
+      - DIALOGUE_SPEAKER_36
+      - DIALOGUE_SPEAKER_37
+      - DIALOGUE_SPEAKER_38
+      - DIALOGUE_SPEAKER_39
+      - DIALOGUE_SPEAKER_40
+      - DIALOGUE_SPEAKER_41
+      - DIALOGUE_SPEAKER_42
+      - DIALOGUE_SPEAKER_43
+      - DIALOGUE_SPEAKER_44
+      - DIALOGUE_SPEAKER_45
+      - DIALOGUE_SPEAKER_46
+      - DIALOGUE_SPEAKER_47
+      - DIALOGUE_SPEAKER_48
+      - DIALOGUE_SPEAKER_49
+      - DIALOGUE_SPEAKER_50
+      - DIALOGUE_D1
+      - DIALOGUE_D2
+      - DIALOGUE_D3
+      - DIALOGUE_D4
+      - DIALOGUE_D5
+      - DIALOGUE_D6
+      - DIALOGUE_D7
+      - DIALOGUE_D8
+      - DIALOGUE_D9
+      - DIALOGUE_D10
+      - DIALOGUE_D11
+      - DIALOGUE_D12
+      - DIALOGUE_D13
+      - DIALOGUE_D14
+      - DIALOGUE_D15
+      - DIALOGUE_D16
+      - DIALOGUE_D17
+      - DIALOGUE_D18
+      - DIALOGUE_D19
+      - DIALOGUE_D20
+      - DIALOGUE_D21
+      - DIALOGUE_D22
+      - DIALOGUE_D23
+      - DIALOGUE_D24
+      - DIALOGUE_D25
+      - DIALOGUE_D26
+      - DIALOGUE_D27
+      - DIALOGUE_D28
+      - DIALOGUE_D29
+      - DIALOGUE_D30
+      - DIALOGUE_D31
+      - DIALOGUE_D32
+      - DIALOGUE_D33
+      - DIALOGUE_D34
+      - DIALOGUE_D35
+      - DIALOGUE_D36
+      - DIALOGUE_D37
+      - DIALOGUE_D38
+      - DIALOGUE_D39
+      - DIALOGUE_D40
+      - DIALOGUE_D41
+      - DIALOGUE_D42
+      - DIALOGUE_D43
+      - DIALOGUE_D44
+      - DIALOGUE_D45
+      - DIALOGUE_D46
+      - DIALOGUE_D47
+      - DIALOGUE_D48
+      - DIALOGUE_D49
+      - DIALOGUE_D50
+      - DIALOGUE_D51
+      - DIALOGUE_D52
+      - DIALOGUE_D53
+      - DIALOGUE_D54
+      - DIALOGUE_D55
+      - DIALOGUE_D56
+      - DIALOGUE_D57
+      - DIALOGUE_D58
+      - DIALOGUE_D59
+      - DIALOGUE_D60
+      - DIALOGUE_D61
+      - DIALOGUE_D62
+      - DIALOGUE_D63
+      - DIALOGUE_D64
+      - DIALOGUE_D65
+      - DIALOGUE_D66
+      - DIALOGUE_D67
+      - DIALOGUE_D68
+      - DIALOGUE_D69
+      - DIALOGUE_D70
+      - DIALOGUE_D71
+      - DIALOGUE_D72
+      - DIALOGUE_D73
+      - DIALOGUE_D74
+      - DIALOGUE_D75
+      - DIALOGUE_D76
+      - DIALOGUE_D77
+      - DIALOGUE_D78
+      - DIALOGUE_D79
+      - DIALOGUE_D80
+      - DIALOGUE_D81
+      - DIALOGUE_D82
+      - DIALOGUE_D83
+      - DIALOGUE_D84
+      - DIALOGUE_D85
+      - DIALOGUE_D86
+      - DIALOGUE_D87
+      - DIALOGUE_D88
+      - DIALOGUE_D89
+      - DIALOGUE_D90
+      - DIALOGUE_D91
+      - DIALOGUE_D92
+      - DIALOGUE_D93
+      - DIALOGUE_D94
+      - DIALOGUE_D95
+      - DIALOGUE_D96
+      - DIALOGUE_D97
+      - DIALOGUE_D98
+      - DIALOGUE_D99
+      - DIALOGUE_D100
+      texts:
+      - Carlos
+      - Vendedor
+      - Carteiro Nerd
+      - "Jogador n\xE3o tem nome"
+      - "R\xE9gis"
+      - Seu Gilmar
+      - Yuri
+      - Tadeu
+      - Renan
+      - Lipe
+      - Davi
+      - "Dona S\xF4nia"
+      - Mirtinho
+      - "Patr\xEDcio"
+      - Carol
+      - Giba
+      - Hermes
+      - Bruno
+      - Dono do Airbnb
+      - Muleke Arretado
+      - "Senhorinha da Pra\xE7a"
+      - Carinha da Papelaria
+      - Peso Pena
+      - "Bra\xE7o Forte"
+      - Senhorzinho
+      - Dona
+      - Instrutor Pro Player
+      - Colecionador Sem Grana
+      - "Delegado Xerif\xE3o"
+      - Mestre dos Tokens
+      - Tio das Figurinhas
+      - Cabra Nerd
+      - Menino do Meta
+      - Torcedor Raiz
+      - Gente Boa
+      - Camarada do Foil
+      - Professorzinho
+      - Tryhard
+      - Pro Player de Boteco
+      - Rei do Casual
+      - Hater das Regras
+      - Odiador de Foil
+      - Lenda da Loja
+      - Senhor Mulligan
+      - Garotinho do Rage Quit
+      - Mono Red
+      - "Pega mas n\xE3o paga"
+      - Das Antigas
+      - "S\xEAnior de 13 anos"
+      - "Campe\xE3o do outro jogo"
+      - "Cara, finalmente minhas f\xE9rias. Cidade nova, gente nova. Quero ver que
+        formato de Nagic eles jogam por aqui."
+      - "T\xE1 uma zona. Preciso organizar isso depois. Tem uma carta perdida aqui
+        que subiu de pre\xE7o e seria bom um dinheirinho extra pra viagem."
+      - Montei esse deck de commander ontem. Preciso testar, mas acho melhor entender
+        primeiro o que o pessoal daqui joga.
+      - Espera. Melhor checar minhas economias antes de sair torrando tudo.
+      - Beleza. Acho que posso sair pra conhecer a cidade.
+      - "\xD3timo. Come\xE7ando as f\xE9rias quebrado. Preciso economizar. Melhor
+        separar uns 500 para gastar nessa cidade e torcer para render. E ainda tenho
+        mais cidades pela frente. Mochil\xE3o raiz mesmo."
+      - "O Wifi do airbnb caiu ou o Zap est\xE1 fora do Ar? Droga."
+      - "Acho que to sem espa\xE7o dispon\xEDvel."
+      - Porta Trancada? Pensei que em RPGs a gnt poderia entrar em qualquer casa.
+      - "E a\xED, finalmente chegou. Falei pro pessoal que voc\xEA ia aparecer, mas
+        achei que tinha desistido."
+      - "Tive trabalho at\xE9 tarde ontem, s\xF3 conseguir sair a noite."
+      - "Mas agora ta de f\xE9rias! Tem um cardgame novo bombando aqui na cidade.
+        Passa na loja e v\xEA isso."
+      - "Eu nem terminei meu deck daquele jogo de criaturinhas que n\xE3o pode ser
+        nomeado."
+      - "Relaxa aqui ningu\xE9m liga pra esse jogo, \"N\xE3o Intendo\". Todo mundo
+        t\xE1 surtado com o novo."
+      - "Bom vou indo, s\xF3 vim comprar um p\xE3o, passa na loja e v\xEA isso. Depois
+        cola l\xE1 em casa pra gente tomar um caf\xE9."
+      - "A porta t\xE1 trancada. Olha s\xF3. Uma cidade onde ningu\xE9m deixa um
+        estranho entrar na pr\xF3pria casa. Que inova\xE7\xE3o."
+      - Talvez eu tenha sido mimado por outros RPGs.
+      - O gato olha pra mim como se tivesse julgando meus decks. Acho que ele sabe
+        que eu nunca ganhei torneio nenhum.
+      - "Esse barulho de carta o dia inteiro t\xE1 acabando comigo. Antes era m\xFAsica
+        alta. Agora \xE9 gente discutindo regra e formato."
+      - "Tem um cardzinho velho aqui no ch\xE3o. A arte \xE9 de um monstrinho el\xE9trico
+        com bochecha redonda. Parece falso. Ou muito verdadeiro. Dif\xEDcil saber."
+      - "Dentro dessa caixa tem uma carta toda dobrada com cinco s\xEDmbolos coloridos
+        na borda. Deve ser de algum jogo que exige faculdade pra aprender."
+      - "Tem uma carta presa no arbusto. Um drag\xE3o hologr\xE1fico gigante com
+        nome imposs\xEDvel de pronunciar. Deve ter sido banido umas vinte vezes j\xE1."
+      - "Achei um tablet velho ligado no ch\xE3o. Tem um cardgame aberto com anima\xE7\xF5es
+        exageradas e brilho demais. O aparelho t\xE1 travado."
+      - "Tem um panfleto ca\xEDdo escrito Nova Mec\xE2nica Revolucion\xE1ria. Debaixo,
+        algu\xE9m rabiscou Isso j\xE1 existe desde 2003."
+      - "Opa. Um booster lacrado jogado atr\xE1s da lixeira. Parece pesado. Ou talvez
+        seja s\xF3 sujeira mesmo."
+      - "Seja bem vindo! O Carlos falou que voc\xEA viria."
+      - "Estamos tendo um evento do Cardage, um novo cardgame. Tenho um deck aqui
+        pra voc\xEA."
+      - "Ah, um deck de gra\xE7a? Que ideia genial pra for\xE7ar a gnt a gastar dinheiro
+        com cartas depois."
+      - Vem aqui, vou te ensinar a jogar.
+      - "Eu n\xE3o vou aprender cardgame novo nenhum. Eu ainda t\xF4 pagando o precon
+        que comprei m\xEAs passado."
+      - "Esse jogo novo \xE9 legal, mas s\xF3 porque Nagic ficou caro demais. Minha
+        carteira tava pedindo socorro."
+      - "Se esse jogo tiver aquele formato gigant\xE3o de cem cartas, eu t\xF4 fora.
+        Aquilo n\xE3o \xE9 Nagic."
+      - "O meta desse jogo nem existe ainda e j\xE1 tem gente brigando na internet.
+        Sinto que vai ser bom."
+      - "Quer duelar? T\xF4 treinando pra disputar um torneio. To perdendo quase
+        todas, mas o pr\xF3ximo \xE9 minha vit\xF3ria garantida."
+      - Bora mais 1?
+      - "Eu acho que ja vi esse game em algum lugar, acho que copiaram. Eu estudo
+        essas coisas profundamente. E por estudar eu quero dizer ver v\xEDdeo de
+        dez minutos. Vamos Duelar?"
+      - Vamos Duelar?
+      - "Nova cole\xE7\xE3o chegando em breve. Talvez. Se o caminh\xE3o n\xE3o atrasar
+        de novo."
+      - "Promo\xE7\xE3o. Compre tr\xEAs boosters e ganhe tr\xEAs iguais aos que voc\xEA
+        j\xE1 tem."
+      - "Formato Cl\xE1ssico oficialmente cancelado. De novo."
+      - "Parece que algu\xE9m arrancou o p\xF4ster de outro cardgame. S\xF3 sobrou
+        a metade com a cara de um monstro gen\xE9rico. Fandom?"
+      - "Opa. Bulk. Lar das cartas rejeitadas. Sempre um lugar emocionante para encontrar\u2026
+        nada."
+      - "Tem carta de outro jogo aqui. Ser\xE1 que algu\xE9m jogou tudo fora num
+        surto? N\xE3o julgo."
+      - "Vou colocar a m\xE3o aqui, vai que sai uma carta rara. N\xE3o saiu. Claro
+        que n\xE3o."
+      - "Se quiser abrir booster, fica \xE0 vontade. S\xF3 lembra de uma coisa. Eles
+        s\xE3o \xF3timos se voc\xEA acreditar. Se n\xE3o acreditar, a\xED vira papel
+        recicl\xE1vel mesmo."
+      - "Abre aqui o fich\xE1rio e da uma olhada."
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+    - languageCode: EN
+      keys:
+      - DIALOGUE_SPEAKER_1
+      - DIALOGUE_SPEAKER_2
+      - DIALOGUE_SPEAKER_3
+      - DIALOGUE_SPEAKER_4
+      - DIALOGUE_SPEAKER_5
+      - DIALOGUE_SPEAKER_6
+      - DIALOGUE_SPEAKER_7
+      - DIALOGUE_SPEAKER_8
+      - DIALOGUE_SPEAKER_9
+      - DIALOGUE_SPEAKER_10
+      - DIALOGUE_SPEAKER_11
+      - DIALOGUE_SPEAKER_12
+      - DIALOGUE_SPEAKER_13
+      - DIALOGUE_SPEAKER_14
+      - DIALOGUE_SPEAKER_15
+      - DIALOGUE_SPEAKER_16
+      - DIALOGUE_SPEAKER_17
+      - DIALOGUE_SPEAKER_18
+      - DIALOGUE_SPEAKER_19
+      - DIALOGUE_SPEAKER_20
+      - DIALOGUE_SPEAKER_21
+      - DIALOGUE_SPEAKER_22
+      - DIALOGUE_SPEAKER_23
+      - DIALOGUE_SPEAKER_24
+      - DIALOGUE_SPEAKER_25
+      - DIALOGUE_SPEAKER_26
+      - DIALOGUE_SPEAKER_27
+      - DIALOGUE_SPEAKER_28
+      - DIALOGUE_SPEAKER_29
+      - DIALOGUE_SPEAKER_30
+      - DIALOGUE_SPEAKER_31
+      - DIALOGUE_SPEAKER_32
+      - DIALOGUE_SPEAKER_33
+      - DIALOGUE_SPEAKER_34
+      - DIALOGUE_SPEAKER_35
+      - DIALOGUE_SPEAKER_36
+      - DIALOGUE_SPEAKER_37
+      - DIALOGUE_SPEAKER_38
+      - DIALOGUE_SPEAKER_39
+      - DIALOGUE_SPEAKER_40
+      - DIALOGUE_SPEAKER_41
+      - DIALOGUE_SPEAKER_42
+      - DIALOGUE_SPEAKER_43
+      - DIALOGUE_SPEAKER_44
+      - DIALOGUE_SPEAKER_45
+      - DIALOGUE_SPEAKER_46
+      - DIALOGUE_SPEAKER_47
+      - DIALOGUE_SPEAKER_48
+      - DIALOGUE_SPEAKER_49
+      - DIALOGUE_SPEAKER_50
+      - DIALOGUE_D1
+      - DIALOGUE_D2
+      - DIALOGUE_D3
+      - DIALOGUE_D4
+      - DIALOGUE_D5
+      - DIALOGUE_D6
+      - DIALOGUE_D7
+      - DIALOGUE_D8
+      - DIALOGUE_D9
+      - DIALOGUE_D10
+      - DIALOGUE_D11
+      - DIALOGUE_D12
+      - DIALOGUE_D13
+      - DIALOGUE_D14
+      - DIALOGUE_D15
+      - DIALOGUE_D16
+      - DIALOGUE_D17
+      - DIALOGUE_D18
+      - DIALOGUE_D19
+      - DIALOGUE_D20
+      - DIALOGUE_D21
+      - DIALOGUE_D22
+      - DIALOGUE_D23
+      - DIALOGUE_D24
+      - DIALOGUE_D25
+      - DIALOGUE_D26
+      - DIALOGUE_D27
+      - DIALOGUE_D28
+      - DIALOGUE_D29
+      - DIALOGUE_D30
+      - DIALOGUE_D31
+      - DIALOGUE_D32
+      - DIALOGUE_D33
+      - DIALOGUE_D34
+      - DIALOGUE_D35
+      - DIALOGUE_D36
+      - DIALOGUE_D37
+      - DIALOGUE_D38
+      - DIALOGUE_D39
+      - DIALOGUE_D40
+      - DIALOGUE_D41
+      - DIALOGUE_D42
+      - DIALOGUE_D43
+      - DIALOGUE_D44
+      - DIALOGUE_D45
+      - DIALOGUE_D46
+      - DIALOGUE_D47
+      - DIALOGUE_D48
+      - DIALOGUE_D49
+      - DIALOGUE_D50
+      - DIALOGUE_D51
+      - DIALOGUE_D52
+      - DIALOGUE_D53
+      - DIALOGUE_D54
+      - DIALOGUE_D55
+      - DIALOGUE_D56
+      - DIALOGUE_D57
+      - DIALOGUE_D58
+      - DIALOGUE_D59
+      - DIALOGUE_D60
+      - DIALOGUE_D61
+      - DIALOGUE_D62
+      - DIALOGUE_D63
+      - DIALOGUE_D64
+      - DIALOGUE_D65
+      - DIALOGUE_D66
+      - DIALOGUE_D67
+      - DIALOGUE_D68
+      - DIALOGUE_D69
+      - DIALOGUE_D70
+      - DIALOGUE_D71
+      - DIALOGUE_D72
+      - DIALOGUE_D73
+      - DIALOGUE_D74
+      - DIALOGUE_D75
+      - DIALOGUE_D76
+      - DIALOGUE_D77
+      - DIALOGUE_D78
+      - DIALOGUE_D79
+      - DIALOGUE_D80
+      - DIALOGUE_D81
+      - DIALOGUE_D82
+      - DIALOGUE_D83
+      - DIALOGUE_D84
+      - DIALOGUE_D85
+      - DIALOGUE_D86
+      - DIALOGUE_D87
+      - DIALOGUE_D88
+      - DIALOGUE_D89
+      - DIALOGUE_D90
+      - DIALOGUE_D91
+      - DIALOGUE_D92
+      - DIALOGUE_D93
+      - DIALOGUE_D94
+      - DIALOGUE_D95
+      - DIALOGUE_D96
+      - DIALOGUE_D97
+      - DIALOGUE_D98
+      - DIALOGUE_D99
+      - DIALOGUE_D100
+      texts:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - Player
+      - Rival - Carlos
+      - Jogador
+      - Rival
+      - Jogador
+      - Rival
+      - Rival
+      - Porta 1
+      - Porta 2
+      - Gato
+      - Vizinho
+      - Easter Egg 1
+      - Easter Egg 2
+      - Easter Egg 3
+      - Easter Egg 4
+      - Easter Egg 5
+      - Easter Egg 6
+      - Vendedor
+      - Vendedor
+      - Jogador
+      - Vendedor
+      - NPC 1
+      - NPC 2
+      - NPC 3
+      - NPC 4
+      - Duelista 1
+      - Duelista 1
+      - Duelista 2
+      - Duelista 2
+      - Mural 1
+      - Mural 2
+      - Mural 3
+      - Mural 4
+      - Bulk
+      - Bulk 2
+      - Bulk 3
+      - Vendedor-Boosters
+      - Vendedor- Loja
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+  - sheetName: Cards
+    entries:
+    - languageCode: PT
+      keys:
+      - CARD_NAME_1
+      - CARD_NAME_2
+      - CARD_NAME_3
+      - CARD_NAME_4
+      - CARD_NAME_5
+      - CARD_NAME_6
+      - CARD_NAME_7
+      - CARD_NAME_8
+      - CARD_NAME_9
+      - CARD_NAME_10
+      - CARD_NAME_11
+      - CARD_NAME_12
+      - CARD_NAME_13
+      - CARD_NAME_14
+      - CARD_NAME_15
+      - CARD_NAME_16
+      - CARD_NAME_17
+      - CARD_NAME_18
+      - CARD_NAME_19
+      - CARD_NAME_20
+      - CARD_NAME_21
+      - CARD_NAME_22
+      - CARD_NAME_23
+      - CARD_NAME_24
+      - CARD_NAME_25
+      - CARD_NAME_26
+      - CARD_NAME_27
+      - CARD_NAME_28
+      - CARD_NAME_29
+      - CARD_NAME_30
+      - CARD_NAME_31
+      - CARD_NAME_32
+      - CARD_NAME_33
+      - CARD_NAME_34
+      - CARD_NAME_35
+      - CARD_NAME_36
+      - CARD_NAME_37
+      - CARD_NAME_38
+      - CARD_NAME_39
+      - CARD_NAME_40
+      - CARD_NAME_41
+      - CARD_NAME_42
+      - CARD_NAME_43
+      - CARD_NAME_44
+      - CARD_NAME_45
+      - CARD_NAME_46
+      - CARD_NAME_47
+      - CARD_NAME_48
+      - CARD_NAME_49
+      - CARD_NAME_50
+      - CARD_NAME_51
+      - CARD_NAME_52
+      - CARD_NAME_53
+      - CARD_NAME_54
+      - CARD_NAME_55
+      - CARD_NAME_56
+      - CARD_NAME_57
+      - CARD_NAME_58
+      - CARD_NAME_59
+      - CARD_NAME_60
+      - CARD_NAME_61
+      - CARD_NAME_62
+      - CARD_NAME_63
+      - CARD_NAME_64
+      - CARD_NAME_65
+      - CARD_NAME_66
+      - CARD_NAME_67
+      - CARD_NAME_68
+      - CARD_NAME_69
+      - CARD_NAME_70
+      - CARD_NAME_71
+      - CARD_NAME_72
+      - CARD_NAME_73
+      - CARD_NAME_74
+      - CARD_NAME_75
+      - CARD_NAME_76
+      - CARD_NAME_77
+      - CARD_NAME_78
+      - CARD_NAME_79
+      - CARD_NAME_80
+      - CARD_NAME_81
+      - CARD_NAME_82
+      - CARD_NAME_83
+      - CARD_NAME_84
+      - CARD_NAME_85
+      - CARD_NAME_86
+      - CARD_NAME_87
+      - CARD_NAME_88
+      - CARD_NAME_89
+      - CARD_NAME_90
+      - CARD_NAME_91
+      - CARD_NAME_92
+      - CARD_NAME_93
+      - CARD_NAME_94
+      - CARD_NAME_95
+      - CARD_NAME_96
+      - CARD_NAME_97
+      - CARD_NAME_98
+      - CARD_NAME_99
+      - CARD_NAME_100
+      texts:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+    - languageCode: EN
+      keys:
+      - CARD_NAME_1
+      - CARD_NAME_2
+      - CARD_NAME_3
+      - CARD_NAME_4
+      - CARD_NAME_5
+      - CARD_NAME_6
+      - CARD_NAME_7
+      - CARD_NAME_8
+      - CARD_NAME_9
+      - CARD_NAME_10
+      - CARD_NAME_11
+      - CARD_NAME_12
+      - CARD_NAME_13
+      - CARD_NAME_14
+      - CARD_NAME_15
+      - CARD_NAME_16
+      - CARD_NAME_17
+      - CARD_NAME_18
+      - CARD_NAME_19
+      - CARD_NAME_20
+      - CARD_NAME_21
+      - CARD_NAME_22
+      - CARD_NAME_23
+      - CARD_NAME_24
+      - CARD_NAME_25
+      - CARD_NAME_26
+      - CARD_NAME_27
+      - CARD_NAME_28
+      - CARD_NAME_29
+      - CARD_NAME_30
+      - CARD_NAME_31
+      - CARD_NAME_32
+      - CARD_NAME_33
+      - CARD_NAME_34
+      - CARD_NAME_35
+      - CARD_NAME_36
+      - CARD_NAME_37
+      - CARD_NAME_38
+      - CARD_NAME_39
+      - CARD_NAME_40
+      - CARD_NAME_41
+      - CARD_NAME_42
+      - CARD_NAME_43
+      - CARD_NAME_44
+      - CARD_NAME_45
+      - CARD_NAME_46
+      - CARD_NAME_47
+      - CARD_NAME_48
+      - CARD_NAME_49
+      - CARD_NAME_50
+      - CARD_NAME_51
+      - CARD_NAME_52
+      - CARD_NAME_53
+      - CARD_NAME_54
+      - CARD_NAME_55
+      - CARD_NAME_56
+      - CARD_NAME_57
+      - CARD_NAME_58
+      - CARD_NAME_59
+      - CARD_NAME_60
+      - CARD_NAME_61
+      - CARD_NAME_62
+      - CARD_NAME_63
+      - CARD_NAME_64
+      - CARD_NAME_65
+      - CARD_NAME_66
+      - CARD_NAME_67
+      - CARD_NAME_68
+      - CARD_NAME_69
+      - CARD_NAME_70
+      - CARD_NAME_71
+      - CARD_NAME_72
+      - CARD_NAME_73
+      - CARD_NAME_74
+      - CARD_NAME_75
+      - CARD_NAME_76
+      - CARD_NAME_77
+      - CARD_NAME_78
+      - CARD_NAME_79
+      - CARD_NAME_80
+      - CARD_NAME_81
+      - CARD_NAME_82
+      - CARD_NAME_83
+      - CARD_NAME_84
+      - CARD_NAME_85
+      - CARD_NAME_86
+      - CARD_NAME_87
+      - CARD_NAME_88
+      - CARD_NAME_89
+      - CARD_NAME_90
+      - CARD_NAME_91
+      - CARD_NAME_92
+      - CARD_NAME_93
+      - CARD_NAME_94
+      - CARD_NAME_95
+      - CARD_NAME_96
+      - CARD_NAME_97
+      - CARD_NAME_98
+      - CARD_NAME_99
+      - CARD_NAME_100
+      texts:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+  - sheetName: Tutorial
+    entries:
+    - languageCode: PT
+      keys:
+      - TUTORIAL_COMPRA
+      - TUTORIAL_MOVEMENT
+      texts:
+      - 
+      - 
+    - languageCode: EN
+      keys:
+      - TUTORIAL_COMPRA
+      - TUTORIAL_MOVEMENT
+      texts:
+      - 
+      - 
+  entries_DEPRECATED: []

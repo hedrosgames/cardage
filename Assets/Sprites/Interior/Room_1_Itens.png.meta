@@ -1,0 +1,592 @@
+fileFormatVersion: 2
+guid: 4bb69f0d2f442be48b7160a57e46443f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 890804012423455138
+    second: Room_1_Itens_0
+  - first:
+      213: 4517208683135370487
+    second: Room_1_Itens_1
+  - first:
+      213: 3094510231086569613
+    second: Room_1_Itens_2
+  - first:
+      213: 3947029192014040085
+    second: Room_1_Itens_3
+  - first:
+      213: -5819969839278357055
+    second: Room_1_Itens_4
+  - first:
+      213: -2044371572449295184
+    second: Room_1_Itens_5
+  - first:
+      213: 815014806838919333
+    second: Room_1_Itens_6
+  - first:
+      213: -3455320892951940586
+    second: Room_1_Itens_7
+  - first:
+      213: 7394482090305574817
+    second: Room_1_Itens_8
+  - first:
+      213: 1451522033602012733
+    second: Room_1_Itens_9
+  - first:
+      213: 8410292896298549855
+    second: Room_1_Itens_10
+  - first:
+      213: 2467946036548885480
+    second: Room_1_Itens_11
+  - first:
+      213: 7720241193077696155
+    second: Room_1_Itens_12
+  - first:
+      213: -9120228362769464316
+    second: Room_1_Itens_13
+  - first:
+      213: -3997176445173998689
+    second: Room_1_Itens_14
+  - first:
+      213: 8119834330276912612
+    second: Room_1_Itens_15
+  - first:
+      213: -3506777401328404823
+    second: Room_1_Itens_16
+  - first:
+      213: 291087721561740941
+    second: Room_1_Itens_17
+  - first:
+      213: -8963508825136081693
+    second: Room_1_Itens_18
+  - first:
+      213: -998405154363026623
+    second: Room_1_Itens_19
+  - first:
+      213: 1881196130918179864
+    second: Room_1_Itens_20
+  - first:
+      213: -7960937378328290042
+    second: Room_1_Itens_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Room_1_Tapete
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 799
+        width: 382
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a12ef49785cc5c00800000000000000
+      internalID: 890804012423455138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Cama
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 708
+        width: 211
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f408963d5950be30800000000000000
+      internalID: 4517208683135370487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Janel
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 899
+        width: 105
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d881ab5e8a8e1fa20800000000000000
+      internalID: 3094510231086569613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Janela
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 844
+        width: 261
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c081c432aa6c630800000000000000
+      internalID: 3947029192014040085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Livro
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 829
+        width: 55
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5835644405b3fa0800000000000000
+      internalID: -5819969839278357055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Comoda
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 640
+        width: 99
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4c04be2eee0a3e0800000000000000
+      internalID: -2044371572449295184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_caixa
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 664
+        width: 116
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a0415016a38f4b00800000000000000
+      internalID: 815014806838919333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_caix
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 671
+        width: 87
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6123d9674fb3c00d0800000000000000
+      internalID: -3455320892951940586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_cai
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 669
+        width: 101
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a7d6a2984a7e9660800000000000000
+      internalID: 7394482090305574817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_Cartas
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 663
+        width: 195
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36208c5997d42410800000000000000
+      internalID: 1451522033602012733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_planta
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 531
+        width: 71
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed5d2b7d427fa070800000000000000
+      internalID: 8119834330276912612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_criadomudo
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 510
+        width: 114
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a6f37f788c655fc0800000000000000
+      internalID: -3506777401328404823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_abajur
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 522
+        width: 75
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d865a229db62a0400800000000000000
+      internalID: 291087721561740941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_luminaria
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 524
+        width: 86
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e45fa8d6383b9380800000000000000
+      internalID: -8963508825136081693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_mesa
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 468
+        width: 274
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143d5484dc3f422f0800000000000000
+      internalID: -998405154363026623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_cadeira
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 513
+        width: 103
+        height: 122
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814a7300ae95b1a10800000000000000
+      internalID: 1881196130918179864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room_1_comoda2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 442
+        width: 151
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ddc9d12a1158190800000000000000
+      internalID: -7960937378328290042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: edc6bd9b03230cb42b625b48ec0bf13a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Room_1_Cama: 4517208683135370487
+      Room_1_Cartas: 1451522033602012733
+      Room_1_Comoda: -2044371572449295184
+      Room_1_Itens_10: 8410292896298549855
+      Room_1_Itens_11: 2467946036548885480
+      Room_1_Itens_12: 7720241193077696155
+      Room_1_Itens_13: -9120228362769464316
+      Room_1_Itens_14: -3997176445173998689
+      Room_1_Janel: 3094510231086569613
+      Room_1_Janela: 3947029192014040085
+      Room_1_Livro: -5819969839278357055
+      Room_1_Tapete: 890804012423455138
+      Room_1_abajur: 291087721561740941
+      Room_1_cadeira: 1881196130918179864
+      Room_1_cai: 7394482090305574817
+      Room_1_caix: -3455320892951940586
+      Room_1_caixa: 815014806838919333
+      Room_1_comoda2: -7960937378328290042
+      Room_1_criadomudo: -3506777401328404823
+      Room_1_luminaria: -8963508825136081693
+      Room_1_mesa: -998405154363026623
+      Room_1_planta: 8119834330276912612
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

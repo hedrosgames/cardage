@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c156a79f8fd8d9c4cb755012bbb52f89, type: 3}
+  m_Name: CardVisualConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CardVisualConfig
+  cardBackground: {fileID: 21300000, guid: b2041adacb6c130469771628cbc8f596, type: 3}
+  diamondHand: {fileID: 21300000, guid: 87f56712db6f3d24985465d334fd543f, type: 3}
+  diamondBoard: {fileID: 21300000, guid: ebf26086b9aa6344792ee1eea9f826d0, type: 3}
+  art: {fileID: 0}
+  rarityBaseSprite: {fileID: 21300000, guid: 05b3896d28ad8bd48b7e078794396eca, type: 3}
+  rarityCommonColor: {r: 0.84705883, g: 0.84705883, b: 0.84705883, a: 1}
+  rarityUncommonColor: {r: 0.48235294, g: 0.8117647, b: 0.6509804, a: 1}
+  rarityRareColor: {r: 0.8980392, g: 0.78039217, b: 0.41960785, a: 1}
+  rarityLegendaryColor: {r: 0.6509804, g: 0.40784314, b: 0.8980392, a: 1}
+  ornamentBaseSprite: {fileID: 21300000, guid: 36e7679128f1f7c49a1472669f5585c5, type: 3}
+  ornamentColor: {r: 0.9921569, g: 0.9607844, b: 0.9019608, a: 0}
+  playerColor: {r: 0.18431373, g: 0.47058824, b: 0.78431374, a: 1}
+  opponentColor: {r: 0.78431374, g: 0.2901961, b: 0.2901961, a: 1}
+  elementIcons:
+  - type: 0
+    icon: {fileID: 0}
+  - type: 1
+    icon: {fileID: 21300000, guid: 178f38500cf89e049a321ef24ea6fbc1, type: 3}
+  - type: 2
+    icon: {fileID: 21300000, guid: f3f42a9b2ca9eea49b4953e5e2303799, type: 3}
+  - type: 3
+    icon: {fileID: 21300000, guid: be8db3910468e834db59270ebffa67d2, type: 3}
+  - type: 4
+    icon: {fileID: 21300000, guid: 2e318055f8a43de41bc3be3cf9dddefa, type: 3}
+  - type: 5
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - type: 6
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - type: 7
+    icon: {fileID: 21300000, guid: 58df4e7b351a27846b17f192f321bb04, type: 3}
+  - type: 8
+    icon: {fileID: 21300000, guid: 9fedf7b606227274d84b033f37b6529d, type: 3}
+  - type: 9
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - type: 10
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - type: 11
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  collectionIcons: []
+  specialIcons: []
+  otherIcons: []

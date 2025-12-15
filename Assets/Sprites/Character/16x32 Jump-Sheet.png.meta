@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 43ff9c6168f996044b35e0067b6ea0c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9171496573772172096
+    second: 16x32 Jump-Sheet_0
+  - first:
+      213: -6278273064733625946
+    second: 16x32 Jump-Sheet_1
+  - first:
+      213: -3232775104065745574
+    second: 16x32 Jump-Sheet_2
+  - first:
+      213: -8622570075736474267
+    second: 16x32 Jump-Sheet_3
+  - first:
+      213: 4846337056194608935
+    second: 16x32 Jump-Sheet_4
+  - first:
+      213: -4433716298189908925
+    second: 16x32 Jump-Sheet_5
+  - first:
+      213: -4383961249093298916
+    second: 16x32 Jump-Sheet_6
+  - first:
+      213: 3852071549545465887
+    second: 16x32 Jump-Sheet_7
+  - first:
+      213: 6866468839485519463
+    second: 16x32 Jump-Sheet_8
+  - first:
+      213: 7832044994924779948
+    second: 16x32 Jump-Sheet_9
+  - first:
+      213: -852823413978005407
+    second: 16x32 Jump-Sheet_10
+  - first:
+      213: 8190704481217399579
+    second: 16x32 Jump-Sheet_11
+  - first:
+      213: -8463910073572959555
+    second: 16x32 Jump-Sheet_12
+  - first:
+      213: -6999941619575238800
+    second: 16x32 Jump-Sheet_13
+  - first:
+      213: 6588600035905547604
+    second: 16x32 Jump-Sheet_14
+  - first:
+      213: -5310833909999056057
+    second: 16x32 Jump-Sheet_15
+  - first:
+      213: 1312891552251568461
+    second: 16x32 Jump-Sheet_16
+  - first:
+      213: 6547312739187763899
+    second: 16x32 Jump-Sheet_17
+  - first:
+      213: 7318337175731813728
+    second: 16x32 Jump-Sheet_18
+  - first:
+      213: 6993894369030165267
+    second: 16x32 Jump-Sheet_19
+  - first:
+      213: -6939977532811830104
+    second: 16x32 Jump-Sheet_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 16x32 Jump-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c4f895757c48b080800000000000000
+      internalID: -9171496573772172096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x32 Jump-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 127
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a136ad49e71fd8a0800000000000000
+      internalID: -6278273064733625946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x32 Jump-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 127
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d4f6bbb20e223d0800000000000000
+      internalID: -3232775104065745574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x32 Jump-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 127
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d70d0533a765880800000000000000
+      internalID: -8622570075736474267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 16x32 Jump-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 127
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72fba4820e5a14340800000000000000
+      internalID: 4846337056194608935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7b65533685b9bed4d822a2624c62003f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":1.0},"gridSpritePadding":{"x":0.0,"y":1.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      16x32 Jump-Sheet_0: -9171496573772172096
+      16x32 Jump-Sheet_1: -6278273064733625946
+      16x32 Jump-Sheet_10: -852823413978005407
+      16x32 Jump-Sheet_11: 8190704481217399579
+      16x32 Jump-Sheet_12: -8463910073572959555
+      16x32 Jump-Sheet_13: -6999941619575238800
+      16x32 Jump-Sheet_14: 6588600035905547604
+      16x32 Jump-Sheet_15: -5310833909999056057
+      16x32 Jump-Sheet_16: 1312891552251568461
+      16x32 Jump-Sheet_17: 6547312739187763899
+      16x32 Jump-Sheet_18: 7318337175731813728
+      16x32 Jump-Sheet_19: 6993894369030165267
+      16x32 Jump-Sheet_2: -3232775104065745574
+      16x32 Jump-Sheet_3: -8622570075736474267
+      16x32 Jump-Sheet_4: 4846337056194608935
+      16x32 Jump-Sheet_5: -4433716298189908925
+      16x32 Jump-Sheet_6: -4383961249093298916
+      16x32 Jump-Sheet_7: 3852071549545465887
+      16x32 Jump-Sheet_8: 6866468839485519463
+      16x32 Jump-Sheet_9: 7832044994924779948
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff084f688ff46441b2fe14291bfc26b, type: 3}
+  m_Name: AchievementsConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SOAchievementLibrary
+  achievements:
+  - {fileID: 11400000, guid: 3ed4ecddd85ba5f48a48d32884239cf7, type: 2}
+  - {fileID: 11400000, guid: 9c879dfde6c022b4dadc5e439d155dee, type: 2}
+  - {fileID: 11400000, guid: dc71dae9795d2224c8c3d2a4ac8bfd02, type: 2}
+  - {fileID: 11400000, guid: 64a787bdd31fd3542a0a8609e996e2b7, type: 2}
+  - {fileID: 11400000, guid: d4213f31a7163ac4897f70eb4496d3b9, type: 2}
+  - {fileID: 11400000, guid: 0e6ee3b64f5a0674aace2e3db45edaa3, type: 2}
+  - {fileID: 11400000, guid: 2b5cb6cdd4d67154dac5c1e646074628, type: 2}
+  - {fileID: 11400000, guid: 68aa835bb787a1942a9f3f2f6e55be98, type: 2}
+  - {fileID: 11400000, guid: 1c033348ae5d08946b85b722cf4ae391, type: 2}
+  - {fileID: 11400000, guid: b921027662762824d96b2b857a77f93b, type: 2}
+  - {fileID: 11400000, guid: 1fdede2aad69bb84a9263ecfebbdda09, type: 2}
+  - {fileID: 11400000, guid: 291dfd7584920d9469948e8002a0d875, type: 2}
+  - {fileID: 11400000, guid: 4d217db91c0225f4e843f67119d7133e, type: 2}
+  - {fileID: 11400000, guid: cb66e7297c2b7304998df8e89d6b5c42, type: 2}
+  - {fileID: 11400000, guid: 08ade4f1ddda29a4ea58423a512f4ff3, type: 2}
+  - {fileID: 11400000, guid: 46c37223ddb24c34c90d194a1ef4d6b2, type: 2}
+  - {fileID: 11400000, guid: bd7604f7180f11e4da0ad93f9bbf384b, type: 2}
+  - {fileID: 11400000, guid: 88f9c8743d5a32b4d8ee5b1a7d6324ca, type: 2}

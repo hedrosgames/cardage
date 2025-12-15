@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1508fca3797a6342b059798e8e6c31c, type: 3}
+  m_Name: GameSetupConfig
+  m_EditorClassIdentifier: Assembly-CSharp::GameSetupConfig
+  playerDeck: {fileID: 11400000, guid: a0ca5087e75f7a84faa185adc500c4b6, type: 2}
+  opponent: {fileID: 11400000, guid: d37f9e7c026f47942a8ec2958ca460af, type: 2}
