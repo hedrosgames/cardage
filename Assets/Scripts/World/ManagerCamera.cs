@@ -41,7 +41,7 @@ public class ManagerCamera : MonoBehaviour
         ApplyArea();
     }
     public bool CurrentAreaFollowsPlayer => currentArea != null && currentArea.followPlayer;
-    void ApplyArea()
+    public void ApplyArea()
     {
         if (cameraFollow == null) return;
         if (currentArea == null)
@@ -56,7 +56,8 @@ public class ManagerCamera : MonoBehaviour
         bool useBounds = false;
         if (currentArea.followPlayer && config.boundaryLibrary != null && currentArea.boundaryId != BoundaryId.None)
         {
-            if (config.boundaryLibrary.GetBoundary(currentArea.boundaryId.ToString(), out min, out max))
+            string boundaryName = currentArea.boundaryId.ToString();
+            if (config.boundaryLibrary.GetBoundary(boundaryName, out min, out max))
             {
                 useBounds = true;
             }

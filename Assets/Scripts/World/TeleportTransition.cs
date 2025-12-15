@@ -40,16 +40,27 @@ public class TeleportTransition : MonoBehaviour
         SetPlayerMovement(player, false);
         yield return StartCoroutine(managerCamera.doorCurtain.PlayCloseRoutine());
         yield return new WaitForEndOfFrame();
-        teleportDoor.TeleportPlayer(player);
         if (managerCamera.cameraFollow != null)
         {
             managerCamera.cameraFollow.enabled = false;
         }
-        yield return new WaitForSeconds(0.15f);
-        if (managerCamera.CurrentAreaFollowsPlayer && managerCamera.cameraFollow != null)
+        teleportDoor.TeleportPlayer(player);
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return new WaitForSeconds(0.05f);
+        if (managerCamera != null)
         {
-            managerCamera.SnapToTarget();
-            managerCamera.cameraFollow.enabled = true;
+            if (managerCamera.CurrentArea != null)
+            {
+                managerCamera.ApplyArea();
+                if (managerCamera.CurrentAreaFollowsPlayer)
+                {
+                    managerCamera.SnapToTarget();
+                }
+            }
         }
         yield return StartCoroutine(managerCamera.doorCurtain.PlayOpenRoutine());
         SetPlayerMovement(player, true);

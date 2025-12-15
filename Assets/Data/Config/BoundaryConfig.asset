@@ -17,5 +17,5 @@ MonoBehaviour:
     minLimit: {x: -22, y: 18}
     maxLimit: {x: 22, y: 42}
   - idName: CardShop1
-    minLimit: {x: 78, y: 18}
-    maxLimit: {x: 122, y: 42}
+    minLimit: {x: 79, y: 18}
+    maxLimit: {x: 130, y: 42}

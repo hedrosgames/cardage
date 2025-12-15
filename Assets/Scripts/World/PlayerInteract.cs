@@ -47,33 +47,26 @@ public class PlayerInteract : MonoBehaviour
     }
     void DetectInteractable()
     {
-        // Verifica se o InteractionPoint existe - se não existir, não detecta nada
         if (interactionPoint == null)
         {
-            // Tenta encontrar novamente
             interactionPoint = transform.Find("InteractionPoint");
             if (interactionPoint == null) return;
         }
-        
         Vector2 detectionPoint = interactionPoint.position;
         float detectionRadius = 0.3f;
-        
         Collider2D col = Physics2D.OverlapCircle(detectionPoint, detectionRadius, mask);
         Interactable newTarget = null;
         if (col != null)
         {
             newTarget = col.GetComponent<Interactable>();
-            // Verifica se o objeto ainda existe e está ativo
             if (newTarget != null && newTarget.gameObject != null && newTarget.gameObject.activeInHierarchy)
             {
-                // Objeto válido
             }
             else
             {
                 newTarget = null;
             }
         }
-        
         if (newTarget != target)
         {
             if (target != null && target.gameObject != null)

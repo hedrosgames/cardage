@@ -172,14 +172,11 @@ public class TeleportDoor : MonoBehaviour
         {
             lastLockedDialogueTime = Time.time;
             activeLockedDialogue = lockedDialogue;
-            // O ManagerDialogue agora controla o movimento automaticamente
             GameEvents.OnRequestDialogue?.Invoke(lockedDialogue);
         }
     }
     void OnDialogueFinished(SODialogueSequence sequence)
     {
-        // O ManagerDialogue já reabilita o movimento automaticamente
-        // Apenas limpa a referência do diálogo ativo
         if (sequence == activeLockedDialogue)
         {
             activeLockedDialogue = null;
