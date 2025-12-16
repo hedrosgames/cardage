@@ -22,16 +22,54 @@ public class ManagerCamera : MonoBehaviour
     void OnDisable() => GameEvents.OnPlayerTeleport -= OnPlayerTeleport;
     void Start()
     {
+        if (player == null)
+        {
+            player = FindFirstObjectByType<PlayerMove>()?.transform;
+            if (player == null)
+            {
+                var playerObj = GameObject.FindGameObjectWithTag("Player");
+                if (playerObj != null) player = playerObj.transform;
+            }
+            if (player != null)
+            {
+            }
+            else
+            {
+            }
+        }
+        if (cameraFollow == null)
+        {
+            cameraFollow = GetComponent<CameraFollow>();
+            if (cameraFollow == null)
+            {
+                cameraFollow = FindFirstObjectByType<CameraFollow>();
+            }
+            if (cameraFollow != null)
+            {
+            }
+            else
+            {
+            }
+        }
         if (startAreaId != WorldAreaId.None)
-        SetArea(startAreaId);
+        {
+            SetArea(startAreaId);
+        }
+        else
+        {
+        }
     }
     void OnPlayerTeleport(Vector3 targetPos, WorldAreaId areaId)
     {
         if (areaId != WorldAreaId.None) SetArea(areaId);
+        else Debug.LogWarning("[ManagerCamera] OnPlayerTeleport recebeu areaId.None!");
     }
     public void SetArea(WorldAreaId areaId)
     {
-        if (config == null) return;
+        if (config == null)
+        {
+            return;
+        }
         var area = config.GetArea(areaId);
         if (area == null)
         {
@@ -43,7 +81,10 @@ public class ManagerCamera : MonoBehaviour
     public bool CurrentAreaFollowsPlayer => currentArea != null && currentArea.followPlayer;
     public void ApplyArea()
     {
-        if (cameraFollow == null) return;
+        if (cameraFollow == null)
+        {
+            return;
+        }
         if (currentArea == null)
         {
             SnapToTarget();
@@ -61,10 +102,29 @@ public class ManagerCamera : MonoBehaviour
             {
                 useBounds = true;
             }
+            else
+            {
+            }
+        }
+        else
+        {
         }
         cameraFollow.SetBounds(useBounds, min, max);
         if (currentArea.followPlayer)
         {
+            if (player == null)
+            {
+                player = FindFirstObjectByType<PlayerMove>()?.transform;
+                if (player == null)
+                {
+                    var playerObj = GameObject.FindGameObjectWithTag("Player");
+                    if (playerObj != null) player = playerObj.transform;
+                }
+                if (player == null)
+                {
+                    return;
+                }
+            }
             cameraFollow.target = player;
             cameraFollow.offset = config.globalFollowOffset;
             SnapToTarget();
@@ -81,7 +141,23 @@ public class ManagerCamera : MonoBehaviour
     }
     public void SnapToTarget()
     {
-        if (player == null || cameraFollow == null) return;
+        if (player == null)
+        {
+            player = FindFirstObjectByType<PlayerMove>()?.transform;
+            if (player == null)
+            {
+                var playerObj = GameObject.FindGameObjectWithTag("Player");
+                if (playerObj != null) player = playerObj.transform;
+            }
+            if (player == null)
+            {
+                return;
+            }
+        }
+        if (cameraFollow == null)
+        {
+            return;
+        }
         Vector3 targetPos = player.position;
         if (config != null)
         {
@@ -102,6 +178,9 @@ public class ManagerCamera : MonoBehaviour
             else targetPos.x = (minX + maxX) / 2;
             if (maxY >= minY) targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
             else targetPos.y = (minY + maxY) / 2;
+        }
+        else
+        {
         }
         cameraFollow.transform.position = targetPos;
     }

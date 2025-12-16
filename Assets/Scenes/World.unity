@@ -2381,6 +2381,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3762533347720833792, guid: 699eb90a5cd06e34d9fa5e9ec1cf0014, type: 3}
+      propertyPath: sightDistance
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762533347720833792, guid: 699eb90a5cd06e34d9fa5e9ec1cf0014, type: 3}
       propertyPath: sightDirection
       value: 1
       objectReference: {fileID: 0}

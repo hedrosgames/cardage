@@ -123,6 +123,7 @@ public class InteractableCardGame : Interactable
     }
     void CheckLineOfSight()
     {
+        if (isWaitingForDialogue) return;
         if (playerTransform == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -133,13 +134,15 @@ public class InteractableCardGame : Interactable
         Vector3 playerPos = playerTransform.position;
         Vector3 direction = GetSightDirectionVector();
         Vector3 toPlayer = playerPos - npcPos;
-        float dot = Vector3.Dot(direction.normalized, toPlayer.normalized);
-        if (dot < 0.5f) return;
-        float distanceAlongLine = Vector3.Dot(toPlayer, direction.normalized);
+        Vector3 normalizedToPlayer = toPlayer.normalized;
+        Vector3 normalizedDirection = direction.normalized;
+        float dot = Vector3.Dot(normalizedDirection, normalizedToPlayer);
+        if (dot < 0.999f) return;
+        float distanceAlongLine = Vector3.Dot(toPlayer, normalizedDirection);
         if (distanceAlongLine <= 0 || distanceAlongLine > sightDistance) return;
-        Vector3 projectedPoint = npcPos + direction.normalized * distanceAlongLine;
+        Vector3 projectedPoint = npcPos + normalizedDirection * distanceAlongLine;
         float distanceFromLine = Vector3.Distance(playerPos, projectedPoint);
-        if (distanceFromLine > 1.5f) return;
+        if (distanceFromLine > 0.1f) return;
         Vector2 rayOrigin = npcPos;
         Vector2 rayDirection = (playerPos - npcPos).normalized;
         float distance = Vector3.Distance(npcPos, playerPos);
@@ -147,7 +150,14 @@ public class InteractableCardGame : Interactable
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             MarkAsChallenged();
-            StartCardGame();
+            if (dialogueBeforeGame != null)
+            {
+                StartDialogueSequence();
+            }
+            else
+            {
+                StartCardGame();
+            }
         }
     }
     Vector3 GetSightDirectionVector()
@@ -222,9 +232,19 @@ public class InteractableCardGame : Interactable
         Vector3 npcPos = transform.position;
         Vector3 direction = GetSightDirectionVector();
         Vector3 endPoint = npcPos + direction.normalized * sightDistance;
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(npcPos, endPoint);
+        Gizmos.DrawWireSphere(npcPos, 0.15f);
         Gizmos.DrawWireSphere(endPoint, 0.2f);
+        Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+        for (int i = 0; i < 5; i++)
+        {
+            float offset = (i - 2) * 0.05f;
+            Vector3 perpendicular = Vector3.Cross(direction, Vector3.forward).normalized;
+            Vector3 startOffset = npcPos + perpendicular * offset;
+            Vector3 endOffset = endPoint + perpendicular * offset;
+            Gizmos.DrawLine(startOffset, endOffset);
+        }
     }
 }
 

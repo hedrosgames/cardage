@@ -36,8 +36,6 @@ public class ManagerGameFlow : MonoBehaviour
     {
         if (playerControl != null) playerControl.SetControl(false);
         _saveZone = FindFirstObjectByType<SaveClientZone>();
-        
-        // Inicializa o canvas do nome da cidade
         if (cityNameCanvasGroup == null)
         {
             GameObject canvasObj = GameObject.Find("CanvasCityName");
@@ -54,8 +52,6 @@ public class ManagerGameFlow : MonoBehaviour
                 cityNameText = textObj.GetComponent<TextMeshProUGUI>();
             }
         }
-        
-        // Garante que o canvas começa escondido
         if (cityNameCanvasGroup != null)
         {
             cityNameCanvasGroup.alpha = 0f;
@@ -77,94 +73,68 @@ public class ManagerGameFlow : MonoBehaviour
     }
     void HandlePlayerTeleport(Vector3 pos, WorldAreaId areaId)
     {
-        // Verifica se é uma área externa de cidade e se ainda não mostrou o nome nesta sessão
         if (IsCityExternalArea(areaId) && !_hasShownCityName)
         {
             _hasShownCityName = true;
             ShowCityName(areaId);
         }
     }
-    
     bool IsCityExternalArea(WorldAreaId areaId)
     {
         string areaName = areaId.ToString();
-        // Verifica se é uma área externa (City1_ext_*)
         return areaName.StartsWith("City") && areaName.Contains("_ext_");
     }
-    
     void ShowCityName(WorldAreaId areaId)
     {
         if (cityNameCanvasGroup == null || cityNameText == null) return;
-        
-        // Usa o texto que já está configurado no TextMeshProUGUI
-        // Futuramente: usar key de localização aqui
-        // Exemplo: cityNameText.text = LocalizationManager.GetText("city." + areaId.ToString());
-        
         StartCoroutine(CityNameDisplayRoutine());
     }
-    
     IEnumerator CityNameDisplayRoutine()
     {
         if (cityNameCanvasGroup == null || cityNameText == null) yield break;
-        
-        // Guarda a posição inicial
         RectTransform textRect = cityNameText.GetComponent<RectTransform>();
         Vector2 startPosition = textRect.anchoredPosition;
         Vector2 startPositionAbove = startPosition + Vector2.up * cityNameFloatDownDistance;
-        
-        // Posiciona o texto acima da posição original
         if (textRect != null)
         {
             textRect.anchoredPosition = startPositionAbove;
         }
-        
-        // Fade In com movimento para baixo
         cityNameCanvasGroup.blocksRaycasts = false;
         cityNameCanvasGroup.interactable = false;
-        
         float timer = 0f;
         while (timer < cityNameFadeDuration)
         {
             timer += Time.unscaledDeltaTime;
             float progress = Mathf.Clamp01(timer / cityNameFadeDuration);
             cityNameCanvasGroup.alpha = progress;
-            // Move o texto para baixo suavemente até a posição original
             if (textRect != null)
             {
-                float floatProgress = 1f - progress; // Inverte para começar acima e ir para baixo
+                float floatProgress = 1f - progress;
                 textRect.anchoredPosition = Vector2.Lerp(startPosition, startPositionAbove, floatProgress);
             }
             yield return null;
         }
         cityNameCanvasGroup.alpha = 1f;
-        // Garante que está na posição correta
         if (textRect != null)
         {
             textRect.anchoredPosition = startPosition;
         }
-        
-        // Aguarda o tempo de exibição
         yield return new WaitForSecondsRealtime(cityNameDisplayDuration);
-        
-        // Fade Out com movimento para cima
         timer = 0f;
         while (timer < cityNameFadeDuration)
         {
             timer += Time.unscaledDeltaTime;
             float progress = Mathf.Clamp01(timer / cityNameFadeDuration);
             cityNameCanvasGroup.alpha = 1f - progress;
-            // Move o texto para cima suavemente
             if (textRect != null)
             {
-                float floatProgress = progress; // Usa a mesma progressão do fade
+                float floatProgress = progress;
                 textRect.anchoredPosition = startPosition + Vector2.up * (cityNameFloatDistance * floatProgress);
             }
             yield return null;
         }
         cityNameCanvasGroup.alpha = 0f;
         cityNameCanvasGroup.blocksRaycasts = false;
-        
-        // Restaura a posição original
         if (textRect != null)
         {
             textRect.anchoredPosition = startPosition;
@@ -189,10 +159,8 @@ public class ManagerGameFlow : MonoBehaviour
         else
         StartIntroDialogue();
     }
-    
     void CheckInitialCity()
     {
-        // Verifica se o jogador começa em uma área externa de cidade
         var managerCamera = FindFirstObjectByType<ManagerCamera>();
         if (managerCamera != null && managerCamera.startAreaId != WorldAreaId.None)
         {
@@ -200,12 +168,10 @@ public class ManagerGameFlow : MonoBehaviour
             if (IsCityExternalArea(initialArea) && !_hasShownCityName)
             {
                 _hasShownCityName = true;
-                // Aguarda um pouco antes de mostrar o nome (para não conflitar com a cutscene inicial)
                 StartCoroutine(DelayedShowCityName(initialArea, 1f));
             }
         }
     }
-    
     IEnumerator DelayedShowCityName(WorldAreaId areaId, float delay)
     {
         yield return new WaitForSecondsRealtime(delay);

@@ -37,12 +37,27 @@ public class TeleportTransition : MonoBehaviour
     }
     IEnumerator SequenceTransition(Transform player)
     {
+        if (player == null)
+        {
+            yield break;
+        }
+        if (managerCamera == null)
+        {
+            yield break;
+        }
+        if (teleportDoor == null)
+        {
+            yield break;
+        }
         SetPlayerMovement(player, false);
         yield return StartCoroutine(managerCamera.doorCurtain.PlayCloseRoutine());
         yield return new WaitForEndOfFrame();
         if (managerCamera.cameraFollow != null)
         {
             managerCamera.cameraFollow.enabled = false;
+        }
+        else
+        {
         }
         teleportDoor.TeleportPlayer(player);
         yield return null;
@@ -60,7 +75,32 @@ public class TeleportTransition : MonoBehaviour
                 {
                     managerCamera.SnapToTarget();
                 }
+                else
+                {
+                }
             }
+            else
+            {
+                if (managerCamera.player == null)
+                {
+                    managerCamera.player = player;
+                }
+                yield return null;
+                if (managerCamera.CurrentArea != null)
+                {
+                    managerCamera.ApplyArea();
+                    if (managerCamera.CurrentAreaFollowsPlayer)
+                    {
+                        managerCamera.SnapToTarget();
+                    }
+                }
+                else
+                {
+                }
+            }
+        }
+        else
+        {
         }
         yield return StartCoroutine(managerCamera.doorCurtain.PlayOpenRoutine());
         SetPlayerMovement(player, true);

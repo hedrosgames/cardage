@@ -64,7 +64,7 @@ MonoBehaviour:
     id: 2
     followPlayer: 1
     fixedPosition: {x: 13, y: 25, z: -10}
-    boundaryId: 2
+    boundaryId: 1
   - name: City1_ext_RivalHouse
     id: 6
     followPlayer: 1
