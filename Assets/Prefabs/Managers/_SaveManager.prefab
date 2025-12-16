@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5299385234500691569}
   - component: {fileID: 6527885251428018592}
   - component: {fileID: 2636112344374939081}
+  - component: {fileID: 2757872995530906924}
+  - component: {fileID: 2162806936409578985}
   m_Layer: 0
   m_Name: _SaveManager
   m_TagString: Untagged
@@ -115,7 +117,7 @@ MonoBehaviour:
   saveDefinition: {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
   musicVolume: 0.5
   sfxVolume: 0.5
-  language: EN
+  language: PT
   resolution: 
 --- !u!114 &2636112344374939081
 MonoBehaviour:
@@ -131,3 +133,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SaveClientAchievements
   saveDefinition: {fileID: 11400000, guid: e713b66d2358736488b4d52e3264cb05, type: 2}
   unlockedAchievements: []
+--- !u!114 &2757872995530906924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b449d29635a1cbe4cb7038b66cdc912b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientZone
+  saveDefinition: {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
+--- !u!114 &2162806936409578985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07359f173b4ddf0409884821cb2335b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientMoment
+  saveDefinition: {fileID: 11400000, guid: 2ac2cf730c650524598b8100300cbc84, type: 2}

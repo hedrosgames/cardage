@@ -5555,11 +5555,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7180549426961983991, guid: 279bb6cc4bec60944a85efa40ba77141, type: 3}
   m_PrefabInstance: {fileID: 651794133}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &666648785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6533388253181073329, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
-  m_PrefabInstance: {fileID: 1350969294}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &676218286
 GameObject:
   m_ObjectHideFlags: 0
@@ -10867,10 +10862,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6527885251428018592, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
-      propertyPath: language
-      value: PT
-      objectReference: {fileID: 0}
     - target: {fileID: 6533388253181073329, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
       propertyPath: m_Name
       value: _SaveManager
@@ -10918,24 +10909,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6533388253181073329, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1350969302}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
---- !u!114 &1350969302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666648785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b449d29635a1cbe4cb7038b66cdc912b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveClientZone
-  saveDefinition: {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
 --- !u!1 &1353775418
 GameObject:
   m_ObjectHideFlags: 0
@@ -24436,6 +24411,10 @@ PrefabInstance:
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: cityParents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: cityNameDisplayDuration
       value: 1.8
       objectReference: {fileID: 0}
@@ -24443,6 +24422,10 @@ PrefabInstance:
       propertyPath: tutorialFirstInteraction
       value: 
       objectReference: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityParents.Array.data[0]'
+      value: 
+      objectReference: {fileID: 448420609}
     - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: 'cityNameKeys.Array.data[0]'
       value: CITY_NAME_1

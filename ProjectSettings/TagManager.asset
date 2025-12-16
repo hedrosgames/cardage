@@ -7,6 +7,11 @@ TagManager:
   - Walll
   - Object
   - NPC
+  - Moment_1
+  - Moment_2
+  - Moment_3
+  - Moment_4
+  - Moment_5
   layers:
   - Default
   - TransparentFX

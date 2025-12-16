@@ -22,23 +22,33 @@ public class ManagerGameFlow : MonoBehaviour
     [Header("City Name Display")]
     public CanvasGroup cityNameCanvasGroup;
     public TextMeshProUGUI cityNameText;
-    [Tooltip("Tempo em segundos que o nome da cidade fica visível")]
+    [HideInInspector]
     public float cityNameDisplayDuration = 3f;
-    [Tooltip("Tempo em segundos para o fade in/out")]
+    [HideInInspector]
     public float cityNameFadeDuration = 0.5f;
-    [Tooltip("Distância em pixels que o texto sobe durante o fade out")]
+    [HideInInspector]
     public float cityNameFloatDistance = 30f;
-    [Tooltip("Distância em pixels que o texto desce durante o fade in (começa acima)")]
+    [HideInInspector]
     public float cityNameFloatDownDistance = 20f;
     [Header("City Name Localization Keys")]
     [Tooltip("Keys de tradução para os nomes das 7 cidades. Ordem: City1, City2, City3, City4, City5, City6, City7")]
     public string[] cityNameKeys = new string[7];
+    [Header("Controle de Momentos")]
+    [Tooltip("Referências aos GameObjects World_City_X (pais das cidades). Ordem: City1, City2, City3, City4, City5, City6, City7")]
+    public GameObject[] cityParents = new GameObject[7];
+    [Header("Debug - Estado Atual")]
+    [SerializeField, Tooltip("Cidade atual detectada (somente leitura)")]
+    private int _currentCityNumber = 0;
+    [SerializeField, Tooltip("Momento atual do jogo (somente leitura)")]
+    private int _currentMomentNumber = 0;
     private SaveClientZone _saveZone;
+    private SaveClientMoment _saveMoment;
     private bool _hasShownCityName = false;
     void Awake()
     {
         if (playerControl != null) playerControl.SetControl(false);
         _saveZone = FindFirstObjectByType<SaveClientZone>();
+        _saveMoment = FindFirstObjectByType<SaveClientMoment>();
         if (cityNameCanvasGroup == null)
         {
             GameObject canvasObj = GameObject.Find("CanvasCityName");
@@ -67,12 +77,20 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnDialogueFinished += OnGlobalDialogueFinished;
         GameEvents.OnBankChecked += HandleBankChecked;
         GameEvents.OnPlayerTeleport += HandlePlayerTeleport;
+        if (_saveMoment != null)
+        {
+            _saveMoment.OnMomentChanged += OnMomentChanged;
+        }
     }
     void OnDisable()
     {
         GameEvents.OnDialogueFinished -= OnGlobalDialogueFinished;
         GameEvents.OnBankChecked -= HandleBankChecked;
         GameEvents.OnPlayerTeleport -= HandlePlayerTeleport;
+        if (_saveMoment != null)
+        {
+            _saveMoment.OnMomentChanged -= OnMomentChanged;
+        }
     }
     void HandlePlayerTeleport(Vector3 pos, WorldAreaId areaId)
     {
@@ -81,6 +99,13 @@ public class ManagerGameFlow : MonoBehaviour
             _hasShownCityName = true;
             ShowCityName(areaId);
         }
+        UpdateCurrentCity(areaId);
+        RefreshMomentObjects();
+    }
+    void OnMomentChanged(int newMoment)
+    {
+        _currentMomentNumber = newMoment;
+        RefreshMomentObjects();
     }
     bool IsCityExternalArea(WorldAreaId areaId)
     {
@@ -207,6 +232,9 @@ public class ManagerGameFlow : MonoBehaviour
     {
         CheckInitialState();
         CheckInitialCity();
+        if (_saveMoment == null) _saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        UpdateDebugInfo();
+        RefreshMomentObjects();
         if (playerCutscene != null)
         playerCutscene.PlayCutsceneNoControl("Wake", 0.3f, "Interact", StartIntroDialogue);
         else
@@ -218,6 +246,8 @@ public class ManagerGameFlow : MonoBehaviour
         if (managerCamera != null && managerCamera.startAreaId != WorldAreaId.None)
         {
             WorldAreaId initialArea = managerCamera.startAreaId;
+            UpdateCurrentCity(initialArea);
+            RefreshMomentObjects();
             if (IsCityExternalArea(initialArea) && !_hasShownCityName)
             {
                 _hasShownCityName = true;
@@ -274,6 +304,80 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnGameplayStarted?.Invoke();
         if (tutorialFirstMovement != null)
         GameEvents.OnRequestTutorialByAsset?.Invoke(tutorialFirstMovement);
+    }
+    void UpdateCurrentCity(WorldAreaId areaId)
+    {
+        string areaName = areaId.ToString();
+        if (!areaName.StartsWith("City")) return;
+        int cityNumber = ExtractCityNumber(areaName);
+        if (cityNumber > 0 && cityNumber <= 7)
+        {
+            _currentCityNumber = cityNumber;
+            UpdateDebugInfo();
+        }
+    }
+    void UpdateDebugInfo()
+    {
+        if (_saveMoment != null)
+        {
+            _currentMomentNumber = _saveMoment.GetMoment();
+        }
+    }
+    void RefreshMomentObjects()
+    {
+        if (_currentCityNumber < 1 || _currentCityNumber > 7) return;
+        if (_saveMoment == null) return;
+        int activeMoment = _saveMoment.GetMoment();
+        _currentMomentNumber = activeMoment;
+        GameObject cityParent = null;
+        int cityIndex = _currentCityNumber - 1;
+        if (cityIndex >= 0 && cityIndex < cityParents.Length && cityParents[cityIndex] != null)
+        {
+            cityParent = cityParents[cityIndex];
+        }
+        if (cityParent == null)
+        {
+            cityParent = GameObject.Find($"World_City_{_currentCityNumber}");
+        }
+        if (cityParent == null) return;
+        ProcessMomentObjectsInCity(cityParent.transform, activeMoment);
+    }
+    void ProcessMomentObjectsInCity(Transform parent, int activeMoment)
+    {
+        if (parent == null) return;
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            if (child == null) continue;
+            GameObject obj = child.gameObject;
+            if (obj == null) continue;
+            bool hasMomentTag = false;
+            for (int moment = 1; moment <= 5; moment++)
+            {
+                string momentTag = $"Moment_{moment}";
+                if (obj.CompareTag(momentTag))
+                {
+                    hasMomentTag = true;
+                    bool shouldBeActive = (moment == activeMoment);
+                    obj.SetActive(shouldBeActive);
+                    break;
+                }
+            }
+            if (!hasMomentTag)
+            {
+                obj.SetActive(true);
+            }
+            ProcessMomentObjectsInCity(child, activeMoment);
+        }
+    }
+    public void ForceRefreshMoments()
+    {
+        var managerCamera = FindFirstObjectByType<ManagerCamera>();
+        if (managerCamera != null && managerCamera.CurrentArea != null)
+        {
+            UpdateCurrentCity(managerCamera.CurrentArea.id);
+        }
+        RefreshMomentObjects();
     }
 }
 
