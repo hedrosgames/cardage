@@ -249,6 +249,13 @@ MonoBehaviour:
       - SPECIAL_NAME_8
       - SPECIAL_NAME_9
       - SPECIAL_NAME_10
+      - CITY_NAME_1
+      - CITY_NAME_2
+      - CITY_NAME_3
+      - CITY_NAME_4
+      - CITY_NAME_5
+      - CITY_NAME_6
+      - CITY_NAME_7
       texts:
       - 
       - 
@@ -262,6 +269,13 @@ MonoBehaviour:
       - Uso Azul Escondido
       - Peixonauta
       - Energia Preta NTG
+      - Cidade Inicial
+      - "Ba\xEDa do Mulligan"
+      - Konora
+      - Deckyo
+      - Monsterdam
+      - Barcedrawna
+      - Nas Vegas
     - languageCode: EN
       keys:
       - PLAYER_NAME
@@ -276,6 +290,13 @@ MonoBehaviour:
       - SPECIAL_NAME_8
       - SPECIAL_NAME_9
       - SPECIAL_NAME_10
+      - CITY_NAME_1
+      - CITY_NAME_2
+      - CITY_NAME_3
+      - CITY_NAME_4
+      - CITY_NAME_5
+      - CITY_NAME_6
+      - CITY_NAME_7
       texts:
       - 
       - 
@@ -289,6 +310,13 @@ MonoBehaviour:
       - 
       - 
       - 
+      - Starter City
+      - Mulligan Bay
+      - Konora
+      - Deckyo
+      - Monsterdam
+      - Barcedrawna
+      - Nas Vegas
   - sheetName: CardGame
     entries:
     - languageCode: PT
@@ -486,7 +514,7 @@ MonoBehaviour:
       - "Jogador n\xE3o tem nome"
       - "R\xE9gis"
       - Seu Gilmar
-      - Yuri
+      - Biricutico
       - Tadeu
       - Renan
       - Lipe
@@ -494,8 +522,8 @@ MonoBehaviour:
       - "Dona S\xF4nia"
       - Mirtinho
       - "Patr\xEDcio"
-      - Carol
-      - Giba
+      - Carolina
+      - Donos do Gato
       - Hermes
       - Bruno
       - Dono do Airbnb
@@ -612,32 +640,36 @@ MonoBehaviour:
         s\xE3o \xF3timos se voc\xEA acreditar. Se n\xE3o acreditar, a\xED vira papel
         recicl\xE1vel mesmo."
       - "Abre aqui o fich\xE1rio e da uma olhada."
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
+      - "Ei, eu te vi na loja! Voc\xEA gostou de Cardage?"
+      - Ah, bem legal, eu sou meio ruim ainda.
+      - "\xC9 raro algu\xE9m novo aparecer por aqui\u2026 e mais raro ainda algu\xE9m
+        que joga bem sem ser chato."
+      - "Que bom que eu sou ruim ent\xE3o."
+      - "Oi? N\xE3o entendi...   Voc\xEA vai jogar o torneio?"
+      - Acho que sim mas preciso treinar um pouco mais.
+      - "Se voc\xEA vai ficar indo de um duelo pra outro, vai precisar disso."
+      - "Ual, tem esses itens aqui tamb\xE9m? Eu vi isso no Barone."
+      - Sai correndo por ai e vai treinar, nos vemos no torneio.
+      - "Mas \xE9 claro que nos veremos."
+      - "N\xE3o fica muito empolgado, isso n\xE3o \xE9 um jogo de romance."
+      - "Ladr\xE3o! Ladr\xE3o!"
+      - "Eita! N\xE3o vim roubar nada n\xE3o, s\xF3 vi a porta aberta."
+      - "Esses jovens de hoje n\xE3o tem educa\xE7\xE3o."
+      - Calma tio, eu ja vou embora.
+      - "Isso ai no seu bolso \xE9 um BARALHO? "
+      - "Oi? Ah, \xE9 sim, de Cardage."
+      - "Esse jogo novo \xE9 uma c\xF3pia, n\xE3o tem identidade.\nEu jogo cartas
+        desde antes disso virar modinha, antes de loja bonitinha, antes de sleeve,
+        antes de regra pra tudo."
+      - Eu fui o primeiro da cidade a juntar as 5 partes do Proibido.
+      - Eu...
+      - Eu nada... Vai embora da minha casa. Antes que eu chame a policia.
+      - "E s\xF3 volte aqui quando for Hora do Duelo!"
+      - "\xBA\xBA\xBA Ele te encara como se estivesse avaliando seu deck. \xBA\xBA\xBA"
+      - "\xBA\xBA\xBA Agora ele te encara sabendo que seu deck n\xE3o tem valor \xBA\xBA\xBA"
+      - "N\xE3o repare a bagun\xE7a, o gato \xE9 quem manda aqui."
+      - "Se ele co\xE7ar a orelha qdo te olhar... \nBem, ai voc\xEA deveria mudar
+        de deck.\nEle nunca erra."
       - 
       - 
       - 
@@ -825,6 +857,15 @@ MonoBehaviour:
       - 
       - 
       - 
+      - CAT
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - GIRL
       - 
       - 
       - 
@@ -834,16 +875,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
+      - OLDMAN
       - 
       - 
       - 
@@ -915,32 +947,32 @@ MonoBehaviour:
       - Bulk 3
       - Vendedor-Boosters
       - Vendedor- Loja
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Carolina
+      - Player
+      - Carolina
+      - Player
+      - Carolina
+      - Player
+      - Carolina
+      - Player
+      - Carolina
+      - Player
+      - Carolina
+      - Oldman
+      - Player
+      - Oldman
+      - Player
+      - Oldman
+      - Player
+      - Oldman
+      - Oldman
+      - Player
+      - Oldman
+      - Oldman
+      - Cat
+      - Cat
+      - Donos do gato
+      - Donos do gato
       - 
       - 
       - 

@@ -24443,6 +24443,34 @@ PrefabInstance:
       propertyPath: tutorialFirstInteraction
       value: 
       objectReference: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[0]'
+      value: CITY_NAME_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[1]'
+      value: CITY_NAME_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[2]'
+      value: CITY_NAME_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[3]'
+      value: CITY_NAME_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[4]'
+      value: CITY_NAME_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[5]'
+      value: CITY_NAME_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
+      propertyPath: 'cityNameKeys.Array.data[6]'
+      value: CITY_NAME_7
+      objectReference: {fileID: 0}
     - target: {fileID: 3006458715603208237, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: m_Name
       value: _GameFlowManager

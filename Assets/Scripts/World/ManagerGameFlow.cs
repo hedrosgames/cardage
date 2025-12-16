@@ -30,6 +30,9 @@ public class ManagerGameFlow : MonoBehaviour
     public float cityNameFloatDistance = 30f;
     [Tooltip("Distância em pixels que o texto desce durante o fade in (começa acima)")]
     public float cityNameFloatDownDistance = 20f;
+    [Header("City Name Localization Keys")]
+    [Tooltip("Keys de tradução para os nomes das 7 cidades. Ordem: City1, City2, City3, City4, City5, City6, City7")]
+    public string[] cityNameKeys = new string[7];
     private SaveClientZone _saveZone;
     private bool _hasShownCityName = false;
     void Awake()
@@ -87,7 +90,57 @@ public class ManagerGameFlow : MonoBehaviour
     void ShowCityName(WorldAreaId areaId)
     {
         if (cityNameCanvasGroup == null || cityNameText == null) return;
+        UpdateCityNameText(areaId);
         StartCoroutine(CityNameDisplayRoutine());
+    }
+    public void UpdateCityNameText(WorldAreaId areaId)
+    {
+        if (cityNameText == null) return;
+        string localizationKey = GetCityNameKey(areaId);
+        if (!string.IsNullOrEmpty(localizationKey))
+        {
+            if (ManagerLocalization.Instance != null)
+            {
+                cityNameText.text = ManagerLocalization.Instance.GetText(localizationKey);
+            }
+            else
+            {
+                cityNameText.text = $"[{localizationKey}]";
+            }
+        }
+    }
+    string GetCityNameKey(WorldAreaId areaId)
+    {
+        string areaName = areaId.ToString();
+        if (!areaName.StartsWith("City")) return string.Empty;
+        int cityNumber = ExtractCityNumber(areaName);
+        if (cityNumber < 1 || cityNumber > 7) return string.Empty;
+        int index = cityNumber - 1;
+        if (index >= 0 && index < cityNameKeys.Length && !string.IsNullOrEmpty(cityNameKeys[index]))
+        {
+            return cityNameKeys[index];
+        }
+        return string.Empty;
+    }
+    int ExtractCityNumber(string areaName)
+    {
+        int startIndex = areaName.IndexOf("City");
+        if (startIndex == -1) return -1;
+        startIndex += 4;
+        int endIndex = startIndex;
+        while (endIndex < areaName.Length && char.IsDigit(areaName[endIndex]))
+        {
+            endIndex++;
+        }
+        if (endIndex > startIndex)
+        {
+            string numberStr = areaName.Substring(startIndex, endIndex - startIndex);
+            if (int.TryParse(numberStr, out int number))
+            {
+                return number;
+            }
+        }
+        return -1;
     }
     IEnumerator CityNameDisplayRoutine()
     {
