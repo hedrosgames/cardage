@@ -63,9 +63,9 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
         else
         {
             var p = player.transform.position;
-            d.px = p.x;
-            d.py = p.y;
-            d.pz = p.z;
+            d.px = Mathf.Round(p.x * 100f) / 100f;
+            d.py = Mathf.Round(p.y * 100f) / 100f;
+            d.pz = Mathf.Round(p.z * 100f) / 100f;
             if (cam != null)
             {
                 if (cam.CurrentArea != null)
