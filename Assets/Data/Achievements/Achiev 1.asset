@@ -15,6 +15,7 @@ MonoBehaviour:
   id: achiev1
   titleKey: ACHIEVEMENT_TITLE_1
   descriptionKey: ACHIEVEMENT_INFO_1
+  editorDescription: "Ap\xF3s concluir todos os est\xE1gios do Quit"
   borderSprite: {fileID: -2106527006848344270, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   iconSprite: {fileID: -9048387037246611838, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   lockSprite: {fileID: 7850521372087434353, guid: 5244c5b0ff2c30a4fafbf52b07c3c9fa, type: 3}

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: achiev17
   titleKey: ACHIEVEMENT_TITLE_17
   descriptionKey: ACHIEVEMENT_INFO_17
+  editorDescription: "N\xE3o vai estar na Demo"
   borderSprite: {fileID: -2106527006848344270, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   iconSprite: {fileID: -7547554250503106160, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   lockSprite: {fileID: 848056339892246646, guid: 5244c5b0ff2c30a4fafbf52b07c3c9fa, type: 3}

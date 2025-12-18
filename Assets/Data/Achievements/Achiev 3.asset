@@ -15,6 +15,7 @@ MonoBehaviour:
   id: achiev3
   titleKey: ACHIEVEMENT_TITLE_3
   descriptionKey: ACHIEVEMENT_INFO_3
+  editorDescription: "Ap\xF3s encontrar uma carta no Bulk da casa do jogador"
   borderSprite: {fileID: -2106527006848344270, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   iconSprite: {fileID: 4814481203266816425, guid: b65255d0bbe1597409b5f2767c912b03, type: 3}
   lockSprite: {fileID: 117715029308269121, guid: 5244c5b0ff2c30a4fafbf52b07c3c9fa, type: 3}
