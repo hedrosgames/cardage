@@ -33,7 +33,7 @@ MonoBehaviour:
       - MENU_MUSIC
       - MENU_RESOLUTION
       - MENU_SFX
-      - MENU_TESTE
+      - MENU_CLEAR
       - ACHIEVEMENT_TITLE_1
       - ACHIEVEMENT_INFO_1
       - ACHIEVEMENT_TITLE_2
@@ -87,43 +87,58 @@ MonoBehaviour:
       - "M\xFAsica"
       - "Resolu\xE7\xE3o"
       - SFX
-      - TESTE
-      - ACHIEVEMENT 1
-      - "SALSICH\xC3O E OVOS 1"
-      - ACHIEVEMENT 2
-      - "SALSICH\xC3O E OVOS 2"
-      - ACHIEVEMENT 3
-      - "SALSICH\xC3O E OVOS 3"
-      - ACHIEVEMENT 4
-      - "SALSICH\xC3O E OVOS 4"
-      - ACHIEVEMENT 5
-      - "SALSICH\xC3O E OVOS 5"
-      - ACHIEVEMENT 6
-      - "SALSICH\xC3O E OVOS 6"
-      - ACHIEVEMENT 7
-      - "SALSICH\xC3O E OVOS 7"
-      - ACHIEVEMENT 8
-      - "SALSICH\xC3O E OVOS 8"
-      - ACHIEVEMENT 9
-      - "SALSICH\xC3O E OVOS 9"
-      - ACHIEVEMENT 10
-      - "SALSICH\xC3O E OVOS 10"
-      - ACHIEVEMENT 11
-      - "SALSICH\xC3O E OVOS 11"
-      - ACHIEVEMENT 12
-      - "SALSICH\xC3O E OVOS 12"
-      - ACHIEVEMENT 13
-      - "SALSICH\xC3O E OVOS 13"
-      - ACHIEVEMENT 14
-      - "SALSICH\xC3O E OVOS 14"
-      - ACHIEVEMENT 15
-      - "SALSICH\xC3O E OVOS 15"
-      - ACHIEVEMENT 16
-      - "SALSICH\xC3O E OVOS 16"
-      - ACHIEVEMENT 17
-      - "SALSICH\xC3O E OVOS 17"
-      - ACHIEVEMENT 18
-      - "SALSICH\xC3O E OVOS 18"
+      - Apagar Save
+      - "N\xE3o h\xE1 Sa\xEDda"
+      - "Sair \xE9 apenas uma ilus\xE3o. O pr\xF3ximo duelo sempre te puxa de volta."
+      - Pesado e Reprovado
+      - "O gato n\xE3o co\xE7ou a orelha. Ele sabe que seu deck n\xE3o \xE9 bom."
+      - "Arque\xF3logo de Nagic"
+      - "Cinco s\xEDmbolos coloridos em um papel dobrado. Um jogo de outra era."
+      - "A Pr\xF3xima \xE9 Garantida"
+      - "Ele disse que a pr\xF3xima era vit\xF3ria certa. Ele s\xF3 n\xE3o disse
+        de quem."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
+      - "S\xF3 Comprando, Amigo"
+      - "O meta desta conquista ainda nem foi inventado.\nN\xE3o dispon\xEDvel na
+        demo."
     - languageCode: EN
       keys:
       - MENU_LANGUAGETITLE
@@ -142,7 +157,7 @@ MonoBehaviour:
       - MENU_MUSIC
       - MENU_RESOLUTION
       - MENU_SFX
-      - MENU_TESTE
+      - MENU_CLEAR
       - ACHIEVEMENT_TITLE_1
       - ACHIEVEMENT_INFO_1
       - ACHIEVEMENT_TITLE_2
@@ -196,43 +211,57 @@ MonoBehaviour:
       - Music
       - Resolution
       - SFX
-      - TESTE
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Wipe Data
+      - No Way Out
+      - Leaving is just an illusion. The next duel always pulls you back.
+      - Unworthy Deck
+      - The cat didn't scratch its ear. He knows your deck is no good.
+      - Nagic Archaeologist
+      - Five colored symbols on a folded paper. A game from another era.
+      - The Next One
+      - They said the next one was a win. They just didn't say for whom.
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
+      - Full Game Only, Friend
+      - "The meta for this achievement hasn't even been invented yet. \nNot available
+        in the demo."
   - sheetName: World
     entries:
     - languageCode: PT
