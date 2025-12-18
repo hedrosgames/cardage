@@ -12,7 +12,7 @@ public class EditorFlagWindow : EditorWindow
     private float lastRefreshTime = 0f;
     private const float REFRESH_INTERVAL = 0.5f;
 
-    [MenuItem("Tools/Central de Flags")]
+    [MenuItem("Central de Configuração/Central de Flags")]
     public static void ShowWindow()
     {
         GetWindow<EditorFlagWindow>("Flag Manager");

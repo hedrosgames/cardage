@@ -14,7 +14,7 @@ public class EditorAchievementCentral : EditorWindow
     private bool showOnlyWithoutCode = false;
     private Dictionary<string, string> codeLocationCache = new Dictionary<string, string>();
     
-    [MenuItem("Tools/Central de Achievements")]
+    [MenuItem("Central de Configuração/Central de Achievements")]
     public static void ShowWindow()
     {
         EditorAchievementCentral window = GetWindow<EditorAchievementCentral>("Central de Achievements");

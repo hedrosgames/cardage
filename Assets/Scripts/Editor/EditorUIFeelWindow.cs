@@ -33,7 +33,7 @@ public class EditorUIFeelWindow : EditorWindow
     bool showWithoutFeel = true;
     SortMode sortMode = SortMode.TypeThenName;
     string search = "";
-    [MenuItem("Tools/Central de Feel")]
+    [MenuItem("Central de Configuração/Central de Feel")]
     public static void ShowWindow()
     {
         GetWindow<EditorUIFeelWindow>("UI Feel Manager");

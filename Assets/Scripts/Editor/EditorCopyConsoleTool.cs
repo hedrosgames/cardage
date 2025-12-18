@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 public static class EditorCopyConsoleTool
 {
-    [MenuItem("Tools/Copiar Console")]
+    [MenuItem("Export/Copiar Console")]
     public static void CopyConsoleToClipboard()
     {
         Type logEntriesType = Type.GetType("UnityEditor.LogEntries,UnityEditor.dll");

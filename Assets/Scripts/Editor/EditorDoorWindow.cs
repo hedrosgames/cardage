@@ -30,7 +30,7 @@ public class EditorDoorWindow : EditorWindow
     private bool enumFileFound = false;
     private ReorderableList reorderableList;
 
-    [MenuItem("Tools/Central de Door")]
+    [MenuItem("Central de Configuração/Central de Door")]
     public static void ShowWindow()
     {
         GetWindow<EditorDoorWindow>("Door Manager");

@@ -97,7 +97,7 @@ public class EditorMomentWindow : EditorWindow
         }
     }
 
-    [MenuItem("Tools/Central de Moments")]
+    [MenuItem("Central de Configuração/Central de Moments")]
     public static void ShowWindow()
     {
         GetWindow<EditorMomentWindow>("Central de Moments");

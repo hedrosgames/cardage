@@ -12,7 +12,7 @@ public class EditorBoundaryManager : EditorWindow
     private Vector2 scrollPos;
     private string newBoundaryName = "";
 
-    [MenuItem("Tools/Central de Boundaries")]
+    [MenuItem("Central de Configuração/Central de Boundaries")]
     public static void ShowWindow()
     {
         GetWindow<EditorBoundaryManager>("Boundary Manager");

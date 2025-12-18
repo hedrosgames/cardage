@@ -26,7 +26,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         public SOGameSetup gameSetup;
     }
     
-    [MenuItem("Tools/Central de NPCs Desafiados")]
+    [MenuItem("Central de Configuração/Central de NPCs Desafiados")]
     public static void ShowWindow()
     {
         EditorNPCChallengeWindow window = GetWindow<EditorNPCChallengeWindow>("Central de NPCs");

@@ -21,7 +21,7 @@ public class EditorDialogueWindow : EditorWindow
         public bool isChecked = false;
     }
 
-    [MenuItem("Tools/Central de Diálogos")]
+    [MenuItem("Central de Configuração/Central de Diálogos")]
     public static void ShowWindow()
     {
         GetWindow<EditorDialogueWindow>("Central de Diálogos");

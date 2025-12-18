@@ -53,7 +53,7 @@ public class EditorCentralSave : EditorWindow
         new SaveLocation { name = "ManagerSave - OnSceneLoaded", description = "Quando uma cena é carregada", className = "ManagerSave", methodName = "OnSceneLoaded", isSave = false },
     };
     
-    [MenuItem("Save/Central de Save")]
+    [MenuItem("Central de Configuração/Central de Save")]
     static void Open()
     {
         var window = GetWindow<EditorCentralSave>("Central de Save");
