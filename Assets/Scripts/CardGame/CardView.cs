@@ -69,10 +69,10 @@ public class CardView : MonoBehaviour
                 diamondImage.sprite = isHandCard ? visualConfig.diamondHand : visualConfig.diamondBoard;
                 diamondImage.color = Color.white;
             }
-            HandleIconAndOrnament(cardData.element != ElementType.None, elementIcon, ornamentElement, visualConfig.GetElementSprite(cardData.element));
-            HandleIconAndOrnament(cardData.collection != CollectionType.None, collectionIcon, ornamentCollection, visualConfig.GetCollectionSprite(cardData.collection));
+            HandleIconAndOrnament(true, elementIcon, ornamentElement, visualConfig.GetTypeSprite(cardData.type));
+            HandleIconAndOrnament(true, collectionIcon, ornamentCollection, visualConfig.GetCollectionSprite(cardData.collection));
             HandleIconAndOrnament(cardData.special != SpecialType.None, specialIcon, ornamentSpecial, visualConfig.GetSpecialSprite(cardData.special));
-            HandleIconAndOrnament(cardData.other != OtherType.None, otherIcon, ornamentOther, visualConfig.GetOtherSprite(cardData.other));
+            HandleIconAndOrnament(true, otherIcon, ornamentOther, visualConfig.GetTriadSprite(cardData.triad));
         }
         if (topText != null) topText.text = cardData.top.ToString();
         if (rightText != null) rightText.text = cardData.right.ToString();

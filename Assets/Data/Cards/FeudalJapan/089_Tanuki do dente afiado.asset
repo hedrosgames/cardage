@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652ec74b7d610d14aa4139a3d9975265, type: 3}
+  m_Name: 089_Tanuki do dente afiado
+  m_EditorClassIdentifier: Assembly-CSharp::SOCardData
+  cardName: CARD_NAME_89
+  cardIndex: 89
+  rarity: 0
+  type: 2
+  subType: 0
+  collection: 0
+  special: 3
+  triad: 2
+  top: 4
+  right: 6
+  bottom: 6
+  left: 3
+  customArt: {fileID: 0}

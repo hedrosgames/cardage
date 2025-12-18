@@ -12,18 +12,19 @@ public class SOCardVisual : ScriptableObject
     public Color rarityUncommonColor = Color.white;
     public Color rarityRareColor = Color.white;
     public Color rarityLegendaryColor = Color.white;
+    public Color raritySpecialColor = Color.white;
     public Sprite ornamentBaseSprite;
     public Color ornamentColor = Color.white;
     public Color playerColor = new Color(0.2f, 0.4f, 1f);
     public Color opponentColor = new Color(1f, 0.2f, 0.2f);
-    [System.Serializable] public struct ElementIconEntry { public ElementType type; public Sprite icon; }
+    [System.Serializable] public struct TypeIconEntry { public CardType type; public Sprite icon; }
     [System.Serializable] public struct CollectionIconEntry { public CollectionType type; public Sprite icon; }
     [System.Serializable] public struct SpecialIconEntry { public SpecialType type; public Sprite icon; }
-    [System.Serializable] public struct OtherIconEntry { public OtherType type; public Sprite icon; }
-    public List<ElementIconEntry> elementIcons = new List<ElementIconEntry>();
+    [System.Serializable] public struct TriadIconEntry { public TriadType type; public Sprite icon; }
+    public List<TypeIconEntry> typeIcons = new List<TypeIconEntry>();
     public List<CollectionIconEntry> collectionIcons = new List<CollectionIconEntry>();
     public List<SpecialIconEntry> specialIcons = new List<SpecialIconEntry>();
-    public List<OtherIconEntry> otherIcons = new List<OtherIconEntry>();
+    public List<TriadIconEntry> triadIcons = new List<TriadIconEntry>();
     public Color GetRarityColor(CardRarity rarity)
     {
         return rarity switch
@@ -32,12 +33,13 @@ public class SOCardVisual : ScriptableObject
             CardRarity.Uncommon => rarityUncommonColor,
             CardRarity.Rare => rarityRareColor,
             CardRarity.Legendary => rarityLegendaryColor,
+            CardRarity.Special => raritySpecialColor,
             _ => Color.white
         };
     }
-    public Sprite GetElementSprite(ElementType type)
+    public Sprite GetTypeSprite(CardType type)
     {
-        foreach (var entry in elementIcons)
+        foreach (var entry in typeIcons)
         if (entry.type == type) return entry.icon;
         return null;
     }
@@ -53,9 +55,9 @@ public class SOCardVisual : ScriptableObject
         if (entry.type == type) return entry.icon;
         return null;
     }
-    public Sprite GetOtherSprite(OtherType type)
+    public Sprite GetTriadSprite(TriadType type)
     {
-        foreach (var entry in otherIcons)
+        foreach (var entry in triadIcons)
         if (entry.type == type) return entry.icon;
         return null;
     }
