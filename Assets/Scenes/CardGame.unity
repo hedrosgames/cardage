@@ -124,7 +124,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6002226837814537884, guid: 70325bed5cad7d544a8fe4a993e426aa, type: 3}
   m_PrefabInstance: {fileID: 8772023431775675865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8772023431775675866}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a9e9f3e1e7301e4a8e2757605ec8c4c, type: 3}
@@ -3871,7 +3871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 8772023431775675866}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1421523416
@@ -4364,7 +4364,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8447,6 +8447,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1569735017}
   m_SourcePrefab: {fileID: 100100000, guid: 70325bed5cad7d544a8fe4a993e426aa, type: 3}
+--- !u!1 &8772023431775675866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7063607058558096462, guid: 70325bed5cad7d544a8fe4a993e426aa, type: 3}
+  m_PrefabInstance: {fileID: 8772023431775675865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8789118658370948105 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1261508578955726734, guid: 6b60df50d12c79c478867793a2101f5e, type: 3}
