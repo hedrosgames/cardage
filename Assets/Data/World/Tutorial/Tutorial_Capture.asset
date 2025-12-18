@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a75c3781f039649b2718ef58ab6dfa, type: 3}
-  m_Name: Compra
+  m_Name: Tutorial_Capture
   m_EditorClassIdentifier: Assembly-CSharp::SOTutorial
-  id: t2
-  message: COMPRA
-  condition: {fileID: 11400000, guid: d410e086d8dd13b499d4800831c2751f, type: 2}
+  message: 
+  icon: {fileID: 0}
+  condition: {fileID: 11400000, guid: 0000000000000000, type: 2}
   runOnce: 1
+  blockMovement: 0
+  blockInteraction: 0
