@@ -25,3 +25,4 @@ public class SOTutorialConditionCapture : SOTutorialCondition
         GameEvents.OnCardsCaptured -= OnCardsCaptured;
     }
 }
+

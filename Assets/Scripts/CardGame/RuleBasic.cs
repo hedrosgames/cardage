@@ -5,10 +5,23 @@ public class RuleBasic : SOCapture
 {
     public override void OnCardPlayed(CardSlot origin, SOCardData card, int ownerId, ManagerBoard board, List<CardSlot> captured)
     {
-        TryCapture(origin, card.top, board.GetSlot(origin.gridPosition.x, origin.gridPosition.y + 1), ownerId, captured, s => s.currentCardView.cardData.bottom);
-        TryCapture(origin, card.right, board.GetSlot(origin.gridPosition.x + 1, origin.gridPosition.y), ownerId, captured, s => s.currentCardView.cardData.left);
-        TryCapture(origin, card.bottom, board.GetSlot(origin.gridPosition.x, origin.gridPosition.y - 1), ownerId, captured, s => s.currentCardView.cardData.top);
-        TryCapture(origin, card.left, board.GetSlot(origin.gridPosition.x - 1, origin.gridPosition.y), ownerId, captured, s => s.currentCardView.cardData.right);
+        int topVal = CardValueCalculator.GetCardValue(card, origin, board, ownerId, CardDirection.Top, true, captured, false);
+        int rightVal = CardValueCalculator.GetCardValue(card, origin, board, ownerId, CardDirection.Right, true, captured, false);
+        int bottomVal = CardValueCalculator.GetCardValue(card, origin, board, ownerId, CardDirection.Bottom, true, captured, false);
+        int leftVal = CardValueCalculator.GetCardValue(card, origin, board, ownerId, CardDirection.Left, true, captured, false);
+        TryCapture(origin, topVal, board.GetSlot(origin.gridPosition.x, origin.gridPosition.y + 1), ownerId, captured, s => GetNeighborValue(s, CardDirection.Bottom, board, ownerId, false));
+        TryCapture(origin, rightVal, board.GetSlot(origin.gridPosition.x + 1, origin.gridPosition.y), ownerId, captured, s => GetNeighborValue(s, CardDirection.Left, board, ownerId, false));
+        TryCapture(origin, bottomVal, board.GetSlot(origin.gridPosition.x, origin.gridPosition.y - 1), ownerId, captured, s => GetNeighborValue(s, CardDirection.Top, board, ownerId, false));
+        TryCapture(origin, leftVal, board.GetSlot(origin.gridPosition.x - 1, origin.gridPosition.y), ownerId, captured, s => GetNeighborValue(s, CardDirection.Right, board, ownerId, false));
+    }
+    public override void OnCardsCaptured(List<CardSlot> captured, int ownerId, ManagerBoard board)
+    {
+    }
+    private int GetNeighborValue(CardSlot slot, CardDirection direction, ManagerBoard board, int attackerId, bool applyPostCaptureBonuses = false)
+    {
+        if (slot == null || !slot.IsOccupied) return 0;
+        SOCardData card = slot.currentCardView.cardData;
+        return CardValueCalculator.GetCardValue(card, slot, board, slot.currentCardView.ownerId, direction, false, null, applyPostCaptureBonuses);
     }
     private void TryCapture(CardSlot origin, int placedVal, CardSlot neigh, int ownerId,
     List<CardSlot> captured, System.Func<CardSlot, int> getNeighVal)

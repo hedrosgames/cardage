@@ -25,3 +25,4 @@ public class SOTutorialConditionCardBasics : SOTutorialCondition
         GameEvents.OnCardPlayed -= OnCardPlayed;
     }
 }
+

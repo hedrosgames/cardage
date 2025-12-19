@@ -107,9 +107,18 @@ public class ManagerTurn : MonoBehaviour
         int player = UIScoreService.PlayerScore;
         int opponent = UIScoreService.OpponentScore;
         MatchResult result;
-        if (player > opponent) result = MatchResult.PlayerWin;
-        else if (player < opponent) result = MatchResult.OpponentWin;
-        else result = MatchResult.Draw;
+        if (ManagerRule.Instance != null && ManagerRule.Instance.currentSet != null &&
+        ManagerRule.Instance.currentSet.victoryRule != null)
+        {
+            ManagerBoard board = ManagerGame.Instance != null ? ManagerGame.Instance.boardManager : FindFirstObjectByType<ManagerBoard>();
+            result = ManagerRule.Instance.currentSet.victoryRule.CalculateVictory(board, player, opponent);
+        }
+        else
+        {
+            if (player > opponent) result = MatchResult.PlayerWin;
+            else if (player < opponent) result = MatchResult.OpponentWin;
+            else result = MatchResult.Draw;
+        }
         GameEvents.OnMatchFinished?.Invoke(result, player, opponent);
     }
 }

@@ -25,7 +25,13 @@ public class ManagerRule : MonoBehaviour
         }
         ManagerCapture.Instance.SetRules(rules);
         foreach (var r in rules)
-        r.OnMatchStart();
+        {
+            r.OnMatchStart();
+        }
+        if (currentSet != null && currentSet.victoryRule != null)
+        {
+            currentSet.victoryRule.OnMatchStart();
+        }
     }
     public void SetRuleSet(SORuleSet set)
     {

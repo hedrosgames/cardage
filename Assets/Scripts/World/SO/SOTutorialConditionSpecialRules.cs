@@ -5,7 +5,6 @@ public class SOTutorialConditionSpecialRules : SOTutorialCondition
     bool sameTriggered;
     bool plusTriggered;
     bool comboTriggered;
-    
     public override void OnStart(ManagerTutorial manager)
     {
         sameTriggered = false;
@@ -15,27 +14,22 @@ public class SOTutorialConditionSpecialRules : SOTutorialCondition
         GameEvents.OnPlusTriggered += OnPlusTriggered;
         GameEvents.OnComboTriggered += OnComboTriggered;
     }
-    
     public override bool CheckCompleted(ManagerTutorial manager)
     {
         return sameTriggered || plusTriggered || comboTriggered;
     }
-    
     void OnSameTriggered(System.Collections.Generic.List<CardSlot> slots)
     {
         sameTriggered = true;
     }
-    
     void OnPlusTriggered(System.Collections.Generic.List<CardSlot> slots)
     {
         plusTriggered = true;
     }
-    
     void OnComboTriggered()
     {
         comboTriggered = true;
     }
-    
     void OnDestroy()
     {
         GameEvents.OnSameTriggered -= OnSameTriggered;
@@ -43,3 +37,4 @@ public class SOTutorialConditionSpecialRules : SOTutorialCondition
         GameEvents.OnComboTriggered -= OnComboTriggered;
     }
 }
+

@@ -3989,6 +3989,355 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877046145}
   m_CullTransparentMesh: 1
+--- !u!1 &888409728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888409730}
+  - component: {fileID: 888409729}
+  m_Layer: 0
+  m_Name: MatchSimulator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &888409729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888409728}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f8817a8c1bef6479845c5dc6fffc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MatchSimulator
+  matchesPerRule: 50
+  runOnStart: 0
+  showDetailedProgress: 1
+  ruleStats:
+  - ruleName: Basic
+    totalMatches: 50
+    activations: 900
+    successfulActivations: 900
+    failedActivations: 0
+    averageActivationsPerMatch: 18
+    errors: []
+  - ruleName: Same
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Plus
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Combo
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Reverse
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Ace
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: PlusWall
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: SameWall
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Triad
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: SpecialBlock
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Attack
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Defense
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Protection
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: AuraEffect
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Corruption
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Wear
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Sacrifice
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Echo
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Retaliation
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Territory
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: TerritoryStrong
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Stealth
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: CenterStrong
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: CornerStrong
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: SideStrong
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Bonus1
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Bonus2
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Penalty1
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Penalty2
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Betrayal
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Open
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Closed
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Random
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Roulette
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: HandSpecial
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: HandLegend
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: Domain
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: StealthEffect
+    totalMatches: 50
+    activations: 450
+    successfulActivations: 450
+    failedActivations: 0
+    averageActivationsPerMatch: 9
+    errors: []
+  - ruleName: WinChosen
+    totalMatches: 50
+    activations: 50
+    successfulActivations: 50
+    failedActivations: 0
+    averageActivationsPerMatch: 1
+    errors: []
+  - ruleName: WinDiff
+    totalMatches: 50
+    activations: 50
+    successfulActivations: 50
+    failedActivations: 0
+    averageActivationsPerMatch: 1
+    errors: []
+  - ruleName: WinAll
+    totalMatches: 50
+    activations: 50
+    successfulActivations: 50
+    failedActivations: 0
+    averageActivationsPerMatch: 1
+    errors: []
+  - ruleName: SuddenDeath
+    totalMatches: 50
+    activations: 50
+    successfulActivations: 50
+    failedActivations: 0
+    averageActivationsPerMatch: 1
+    errors: []
+  - ruleName: WinNothing
+    totalMatches: 50
+    activations: 50
+    successfulActivations: 50
+    failedActivations: 0
+    averageActivationsPerMatch: 1
+    errors: []
+--- !u!4 &888409730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888409728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11406, y: 0.21346, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &901693528 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8064571971756967849, guid: d639c5ea38eb5e748ab7f4ca9281121d, type: 3}
@@ -12561,3 +12910,4 @@ SceneRoots:
   - {fileID: 2060922495}
   - {fileID: 1747488450}
   - {fileID: 81998322}
+  - {fileID: 888409730}

@@ -25,15 +25,24 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void PlaceCard(SOCardData data, int ownerId)
     {
         if (ManagerGame.Instance == null || ManagerGame.Instance.boardCardPrefab == null) return;
+        SOCardData cardInstance = GetCardInstance(data);
         GameObject obj = Instantiate(ManagerGame.Instance.boardCardPrefab, transform);
         currentCardView = obj.GetComponent<CardView>();
         if (currentCardView != null)
         {
             currentCardView.isHandCard = false;
             currentCardView.isOpponentHand = false;
-            currentCardView.Setup(data, ownerId);
+            currentCardView.Setup(cardInstance, ownerId);
         }
         if (background != null) background.color = baseColor;
+    }
+    private SOCardData GetCardInstance(SOCardData originalCard)
+    {
+        if (CardInstanceManager.Instance != null)
+        {
+            return CardInstanceManager.Instance.GetCardInstance(originalCard);
+        }
+        return originalCard;
     }
 }
 

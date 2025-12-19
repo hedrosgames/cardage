@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6560a31e1b7841808e881487c1a22, type: 3}
+  m_Name: 005_Deck_Torneio_Vendedor
+  m_EditorClassIdentifier: Assembly-CSharp::DeckData
+  cards:
+  - {fileID: 11400000, guid: 56b1c457650236b4884c3bafd3cbc6a9, type: 2}
+  - {fileID: 11400000, guid: 8dcf8ef715d2dab4d992ddc0e29b417d, type: 2}
+  - {fileID: 11400000, guid: 65edc797706db5e4ea4f41c70ed86bcf, type: 2}
+  - {fileID: 11400000, guid: bb2e9468c342d7740b9ff0114003ea8c, type: 2}
+  - {fileID: 11400000, guid: 6271b4cc4fffb1448b598aabf5e8ea5f, type: 2}

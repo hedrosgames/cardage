@@ -22,3 +22,4 @@ public class SOTutorialConditionMatchWin : SOTutorialCondition
         GameEvents.OnMatchFinished -= OnMatchFinished;
     }
 }
+

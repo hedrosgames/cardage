@@ -27,6 +27,7 @@ public class ManagerGame : MonoBehaviour
         if (boardManager == null) boardManager = FindFirstObjectByType<ManagerBoard>();
         if (turnManager == null) turnManager = FindFirstObjectByType<ManagerTurn>();
         if (canvas == null) canvas = FindFirstObjectByType<Canvas>();
+        CardInstanceManager.EnsureExists();
     }
     private void OnEnable()
     {
@@ -50,12 +51,13 @@ public class ManagerGame : MonoBehaviour
         if (setup == null || setup.opponent == null) return;
         playerDeck = setup.playerDeck;
         opponentDeck = setup.opponent.deck;
+        if (CardInstanceManager.Instance != null)
+        {
+            CardInstanceManager.Instance.PreCloneDecks(playerDeck, opponentDeck);
+        }
         if (ManagerLocalization.Instance != null) {
             GameEvents.OnPlayerNameChanged?.Invoke(ManagerLocalization.Instance.GetText("PLAYER_NAME"));
             GameEvents.OnOpponentNameChanged?.Invoke(ManagerLocalization.Instance.GetText(setup.opponent.opponentNameKey));
-        } else {
-            GameEvents.OnPlayerNameChanged?.Invoke("PLAYER");
-            GameEvents.OnOpponentNameChanged?.Invoke(setup.opponent.opponentName);
         }
         UIScoreService.Reset();
         InitHands();
@@ -95,15 +97,17 @@ public class ManagerGame : MonoBehaviour
     {
         int playerCount = Mathf.Min(playerHandButtons.Count, playerDeck.cards.Length);
         for (int i = 0; i < playerCount; i++) {
+            SOCardData cardInstance = GetCardInstance(playerDeck.cards[i]);
             playerHandButtons[i].cardView.isOpponentHand = false;
             playerHandButtons[i].cardView.isHandCard = true;
-            playerHandButtons[i].Setup(playerDeck.cards[i], this, ID_PLAYER, true);
+            playerHandButtons[i].Setup(cardInstance, this, ID_PLAYER, true);
         }
         int opponentCount = Mathf.Min(opponentHandButtons.Count, opponentDeck.cards.Length);
         for (int i = 0; i < opponentCount; i++) {
+            SOCardData cardInstance = GetCardInstance(opponentDeck.cards[i]);
             opponentHandButtons[i].cardView.isOpponentHand = true;
             opponentHandButtons[i].cardView.isHandCard = true;
-            opponentHandButtons[i].Setup(opponentDeck.cards[i], this, ID_OPPONENT, false);
+            opponentHandButtons[i].Setup(cardInstance, this, ID_OPPONENT, false);
         }
         RebuildPlayerHandLayout();
     }
@@ -125,6 +129,14 @@ public class ManagerGame : MonoBehaviour
     }
     public List<CardButton> GetOpponentHand() => opponentHandButtons;
     public CardSlot[] GetBoard() => boardManager != null ? boardManager.GetAllSlots() : new CardSlot[0];
+    private SOCardData GetCardInstance(SOCardData originalCard)
+    {
+        if (CardInstanceManager.Instance != null)
+        {
+            return CardInstanceManager.Instance.GetCardInstance(originalCard);
+        }
+        return originalCard;
+    }
     public void SetOpponentHandInteractable(bool interactable)
     {
         foreach (var btn in opponentHandButtons)

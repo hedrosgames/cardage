@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6560a31e1b7841808e881487c1a22, type: 3}
+  m_Name: 008_Deck_Torneio_Rival
+  m_EditorClassIdentifier: Assembly-CSharp::DeckData
+  cards:
+  - {fileID: 11400000, guid: ff93c50dbec17e24f9777fee567ad521, type: 2}
+  - {fileID: 11400000, guid: 37033569e2c28e54cb96a36b3085db17, type: 2}
+  - {fileID: 11400000, guid: 2fb81f16446918044b25b66027d86c3f, type: 2}
+  - {fileID: 11400000, guid: 0180636b4fdcc6e4a9360cfe91e5ac6d, type: 2}
+  - {fileID: 11400000, guid: d5e8f4cbd56a71249a0d34837baec0b8, type: 2}

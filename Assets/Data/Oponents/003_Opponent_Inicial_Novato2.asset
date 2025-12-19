@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0fcd24f878bc840b92a4942f372da6, type: 3}
+  m_Name: 003_Opponent_Inicial_Novato2
+  m_EditorClassIdentifier: Assembly-CSharp::OpponentData
+  opponentNameKey: DIALOGUE_SPEAKER_5
+  deck: {fileID: 11400000, guid: 2bdc6451c54dfeb4caa0257491f24891, type: 2}
+  behavior: {fileID: 11400000, guid: e7c45b2d6aac1a44eab9be5598999ba2, type: 2}

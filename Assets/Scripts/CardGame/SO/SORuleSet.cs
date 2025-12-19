@@ -3,5 +3,6 @@ using UnityEngine;
 public class SORuleSet : ScriptableObject
 {
     public SOCapture[] activeRules;
+    public SOVictoryRule victoryRule;
 }
 
