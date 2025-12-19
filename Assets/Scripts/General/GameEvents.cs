@@ -31,5 +31,6 @@ public static class GameEvents
     public static Action<SODialogueSequence> OnDialogueFinished;
     public static Action<string> OnDebugVisualConfirmation;
     public static Action<Interactable> OnInteractableFocused;
+    public static Action<Interactable> OnInteractableBlurred;
 }
 

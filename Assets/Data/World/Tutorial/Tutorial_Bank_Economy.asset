@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tutorial_Bank_Economy
   m_EditorClassIdentifier: Assembly-CSharp::SOTutorial
   message: 
-  icon: {fileID: 0}
-  condition: {fileID: 11400000, guid: 0000000000000000, type: 2}
+  icon: {fileID: 21300000, guid: 44ea29210995c77408e23cb85e3b58dd, type: 3}
+  condition: {fileID: 11400000, guid: 67466e196153b4f4f8c1585ff3356093, type: 2}
   runOnce: 1
   blockMovement: 0
   blockInteraction: 0

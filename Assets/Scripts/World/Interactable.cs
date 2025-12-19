@@ -49,6 +49,7 @@ public class Interactable : MonoBehaviour
     {
         if (interactionIcon != null)
         interactionIcon.SetActive(false);
+        GameEvents.OnInteractableBlurred?.Invoke(this);
     }
 }
 

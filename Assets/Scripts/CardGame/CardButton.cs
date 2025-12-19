@@ -38,14 +38,11 @@ public class CardButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             originalScale = rectTransform.localScale;
             originalRotation = rectTransform.localRotation;
             originalAnchoredPosition = rectTransform.anchoredPosition;
-            
-            // Validar rotação inicial
-            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) || 
-                float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
+            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) ||
+            float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
             {
                 originalRotation = Quaternion.identity;
             }
-            
             targetScale = originalScale;
             targetRotation = originalRotation;
             targetAnchoredPosition = originalAnchoredPosition;
@@ -68,42 +65,33 @@ public class CardButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             originalScale = rectTransform.localScale;
             targetScale = originalScale;
             originalRotation = rectTransform.localRotation;
-            
-            // Validar rotação
-            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) || 
-                float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
+            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) ||
+            float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
             {
                 originalRotation = Quaternion.identity;
             }
-            
             targetRotation = originalRotation;
         }
     }
     void Update()
     {
         if (rectTransform == null) return;
-        
-        // Validar rotações antes de fazer lerp
-        if (float.IsNaN(targetRotation.x) || float.IsNaN(targetRotation.y) || 
-            float.IsNaN(targetRotation.z) || float.IsNaN(targetRotation.w))
+        if (float.IsNaN(targetRotation.x) || float.IsNaN(targetRotation.y) ||
+        float.IsNaN(targetRotation.z) || float.IsNaN(targetRotation.w))
         {
             targetRotation = originalRotation;
         }
-        
-        if (float.IsNaN(rectTransform.localRotation.x) || float.IsNaN(rectTransform.localRotation.y) || 
-            float.IsNaN(rectTransform.localRotation.z) || float.IsNaN(rectTransform.localRotation.w))
+        if (float.IsNaN(rectTransform.localRotation.x) || float.IsNaN(rectTransform.localRotation.y) ||
+        float.IsNaN(rectTransform.localRotation.z) || float.IsNaN(rectTransform.localRotation.w))
         {
             rectTransform.localRotation = originalRotation;
         }
-        
         if (!dragging && !cardView.isOpponentHand)
         {
             if (cardView.handLayout != null && cardView.handLayout.isAnimatingOpen) return;
             rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, targetAnchoredPosition, Time.deltaTime * hoverSmooth);
             rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, targetScale, Time.deltaTime * hoverSmooth);
         }
-        
-        // Garantir que rotationSmooth não cause divisão por zero
         float lerpFactor = Mathf.Clamp01(Time.deltaTime * rotationSmooth);
         if (lerpFactor > 0 && !float.IsNaN(lerpFactor))
         {
@@ -127,10 +115,8 @@ public class CardButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (rectTransform != null)
         {
             originalRotation = rectTransform.localRotation;
-            
-            // Validar rotação antes de usar
-            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) || 
-                float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
+            if (float.IsNaN(originalRotation.x) || float.IsNaN(originalRotation.y) ||
+            float.IsNaN(originalRotation.z) || float.IsNaN(originalRotation.w))
             {
                 originalRotation = Quaternion.identity;
             }

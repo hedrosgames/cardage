@@ -8,7 +8,7 @@ public enum SightDirection
     Left,
     Right
 }
-public class InteractableCardGame : Interactable
+public class InteractableCardGame : Interactable, INotificationProvider
 {
     [Header("Configuração do Card Game")]
     [Tooltip("Setup do jogo de cartas (oponente, deck, etc)")]
@@ -26,6 +26,17 @@ public class InteractableCardGame : Interactable
     public SightDirection sightDirection = SightDirection.Right;
     [Tooltip("Distância máxima da linha de detecção")]
     public float sightDistance = 5f;
+    [Header("Notificações")]
+    [Tooltip("Flag de item necessária para mostrar notificações especiais")]
+    public SOZoneFlag notificationItemFlag;
+    [Tooltip("Este NPC tem carta rara no deck")]
+    public bool hasRareCard = false;
+    [Tooltip("Este NPC está participando do torneio")]
+    public bool isInTournament = false;
+    [Tooltip("Este NPC tem carta recuperável")]
+    public bool hasRecoverableCard = false;
+    [Tooltip("Ícone de duelo disponível (mostra quando item ativo)")]
+    public bool canDuel = false;
     private bool isWaitingForDialogue = false;
     private SODialogueSequence activeDialogue;
     private Transform playerTransform;
@@ -245,6 +256,44 @@ public class InteractableCardGame : Interactable
             Vector3 endOffset = endPoint + perpendicular * offset;
             Gizmos.DrawLine(startOffset, endOffset);
         }
+    }
+    public NotificationType GetNotificationType()
+    {
+        bool hasItemFlag = false;
+        if (notificationItemFlag != null && ManagerNotification.Instance != null)
+        {
+            hasItemFlag = ManagerNotification.Instance.HasItemFlag(notificationItemFlag);
+        }
+        if (!hasItemFlag)
+        {
+            return NotificationType.None;
+        }
+        if (hasRecoverableCard)
+        {
+            return NotificationType.LostCard;
+        }
+        if (hasRareCard)
+        {
+            return NotificationType.RareCard;
+        }
+        if (isInTournament)
+        {
+            return NotificationType.Tournament;
+        }
+        if (canDuel)
+        {
+            return NotificationType.Duel;
+        }
+        return NotificationType.None;
+    }
+    public SpriteRenderer GetImgAlert()
+    {
+        Transform alertTransform = transform.Find("imgAlert");
+        if (alertTransform != null)
+        {
+            return alertTransform.GetComponent<SpriteRenderer>();
+        }
+        return null;
     }
 }
 

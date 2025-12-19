@@ -10,6 +10,7 @@ using System;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+
 public static class EditorExportProject
 {
     [MenuItem("Export/Project")]
@@ -18,7 +19,7 @@ public static class EditorExportProject
         string content = GenerateContent();
         content = UltraCompress(content);
         string prompt = GeneratePrompt();
-        string formattedPrompt = "\n\n===== PROMPT =====\n" + prompt + "\n===== END PROMPT =====\n";
+        string formattedPrompt = "\n\n=====PROMPT=====\n" + prompt + "\n=====END PROMPT=====\n";
         content += formattedPrompt;
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         string folder = Path.Combine(desktop, "CyberRedCode");
@@ -30,6 +31,7 @@ public static class EditorExportProject
         EditorGUIUtility.systemCopyBuffer = prompt;
         EditorUtility.RevealInFinder(path);
     }
+
     static string GeneratePrompt()
     {
         StringBuilder sb = new StringBuilder();
@@ -39,16 +41,17 @@ public static class EditorExportProject
         sb.AppendLine("2. Sempre descartar versões antigas do entendimento do projeto.");
         sb.AppendLine("3. Recriar sua visão do projeto APENAS baseado no arquivo mais recente.");
         sb.AppendLine("4. Quando eu pedir código:");
-        sb.AppendLine("   - Sempre entregue arquivos C# completos (com using e classe).");
-        sb.AppendLine("   - Nunca use reticências ou placeholders.");
-        sb.AppendLine("   - Nunca descreva dentro do bloco de código.");
+        sb.AppendLine(" - Sempre entregue arquivos C# completos (com using e classe).");
+        sb.AppendLine(" - Nunca use reticências ou placeholders.");
+        sb.AppendLine(" - Nunca descreva dentro do bloco de código.");
         sb.AppendLine("5. Ao responder:");
-        sb.AppendLine("   - Seja direto e técnico.");
-        sb.AppendLine("   - Não elogie, não enrole, não filosofe.");
+        sb.AppendLine(" - Seja direto e técnico.");
+        sb.AppendLine(" - Não elogie, não enrole, não filosofe.");
         sb.AppendLine("6. Nunca quebre a API que já existe no projeto.");
         sb.AppendLine("7. Sempre leia o export inteiro antes de responder qualquer dúvida técnica.");
         return sb.ToString();
     }
+
     static string UltraCompress(string s)
     {
         s = RemoveEmptyLines(s);
@@ -57,6 +60,7 @@ public static class EditorExportProject
         s = RemoveExtraSpaces(s);
         return s;
     }
+
     static string RemoveEmptyLines(string s)
     {
         StringBuilder sb = new StringBuilder();
@@ -71,26 +75,25 @@ public static class EditorExportProject
         }
         return sb.ToString();
     }
+
     static string MinifyJSON(string s)
     {
-        s = s.Replace(".0,", ",");
-        s = s.Replace(".0}", "}");
+        s = s.Replace(",", ",");
+        s = s.Replace("}", "}");
         return s;
     }
+
     static string RemoveIndentation(string s)
     {
-        return s.Replace("    ", "").Replace("   ", "").Replace("  ", "");
+        return s.Replace("\t", "").Replace("    ", "");
     }
+
     static string RemoveExtraSpaces(string s)
     {
         while (s.Contains("  ")) s = s.Replace("  ", " ");
-        s = s.Replace(" = ", "=").Replace("= ", "=").Replace(" =", "=");
-        s = s.Replace(" ,", ",").Replace(", ", ",");
-        s = s.Replace(" ;", ";").Replace("; ", ";");
-        s = s.Replace(" {", "{").Replace("{ ", "{");
-        s = s.Replace(" }", "}").Replace(" }", "}");
         return s;
     }
+
     static string GenerateContent()
     {
         StringBuilder sb = new StringBuilder();
@@ -101,6 +104,7 @@ public static class EditorExportProject
         AppendScripts(sb);
         return sb.ToString();
     }
+
     static void AppendProjectInfo(StringBuilder sb)
     {
         sb.AppendLine("PRJ");
@@ -110,12 +114,14 @@ public static class EditorExportProject
         sb.AppendLine(EditorUserBuildSettings.activeBuildTarget.ToString());
         sb.AppendLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
     }
+
     static void AppendScenes(StringBuilder sb)
     {
         sb.AppendLine("SCN");
         var buildScenes = EditorBuildSettings.scenes ?? new EditorBuildSettingsScene[0];
         HashSet<string> scenePaths = new HashSet<string>();
         HashSet<string> buildPaths = new HashSet<string>();
+
         foreach (var s in buildScenes)
         {
             if (s.enabled && s.path != null)
@@ -124,47 +130,68 @@ public static class EditorExportProject
                 buildPaths.Add(s.path);
             }
         }
+
         string[] guids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/Scenes" });
         foreach (var g in guids)
         {
             var p = AssetDatabase.GUIDToAssetPath(g);
             if (!string.IsNullOrEmpty(p)) scenePaths.Add(p);
         }
+
         var ordered = scenePaths.ToList();
         ordered.Sort(StringComparer.OrdinalIgnoreCase);
-        string currentScene = SceneManager.GetActiveScene().path;
+        string originalScenePath = SceneManager.GetActiveScene().path;
+
         foreach (var p in ordered)
         {
             bool inBuild = buildPaths.Contains(p);
             try
             {
-                var scene = EditorSceneManager.OpenScene(p, OpenSceneMode.Additive);
+                Scene scene;
+                bool isOriginal = (p == originalScenePath);
+                
+                if (isOriginal)
+                {
+                    scene = SceneManager.GetActiveScene();
+                }
+                else
+                {
+                    scene = EditorSceneManager.OpenScene(p, OpenSceneMode.Additive);
+                }
+
                 sb.AppendLine("S:" + p + (inBuild ? "|B" : ""));
                 foreach (var root in scene.GetRootGameObjects())
                 {
-                    var monos = root.GetComponents<MonoBehaviour>();
+                    var monos = root.GetComponentsInChildren<MonoBehaviour>(true);
                     List<string> names = new List<string>();
                     foreach (var m in monos)
                     {
                         if (m == null) continue;
                         var t = m.GetType();
-                        if (t == null) continue;
                         if (t.Namespace != null && t.Namespace.StartsWith("UnityEngine")) continue;
                         names.Add(t.Name);
                     }
                     if (names.Count > 0) sb.AppendLine("R:" + root.name + "|" + string.Join(",", names.Distinct()));
                     else sb.AppendLine("R:" + root.name);
                 }
-                EditorSceneManager.CloseScene(scene, true);
+
+                if (!isOriginal)
+                {
+                    EditorSceneManager.CloseScene(scene, true);
+                }
             }
             catch
             {
                 sb.AppendLine("SERR:" + p);
             }
         }
-        if (!string.IsNullOrEmpty(currentScene))
-        EditorSceneManager.OpenScene(currentScene, OpenSceneMode.Single);
+
+        if (!string.IsNullOrEmpty(originalScenePath))
+        {
+            EditorSceneManager.OpenScene(originalScenePath, OpenSceneMode.Single);
+        }
     }
+
     static void AppendScriptables(StringBuilder sb)
     {
         sb.AppendLine("SO");
@@ -174,18 +201,21 @@ public static class EditorExportProject
             string p = AssetDatabase.GUIDToAssetPath(g);
             if (!p.StartsWith("Assets")) continue;
             if (!p.Contains("/Data/") && !p.Contains("/Config/") && !p.Contains("/SO/") && !p.Contains("/ScriptableObjects/")) continue;
+            
             ScriptableObject so = AssetDatabase.LoadAssetAtPath<ScriptableObject>(p);
             if (so == null) continue;
+
             string json = JsonUtility.ToJson(so, false);
             sb.AppendLine("O:" + so.GetType().Name);
             sb.AppendLine("P:" + p);
             sb.AppendLine(json);
         }
     }
+
     static void AppendInput(StringBuilder sb)
     {
         sb.AppendLine("IN");
-        #if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
         string[] guids = AssetDatabase.FindAssets("t:InputActionAsset");
         foreach (string g in guids)
         {
@@ -201,14 +231,15 @@ public static class EditorExportProject
                 {
                     sb.AppendLine("A:" + action.name + "|" + action.type);
                     foreach (var bind in action.bindings)
-                    sb.AppendLine("B:" + bind.path + "|" + bind.groups);
+                        sb.AppendLine("B:" + bind.path + "|" + bind.groups);
                 }
             }
         }
-        #else
+#else
         sb.AppendLine("NO_INPUT");
-        #endif
+#endif
     }
+
     static void AppendScripts(StringBuilder sb)
     {
         sb.AppendLine("CS");
@@ -233,13 +264,10 @@ public static class EditorExportProject
             catch { }
         }
     }
+
     static string MinifyCode(string code)
     {
         code = code.Replace("\r", "");
-        while (code.Contains("    ")) code = code.Replace("    ", "");
-        while (code.Contains("  ")) code = code.Replace("  ", " ");
-        code = code.Replace("\n ", "\n");
         return code;
     }
 }
-

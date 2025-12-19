@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c7549e37a960d45b70df0e357eafe3, type: 3}
+  m_Name: Speed Boots
+  m_EditorClassIdentifier: Assembly-CSharp::SOItemData
+  itemName: Speed Boots
+  description: Botas que aumentam a velocidade de movimento do jogador quando ativadas.
+  itemFlag: {fileID: 11400000, guid: 1878b4130fd82844faa3a3ecbd7ba781, type: 2}
+  effectType: 1
+  effectScript: {fileID: 0}
+  itemIcon: {fileID: 0}

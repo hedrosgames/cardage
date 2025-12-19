@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c7549e37a960d45b70df0e357eafe3, type: 3}
+  m_Name: Duel Checker
+  m_EditorClassIdentifier: Assembly-CSharp::SOItemData
+  itemName: Duel Checker
+  description: "Mostra notifica\xE7\xF5es de duelo quando NPCs podem ser desafiados."
+  itemFlag: {fileID: 11400000, guid: 05107b7da83ad1541bc669d05afa45c8, type: 2}
+  effectType: 2
+  effectScript: {fileID: 0}
+  itemIcon: {fileID: 0}

@@ -15,6 +15,7 @@ public class ManagerMainMenu : MonoBehaviour
     public GameObject canvasSettings;
     public GameObject canvasAchievements;
     public GameObject canvasQuit;
+    public GameObject canvasNewGame;
     [Header("Config")]
     public float transitionDuration = 0.35f;
     public string worldSceneName = "World";
@@ -37,6 +38,7 @@ public class ManagerMainMenu : MonoBehaviour
         if(canvasSettings) canvasSettings.SetActive(true);
         if(canvasAchievements) canvasAchievements.SetActive(true);
         if(canvasQuit) canvasQuit.SetActive(true);
+        if(canvasNewGame) canvasNewGame.SetActive(false);
         RectTransform parent = panelMainMenu.parent as RectTransform;
         float w = parent.rect.width;
         float h = parent.rect.height;
@@ -67,12 +69,18 @@ public class ManagerMainMenu : MonoBehaviour
         }
         else
         {
-            if (saveMenu != null)
+            OpenNewGameCanvas();
+        }
+    }
+    void OpenNewGameCanvas()
+    {
+        if (canvasNewGame != null)
+        {
+            if (panelMainMenu != null)
             {
-                saveMenu.InitializeNewGame();
+                panelMainMenu.gameObject.SetActive(false);
             }
-            ManagerSave.Instance.SaveAll();
-            LoadWorldScene();
+            canvasNewGame.SetActive(true);
         }
     }
     void LoadWorldScene()

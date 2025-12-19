@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
-public class InteractableLogical : Interactable
+public class InteractableLogical : Interactable, INotificationProvider
 {
     public SOZoneFlag requiredFlag;
     [HideInInspector] public bool invertCondition;
     public SOZoneFlag onLoadCheckFlag;
     public bool disableIfFlagExists = true;
     public GameObject disableObjectOnFinished;
+    [Header("Notificação")]
+    [Tooltip("Flag de item necessária para mostrar notificação especial")]
+    public SOZoneFlag notificationItemFlag;
+    [Tooltip("Tipo de notificação quando a flag de item estiver ativa")]
+    public NotificationType notificationTypeWhenItemActive = NotificationType.None;
     [Header("[SUCESSO]")]
     public SODialogueSequence dialogueOnSuccess;
     public SOZoneFlag setFlagOnSuccess;
@@ -109,6 +114,26 @@ public class InteractableLogical : Interactable
         if (saveZone == null) return false;
         bool hasFlag = saveZone.HasFlag(requiredFlag);
         return invertCondition ? !hasFlag : hasFlag;
+    }
+    public NotificationType GetNotificationType()
+    {
+        if (notificationItemFlag != null && notificationTypeWhenItemActive != NotificationType.None)
+        {
+            if (ManagerNotification.Instance != null && ManagerNotification.Instance.HasItemFlag(notificationItemFlag))
+            {
+                return notificationTypeWhenItemActive;
+            }
+        }
+        return NotificationType.None;
+    }
+    public SpriteRenderer GetImgAlert()
+    {
+        Transform alertTransform = transform.Find("imgAlert");
+        if (alertTransform != null)
+        {
+            return alertTransform.GetComponent<SpriteRenderer>();
+        }
+        return null;
     }
 }
 
