@@ -7,6 +7,7 @@ public enum SaveId
     SaveSettings,
     SaveMenu,
     SaveAchievements,
-    SaveQuit
+    SaveQuit,
+    SaveMoment
 }
 

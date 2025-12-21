@@ -1,14 +1,23 @@
 using UnityEngine;
+using System.Collections.Generic;
 using System;
 public class SaveClientMoment : MonoBehaviour, ISaveClient
 {
     public SOSaveDefinition saveDefinition;
-    private int currentMoment = 1;
-    public event Action<int> OnMomentChanged;
+    private Dictionary<string, int> momentFlags = new Dictionary<string, int>();
+    private Dictionary<string, string> momentFlagStrings = new Dictionary<string, string>();
+    public event Action OnLoadComplete;
     [System.Serializable]
     class Data
     {
-        public int moment;
+        public string[] keys;
+        public int[] values;
+    }
+    [System.Serializable]
+    class StringData
+    {
+        public string[] keys;
+        public string[] values;
     }
     void OnEnable()
     {
@@ -17,6 +26,10 @@ public class SaveClientMoment : MonoBehaviour, ISaveClient
             ManagerSave.Instance.RegisterClient(saveDefinition, this);
         }
     }
+    void Start()
+    {
+        SaveEvents.RaiseLoad();
+    }
     void OnDisable()
     {
         if (ManagerSave.Instance != null && saveDefinition != null)
@@ -24,41 +37,134 @@ public class SaveClientMoment : MonoBehaviour, ISaveClient
             ManagerSave.Instance.UnregisterClient(saveDefinition, this);
         }
     }
-    void Start()
+    public void SetFlag(SOZoneFlag flag, int value)
     {
-        SaveEvents.RaiseLoad();
+        if (flag == null || string.IsNullOrEmpty(flag.id)) return;
+        if (momentFlags.ContainsKey(flag.id) && momentFlags[flag.id] == value)
+        return;
+        momentFlags[flag.id] = value;
+        SaveMomentData();
+        OnFlagChanged?.Invoke(flag);
     }
-    public int GetMoment()
+    void SaveMomentData()
     {
-        return currentMoment;
+        if (ManagerSave.Instance == null) return;
+        if (saveDefinition == null || string.IsNullOrEmpty(saveDefinition.id)) return;
+        ManagerSave.Instance.RegisterClient(saveDefinition, this);
+        if (!ManagerSave.Instance.definitions.Contains(saveDefinition))
+        {
+            ManagerSave.Instance.definitions.Add(saveDefinition);
+        }
+        ManagerSave.Instance.SaveSpecific(saveDefinition.id);
     }
-    public void SetMoment(int moment)
+    public event Action<SOZoneFlag> OnFlagChanged;
+    public int GetFlag(SOZoneFlag flag)
     {
-        if (moment < 1 || moment > 5) return;
-        if (currentMoment == moment) return;
-        currentMoment = moment;
-        SaveEvents.RaiseSave();
-        OnMomentChanged?.Invoke(currentMoment);
+        if (flag == null || string.IsNullOrEmpty(flag.id)) return 0;
+        if (!momentFlags.ContainsKey(flag.id)) return 0;
+        return momentFlags[flag.id];
+    }
+    public bool HasFlag(SOZoneFlag flag)
+    {
+        return GetFlag(flag) > 0;
+    }
+    public void AddIdToFlag(SOZoneFlag flag, string id)
+    {
+        if (flag == null || string.IsNullOrEmpty(flag.id) || string.IsNullOrEmpty(id)) return;
+        string currentValue = GetFlagString(flag);
+        if (string.IsNullOrEmpty(currentValue))
+        {
+            SetFlagString(flag, id);
+            return;
+        }
+        string[] ids = currentValue.Split(',');
+        foreach (string existingId in ids)
+        {
+            if (existingId.Trim() == id) return;
+        }
+        SetFlagString(flag, currentValue + "," + id);
+    }
+    public bool HasIdInFlag(SOZoneFlag flag, string id)
+    {
+        if (flag == null || string.IsNullOrEmpty(flag.id) || string.IsNullOrEmpty(id)) return false;
+        string currentValue = GetFlagString(flag);
+        if (string.IsNullOrEmpty(currentValue)) return false;
+        string[] ids = currentValue.Split(',');
+        foreach (string existingId in ids)
+        {
+            if (existingId.Trim() == id) return true;
+        }
+        return false;
+    }
+    public string GetFlagString(SOZoneFlag flag)
+    {
+        if (flag == null || string.IsNullOrEmpty(flag.id)) return string.Empty;
+        if (!momentFlagStrings.ContainsKey(flag.id)) return string.Empty;
+        return momentFlagStrings[flag.id];
+    }
+    public void SetFlagString(SOZoneFlag flag, string value)
+    {
+        if (flag == null || string.IsNullOrEmpty(flag.id)) return;
+        if (momentFlagStrings.ContainsKey(flag.id) && momentFlagStrings[flag.id] == value) return;
+        momentFlagStrings[flag.id] = value;
+        SaveMomentData();
+        OnFlagChanged?.Invoke(flag);
     }
     public string Save(SOSaveDefinition definition)
     {
-        var d = new Data { moment = currentMoment };
-        return JsonUtility.ToJson(d);
+        List<string> k = new List<string>(momentFlags.Keys);
+        List<int> v = new List<int>(momentFlags.Values);
+        var d = new Data { keys = k.ToArray(), values = v.ToArray() };
+        string json = JsonUtility.ToJson(d);
+        if (momentFlagStrings.Count > 0)
+        {
+            List<string> sk = new List<string>(momentFlagStrings.Keys);
+            List<string> sv = new List<string>(momentFlagStrings.Values);
+            var sd = new StringData { keys = sk.ToArray(), values = sv.ToArray() };
+            string stringJson = JsonUtility.ToJson(sd);
+            json += "|STRING_DATA|" + stringJson;
+        }
+        if (string.IsNullOrEmpty(json))
+        {
+            json = JsonUtility.ToJson(new Data { keys = new string[0], values = new int[0] });
+        }
+        return json;
     }
     public void Load(SOSaveDefinition definition, string json)
     {
+        momentFlags.Clear();
+        momentFlagStrings.Clear();
         if (string.IsNullOrEmpty(json))
         {
-            currentMoment = 1;
-            OnMomentChanged?.Invoke(currentMoment);
+            OnLoadComplete?.Invoke();
             return;
         }
-        var d = JsonUtility.FromJson<Data>(json);
-        if (d != null)
+        string[] parts = json.Split(new[] { "|STRING_DATA|" }, StringSplitOptions.None);
+        if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
         {
-            currentMoment = Mathf.Clamp(d.moment, 1, 5);
-            OnMomentChanged?.Invoke(currentMoment);
+            var d = JsonUtility.FromJson<Data>(parts[0]);
+            if (d != null && d.keys != null && d.values != null)
+            {
+                int count = Mathf.Min(d.keys.Length, d.values.Length);
+                for (int i = 0; i < count; i++)
+                {
+                    momentFlags[d.keys[i]] = d.values[i];
+                }
+            }
         }
+        if (parts.Length > 1 && !string.IsNullOrEmpty(parts[1]))
+        {
+            var sd = JsonUtility.FromJson<StringData>(parts[1]);
+            if (sd != null && sd.keys != null && sd.values != null)
+            {
+                int count = Mathf.Min(sd.keys.Length, sd.values.Length);
+                for (int i = 0; i < count; i++)
+                {
+                    momentFlagStrings[sd.keys[i]] = sd.values[i];
+                }
+            }
+        }
+        OnLoadComplete?.Invoke();
     }
 }
 

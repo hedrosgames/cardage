@@ -7,20 +7,16 @@ public class InteractableLogical : Interactable, INotificationProvider
     [HideInInspector] public bool invertCondition;
     [HideInInspector] public SOZoneFlag onLoadCheckFlag;
     [HideInInspector] public bool disableIfFlagExists = true;
-
     [HideInInspector] public SOZoneFlag notificationItemFlag;
     [HideInInspector] public NotificationType notificationTypeWhenItemActive = NotificationType.None;
-
     [Header("[SE TIVER A FLAG OU FOR VAZIO]")]
     public SODialogueSequence dialogueOnSuccess;
     public SOZoneFlag setFlagOnSuccess;
     public GameObject disableObjectOnFinished;
     public UnityEvent onInteractSuccess;
-    
     [Header("[SE NÃO TIVER A FLAG]")]
     public SODialogueSequence dialogueOnFail;
     public UnityEvent onInteractFail;
-
     private SaveClientZone saveZone;
     private bool isWaitingForDialogue = false;
     private float interactionCooldown = 0f;

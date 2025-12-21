@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Game.World;
 using System.Collections.Generic;
 public class TeleportDoor : MonoBehaviour
@@ -45,6 +46,9 @@ public class TeleportDoor : MonoBehaviour
     public SODialogueSequence lockedDialogue;
     [Tooltip("Tempo de cooldown entre diálogos de porta trancada (evita spam)")]
     public float lockedDialogueCooldown = 1f;
+    [Header("Eventos")]
+    [Tooltip("Evento executado no final do teleporte, após tudo ter sido processado")]
+    public UnityEvent onTeleportComplete;
     private static Dictionary<WorldAreaId, TeleportDoor> doorRegistry = new Dictionary<WorldAreaId, TeleportDoor>();
     private SaveClientZone saveZone;
     private bool blocked;
@@ -125,6 +129,7 @@ public class TeleportDoor : MonoBehaviour
             this.BlockExternal(cooldown);
             targetDoor.BlockExternal(cooldown);
             GameEvents.OnPlayerTeleport?.Invoke(player.position, targetDoor.identification);
+            onTeleportComplete?.Invoke();
         }
         else
         {

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae767b0fd5caa341b8ed9c10fe879ca, type: 3}
-  m_Name: Moment_City3
+  m_Name: Flag_NPC_SpecialCard
   m_EditorClassIdentifier: Assembly-CSharp::SOZoneFlag
-  id: moment_city3
-  description: Usado para garantir o estado atual do game
+  id: flag_npc_specialcard
+  description: Usado para verificar se ja ganhou cartas especiais

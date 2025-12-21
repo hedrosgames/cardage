@@ -6,10 +6,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
 [System.Serializable]
 public class GameSetupEvent : UnityEvent<SOGameSetup> { }
-
 public class ManagerGameFlow : MonoBehaviour
 {
     [Header("Sistemas")]
@@ -48,7 +46,6 @@ public class ManagerGameFlow : MonoBehaviour
     private int _currentCityNumber = 0;
     private SaveClientZone _saveZone;
     private HashSet<int> _citiesShownThisSession = new HashSet<int>();
-
     public UnityEvent onAwake;
     void Awake()
     {
@@ -362,28 +359,17 @@ public class ManagerGameFlow : MonoBehaviour
         {
             if (interactable != null)
             {
-                //interactable.UpdateVisualState();
             }
         }
     }
-    /// <summary>
-    /// Inicia um card game usando o setup padrão configurado no Inspector.
-    /// Pode ser chamado via Unity Events.
-    /// </summary>
     public void StartCardGame()
     {
         StartCardGame(defaultCardGameSetup);
     }
-    /// <summary>
-    /// Inicia um card game com um setup específico.
-    /// Pode ser chamado via Unity Events passando o SOGameSetup como parâmetro.
-    /// </summary>
-    /// <param name="gameSetup">Setup do jogo de cartas a ser iniciado</param>
     public void StartCardGame(SOGameSetup gameSetup)
     {
         if (gameSetup == null)
         {
-            Debug.LogWarning("ManagerGameFlow: Tentativa de iniciar card game sem SOGameSetup configurado.");
             return;
         }
         var challengeManager = FindFirstObjectByType<ManagerCardGameChallenge>();

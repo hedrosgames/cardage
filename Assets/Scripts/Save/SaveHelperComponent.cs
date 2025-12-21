@@ -36,6 +36,10 @@ public class SaveHelperComponent : MonoBehaviour
     {
         SaveByEnum(SaveId.SaveQuit);
     }
+    public void SaveMoment()
+    {
+        SaveByEnum(SaveId.SaveMoment);
+    }
     public void SetFlag(SOZoneFlag flag)
     {
         if (flag == null) return;
@@ -54,6 +58,53 @@ public class SaveHelperComponent : MonoBehaviour
         {
             saveZone.SetFlag(flag, value);
             SaveZone();
+        }
+    }
+    public void SetMomentFlag(SOZoneFlag flag, int value)
+    {
+        if (flag == null) return;
+        SaveClientMoment saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        if (saveMoment != null)
+        {
+            saveMoment.SetFlag(flag, value);
+            SaveMoment();
+        }
+        else
+        {
+        }
+    }
+    public void SetMomentFlagAndLoad(SOZoneFlag flag)
+    {
+        if (flag == null) return;
+        SaveClientMoment saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        if (saveMoment != null)
+        {
+            saveMoment.SetFlag(flag, 1);
+            SaveMoment();
+            if (ManagerSave.Instance != null)
+            {
+                ManagerSave.Instance.LoadMoment();
+            }
+        }
+        else
+        {
+        }
+    }
+    public void SetMomentFlagAndLoad(SOZoneFlag flag, int value)
+    {
+        if (flag == null) return;
+        SaveClientMoment saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        if (saveMoment != null)
+        {
+            saveMoment.SetFlag(flag, value);
+            SaveMoment();
+            if (ManagerSave.Instance != null)
+            {
+                ManagerSave.Instance.LoadMoment();
+            }
+        }
+        else
+        {
         }
     }
 }

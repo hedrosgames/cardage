@@ -274,6 +274,8 @@ private string ConvertSaveIdToString(SaveId saveId)
         return "saveachievements";
         case SaveId.SaveQuit:
         return "savequit";
+        case SaveId.SaveMoment:
+        return "savemoment";
         default:
         return string.Empty;
     }
@@ -348,6 +350,18 @@ System.Collections.IEnumerator LoadAllDelayed(string sceneName)
     {
         yield return null;
         LoadAll();
+    }
+}
+public void LoadMoment()
+{
+    LoadSpecific("savemoment");
+    NpcHelper[] allSwapScripts = FindObjectsByType<NpcHelper>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    foreach (var swapScript in allSwapScripts)
+    {
+        if (swapScript != null)
+        {
+            swapScript.ForceCheckAndSwap();
+        }
     }
 }
 string GetCallerName()
