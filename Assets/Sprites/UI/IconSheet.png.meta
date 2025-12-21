@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 966a853bf10405e419ce02bf3ada6b91
+guid: 6334d289ee4f90d4c9fe7f006e5d6bfa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5604172878655406403
-    second: Android_Robot_200_0
+      213: -4910406616567783096
+    second: 2913989_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Android_Robot_200_0
+      name: 2913989_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 235
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbebdd3857af932b0800000000000000
-      internalID: -5604172878655406403
+      spriteID: 841efbcd23bbadbb0800000000000000
+      internalID: -4910406616567783096
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Android_Robot_200_0: -5604172878655406403
+      2913989_0: -4910406616567783096
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
