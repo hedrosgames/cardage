@@ -32,10 +32,6 @@ public class ManagerCardGameChallenge : MonoBehaviour
     }
     void OnMatchFinished(MatchResult result, int playerScore, int opponentScore)
     {
-        if (ManagerSave.Instance != null)
-        {
-            ManagerSave.Instance.SaveAll();
-        }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -50,10 +46,6 @@ public class ManagerCardGameChallenge : MonoBehaviour
     }
     public void ReturnToWorld()
     {
-        if (ManagerSave.Instance != null)
-        {
-            ManagerSave.Instance.SaveAll();
-        }
         if (ManagerSceneTransition.Instance != null)
         {
             ManagerSceneTransition.Instance.LoadScene(worldSceneName);

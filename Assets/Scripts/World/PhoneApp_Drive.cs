@@ -46,7 +46,6 @@ public class PhoneApp_Drive : MonoBehaviour
         if (isFirstTime)
         {
             SaveZone.SetFlag(flagIntroDone, 1);
-            SaveEvents.RaiseSave();
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);
@@ -79,10 +78,6 @@ public class PhoneApp_Drive : MonoBehaviour
         }
         else
         {
-            if (ManagerSave.Instance != null)
-            {
-                ManagerSave.Instance.SaveAll();
-            }
             GameEvents.OnDriveSaved?.Invoke();
         }
     }
@@ -90,10 +85,6 @@ public class PhoneApp_Drive : MonoBehaviour
     {
         if (statusText != null) statusText.text = "Sincronizando...";
         yield return new WaitForSeconds(0.5f);
-        if (ManagerSave.Instance != null)
-        {
-            ManagerSave.Instance.SaveAll();
-        }
         if (statusText != null) statusText.text = "Backup Concluído.";
         GameEvents.OnDriveSaved?.Invoke();
     }
@@ -163,10 +154,6 @@ public class PhoneApp_Drive : MonoBehaviour
         bool newState = !currentState;
         ManagerItems.SetItemActive(item, newState);
         UpdateItemButtonVisual(buttonObj, newState);
-        if (SaveZone != null)
-        {
-            SaveEvents.RaiseSave();
-        }
     }
 }
 

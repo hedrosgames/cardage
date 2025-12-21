@@ -26,7 +26,6 @@ public class PhoneApp_Bank : MonoBehaviour
         if (!SaveZone.HasFlag(flagIntroDone))
         {
             SaveZone.SetFlag(flagIntroDone, 1);
-            SaveEvents.RaiseSave();
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);

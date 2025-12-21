@@ -215,18 +215,6 @@ public class InteractableCardGame : Interactable, INotificationProvider
         {
             challengeManager.SetGameSetup(gameSetup);
         }
-        if (ManagerSave.Instance != null)
-        {
-            SaveClientWorld saveWorld = FindFirstObjectByType<SaveClientWorld>();
-            if (saveWorld != null && saveWorld.saveDefinition != null && saveWorld.gameObject.activeInHierarchy)
-            {
-                ManagerSave.Instance.RegisterClient(saveWorld.saveDefinition, saveWorld);
-            }
-        }
-        if (ManagerSave.Instance != null)
-        {
-            ManagerSave.Instance.SaveAll();
-        }
         StartCoroutine(LoadCardGameAfterSave());
     }
     System.Collections.IEnumerator LoadCardGameAfterSave()

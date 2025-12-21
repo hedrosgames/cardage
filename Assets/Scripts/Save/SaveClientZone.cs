@@ -39,8 +39,19 @@ public class SaveClientZone : MonoBehaviour, ISaveClient
         if (zoneFlags.ContainsKey(flag.id) && zoneFlags[flag.id] == value)
         return;
         zoneFlags[flag.id] = value;
-        SaveEvents.RaiseSave();
+        SaveZoneData();
         OnFlagChanged?.Invoke(flag);
+    }
+    void SaveZoneData()
+    {
+        if (ManagerSave.Instance == null) return;
+        if (saveDefinition == null || string.IsNullOrEmpty(saveDefinition.id)) return;
+        ManagerSave.Instance.RegisterClient(saveDefinition, this);
+        if (!ManagerSave.Instance.definitions.Contains(saveDefinition))
+        {
+            ManagerSave.Instance.definitions.Add(saveDefinition);
+        }
+        ManagerSave.Instance.SaveSpecific(saveDefinition.id);
     }
     public event Action<SOZoneFlag> OnFlagChanged;
     public int GetFlag(SOZoneFlag flag)
@@ -92,7 +103,7 @@ public class SaveClientZone : MonoBehaviour, ISaveClient
         if (flag == null || string.IsNullOrEmpty(flag.id)) return;
         if (zoneFlagStrings.ContainsKey(flag.id) && zoneFlagStrings[flag.id] == value) return;
         zoneFlagStrings[flag.id] = value;
-        SaveEvents.RaiseSave();
+        SaveZoneData();
         OnFlagChanged?.Invoke(flag);
     }
     public string Save(SOSaveDefinition definition)
@@ -108,6 +119,10 @@ public class SaveClientZone : MonoBehaviour, ISaveClient
             var sd = new StringData { keys = sk.ToArray(), values = sv.ToArray() };
             string stringJson = JsonUtility.ToJson(sd);
             json += "|STRING_DATA|" + stringJson;
+        }
+        if (string.IsNullOrEmpty(json))
+        {
+            json = JsonUtility.ToJson(new Data { keys = new string[0], values = new int[0] });
         }
         return json;
     }

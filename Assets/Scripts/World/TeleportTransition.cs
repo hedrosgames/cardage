@@ -33,6 +33,30 @@ public class TeleportTransition : MonoBehaviour
         else
         {
             teleportDoor.TeleportPlayer(col.transform);
+            StartCoroutine(NotifyCurtainOpenedWhenNoCurtain());
+        }
+    }
+    IEnumerator NotifyCurtainOpenedWhenNoCurtain()
+    {
+        yield return null;
+        yield return null;
+        yield return null;
+        if (managerCamera != null)
+        {
+            Game.World.WorldAreaId areaId = Game.World.WorldAreaId.None;
+            if (managerCamera.CurrentArea != null &&
+            managerCamera.CurrentArea.id != Game.World.WorldAreaId.None)
+            {
+                areaId = managerCamera.CurrentArea.id;
+            }
+            else if (managerCamera.startAreaId != Game.World.WorldAreaId.None)
+            {
+                areaId = managerCamera.startAreaId;
+            }
+            if (areaId != Game.World.WorldAreaId.None)
+            {
+                GameEvents.OnCurtainOpenedAfterTeleport?.Invoke(areaId);
+            }
         }
     }
     IEnumerator SequenceTransition(Transform player)
@@ -104,6 +128,31 @@ public class TeleportTransition : MonoBehaviour
         }
         yield return StartCoroutine(managerCamera.doorCurtain.PlayOpenRoutine());
         SetPlayerMovement(player, true);
+        Game.World.WorldAreaId areaId = Game.World.WorldAreaId.None;
+        if (managerCamera != null)
+        {
+            if (managerCamera.CurrentArea != null &&
+            managerCamera.CurrentArea.id != Game.World.WorldAreaId.None)
+            {
+                areaId = managerCamera.CurrentArea.id;
+            }
+            else if (managerCamera.startAreaId != Game.World.WorldAreaId.None)
+            {
+                areaId = managerCamera.startAreaId;
+            }
+        }
+        if (areaId == Game.World.WorldAreaId.None && teleportDoor != null)
+        {
+            Game.World.WorldAreaId targetID = teleportDoor.destination;
+            if (targetID != Game.World.WorldAreaId.None)
+            {
+                areaId = targetID;
+            }
+        }
+        if (areaId != Game.World.WorldAreaId.None)
+        {
+            GameEvents.OnCurtainOpenedAfterTeleport?.Invoke(areaId);
+        }
     }
     void SetPlayerMovement(Transform player, bool value)
     {

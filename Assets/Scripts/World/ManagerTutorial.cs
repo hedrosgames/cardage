@@ -65,6 +65,13 @@ public class ManagerTutorial : MonoBehaviour
             playerControl.SetInteraction(true);
         }
         Completed(currentTutorial);
+        if (currentTutorial != null)
+        {
+            if (currentTutorial.name == "Tutorial_Movement" || currentTutorial.name == "Tutorial_OpenPhone")
+            {
+                StartCoroutine(SaveTutorialDelayed());
+            }
+        }
         OnTutorialClosed?.Invoke(currentTutorial);
         currentTutorial = null;
         currentCondition = null;
@@ -79,5 +86,25 @@ public class ManagerTutorial : MonoBehaviour
     public bool IsCompleted(string tutorialName) => completedTutorials.Contains(tutorialName);
     public List<string> GetCompletedTutorialIds() => new List<string>(completedTutorials);
     public void SetCompletedTutorialIds(IEnumerable<string> ids) => completedTutorials = new HashSet<string>(ids);
+    System.Collections.IEnumerator SaveTutorialDelayed()
+    {
+        yield return null;
+        if (ManagerSave.Instance != null)
+        {
+            SaveClientWorld saveWorld = FindFirstObjectByType<SaveClientWorld>();
+            if (saveWorld == null)
+            {
+                SaveClientWorld[] allSaveWorlds = FindObjectsByType<SaveClientWorld>(UnityEngine.FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None);
+                if (allSaveWorlds != null && allSaveWorlds.Length > 0)
+                {
+                    saveWorld = allSaveWorlds[0];
+                }
+            }
+            if (saveWorld != null && saveWorld.saveDefinition != null && !string.IsNullOrEmpty(saveWorld.saveDefinition.id))
+            {
+                ManagerSave.Instance.SaveSpecific(saveWorld.saveDefinition.id);
+            }
+        }
+    }
 }
 

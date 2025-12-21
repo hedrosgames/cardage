@@ -43,12 +43,13 @@ public class ManagerGameFlow : MonoBehaviour
     private int _currentMomentNumber = 0;
     private SaveClientZone _saveZone;
     private SaveClientMoment _saveMoment;
-    private bool _hasShownCityName = false;
+    private HashSet<int> _citiesShownThisSession = new HashSet<int>();
     void Awake()
     {
         if (playerControl != null) playerControl.SetControl(false);
         _saveZone = FindFirstObjectByType<SaveClientZone>();
         _saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        _citiesShownThisSession.Clear();
         if (cityNameCanvasGroup == null)
         {
             GameObject canvasObj = GameObject.Find("CanvasCityName");
@@ -77,6 +78,7 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnDialogueFinished += OnGlobalDialogueFinished;
         GameEvents.OnBankChecked += HandleBankChecked;
         GameEvents.OnPlayerTeleport += HandlePlayerTeleport;
+        GameEvents.OnCurtainOpenedAfterTeleport += HandleCurtainOpenedAfterTeleport;
         if (_saveMoment != null)
         {
             _saveMoment.OnMomentChanged += OnMomentChanged;
@@ -87,6 +89,7 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnDialogueFinished -= OnGlobalDialogueFinished;
         GameEvents.OnBankChecked -= HandleBankChecked;
         GameEvents.OnPlayerTeleport -= HandlePlayerTeleport;
+        GameEvents.OnCurtainOpenedAfterTeleport -= HandleCurtainOpenedAfterTeleport;
         if (_saveMoment != null)
         {
             _saveMoment.OnMomentChanged -= OnMomentChanged;
@@ -94,13 +97,22 @@ public class ManagerGameFlow : MonoBehaviour
     }
     void HandlePlayerTeleport(Vector3 pos, WorldAreaId areaId)
     {
-        if (IsCityExternalArea(areaId) && !_hasShownCityName)
-        {
-            _hasShownCityName = true;
-            ShowCityName(areaId);
-        }
         UpdateCurrentCity(areaId);
         RefreshMomentObjects();
+        RefreshInteractableLogicalObjects();
+    }
+    void HandleCurtainOpenedAfterTeleport(WorldAreaId areaId)
+    {
+        if (areaId == WorldAreaId.None) return;
+        if (IsCityExternalArea(areaId))
+        {
+            int cityNumber = ExtractCityNumber(areaId.ToString());
+            if (cityNumber > 0 && !_citiesShownThisSession.Contains(cityNumber))
+            {
+                _citiesShownThisSession.Add(cityNumber);
+                ShowCityName(areaId);
+            }
+        }
     }
     void OnMomentChanged(int newMoment)
     {
@@ -114,24 +126,38 @@ public class ManagerGameFlow : MonoBehaviour
     }
     void ShowCityName(WorldAreaId areaId)
     {
-        if (cityNameCanvasGroup == null || cityNameText == null) return;
+        if (cityNameCanvasGroup == null)
+        {
+            return;
+        }
+        if (cityNameText == null)
+        {
+            return;
+        }
         UpdateCityNameText(areaId);
         StartCoroutine(CityNameDisplayRoutine());
     }
     public void UpdateCityNameText(WorldAreaId areaId)
     {
-        if (cityNameText == null) return;
+        if (cityNameText == null)
+        {
+            return;
+        }
         string localizationKey = GetCityNameKey(areaId);
         if (!string.IsNullOrEmpty(localizationKey))
         {
             if (ManagerLocalization.Instance != null)
             {
-                cityNameText.text = ManagerLocalization.Instance.GetText(localizationKey);
+                string localizedText = ManagerLocalization.Instance.GetText(localizationKey);
+                cityNameText.text = localizedText;
             }
             else
             {
                 cityNameText.text = $"[{localizationKey}]";
             }
+        }
+        else
+        {
         }
     }
     string GetCityNameKey(WorldAreaId areaId)
@@ -169,14 +195,18 @@ public class ManagerGameFlow : MonoBehaviour
     }
     IEnumerator CityNameDisplayRoutine()
     {
-        if (cityNameCanvasGroup == null || cityNameText == null) yield break;
+        if (cityNameCanvasGroup == null || cityNameText == null)
+        {
+            yield break;
+        }
         RectTransform textRect = cityNameText.GetComponent<RectTransform>();
+        if (textRect == null)
+        {
+            yield break;
+        }
         Vector2 startPosition = textRect.anchoredPosition;
         Vector2 startPositionAbove = startPosition + Vector2.up * cityNameFloatDownDistance;
-        if (textRect != null)
-        {
-            textRect.anchoredPosition = startPositionAbove;
-        }
+        textRect.anchoredPosition = startPositionAbove;
         cityNameCanvasGroup.blocksRaycasts = false;
         cityNameCanvasGroup.interactable = false;
         float timer = 0f;
@@ -185,18 +215,12 @@ public class ManagerGameFlow : MonoBehaviour
             timer += Time.unscaledDeltaTime;
             float progress = Mathf.Clamp01(timer / cityNameFadeDuration);
             cityNameCanvasGroup.alpha = progress;
-            if (textRect != null)
-            {
-                float floatProgress = 1f - progress;
-                textRect.anchoredPosition = Vector2.Lerp(startPosition, startPositionAbove, floatProgress);
-            }
+            float floatProgress = 1f - progress;
+            textRect.anchoredPosition = Vector2.Lerp(startPosition, startPositionAbove, floatProgress);
             yield return null;
         }
         cityNameCanvasGroup.alpha = 1f;
-        if (textRect != null)
-        {
-            textRect.anchoredPosition = startPosition;
-        }
+        textRect.anchoredPosition = startPosition;
         yield return new WaitForSecondsRealtime(cityNameDisplayDuration);
         timer = 0f;
         while (timer < cityNameFadeDuration)
@@ -204,19 +228,13 @@ public class ManagerGameFlow : MonoBehaviour
             timer += Time.unscaledDeltaTime;
             float progress = Mathf.Clamp01(timer / cityNameFadeDuration);
             cityNameCanvasGroup.alpha = 1f - progress;
-            if (textRect != null)
-            {
-                float floatProgress = progress;
-                textRect.anchoredPosition = startPosition + Vector2.up * (cityNameFloatDistance * floatProgress);
-            }
+            float floatProgress = progress;
+            textRect.anchoredPosition = startPosition + Vector2.up * (cityNameFloatDistance * floatProgress);
             yield return null;
         }
         cityNameCanvasGroup.alpha = 0f;
         cityNameCanvasGroup.blocksRaycasts = false;
-        if (textRect != null)
-        {
-            textRect.anchoredPosition = startPosition;
-        }
+        textRect.anchoredPosition = startPosition;
     }
     void HandleBankChecked() => UnlockZone1Exit();
     void UnlockZone1Exit()
@@ -224,7 +242,6 @@ public class ManagerGameFlow : MonoBehaviour
         if (_saveZone != null && flagUnlockDoor != null)
         {
             _saveZone.SetFlag(flagUnlockDoor, 1);
-            SaveEvents.RaiseSave();
         }
         if (fakeDoorObject != null) fakeDoorObject.SetActive(false);
     }
@@ -242,17 +259,48 @@ public class ManagerGameFlow : MonoBehaviour
     }
     void CheckInitialCity()
     {
-        var managerCamera = FindFirstObjectByType<ManagerCamera>();
-        if (managerCamera != null && managerCamera.startAreaId != WorldAreaId.None)
+        StartCoroutine(CheckInitialCityDelayed());
+    }
+    IEnumerator CheckInitialCityDelayed()
+    {
+        yield return new WaitForSeconds(0.5f);
+        int maxAttempts = 10;
+        int attempts = 0;
+        while (attempts < maxAttempts)
         {
-            WorldAreaId initialArea = managerCamera.startAreaId;
-            UpdateCurrentCity(initialArea);
-            RefreshMomentObjects();
-            if (IsCityExternalArea(initialArea) && !_hasShownCityName)
+            var managerCamera = FindFirstObjectByType<ManagerCamera>();
+            if (managerCamera == null)
             {
-                _hasShownCityName = true;
-                StartCoroutine(DelayedShowCityName(initialArea, 1f));
+                yield return null;
+                attempts++;
+                continue;
             }
+            WorldAreaId initialArea = WorldAreaId.None;
+            if (managerCamera.CurrentArea != null && managerCamera.CurrentArea.id != WorldAreaId.None)
+            {
+                initialArea = managerCamera.CurrentArea.id;
+            }
+            else if (managerCamera.startAreaId != WorldAreaId.None)
+            {
+                initialArea = managerCamera.startAreaId;
+            }
+            if (initialArea != WorldAreaId.None)
+            {
+                UpdateCurrentCity(initialArea);
+                RefreshMomentObjects();
+                if (IsCityExternalArea(initialArea))
+                {
+                    int cityNumber = ExtractCityNumber(initialArea.ToString());
+                    if (cityNumber > 0 && !_citiesShownThisSession.Contains(cityNumber))
+                    {
+                        _citiesShownThisSession.Add(cityNumber);
+                        StartCoroutine(DelayedShowCityName(initialArea, 1.5f));
+                    }
+                }
+                yield break;
+            }
+            yield return null;
+            attempts++;
         }
     }
     IEnumerator DelayedShowCityName(WorldAreaId areaId, float delay)
@@ -293,7 +341,6 @@ public class ManagerGameFlow : MonoBehaviour
             if (_saveZone != null && flagIntroDone != null)
             {
                 _saveZone.SetFlag(flagIntroDone, 1);
-                SaveEvents.RaiseSave();
             }
             StartGameplayPhase();
         }
@@ -378,6 +425,17 @@ public class ManagerGameFlow : MonoBehaviour
             UpdateCurrentCity(managerCamera.CurrentArea.id);
         }
         RefreshMomentObjects();
+    }
+    void RefreshInteractableLogicalObjects()
+    {
+        var allInteractables = FindObjectsByType<InteractableLogical>(FindObjectsSortMode.None);
+        foreach (var interactable in allInteractables)
+        {
+            if (interactable != null)
+            {
+                interactable.UpdateVisualState();
+            }
+        }
     }
 }
 

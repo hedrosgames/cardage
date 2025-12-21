@@ -25,6 +25,7 @@ public static class GameEvents
     public static Action OnZapChecked;
     public static Action OnDriveSaved;
     public static Action<Vector3, WorldAreaId> OnPlayerTeleport;
+    public static Action<WorldAreaId> OnCurtainOpenedAfterTeleport;
     public static Action OnGameplayStarted;
     public static Action<SOTutorial> OnRequestTutorialByAsset;
     public static Action<SODialogueSequence> OnRequestDialogue;

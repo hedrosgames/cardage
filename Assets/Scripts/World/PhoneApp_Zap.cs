@@ -28,7 +28,6 @@ public class PhoneApp_Zap : MonoBehaviour
         {
             if (contactsListContainer != null) contactsListContainer.SetActive(false);
             SaveZone.SetFlag(flagIntroDone, 1);
-            SaveEvents.RaiseSave();
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);

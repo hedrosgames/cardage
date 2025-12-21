@@ -290,16 +290,35 @@ System.Collections.IEnumerator LoadAllDelayed(string sceneName)
             }
             RegisterClient(saveWorld.saveDefinition, saveWorld);
         }
-        else
+        SaveClientZone saveZone = FindFirstObjectByType<SaveClientZone>();
+        if (saveZone == null)
         {
+            SaveClientZone[] allSaveZones = FindObjectsByType<SaveClientZone>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            if (allSaveZones != null && allSaveZones.Length > 0)
+            {
+                saveZone = allSaveZones[0];
+            }
+        }
+        if (saveZone != null && saveZone.saveDefinition != null)
+        {
+            if (!saveZone.gameObject.activeInHierarchy)
+            {
+                saveZone.gameObject.SetActive(true);
+            }
+            RegisterClient(saveZone.saveDefinition, saveZone);
+            if (!definitions.Contains(saveZone.saveDefinition))
+            {
+                definitions.Add(saveZone.saveDefinition);
+            }
         }
         yield return null;
+        LoadAll();
     }
     else
     {
         yield return null;
+        LoadAll();
     }
-    LoadAll();
 }
 string GetCallerName()
 {

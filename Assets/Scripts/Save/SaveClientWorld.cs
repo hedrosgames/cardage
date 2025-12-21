@@ -26,6 +26,7 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
         {
             ManagerSave.Instance.RegisterClient(saveDefinition, this);
         }
+        GameEvents.OnPlayerTeleport += OnPlayerTeleport;
     }
     void OnDisable()
     {
@@ -33,55 +34,123 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
         {
             ManagerSave.Instance.UnregisterClient(saveDefinition, this);
         }
+        GameEvents.OnPlayerTeleport -= OnPlayerTeleport;
     }
-    public string Save(SOSaveDefinition definition)
+    private float savedPlayerX = 0f;
+    private float savedPlayerY = 0f;
+    private float savedPlayerZ = 0f;
+    private float savedCameraX = 0f;
+    private float savedCameraY = 0f;
+    private float savedCameraZ = 0f;
+    private string savedAreaId = string.Empty;
+    private const float SAVE_OFFSET_DISTANCE = 0.5f;
+    private float RoundToTwoDecimals(float value)
     {
-        var d = new Data();
-        var player = GameObject.FindWithTag("Player");
-        var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
-        if (player == null)
+        return Mathf.Round(value * 100f) / 100f;
+    }
+    void OnPlayerTeleport(Vector3 playerPos, WorldAreaId areaId)
+    {
+        hasTeleported = true;
+        Vector3 finalSavePos = playerPos;
+        if (areaId != WorldAreaId.None)
         {
-            if (ManagerSave.Instance != null && definition != null)
+            var allDoors = UnityEngine.Object.FindObjectsByType<TeleportDoor>(UnityEngine.FindObjectsSortMode.None);
+            TeleportDoor targetDoor = null;
+            foreach (var door in allDoors)
             {
-                string currentJson = LoadCurrentJson(definition);
-                if (!string.IsNullOrEmpty(currentJson))
+                if (door.identification == areaId)
                 {
-                    var currentData = JsonUtility.FromJson<Data>(currentJson);
-                    if (currentData != null)
-                    {
-                        d.px = currentData.px;
-                        d.py = currentData.py;
-                        d.pz = currentData.pz;
-                        d.cx = currentData.cx;
-                        d.cy = currentData.cy;
-                        d.cz = currentData.cz;
-                        d.areaId = currentData.areaId;
-                    }
+                    targetDoor = door;
+                    break;
+                }
+            }
+            if (targetDoor != null)
+            {
+                Vector3 directionVector = targetDoor.GetDirectionVector();
+                if (directionVector != Vector3.zero)
+                {
+                    finalSavePos = playerPos + (directionVector * SAVE_OFFSET_DISTANCE);
                 }
             }
         }
+        savedPlayerX = RoundToTwoDecimals(finalSavePos.x);
+        savedPlayerY = RoundToTwoDecimals(finalSavePos.y);
+        savedPlayerZ = RoundToTwoDecimals(finalSavePos.z);
+        savedAreaId = areaId != WorldAreaId.None ? areaId.ToString() : string.Empty;
+        StartCoroutine(SaveAfterTeleportDelayed());
+    }
+    System.Collections.IEnumerator SaveAfterTeleportDelayed()
+    {
+        yield return null;
+        yield return null;
+        yield return new WaitForSeconds(0.1f);
+        var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
+        if (cam != null && cam.cameraFollow != null)
+        {
+            var camPos = cam.cameraFollow.transform.position;
+            savedCameraX = RoundToTwoDecimals(camPos.x);
+            savedCameraY = RoundToTwoDecimals(camPos.y);
+            savedCameraZ = RoundToTwoDecimals(camPos.z);
+        }
+        if (ManagerSave.Instance != null && saveDefinition != null && !string.IsNullOrEmpty(saveDefinition.id))
+        {
+            ManagerSave.Instance.SaveSpecific(saveDefinition.id);
+        }
+    }
+    private bool hasTeleported = false;
+    public string Save(SOSaveDefinition definition)
+    {
+        var d = new Data();
+        if (hasTeleported)
+        {
+            d.px = savedPlayerX;
+            d.py = savedPlayerY;
+            d.pz = savedPlayerZ;
+        }
         else
         {
-            var p = player.transform.position;
-            d.px = Mathf.Round(p.x * 100f) / 100f;
-            d.py = Mathf.Round(p.y * 100f) / 100f;
-            d.pz = Mathf.Round(p.z * 100f) / 100f;
+            var player = GameObject.FindWithTag("Player");
+            if (player != null)
+            {
+                var p = player.transform.position;
+                d.px = RoundToTwoDecimals(p.x);
+                d.py = RoundToTwoDecimals(p.y);
+                d.pz = RoundToTwoDecimals(p.z);
+            }
+        }
+        if (hasTeleported)
+        {
+            d.cx = savedCameraX;
+            d.cy = savedCameraY;
+            d.cz = savedCameraZ;
+        }
+        else
+        {
+            var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
+            if (cam != null && cam.cameraFollow != null)
+            {
+                var camPos = cam.cameraFollow.transform.position;
+                d.cx = RoundToTwoDecimals(camPos.x);
+                d.cy = RoundToTwoDecimals(camPos.y);
+                d.cz = RoundToTwoDecimals(camPos.z);
+            }
+        }
+        if (!string.IsNullOrEmpty(savedAreaId))
+        {
+            d.areaId = savedAreaId;
+        }
+        else
+        {
+            var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
             if (cam != null)
             {
-                if (cam.CurrentArea != null)
+                if (cam.CurrentArea != null && cam.CurrentArea.id != WorldAreaId.None)
                 {
                     d.areaId = cam.CurrentArea.id.ToString();
                 }
-                else
+                else if (cam.startAreaId != WorldAreaId.None)
                 {
                     d.areaId = cam.startAreaId.ToString();
-                }
-                if (cam.cameraFollow != null)
-                {
-                    var camPos = cam.cameraFollow.transform.position;
-                    d.cx = camPos.x;
-                    d.cy = camPos.y;
-                    d.cz = camPos.z;
                 }
             }
         }
@@ -93,6 +162,41 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
             d.tutorialsDone = list.ToArray();
         }
         return JsonUtility.ToJson(d);
+    }
+    private string CreateFormattedJson(Data d)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append("{");
+        sb.AppendFormat("\"px\":{0:F2},", d.px);
+        sb.AppendFormat("\"py\":{0:F2},", d.py);
+        sb.AppendFormat("\"pz\":{0:F2},", d.pz);
+        sb.AppendFormat("\"cx\":{0:F2},", d.cx);
+        sb.AppendFormat("\"cy\":{0:F2},", d.cy);
+        sb.AppendFormat("\"cz\":{0:F2},", d.cz);
+        if (!string.IsNullOrEmpty(d.areaId))
+        {
+            sb.AppendFormat("\"areaId\":\"{0}\",", d.areaId);
+        }
+        else
+        {
+            sb.Append("\"areaId\":null,");
+        }
+        if (d.tutorialsDone != null && d.tutorialsDone.Length > 0)
+        {
+            sb.Append("\"tutorialsDone\":[");
+            for (int i = 0; i < d.tutorialsDone.Length; i++)
+            {
+                if (i > 0) sb.Append(",");
+                sb.AppendFormat("\"{0}\"", d.tutorialsDone[i]);
+            }
+            sb.Append("]");
+        }
+        else
+        {
+            sb.Append("\"tutorialsDone\":null");
+        }
+        sb.Append("}");
+        return sb.ToString();
     }
     private string LoadCurrentJson(SOSaveDefinition definition)
     {
@@ -148,6 +252,17 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
             ResetState();
             return;
         }
+        savedPlayerX = RoundToTwoDecimals(d.px);
+        savedPlayerY = RoundToTwoDecimals(d.py);
+        savedPlayerZ = RoundToTwoDecimals(d.pz);
+        savedCameraX = RoundToTwoDecimals(d.cx);
+        savedCameraY = RoundToTwoDecimals(d.cy);
+        savedCameraZ = RoundToTwoDecimals(d.cz);
+        savedAreaId = d.areaId ?? string.Empty;
+        if ((d.px != 0f || d.py != 0f || d.pz != 0f) || !string.IsNullOrEmpty(d.areaId))
+        {
+            hasTeleported = true;
+        }
         StartCoroutine(LoadDelayed(d));
     }
     System.Collections.IEnumerator LoadDelayed(Data d)
@@ -157,6 +272,15 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
         {
             yield break;
         }
+        yield return null;
+        yield return null;
+        var tut = UnityEngine.Object.FindFirstObjectByType<ManagerTutorial>();
+        if (tut != null && d.tutorialsDone != null)
+        {
+            tut.SetCompletedTutorialIds(d.tutorialsDone);
+        }
+        yield return null;
+        yield return null;
         GameObject player = null;
         int maxFrames = 60;
         int frameCount = 0;
@@ -170,50 +294,38 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
             }
             frameCount++;
         }
-        if (player == null || !player.activeInHierarchy)
+        if (player != null)
         {
-            yield return new WaitForSeconds(0.2f);
-            player = GameObject.FindWithTag("Player");
-            if (player != null && !player.activeInHierarchy)
+            bool hasPositionData = (d.px != 0f || d.py != 0f || d.pz != 0f) ||
+            (d.px == 0f && d.py == 0f && d.pz == 0f && !string.IsNullOrEmpty(d.areaId));
+            if (!string.IsNullOrEmpty(d.areaId) || hasPositionData)
             {
-                player.SetActive(true);
+                Vector3 savedPos = new Vector3(d.px, d.py, d.pz);
+                player.transform.position = savedPos;
             }
         }
         var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
-        var tut = UnityEngine.Object.FindFirstObjectByType<ManagerTutorial>();
-        var playerControl = player != null ? player.GetComponent<PlayerControl>() : null;
-        if (playerControl != null) playerControl.SetControl(false);
-        if (player != null)
+        if (cam != null)
         {
-            Vector3 savedPos = new Vector3(d.px, d.py, d.pz);
-            player.transform.position = savedPos;
-        }
-        else
-        {
-        }
-        if (tut != null && d.tutorialsDone != null)
-        {
-            tut.SetCompletedTutorialIds(d.tutorialsDone);
-        }
-        if (playerControl != null) playerControl.SetControl(true);
-        yield return null;
-        RestoreCamera(cam, d);
-    }
-    void RestoreCamera(ManagerCamera cam, Data d)
-    {
-        if (cam == null) return;
-        if (!string.IsNullOrEmpty(d.areaId))
-        {
-            if (Enum.TryParse(d.areaId, out WorldAreaId parsedId) && parsedId != WorldAreaId.None)
+            if (!string.IsNullOrEmpty(d.areaId))
             {
-                cam.startAreaId = parsedId;
-                cam.SetArea(parsedId);
+                if (Enum.TryParse(d.areaId, out WorldAreaId parsedId) && parsedId != WorldAreaId.None)
+                {
+                    cam.startAreaId = parsedId;
+                    cam.SetArea(parsedId);
+                }
             }
-        }
-        if (cam.cameraFollow != null && (d.cx != 0 || d.cy != 0 || d.cz != 0))
-        {
-            Vector3 savedCamPos = new Vector3(d.cx, d.cy, d.cz);
-            cam.cameraFollow.transform.position = savedCamPos;
+            yield return null;
+            if (cam.cameraFollow != null)
+            {
+                bool hasCameraData = (d.cx != 0f || d.cy != 0f || d.cz != 0f) ||
+                (d.cx == 0f && d.cy == 0f && d.cz == 0f && !string.IsNullOrEmpty(d.areaId));
+                if (!string.IsNullOrEmpty(d.areaId) || hasCameraData)
+                {
+                    Vector3 savedCamPos = new Vector3(d.cx, d.cy, d.cz);
+                    cam.cameraFollow.transform.position = savedCamPos;
+                }
+            }
         }
     }
     void ResetState()
