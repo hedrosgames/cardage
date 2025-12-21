@@ -5,12 +5,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class GameSetupEvent : UnityEvent<SOGameSetup> { }
+
 public class ManagerGameFlow : MonoBehaviour
 {
     [Header("Sistemas")]
     public ManagerDialogue dialogueManager;
     public PlayerControl playerControl;
     public PlayerCutsceneAnimator playerCutscene;
+    [Header("Card Game")]
+    [Tooltip("Setup padrão do card game (opcional, pode ser definido via parâmetro na função)")]
+    public SOGameSetup defaultCardGameSetup;
+    [Tooltip("Evento que pode ser chamado via Unity Events passando um SOGameSetup como parâmetro")]
+    public GameSetupEvent onStartCardGame;
     [Header("Zone 1 - Setup")]
     public SODialogueSequence introDialogue;
     public SOTutorial tutorialFirstMovement;
@@ -33,22 +43,23 @@ public class ManagerGameFlow : MonoBehaviour
     [Header("City Name Localization Keys")]
     [Tooltip("Keys de tradução para os nomes das 7 cidades. Ordem: City1, City2, City3, City4, City5, City6, City7")]
     public string[] cityNameKeys = new string[7];
-    [Header("Controle de Momentos")]
-    [Tooltip("Referências aos GameObjects World_City_X (pais das cidades). Ordem: City1, City2, City3, City4, City5, City6, City7")]
-    public GameObject[] cityParents = new GameObject[7];
     [Header("Debug - Estado Atual")]
     [SerializeField, Tooltip("Cidade atual detectada (somente leitura)")]
     private int _currentCityNumber = 0;
-    [SerializeField, Tooltip("Momento atual do jogo (somente leitura)")]
-    private int _currentMomentNumber = 0;
     private SaveClientZone _saveZone;
-    private SaveClientMoment _saveMoment;
     private HashSet<int> _citiesShownThisSession = new HashSet<int>();
+
+    public UnityEvent onAwake;
     void Awake()
     {
+        onAwake?.Invoke();
+        if (onStartCardGame == null)
+        {
+            onStartCardGame = new GameSetupEvent();
+        }
+        onStartCardGame.AddListener(StartCardGame);
         if (playerControl != null) playerControl.SetControl(false);
         _saveZone = FindFirstObjectByType<SaveClientZone>();
-        _saveMoment = FindFirstObjectByType<SaveClientMoment>();
         _citiesShownThisSession.Clear();
         if (cityNameCanvasGroup == null)
         {
@@ -79,10 +90,6 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnBankChecked += HandleBankChecked;
         GameEvents.OnPlayerTeleport += HandlePlayerTeleport;
         GameEvents.OnCurtainOpenedAfterTeleport += HandleCurtainOpenedAfterTeleport;
-        if (_saveMoment != null)
-        {
-            _saveMoment.OnMomentChanged += OnMomentChanged;
-        }
     }
     void OnDisable()
     {
@@ -90,15 +97,10 @@ public class ManagerGameFlow : MonoBehaviour
         GameEvents.OnBankChecked -= HandleBankChecked;
         GameEvents.OnPlayerTeleport -= HandlePlayerTeleport;
         GameEvents.OnCurtainOpenedAfterTeleport -= HandleCurtainOpenedAfterTeleport;
-        if (_saveMoment != null)
-        {
-            _saveMoment.OnMomentChanged -= OnMomentChanged;
-        }
     }
     void HandlePlayerTeleport(Vector3 pos, WorldAreaId areaId)
     {
         UpdateCurrentCity(areaId);
-        RefreshMomentObjects();
         RefreshInteractableLogicalObjects();
     }
     void HandleCurtainOpenedAfterTeleport(WorldAreaId areaId)
@@ -113,11 +115,6 @@ public class ManagerGameFlow : MonoBehaviour
                 ShowCityName(areaId);
             }
         }
-    }
-    void OnMomentChanged(int newMoment)
-    {
-        _currentMomentNumber = newMoment;
-        RefreshMomentObjects();
     }
     bool IsCityExternalArea(WorldAreaId areaId)
     {
@@ -249,9 +246,6 @@ public class ManagerGameFlow : MonoBehaviour
     {
         CheckInitialState();
         CheckInitialCity();
-        if (_saveMoment == null) _saveMoment = FindFirstObjectByType<SaveClientMoment>();
-        UpdateDebugInfo();
-        RefreshMomentObjects();
         if (playerCutscene != null)
         playerCutscene.PlayCutsceneNoControl("Wake", 0.3f, "Interact", StartIntroDialogue);
         else
@@ -287,7 +281,6 @@ public class ManagerGameFlow : MonoBehaviour
             if (initialArea != WorldAreaId.None)
             {
                 UpdateCurrentCity(initialArea);
-                RefreshMomentObjects();
                 if (IsCityExternalArea(initialArea))
                 {
                     int cityNumber = ExtractCityNumber(initialArea.ToString());
@@ -360,71 +353,7 @@ public class ManagerGameFlow : MonoBehaviour
         if (cityNumber > 0 && cityNumber <= 7)
         {
             _currentCityNumber = cityNumber;
-            UpdateDebugInfo();
         }
-    }
-    void UpdateDebugInfo()
-    {
-        if (_saveMoment != null)
-        {
-            _currentMomentNumber = _saveMoment.GetMoment();
-        }
-    }
-    void RefreshMomentObjects()
-    {
-        if (_currentCityNumber < 1 || _currentCityNumber > 7) return;
-        if (_saveMoment == null) return;
-        int activeMoment = _saveMoment.GetMoment();
-        _currentMomentNumber = activeMoment;
-        GameObject cityParent = null;
-        int cityIndex = _currentCityNumber - 1;
-        if (cityIndex >= 0 && cityIndex < cityParents.Length && cityParents[cityIndex] != null)
-        {
-            cityParent = cityParents[cityIndex];
-        }
-        if (cityParent == null)
-        {
-            cityParent = GameObject.Find($"World_City_{_currentCityNumber}");
-        }
-        if (cityParent == null) return;
-        ProcessMomentObjectsInCity(cityParent.transform, activeMoment);
-    }
-    void ProcessMomentObjectsInCity(Transform parent, int activeMoment)
-    {
-        if (parent == null) return;
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            Transform child = parent.GetChild(i);
-            if (child == null) continue;
-            GameObject obj = child.gameObject;
-            if (obj == null) continue;
-            bool hasMomentTag = false;
-            for (int moment = 1; moment <= 5; moment++)
-            {
-                string momentTag = $"Moment_{moment}";
-                if (obj.CompareTag(momentTag))
-                {
-                    hasMomentTag = true;
-                    bool shouldBeActive = (moment == activeMoment);
-                    obj.SetActive(shouldBeActive);
-                    break;
-                }
-            }
-            if (!hasMomentTag)
-            {
-                obj.SetActive(true);
-            }
-            ProcessMomentObjectsInCity(child, activeMoment);
-        }
-    }
-    public void ForceRefreshMoments()
-    {
-        var managerCamera = FindFirstObjectByType<ManagerCamera>();
-        if (managerCamera != null && managerCamera.CurrentArea != null)
-        {
-            UpdateCurrentCity(managerCamera.CurrentArea.id);
-        }
-        RefreshMomentObjects();
     }
     void RefreshInteractableLogicalObjects()
     {
@@ -435,6 +364,51 @@ public class ManagerGameFlow : MonoBehaviour
             {
                 //interactable.UpdateVisualState();
             }
+        }
+    }
+    /// <summary>
+    /// Inicia um card game usando o setup padrão configurado no Inspector.
+    /// Pode ser chamado via Unity Events.
+    /// </summary>
+    public void StartCardGame()
+    {
+        StartCardGame(defaultCardGameSetup);
+    }
+    /// <summary>
+    /// Inicia um card game com um setup específico.
+    /// Pode ser chamado via Unity Events passando o SOGameSetup como parâmetro.
+    /// </summary>
+    /// <param name="gameSetup">Setup do jogo de cartas a ser iniciado</param>
+    public void StartCardGame(SOGameSetup gameSetup)
+    {
+        if (gameSetup == null)
+        {
+            Debug.LogWarning("ManagerGameFlow: Tentativa de iniciar card game sem SOGameSetup configurado.");
+            return;
+        }
+        var challengeManager = FindFirstObjectByType<ManagerCardGameChallenge>();
+        if (challengeManager == null)
+        {
+            GameObject go = new GameObject("ManagerCardGameChallenge");
+            challengeManager = go.AddComponent<ManagerCardGameChallenge>();
+        }
+        if (challengeManager != null)
+        {
+            challengeManager.SetGameSetup(gameSetup);
+        }
+        StartCoroutine(LoadCardGameAfterSave());
+    }
+    IEnumerator LoadCardGameAfterSave()
+    {
+        yield return null;
+        string sceneName = "CardGame";
+        if (ManagerSceneTransition.Instance != null)
+        {
+            ManagerSceneTransition.Instance.LoadScene(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

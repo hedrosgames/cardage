@@ -311,5 +311,53 @@ public class InteractableStoryNPC : Interactable, INotificationProvider
     {
         Destroy(gameObject);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (pointB != null)
+        {
+            // Draw line to Point B
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, pointB.position);
+            Gizmos.DrawWireSphere(pointB.position, 0.2f);
+        }
+
+        if (pointC != null)
+        {
+            // Draw line from B to C (if B exists) or A to C
+            Gizmos.color = Color.cyan;
+            Vector3 startC = pointB != null ? pointB.position : transform.position;
+            Gizmos.DrawLine(startC, pointC.position);
+            Gizmos.DrawWireSphere(pointC.position, 0.2f);
+        }
+
+        // --- VISUALIZATION OF SIGHT ---
+        Vector3 direction = GetSightDirectionVector();
+
+        // Draw the filled arc for sight
+        UnityEditor.Handles.color = new Color(0f, 0f, 0f, 0.2f); // Black with transparency
+
+        // We draw a solid arc. Since your logic is a "line of sight" with width (Raycast),
+        // we can visualize it as a thick line or a rectangular area.
+        // Based on your CheckLineOfSight logic:
+        // You check distance (sightDistance) and a dot product > 0.999f (very narrow)
+        // AND a Raycast.
+
+        // Let's draw the Raycast line clearly
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(transform.position, transform.position + direction * sightDistance);
+
+        // Let's draw a small solid disc at the NPC to show "black" as requested
+        UnityEditor.Handles.DrawSolidDisc(transform.position, Vector3.forward, 0.5f);
+
+        // Since your logic is effectively a raycast (very narrow beam), 
+        // drawing a "cone" might be misleading. Let's draw a thick line representation.
+        Vector3 endPoint = transform.position + direction * sightDistance;
+
+        // Draw a thick line using Handles
+        UnityEditor.Handles.DrawBezier(transform.position, endPoint, transform.position, endPoint, Color.black, null, 5f);
+    }
+#endif
 }
 
