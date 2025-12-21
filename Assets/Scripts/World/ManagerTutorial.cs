@@ -7,9 +7,13 @@ public class ManagerTutorial : MonoBehaviour
     public SOTutorial currentTutorial;
     public UITutorial uiTutorial;
     public PlayerControl playerControl;
+    [Header("Input Cooldown")]
+    [Tooltip("Tempo em segundos para ignorar inputs após a ativação do tutorial (evita inputs durante fade in)")]
+    public float inputCooldown = 0.5f;
     private HashSet<string> completedTutorials = new HashSet<string>();
     private SOTutorialCondition currentCondition;
     private bool checking;
+    private float tutorialStartTime;
     public event Action<SOTutorial> OnTutorialShown;
     public event Action<SOTutorial> OnTutorialClosed;
     void Awake()
@@ -29,6 +33,11 @@ public class ManagerTutorial : MonoBehaviour
     {
         if (!checking) return;
         if (currentTutorial == null || currentCondition == null) return;
+        
+        // Ignora inputs durante o cooldown (evita inputs durante fade in)
+        float timeSinceStart = Time.unscaledTime - tutorialStartTime;
+        if (timeSinceStart < inputCooldown) return;
+        
         if (currentCondition.CheckCompleted(this))
         {
             CompleteCurrentTutorial();
@@ -47,6 +56,7 @@ public class ManagerTutorial : MonoBehaviour
         }
         if (currentCondition != null) currentCondition.OnStart(this);
         checking = true;
+        tutorialStartTime = Time.unscaledTime;
         OnTutorialShown?.Invoke(tutorial);
     }
     void CompleteCurrentTutorial()
@@ -62,6 +72,7 @@ public class ManagerTutorial : MonoBehaviour
         currentTutorial = null;
         currentCondition = null;
         checking = false;
+        tutorialStartTime = 0f;
     }
     void Completed(SOTutorial tutorial)
     {

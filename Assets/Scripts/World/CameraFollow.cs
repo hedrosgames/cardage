@@ -12,10 +12,13 @@ public class CameraFollow : MonoBehaviour
     private Camera cam;
     private float camHeight;
     private float camWidth;
+    private float lastAspect; // Cache do aspect para evitar verificação desnecessária
+    
     void Awake()
     {
         cam = GetComponent<Camera>();
         UpdateCameraSize();
+        lastAspect = cam.aspect; // Inicializar cache
     }
     void UpdateCameraSize()
     {
@@ -24,6 +27,7 @@ public class CameraFollow : MonoBehaviour
         {
             camHeight = cam.orthographicSize;
             camWidth = camHeight * cam.aspect;
+            lastAspect = cam.aspect; // Atualizar cache
         }
     }
     public void SetBounds(bool active, Vector2 min, Vector2 max)
@@ -36,7 +40,11 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         if (target == null) return;
-        if (cam.aspect != (camWidth / camHeight)) UpdateCameraSize();
+        // Otimização: Verificar aspect apenas se realmente mudou
+        if (cam.aspect != lastAspect)
+        {
+            UpdateCameraSize();
+        }
         Vector3 targetPos = transform.position;
         float desiredX = target.position.x + offset.x;
         float desiredY = target.position.y + offset.y;

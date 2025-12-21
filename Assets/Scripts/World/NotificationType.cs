@@ -5,7 +5,6 @@ public enum NotificationType
     Tournament,
     RareCard,
     LostCard,
-    Duel,
-    Tutorial
+    Duel
 }
 

@@ -8260,6 +8260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359f3e54868740d499f95f9b696c69ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  interactionCooldownAfterDialogue: 0.3
 --- !u!50 &759405709
 Rigidbody2D:
   serializedVersion: 5
@@ -31881,7 +31882,7 @@ GameObject:
   - component: {fileID: 1322671551230748075}
   - component: {fileID: 4185355593330188903}
   - component: {fileID: 5629607261869170310}
-  - component: {fileID: 5629607261869170311}
+  - component: {fileID: 5629607261869170312}
   m_Layer: 6
   m_Name: Cartas
   m_TagString: Untagged
@@ -32146,7 +32147,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6948767, y: 1.2089937}
   m_EdgeRadius: 0
---- !u!114 &5629607261869170311
+--- !u!114 &5629607261869170312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32155,12 +32156,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5231916352491584037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b705b064b5ab204eab1d6becbe16f69, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d8d012f622f34b4b802b561913ea2e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableTutorial
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
   autoInteract: 0
   interactionIcon: {fileID: 8509819606669026249}
-  tutorial: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
   dialogue: {fileID: 11400000, guid: 286b976b74bce0a478520c82cde8cd4f, type: 2}
   onInteract:
     m_PersistentCalls:
@@ -35072,12 +35072,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7837328026762272922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b705b064b5ab204eab1d6becbe16f69, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d8d012f622f34b4b802b561913ea2e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableTutorial
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
   autoInteract: 0
   interactionIcon: {fileID: 2880517682463015936}
-  tutorial: {fileID: 11400000, guid: a4aa040afeba5ad4e860a94dc7c248c5, type: 2}
   dialogue: {fileID: 11400000, guid: e00eda7958e74524e8af1f3f10a61396, type: 2}
   onInteract:
     m_PersistentCalls:

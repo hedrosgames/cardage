@@ -21,6 +21,8 @@ public class ManagerNotification : MonoBehaviour
             return;
         }
         Instance = this;
+        // Garantir que nenhum interactable está focado no início
+        focusedInteractable = null;
     }
     void OnEnable()
     {
@@ -73,6 +75,9 @@ public class ManagerNotification : MonoBehaviour
         yield return null;
         yield return null;
         RegisterAllInteractables();
+        // Garantir que nenhum interactable está focado no início
+        focusedInteractable = null;
+        // Atualizar notificações - Alert só aparecerá quando realmente em foco
         RefreshAllNotifications();
     }
     void RegisterAllInteractables()
@@ -121,6 +126,7 @@ public class ManagerNotification : MonoBehaviour
         if (focusedInteractable == interactable)
         {
             focusedInteractable = null;
+            // Quando perde o foco, garantir que a notificação seja removida
             UpdateNotificationForInteractable(interactable);
         }
     }
@@ -137,7 +143,18 @@ public class ManagerNotification : MonoBehaviour
     void UpdateNotificationForInteractable(Interactable interactable)
     {
         if (interactable == null) return;
+        
+        // Verificar se está realmente focado antes de determinar o tipo
+        bool isFocused = focusedInteractable == interactable;
         NotificationType type = DetermineNotificationType(interactable);
+        
+        // Garantir que Alert só aparece quando realmente em foco
+        // (proteção extra mesmo que DetermineNotificationType já faça isso)
+        if (type == NotificationType.Alert && !isFocused)
+        {
+            type = NotificationType.None;
+        }
+        
         SpriteRenderer imgAlert = FindImgAlert(interactable);
         if (imgAlert == null)
         {
@@ -147,14 +164,24 @@ public class ManagerNotification : MonoBehaviour
     }
     void UpdateImgAlert(SpriteRenderer imgAlert, NotificationType type)
     {
-        if (imgAlert == null || notificationIcons == null)
+        if (imgAlert == null)
         {
-            if (imgAlert != null)
-            {
-                imgAlert.gameObject.SetActive(false);
-            }
             return;
         }
+        
+        // Se o tipo é None, sempre desativar
+        if (type == NotificationType.None)
+        {
+            imgAlert.gameObject.SetActive(false);
+            return;
+        }
+        
+        if (notificationIcons == null)
+        {
+            imgAlert.gameObject.SetActive(false);
+            return;
+        }
+        
         Sprite targetSprite = GetSpriteForNotification(type);
         if (targetSprite == null)
         {
@@ -181,8 +208,6 @@ public class ManagerNotification : MonoBehaviour
             return notificationIcons.iconLostCard;
             case NotificationType.Duel:
             return notificationIcons.iconDuel;
-            case NotificationType.Tutorial:
-            return notificationIcons.iconTutorial;
             default:
             return null;
         }
@@ -212,26 +237,9 @@ public class ManagerNotification : MonoBehaviour
     }
     NotificationType DetermineNotificationType(Interactable interactable)
     {
-        if (interactable is InteractableTutorial)
-        {
-            InteractableTutorial tutorialInteractable = interactable as InteractableTutorial;
-            if (tutorialInteractable.tutorial != null)
-            {
-                ManagerTutorial tutorialManager = FindFirstObjectByType<ManagerTutorial>();
-                if (tutorialManager != null)
-                {
-                    bool isCompleted = tutorialManager.IsCompleted(tutorialInteractable.tutorial.name);
-                    if (!isCompleted)
-                    {
-                        return NotificationType.Tutorial;
-                    }
-                }
-                else
-                {
-                    return NotificationType.Tutorial;
-                }
-            }
-        }
+        // Alert só aparece quando o interactable está realmente focado
+        bool isFocused = focusedInteractable == interactable;
+        
         INotificationProvider provider = interactable as INotificationProvider;
         if (provider != null)
         {
@@ -261,7 +269,8 @@ public class ManagerNotification : MonoBehaviour
         {
             return NotificationType.Tournament;
         }
-        if (focusedInteractable == interactable)
+        // Alert APENAS quando está focado - nunca fora do onFocus
+        if (isFocused)
         {
             return NotificationType.Alert;
         }
@@ -354,10 +363,6 @@ public class ManagerNotification : MonoBehaviour
             NotificationType currentType = DetermineNotificationType(interactable);
             bool isFocused = focusedInteractable == interactable;
             SpriteRenderer imgAlert = FindImgAlert(interactable);
-            if (interactable is InteractableTutorial)
-            {
-                InteractableTutorial tut = interactable as InteractableTutorial;
-            }
         }
     }
     [ContextMenu("Debug: Forçar Atualização")]

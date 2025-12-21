@@ -15,6 +15,6 @@ MonoBehaviour:
   message: 
   icon: {fileID: -1814872490, guid: b207b34a1b33a9841963e4f87cbc2d5a, type: 3}
   condition: {fileID: 11400000, guid: 22d04cecde4487947b5c24a11f14774c, type: 2}
-  runOnce: 1
+  runOnce: 0
   blockMovement: 1
-  blockInteraction: 0
+  blockInteraction: 1
