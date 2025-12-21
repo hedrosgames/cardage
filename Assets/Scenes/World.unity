@@ -13247,11 +13247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -13260,11 +13260,11 @@ PrefabInstance:
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1931865195}
+      objectReference: {fileID: 1929659139}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 759405708}
+      objectReference: {fileID: 1929659139}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -13283,11 +13283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ForceDestroyNPC
+      value: SetFlag
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -13295,19 +13295,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InteractableStoryNPC, Assembly-CSharp
+      value: SaveHelperComponent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PlayerInteract, Assembly-CSharp
+      value: SaveHelperComponent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: PlayerInteract, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 671f3316747fe2c4c9d5e1cc2a0b38aa, type: 2}
+    - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: SOZoneFlag, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -13320,7 +13324,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 682690143044855812, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1931865198}
   m_SourcePrefab: {fileID: 100100000, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
 --- !u!4 &1269083430 stripped
 Transform:
@@ -24698,17 +24705,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7123ff01263e079408794fef16dd49a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveClientSettings
---- !u!114 &1931865195 stripped
+--- !u!114 &1929659139 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
-  m_PrefabInstance: {fileID: 1269083429}
+  m_CorrespondingSourceObject: {fileID: 6003837613090330767, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+  m_PrefabInstance: {fileID: 1350969294}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e98f170536848848ad3ffb805df11ce, type: 3}
+  m_Script: {fileID: 11500000, guid: bb832476252a96d4e94a57a67e316586, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableStoryNPC
+  m_EditorClassIdentifier: Assembly-CSharp::SaveHelperComponent
+--- !u!1 &1931865194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682690143044855812, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+  m_PrefabInstance: {fileID: 1269083429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1931865198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931865194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
+  flagToCheck: {fileID: 11400000, guid: 671f3316747fe2c4c9d5e1cc2a0b38aa, type: 2}
+  checkOnStart: 1
+  disableInsteadOfDestroy: 0
 --- !u!1 &1941339438
 GameObject:
   m_ObjectHideFlags: 0

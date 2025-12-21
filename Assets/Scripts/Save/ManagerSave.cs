@@ -248,6 +248,36 @@ public void SaveSpecific(string saveId)
     }
     catch { }
 }
+public void SaveByEnum(SaveId saveId)
+{
+    string saveIdString = ConvertSaveIdToString(saveId);
+    if (!string.IsNullOrEmpty(saveIdString))
+    {
+        SaveSpecific(saveIdString);
+    }
+}
+private string ConvertSaveIdToString(SaveId saveId)
+{
+    switch (saveId)
+    {
+        case SaveId.SaveWorld:
+        return "saveworld";
+        case SaveId.SaveZone:
+        return "savezone";
+        case SaveId.SaveCard:
+        return "savecard";
+        case SaveId.SaveSettings:
+        return "savesettings";
+        case SaveId.SaveMenu:
+        return "savemenu";
+        case SaveId.SaveAchievements:
+        return "saveachievements";
+        case SaveId.SaveQuit:
+        return "savequit";
+        default:
+        return string.Empty;
+    }
+}
 public void WipeClientData(string idToWipe)
 {
     SOSaveDefinition definition = definitions.FirstOrDefault(d => d.id == idToWipe);

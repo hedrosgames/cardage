@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2757872995530906924}
   - component: {fileID: 2162806936409578985}
   - component: {fileID: 3802680729848954006}
+  - component: {fileID: 6003837613090330767}
   m_Layer: 0
   m_Name: _SaveManager
   m_TagString: Untagged
@@ -174,3 +175,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SaveClientPlayer
   saveDefinition: {fileID: 11400000, guid: c0a5c3d4175c8884c894605a2f74fb55, type: 2}
   playerData: {fileID: 11400000, guid: 36709ab65105c4e45b503d41c5fc4331, type: 2}
+--- !u!114 &6003837613090330767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb832476252a96d4e94a57a67e316586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveHelperComponent
