@@ -74,5 +74,21 @@ public class PlayerMove : MonoBehaviour
         else
         interactionPoint.localPosition = new Vector3(LastDirection.x * offsetSide.x, offsetSide.y, 0);
     }
+    public void FaceDirection(Vector2 direction)
+    {
+        if (direction == Vector2.zero) return;
+        LastDirection = direction;
+        if (anim != null)
+        {
+            anim.SetFloat("directionX", LastDirection.x);
+            anim.SetFloat("directionY", LastDirection.y);
+            anim.SetBool("isMoving", false);
+        }
+        if (sr != null)
+        {
+            sr.flipX = LastDirection.x < 0;
+        }
+        UpdateInteractionPoint();
+    }
 }
 

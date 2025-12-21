@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb417b5aae59874585ba1c15cb2ebac, type: 3}
   m_Name: NotificationConfig
   m_EditorClassIdentifier: Assembly-CSharp::SONotificationIcons
-  iconAlert: {fileID: 21300000, guid: 4701020ad5a254186b3082d1f2f37ba0, type: 3}
+  iconAlert: {fileID: 21300000, guid: 3233afe4c448d4eb198cfb1ca54feb3b, type: 3}
   iconTournament: {fileID: 21300000, guid: 9ea72647c24be493ba6f15a9cd2a24ae, type: 3}
   iconRareCard: {fileID: 21300000, guid: 03b3f669dc5706a4592344c6385af858, type: 3}
   iconLostCard: {fileID: 21300000, guid: fe3852467ea5e4b488f8c7e0006c970b, type: 3}
