@@ -6,7 +6,6 @@ public class SOTutorialConditionOpenPhone : SOTutorialCondition
     public override void OnStart(ManagerTutorial manager)
     {
         bankChecked = false;
-        // Remove o evento antes de adicionar novamente (evita múltiplas inscrições)
         GameEvents.OnBankChecked -= OnBankChecked;
         GameEvents.OnBankChecked += OnBankChecked;
     }
@@ -17,12 +16,10 @@ public class SOTutorialConditionOpenPhone : SOTutorialCondition
     void OnBankChecked()
     {
         bankChecked = true;
-        // Remove o evento assim que a condição é atendida
         GameEvents.OnBankChecked -= OnBankChecked;
     }
     void OnDestroy()
     {
-        // Fallback para garantir limpeza
         GameEvents.OnBankChecked -= OnBankChecked;
     }
 }

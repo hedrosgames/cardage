@@ -14,11 +14,8 @@ public class PlayerInteract : MonoBehaviour
     [Tooltip("Tempo em segundos para ignorar interações após um diálogo terminar (evita conflito com input E)")]
     public float interactionCooldownAfterDialogue = 0.3f;
     private float canInteractTime = 0f;
-    
-    // Otimização: Cache para reduzir chamadas de Physics
-    private float detectionCheckInterval = 0.1f; // Verificar a cada 0.1s ao invés de cada frame
+    private float detectionCheckInterval = 0.1f;
     private float lastDetectionTime = 0f;
-    
     void Awake()
     {
         move = GetComponent<PlayerMove>();
@@ -26,7 +23,6 @@ public class PlayerInteract : MonoBehaviour
         interactionPoint = transform.Find("InteractionPoint");
         if (interactionPoint == null)
         {
-            Debug.LogError("InteractionPoint não encontrado no PlayerInteract!");
         }
         playerCollider = GetComponent<Collider2D>();
         if (playerCollider == null)
@@ -58,7 +54,6 @@ public class PlayerInteract : MonoBehaviour
     }
     void Update()
     {
-        // Otimização: Verificar detecção apenas a intervalos, não a cada frame
         if (Time.time - lastDetectionTime >= detectionCheckInterval)
         {
             DetectInteractable();
@@ -73,9 +68,7 @@ public class PlayerInteract : MonoBehaviour
     }
     void DetectInteractable()
     {
-        // Otimização: Removido transform.Find do Update (já verificado no Awake)
         if (interactionPoint == null) return;
-        
         Vector2 detectionPoint = interactionPoint.position;
         float detectionRadius = 0.3f;
         Collider2D col = Physics2D.OverlapCircle(detectionPoint, detectionRadius, mask);

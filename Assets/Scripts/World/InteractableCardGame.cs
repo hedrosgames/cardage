@@ -81,7 +81,6 @@ public class InteractableCardGame : Interactable, INotificationProvider
     void Start()
     {
         CheckIfAlreadyChallenged();
-        // Otimização: Buscar player no Start ao invés de Update
         if (playerTransform == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -108,8 +107,7 @@ public class InteractableCardGame : Interactable, INotificationProvider
     {
         if (autoInteract)
         {
-            // Otimização: Verificar linha de visão apenas a intervalos
-            if (Time.frameCount % 5 == 0) // A cada 5 frames (~12 vezes por segundo a 60fps)
+            if (Time.frameCount % 5 == 0)
             {
                 CheckLineOfSight();
             }
@@ -145,32 +143,22 @@ public class InteractableCardGame : Interactable, INotificationProvider
     void CheckLineOfSight()
     {
         if (isWaitingForDialogue) return;
-        
-        // Otimização: Remover busca de player no Update (já buscado no Start)
         if (playerTransform == null) return;
-        
         Vector3 npcPos = transform.position;
         Vector3 playerPos = playerTransform.position;
         Vector3 direction = GetSightDirectionVector();
         Vector3 toPlayer = playerPos - npcPos;
-        
-        // Otimização: Verificação de distância antes de cálculos complexos
         float sqrDistance = toPlayer.sqrMagnitude;
         if (sqrDistance > sightDistance * sightDistance) return;
-        
         Vector3 normalizedToPlayer = toPlayer.normalized;
         Vector3 normalizedDirection = direction.normalized;
         float dot = Vector3.Dot(normalizedDirection, normalizedToPlayer);
         if (dot < 0.999f) return;
-        
         float distanceAlongLine = Vector3.Dot(toPlayer, normalizedDirection);
         if (distanceAlongLine <= 0 || distanceAlongLine > sightDistance) return;
-        
         Vector3 projectedPoint = npcPos + normalizedDirection * distanceAlongLine;
         float distanceFromLine = Vector3.Distance(playerPos, projectedPoint);
         if (distanceFromLine > 0.1f) return;
-        
-        // Otimização: Raycast apenas se passou todas as verificações anteriores
         Vector2 rayOrigin = npcPos;
         Vector2 rayDirection = (playerPos - npcPos).normalized;
         float distance = Mathf.Sqrt(sqrDistance);

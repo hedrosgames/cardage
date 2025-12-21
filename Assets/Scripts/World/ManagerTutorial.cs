@@ -33,11 +33,8 @@ public class ManagerTutorial : MonoBehaviour
     {
         if (!checking) return;
         if (currentTutorial == null || currentCondition == null) return;
-        
-        // Ignora inputs durante o cooldown (evita inputs durante fade in)
         float timeSinceStart = Time.unscaledTime - tutorialStartTime;
         if (timeSinceStart < inputCooldown) return;
-        
         if (currentCondition.CheckCompleted(this))
         {
             CompleteCurrentTutorial();

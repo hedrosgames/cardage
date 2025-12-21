@@ -26,7 +26,10 @@ public class PhoneApp_Drive : MonoBehaviour
     {
         if (statusText != null) statusText.text = "Aguardando...";
         StopAllCoroutines();
-        StartCoroutine(CheckSequenceRoutine());
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(CheckSequenceRoutine());
+        }
     }
     void OnEnable()
     {
@@ -64,13 +67,24 @@ public class PhoneApp_Drive : MonoBehaviour
         if (seq == introDialogue)
         {
             if (DialogueManager != null)
-            GameEvents.OnDialogueFinished += OnDialogueFinished;
+            GameEvents.OnDialogueFinished -= OnDialogueFinished;
             PerformSave();
         }
     }
     void PerformSave()
     {
-        StartCoroutine(SaveProcessRoutine());
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(SaveProcessRoutine());
+        }
+        else
+        {
+            if (ManagerSave.Instance != null)
+            {
+                ManagerSave.Instance.SaveAll();
+            }
+            GameEvents.OnDriveSaved?.Invoke();
+        }
     }
     IEnumerator SaveProcessRoutine()
     {
