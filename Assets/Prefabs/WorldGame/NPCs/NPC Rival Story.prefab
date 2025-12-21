@@ -12,6 +12,42 @@ PrefabInstance:
       propertyPath: sightDistance
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: dialogueClosing
+      value: 
+      objectReference: {fileID: 11400000, guid: 95bb342d5527da24195106c436b00029, type: 2}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: delayBeforeMoving
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveHelperComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 671f3316747fe2c4c9d5e1cc2a0b38aa, type: 2}
+    - target: {fileID: -8324197711962698396, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: SOZoneFlag, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2381464842855114799, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -54,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515126139071213921, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4126714307232940746, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
       propertyPath: m_Name
@@ -71,5 +107,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4126714307232940746, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9136628404674888195}
   m_SourcePrefab: {fileID: 100100000, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+--- !u!1 &682690143044855812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126714307232940746, guid: 682979f56c7a5734fbf070bec157fab2, type: 3}
+  m_PrefabInstance: {fileID: 3475776008475192014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9136628404674888195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682690143044855812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
+  flagToCheck: {fileID: 11400000, guid: 671f3316747fe2c4c9d5e1cc2a0b38aa, type: 2}
+  disableInsteadOfDestroy: 0
+  alsoCheckOnStart: 1

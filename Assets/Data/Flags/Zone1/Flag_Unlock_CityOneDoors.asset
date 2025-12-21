@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae767b0fd5caa341b8ed9c10fe879ca, type: 3}
-  m_Name: Flag_Intro_Zap_z1
+  m_Name: Flag_Unlock_CityOneDoors
   m_EditorClassIdentifier: Assembly-CSharp::SOZoneFlag
-  id: flag_intro_zap_z1
-  description: usado para garantir a primeira vez q abre o zap
+  id: flag_unlock_cityonedoors
+  description: "Usada para destravar todas as portas da cidade, ap\xF3s ganhar o
+    deck inicial"

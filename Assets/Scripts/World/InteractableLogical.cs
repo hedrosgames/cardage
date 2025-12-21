@@ -5,21 +5,22 @@ public class InteractableLogical : Interactable, INotificationProvider
 {
     public SOZoneFlag requiredFlag;
     [HideInInspector] public bool invertCondition;
-    public SOZoneFlag onLoadCheckFlag;
-    public bool disableIfFlagExists = true;
-    public GameObject disableObjectOnFinished;
-    [Header("Notificação")]
-    [Tooltip("Flag de item necessária para mostrar notificação especial")]
-    public SOZoneFlag notificationItemFlag;
-    [Tooltip("Tipo de notificação quando a flag de item estiver ativa")]
-    public NotificationType notificationTypeWhenItemActive = NotificationType.None;
-    [Header("[SUCESSO]")]
+    [HideInInspector] public SOZoneFlag onLoadCheckFlag;
+    [HideInInspector] public bool disableIfFlagExists = true;
+
+    [HideInInspector] public SOZoneFlag notificationItemFlag;
+    [HideInInspector] public NotificationType notificationTypeWhenItemActive = NotificationType.None;
+
+    [Header("[SE TIVER A FLAG OU FOR VAZIO]")]
     public SODialogueSequence dialogueOnSuccess;
     public SOZoneFlag setFlagOnSuccess;
+    public GameObject disableObjectOnFinished;
     public UnityEvent onInteractSuccess;
-    [Header("[FALHA]")]
+    
+    [Header("[SE NÃO TIVER A FLAG]")]
     public SODialogueSequence dialogueOnFail;
     public UnityEvent onInteractFail;
+
     private SaveClientZone saveZone;
     private bool isWaitingForDialogue = false;
     private float interactionCooldown = 0f;

@@ -433,7 +433,7 @@ public class ManagerGameFlow : MonoBehaviour
         {
             if (interactable != null)
             {
-                interactable.UpdateVisualState();
+                //interactable.UpdateVisualState();
             }
         }
     }
