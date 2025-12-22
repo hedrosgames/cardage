@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-
 public class QuitLogic : MonoBehaviour
 {
     public ManagerMainMenu mainMenu;
@@ -10,23 +9,19 @@ public class QuitLogic : MonoBehaviour
     public GameObject buttonsContainer;
     public Button yesButton;
     public Button noButton;
-
     int currentStage = 0;
-
     void OnEnable()
     {
         currentStage = 0;
         yesButton.onClick.AddListener(OnYesClicked);
         noButton.onClick.AddListener(OnNoClicked);
         ManagerLocalization.OnLanguageChanged += UpdateUI;
-        
         if (AchievementSystem.IsUnlocked("achiev1"))
         {
             currentStage = 2;
         }
         UpdateUI();
     }
-
     void OnDisable()
     {
         if (currentStage != 2)
@@ -37,7 +32,6 @@ public class QuitLogic : MonoBehaviour
         noButton.onClick.RemoveListener(OnNoClicked);
         ManagerLocalization.OnLanguageChanged -= UpdateUI;
     }
-
     void OnYesClicked()
     {
         if (currentStage == 0)
@@ -59,7 +53,6 @@ public class QuitLogic : MonoBehaviour
             UpdateUI();
         }
     }
-
     void OnNoClicked()
     {
         ResetState();
@@ -68,7 +61,6 @@ public class QuitLogic : MonoBehaviour
             mainMenu.CancelQuit();
         }
     }
-
     public void ResetState()
     {
         if (currentStage != 2)
@@ -77,17 +69,14 @@ public class QuitLogic : MonoBehaviour
             StartCoroutine(UpdateUIDelayed());
         }
     }
-
     IEnumerator UpdateUIDelayed()
     {
         yield return null;
         UpdateUI();
     }
-
     void UpdateUI()
     {
         if (ManagerLocalization.Instance == null || messageText == null) return;
-
         if (currentStage == 0)
         {
             messageText.text = ManagerLocalization.Instance.GetText("MENU_TXTQUIT_1");
@@ -105,3 +94,4 @@ public class QuitLogic : MonoBehaviour
         }
     }
 }
+

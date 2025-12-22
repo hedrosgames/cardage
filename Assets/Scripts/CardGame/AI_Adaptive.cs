@@ -3,7 +3,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/AI/Adaptive")]
 public class AI_Adaptive : AIBehaviorBase
 {
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public int safetyMargin = 1;
     private CardSlot _chosenSlot;
     public override CardButton ChooseCard(List<CardButton> hand)

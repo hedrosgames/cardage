@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
-/// Editor window para gerenciar NPCs que jÃ¡ desafiaram o jogador.
-/// Exibe a lista de NPCs na cena com suas configuraÃ§Ãµes.
+/// Editor window para gerenciar NPCs que já desafiaram o jogador.
+/// Exibe a lista de NPCs na cena com suas configurações.
 /// </summary>
 public class EditorNPCChallengeWindow : EditorWindow
 {
@@ -26,7 +26,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         public SOGameSetup gameSetup;
     }
     
-    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de NPCs Desafiados")]
+    [MenuItem("Central de Configuração/Central de NPCs Desafiados")]
     public static void ShowWindow()
     {
         EditorNPCChallengeWindow window = GetWindow<EditorNPCChallengeWindow>("Central de NPCs");
@@ -46,11 +46,11 @@ public class EditorNPCChallengeWindow : EditorWindow
         EditorGUILayout.LabelField("Central de NPCs", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         
-        // SeleÃ§Ã£o da flag
+        // Seleção da flag
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Flag de NPCs Desafiados:", GUILayout.Width(180));
         
-        // Atualiza o Ã­ndice selecionado baseado na flag atual
+        // Atualiza o índice selecionado baseado na flag atual
         if (challengedNpcsFlag != null)
         {
             int currentIndex = npcFlags.IndexOf(challengedNpcsFlag);
@@ -84,7 +84,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         
         EditorGUILayout.Space();
         
-        // BotÃ£o de atualizar
+        // Botão de atualizar
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Atualizar Lista de NPCs"))
         {
@@ -103,7 +103,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         
         if (saveZone == null)
         {
-            EditorGUILayout.HelpBox("SaveClientZone nÃ£o encontrado na cena. Execute o jogo para visualizar os dados.", MessageType.Warning);
+            EditorGUILayout.HelpBox("SaveClientZone não encontrado na cena. Execute o jogo para visualizar os dados.", MessageType.Warning);
             if (GUILayout.Button("Procurar SaveClientZone"))
             {
                 FindSaveZone();
@@ -149,7 +149,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         EditorGUILayout.LabelField("NPC:", GUILayout.Width(50));
         EditorGUILayout.LabelField(npc.gameObject.name, EditorStyles.boldLabel);
         
-        // BotÃ£o para selecionar na hierarquia
+        // Botão para selecionar na hierarquia
         if (GUILayout.Button("Selecionar", GUILayout.Width(80)))
         {
             Selection.activeGameObject = npc.gameObject;
@@ -165,18 +165,18 @@ public class EditorNPCChallengeWindow : EditorWindow
         EditorGUILayout.LabelField(string.IsNullOrEmpty(npc.npcId) ? "<sem ID>" : npc.npcId, EditorStyles.wordWrappedLabel);
         EditorGUILayout.EndHorizontal();
         
-        // Status (jÃ¡ desafiou ou nÃ£o)
+        // Status (já desafiou ou não)
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("JÃ¡ Desafiou:", GUILayout.Width(100));
+        EditorGUILayout.LabelField("Já Desafiou:", GUILayout.Width(100));
         
         Color originalColor = GUI.color;
         GUI.color = npc.hasChallenged ? Color.green : Color.red;
         EditorGUILayout.Toggle(npc.hasChallenged, GUILayout.Width(20));
         GUI.color = originalColor;
         
-        EditorGUILayout.LabelField(npc.hasChallenged ? "SIM" : "NÃƒO", GUILayout.Width(50));
+        EditorGUILayout.LabelField(npc.hasChallenged ? "SIM" : "NÃO", GUILayout.Width(50));
         
-        // BotÃ£o para remover da lista (apenas em play mode)
+        // Botão para remover da lista (apenas em play mode)
         if (Application.isPlaying && npc.hasChallenged && GUILayout.Button("Remover", GUILayout.Width(70)))
         {
             RemoveNpcId(npc.npcId);
@@ -226,7 +226,7 @@ public class EditorNPCChallengeWindow : EditorWindow
     {
         FindSaveZone();
         
-        // Carrega apenas flags que comeÃ§am com "Flag_NPC_"
+        // Carrega apenas flags que começam com "Flag_NPC_"
         npcFlags.Clear();
         string[] guids = AssetDatabase.FindAssets("t:SOZoneFlag");
         
@@ -243,7 +243,7 @@ public class EditorNPCChallengeWindow : EditorWindow
         // Ordena por nome
         npcFlags = npcFlags.OrderBy(f => f.name).ToList();
         
-        // Atualiza o Ã­ndice selecionado
+        // Atualiza o índice selecionado
         if (challengedNpcsFlag != null)
         {
             selectedFlagIndex = npcFlags.IndexOf(challengedNpcsFlag);
@@ -266,7 +266,7 @@ public class EditorNPCChallengeWindow : EditorWindow
             InteractableCardGame interactable = npcObj.GetComponent<InteractableCardGame>();
             if (interactable == null) continue;
             
-            // Ocultar NPCs que nÃ£o tÃªm a flag configurada
+            // Ocultar NPCs que não têm a flag configurada
             if (interactable.challengedNpcsFlag != challengedNpcsFlag) continue;
             
             NPCInfo info = new NPCInfo
@@ -277,7 +277,7 @@ public class EditorNPCChallengeWindow : EditorWindow
                 gameSetup = interactable.gameSetup
             };
             
-            // Verifica se jÃ¡ desafiou
+            // Verifica se já desafiou
             if (!string.IsNullOrEmpty(info.npcId))
             {
                 info.hasChallenged = saveZone.HasIdInFlag(challengedNpcsFlag, info.npcId);

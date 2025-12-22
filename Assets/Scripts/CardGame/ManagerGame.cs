@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 public class ManagerGame : MonoBehaviour
 {
-    [Header("ConfiguraÃ§Ã£o da Partida")]
+    [Header("Configuração da Partida")]
     public SOGameSetup setup;
     public ManagerBoard boardManager;
     public ManagerTurn turnManager;
     public GameObject boardCardPrefab;
-    [Header("UI & InteraÃ§Ã£o")]
+    [Header("UI & Interação")]
     public List<CardButton> playerHandButtons;
     public List<CardButton> opponentHandButtons;
     public Canvas canvas;

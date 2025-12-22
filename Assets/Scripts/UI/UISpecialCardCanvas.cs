@@ -4,13 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 public class UISpecialCardCanvas : MonoBehaviour
 {
-    [Header("ReferÃªncias")]
+    [Header("Referências")]
     public CanvasGroup canvasGroup;
-    [Header("BotÃµes")]
+    [Header("Botões")]
     public Button[] cardButtons = new Button[3];
     [Header("Cartas")]
     public SOCardData[] cardsToGive = new SOCardData[3];
-    [Header("ConfiguraÃ§Ã£o de Fade")]
+    [Header("Configuração de Fade")]
     public float fadeInDuration = 0.3f;
     public float fadeOutDuration = 0.3f;
     private Coroutine fadeRoutine;

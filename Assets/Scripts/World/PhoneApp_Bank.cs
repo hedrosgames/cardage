@@ -6,7 +6,7 @@ public class PhoneApp_Bank : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI txtBalance;
     public string initialBalance = "R$ 4,20";
-    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    [Header("Configuração - Primeira Vez")]
     public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
     private SaveClientGameFlow _saveGameFlow;

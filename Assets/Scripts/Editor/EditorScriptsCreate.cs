@@ -10,17 +10,17 @@ public class EditorScriptsCreate : EditorWindow
     {
         string clip = EditorGUIUtility.systemCopyBuffer;
         
-        // ValidaÃ§Ã£o Inicial
+        // Validação Inicial
         if (string.IsNullOrEmpty(clip))
         {
-            EditorFeedback.ShowFeedback("Falha", "NÃ£o tem script no clipboard", false);
+            EditorFeedback.ShowFeedback("Falha", "Não tem script no clipboard", false);
             return;
         }
 
         string className = ExtractClassName(clip);
         if (string.IsNullOrEmpty(className))
         {
-            EditorFeedback.ShowFeedback("Falha", "NÃ£o encontrei 'class Nome' no cÃ³digo", false);
+            EditorFeedback.ShowFeedback("Falha", "Não encontrei 'class Nome' no código", false);
             return;
         }
 
@@ -47,14 +47,14 @@ public class EditorScriptsCreate : EditorWindow
 
         string finalPath = Path.Combine(targetFolder, className + ".cs");
 
-        // Verifica existÃªncia
+        // Verifica existência
         if (File.Exists(finalPath))
         {
             EditorFeedback.ShowFeedback("Falha", $"Script Existente: {className}", false);
             return;
         }
 
-        // CriaÃ§Ã£o
+        // Criação
         try
         {
             File.WriteAllText(finalPath, clip);
@@ -69,7 +69,7 @@ public class EditorScriptsCreate : EditorWindow
         }
         catch
         {
-            EditorFeedback.ShowFeedback("Erro CrÃ­tico", "Erro ao gravar arquivo no disco", false);
+            EditorFeedback.ShowFeedback("Erro Crítico", "Erro ao gravar arquivo no disco", false);
         }
     }
 

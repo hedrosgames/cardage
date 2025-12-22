@@ -5,7 +5,7 @@ public class InteractableSimple : Interactable, INotificationProvider
     public SODialogueSequence dialogue;
     [Header("Evento Extra")]
     public UnityEvent onInteract;
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public bool runOnce = false;
     private bool hasTriggered = false;
     private SpriteRenderer _cachedAlertRef;

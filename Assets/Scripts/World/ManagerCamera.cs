@@ -228,7 +228,7 @@ public class ManagerCamera : MonoBehaviour
                             Gizmos.DrawLine(center + Vector3.left, center + Vector3.right);
                             Gizmos.DrawLine(center + Vector3.up, center + Vector3.down);
                             #if UNITY_EDITOR
-                            Handles.Label(center + Vector3.up * 2, "LARGURA INSUFICIENTE!\nCÃ¢mera > Limite", new GUIStyle { normal = { textColor = Color.magenta }, alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold });
+                            Handles.Label(center + Vector3.up * 2, "LARGURA INSUFICIENTE!\nCâmera > Limite", new GUIStyle { normal = { textColor = Color.magenta }, alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold });
                             #endif
                         }
                         else

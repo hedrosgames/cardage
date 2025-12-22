@@ -5,10 +5,10 @@ using System.Collections;
 public class ManagerNewGame : MonoBehaviour
 {
     public static ManagerNewGame Instance { get; private set; }
-    [Header("PainÃ©is")]
+    [Header("Painéis")]
     public RectTransform pnlStartGame;
     public RectTransform pnlCutscene;
-    [Header("CustomizaÃ§Ã£o - Start Game")]
+    [Header("Customização - Start Game")]
     public Button btnMale;
     public Button btnFemale;
     public Button btnColor1;

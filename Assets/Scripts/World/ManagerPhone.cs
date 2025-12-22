@@ -9,17 +9,17 @@ public class ManagerPhone : MonoBehaviour
     [Header("UI Geral")]
     public CanvasGroup phoneCanvasGroup;
     public CanvasGroup homeScreenGroup;
-    [Header("NavegaÃ§Ã£o")]
+    [Header("Navegação")]
     public Button btnHome;
     public Button btnClose;
-    [Header("PainÃ©is dos Apps")]
+    [Header("Painéis dos Apps")]
     public GameObject pnlBank;
     public GameObject pnlZap;
     public GameObject pnlDrive;
-    [Header("ConfiguraÃ§Ã£o - Geral")]
+    [Header("Configuração - Geral")]
     public SOZoneFlag unlockFlag;
     public float fadeDuration = 0.3f;
-    [Header("ConfiguraÃ§Ã£o - DiÃ¡logo ao Fechar")]
+    [Header("Configuração - Diálogo ao Fechar")]
     public SOZoneFlag flagConditionToPlayDialogue;
     public SODialogueSequence dialogueOnClose;
     private bool isOpen = false;

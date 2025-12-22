@@ -2,7 +2,7 @@
 [CreateAssetMenu(menuName = "Config/NotificationIcons")]
 public class SONotificationIcons : ScriptableObject
 {
-    [Header("Ãcones de NotificaÃ§Ã£o")]
+    [Header("Ícones de Notificação")]
     public Sprite iconAlert;
     public Sprite iconTournament;
     public Sprite iconRareCard;

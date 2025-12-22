@@ -3,9 +3,9 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     public bool autoInteract = false;
-    [Header("Salvamento AutomÃ¡tico")]
+    [Header("Salvamento Automático")]
     public SaveId saveOnInteract = SaveId.None;
-    [Header("Eventos de InteraÃ§Ã£o")]
+    [Header("Eventos de Interação")]
     public UnityEvent OnInteractionStart;
     [HideInInspector]public GameObject interactionIcon;
     protected virtual void Awake()

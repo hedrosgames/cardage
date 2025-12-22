@@ -31,19 +31,19 @@ public class EditorSaveDebugger : EditorWindow
         // SaveClientWorld - campos: px, py, pz, cx, cy, cz, areaId, tutorialsDone
         var worldFields = new Dictionary<string, string>
         {
-            { "px", "PosiÃ§Ã£o Player X" },
-            { "py", "PosiÃ§Ã£o Player Y" },
-            { "pz", "PosiÃ§Ã£o Player Z" },
-            { "cx", "PosiÃ§Ã£o Camera X" },
-            { "cy", "PosiÃ§Ã£o Camera Y" },
-            { "cz", "PosiÃ§Ã£o Camera Z" },
+            { "px", "Posição Player X" },
+            { "py", "Posição Player Y" },
+            { "pz", "Posição Player Z" },
+            { "cx", "Posição Camera X" },
+            { "cy", "Posição Camera Y" },
+            { "cz", "Posição Camera Z" },
             { "areaId", "Ãrea Atual" },
-            { "areaid", "Ãrea Atual" }, // minÃºsculo
+            { "areaid", "Ãrea Atual" }, // minúsculo
 
         };
         fieldDescriptions["World"] = worldFields;
         fieldDescriptions["SaveWorld"] = worldFields;
-        fieldDescriptions["saveworld"] = worldFields; // minÃºsculo
+        fieldDescriptions["saveworld"] = worldFields; // minúsculo
         // SaveClientCard - campos: deckId, opponentId, rules
         var cardFields = new Dictionary<string, string>
         {
@@ -53,18 +53,18 @@ public class EditorSaveDebugger : EditorWindow
         };
         fieldDescriptions["Card"] = cardFields;
         fieldDescriptions["SaveCard"] = cardFields;
-        fieldDescriptions["savecard"] = cardFields; // minÃºsculo
+        fieldDescriptions["savecard"] = cardFields; // minúsculo
         // SaveClientSettings - campos: musicVolume, sfxVolume, language, resolution
         var settingsFields = new Dictionary<string, string>
         {
-            { "musicVolume", "Volume MÃºsica" },
+            { "musicVolume", "Volume Música" },
             { "sfxVolume", "Volume SFX" },
             { "language", "Idioma" },
-            { "resolution", "ResoluÃ§Ã£o" }
+            { "resolution", "Resolução" }
         };
         fieldDescriptions["Settings"] = settingsFields;
         fieldDescriptions["SaveSettings"] = settingsFields;
-        fieldDescriptions["savesettings"] = settingsFields; // minÃºsculo
+        fieldDescriptions["savesettings"] = settingsFields; // minúsculo
         // SaveClientZone - campos: keys, values (arrays)
         var zoneFields = new Dictionary<string, string>
         {
@@ -73,7 +73,7 @@ public class EditorSaveDebugger : EditorWindow
         };
         fieldDescriptions["Zone"] = zoneFields;
         fieldDescriptions["SaveZone"] = zoneFields;
-        fieldDescriptions["savezone"] = zoneFields; // minÃºsculo
+        fieldDescriptions["savezone"] = zoneFields; // minúsculo
     }
     [MenuItem("Save/Apagar Save")]
     static void QuickDelete()
@@ -138,7 +138,7 @@ public class EditorSaveDebugger : EditorWindow
             else
             {
                 GUI.color = new Color(1f, 0.6f, 0.6f);
-                GUILayout.Label("NÃƒO SALVO", EditorStyles.miniBoldLabel, GUILayout.Width(80));
+                GUILayout.Label("NÃO SALVO", EditorStyles.miniBoldLabel, GUILayout.Width(80));
                 GUI.color = Color.white;
             }
             EditorGUILayout.EndHorizontal();
@@ -206,13 +206,13 @@ public class EditorSaveDebugger : EditorWindow
         {
             return FormatZoneJson(json, fieldMap);
         }
-        // Se for SaveClientWorld, agrupa posiÃ§Ãµes do player e cÃ¢mera
+        // Se for SaveClientWorld, agrupa posições do player e câmera
         if (isWorld)
         {
             return FormatWorldJson(json, fieldMap);
         }
         // Usa regex para extrair pares chave-valor do JSON
-        // PadrÃ£o: "chave":"valor" ou "chave":valor
+        // Padrão: "chave":"valor" ou "chave":valor
         var matches = Regex.Matches(json, @"""([^""]+)""\s*:\s*(""[^""]*""|\[[^\]]*\]|[^,}]+)");
         List<string> formattedParts = new List<string>();
         foreach (Match match in matches)
@@ -247,7 +247,7 @@ public class EditorSaveDebugger : EditorWindow
         }
         if (formattedParts.Count == 0)
         {
-            // Fallback: mÃ©todo simples se regex nÃ£o funcionar
+            // Fallback: método simples se regex não funcionar
             string clean = json.Replace("{", "").Replace("}", "").Replace("\"", "");
             clean = clean.Replace(",", "  |  ");
             clean = clean.Replace(":", ": ");
@@ -271,26 +271,26 @@ public class EditorSaveDebugger : EditorWindow
                 {
                     value = value.Substring(1, value.Length - 2);
                 }
-                // Normaliza a chave para minÃºsculas para comparaÃ§Ã£o
+                // Normaliza a chave para minúsculas para comparação
                 fields[key.ToLowerInvariant()] = value;
             }
         }
         List<string> formattedParts = new List<string>();
-        // Agrupa posiÃ§Ã£o do player
+        // Agrupa posição do player
         if (fields.ContainsKey("px") || fields.ContainsKey("py") || fields.ContainsKey("pz"))
         {
             string px = fields.ContainsKey("px") ? fields["px"] : "0";
             string py = fields.ContainsKey("py") ? fields["py"] : "0";
             string pz = fields.ContainsKey("pz") ? fields["pz"] : "0";
-            formattedParts.Add($"PosiÃ§Ã£o Player: {px} {py} {pz}");
+            formattedParts.Add($"Posição Player: {px} {py} {pz}");
         }
-        // Agrupa posiÃ§Ã£o da cÃ¢mera
+        // Agrupa posição da câmera
         if (fields.ContainsKey("cx") || fields.ContainsKey("cy") || fields.ContainsKey("cz"))
         {
             string cx = fields.ContainsKey("cx") ? fields["cx"] : "0";
             string cy = fields.ContainsKey("cy") ? fields["cy"] : "0";
             string cz = fields.ContainsKey("cz") ? fields["cz"] : "0";
-            formattedParts.Add($"PosiÃ§Ã£o Camera: {cx} {cy} {cz}");
+            formattedParts.Add($"Posição Camera: {cx} {cy} {cz}");
         }
         // Adiciona outros campos
         foreach (var kvp in fields)
@@ -298,7 +298,7 @@ public class EditorSaveDebugger : EditorWindow
             string key = kvp.Key;
             if (key == "px" || key == "py" || key == "pz" || key == "cx" || key == "cy" || key == "cz")
             {
-                continue; // JÃ¡ foram processados acima
+                continue; // Já foram processados acima
             }
             string value = kvp.Value;
             // Formata arrays - remove colchetes e aspas
@@ -332,7 +332,7 @@ public class EditorSaveDebugger : EditorWindow
                 // Remove aspas dos IDs
                 keysStr = keysStr.Replace("\"", "").Trim();
                 valuesStr = valuesStr.Trim();
-                // Divide por vÃ­rgulas
+                // Divide por vírgulas
                 string[] keys = string.IsNullOrEmpty(keysStr) ? new string[0] : keysStr.Split(',');
                 string[] values = string.IsNullOrEmpty(valuesStr) ? new string[0] : valuesStr.Split(',');
                 if (keys.Length > 0 && keys.Length == values.Length)

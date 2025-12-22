@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class ItemEffectMap : ItemEffect
 {
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public SOZoneFlag mapAppUnlockFlag;
     private SaveClientZone saveZone;
     public override void Initialize(SOItemData item)

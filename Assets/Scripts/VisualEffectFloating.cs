@@ -3,7 +3,7 @@
 public class VisualEffectFloating : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    [Header("AnimaÃ§Ã£o")]
+    [Header("Animação")]
     public float duration = 1.0f;
     public float floatSpeed = 2f;
     public Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);

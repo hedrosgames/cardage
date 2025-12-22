@@ -14,7 +14,7 @@ public class InteractableLogical : Interactable, INotificationProvider
     public SOZoneFlag setFlagOnSuccess;
     public GameObject disableObjectOnFinished;
     public UnityEvent onInteractSuccess;
-    [Header("[SE NÃƒO TIVER A FLAG]")]
+    [Header("[SE NÃO TIVER A FLAG]")]
     public SODialogueSequence dialogueOnFail;
     public UnityEvent onInteractFail;
     private SaveClientZone saveZone;

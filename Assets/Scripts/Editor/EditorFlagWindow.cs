@@ -12,7 +12,7 @@ public class EditorFlagWindow : EditorWindow
     private float lastRefreshTime = 0f;
     private const float REFRESH_INTERVAL = 0.5f;
 
-    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Flags")]
+    [MenuItem("Central de Configuração/Central de Flags")]
     public static void ShowWindow()
     {
         GetWindow<EditorFlagWindow>("Flag Manager");
@@ -30,7 +30,7 @@ public class EditorFlagWindow : EditorWindow
         EditorGUILayout.LabelField("Central de Flags", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
-        // BotÃ£o de refresh
+        // Botão de refresh
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Atualizar Lista", GUILayout.Width(120)))
         {
@@ -43,10 +43,10 @@ public class EditorFlagWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        // InformaÃ§Ãµes sobre SaveClientZone
+        // Informações sobre SaveClientZone
         if (saveZone == null)
         {
-            EditorGUILayout.HelpBox("SaveClientZone nÃ£o encontrado na cena atual. Execute o jogo ou adicione um SaveClientZone Ã  cena.", MessageType.Warning);
+            EditorGUILayout.HelpBox("SaveClientZone não encontrado na cena atual. Execute o jogo ou adicione um SaveClientZone Ã  cena.", MessageType.Warning);
         }
         else
         {
@@ -62,7 +62,7 @@ public class EditorFlagWindow : EditorWindow
             return;
         }
 
-        // CabeÃ§alho da tabela
+        // Cabeçalho da tabela
         EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
         EditorGUILayout.LabelField("Nome da Flag", EditorStyles.boldLabel, GUILayout.Width(400));
         EditorGUILayout.LabelField("Estado", EditorStyles.boldLabel, GUILayout.Width(100));
@@ -71,7 +71,7 @@ public class EditorFlagWindow : EditorWindow
 
         EditorGUILayout.Space(2);
 
-        // Lista scrollÃ¡vel
+        // Lista scrollável
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
         foreach (var flag in allFlags.OrderBy(f => f.name))
@@ -125,10 +125,10 @@ public class EditorFlagWindow : EditorWindow
         EditorGUILayout.LabelField(hasFlag ? "TRUE" : "FALSE", GUILayout.Width(100));
         GUI.color = originalColor;
 
-        // Valor numÃ©rico
+        // Valor numérico
         EditorGUILayout.LabelField(flagValue.ToString(), GUILayout.Width(80));
 
-        // BotÃ£o para setar manualmente (apenas em play mode)
+        // Botão para setar manualmente (apenas em play mode)
         if (Application.isPlaying && saveZone != null)
         {
             if (hasFlag)

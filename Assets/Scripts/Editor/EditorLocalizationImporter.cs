@@ -39,12 +39,12 @@ public class EditorLocalizationImporter : EditorWindow
     {
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
         EditorGUILayout.LabelField("Importador Multi-Abas (Cyber Red)", EditorStyles.boldLabel);
-        EditorGUILayout.HelpBox("Usa o mÃ©todo '/export' com ID da planilha. Requer permissÃ£o de leitura no link.", MessageType.Info);
+        EditorGUILayout.HelpBox("Usa o método '/export' com ID da planilha. Requer permissão de leitura no link.", MessageType.Info);
         EditorGUILayout.Space();
         targetSO = (SOLocalizationData)EditorGUILayout.ObjectField("Target SO", targetSO, typeof(SOLocalizationData), false);
         sheetId = EditorGUILayout.TextField("ID da Planilha", sheetId);
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("ConfiguraÃ§Ã£o das Abas", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Configuração das Abas", EditorStyles.boldLabel);
         for (int i = 0; i < sheets.Count; i++)
         {
             EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
@@ -98,7 +98,7 @@ public class EditorLocalizationImporter : EditorWindow
             EditorUtility.SetDirty(targetSO);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            EditorUtility.DisplayDialog("Sucesso", $"ImportaÃ§Ã£o concluÃ­da!\n{successCount} abas organizadas no SO.", "OK");
+            EditorUtility.DisplayDialog("Sucesso", $"Importação concluída!\n{successCount} abas organizadas no SO.", "OK");
         }
         else
         {

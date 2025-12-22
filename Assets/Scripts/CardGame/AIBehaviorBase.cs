@@ -2,7 +2,7 @@
 using UnityEngine;
 public abstract class AIBehaviorBase : ScriptableObject
 {
-    [Header("DocumentaÃ§Ã£o")]
+    [Header("Documentação")]
     [TextArea(5, 10)]
     public string description;
     public abstract CardButton ChooseCard(List<CardButton> hand);

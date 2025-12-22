@@ -4,7 +4,7 @@ using System.Linq;
 [CreateAssetMenu(menuName = "Game/AI/Novice")]
 public class AI_Novice : AIBehaviorBase
 {
-    [Header("NÃ­vel de Erro")]
+    [Header("Nível de Erro")]
     public float errorRate = 0.4f;
     private CardSlot _chosenSlot;
     private struct Move

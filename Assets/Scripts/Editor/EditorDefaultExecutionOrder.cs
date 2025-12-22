@@ -18,7 +18,7 @@ public class EditorDefaultExecutionOrder : EditorWindow
     }
     private void OnGUI()
     {
-        EditorGUILayout.LabelField("ConfiguraÃ§Ã£o de Ordem de ExecuÃ§Ã£o", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Configuração de Ordem de Execução", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
         EditorGUILayout.BeginHorizontal();
         executionOrderValue = EditorGUILayout.IntField("Ordem (- primeiro)", executionOrderValue);

@@ -4,7 +4,7 @@ using System.Linq;
 public class ManagerItems : MonoBehaviour
 {
     public static ManagerItems Instance { get; private set; }
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public List<SOItemData> allItems = new List<SOItemData>();
     private SaveClientZone saveZone;
     private Dictionary<SOItemData, bool> itemActiveStates = new Dictionary<SOItemData, bool>();

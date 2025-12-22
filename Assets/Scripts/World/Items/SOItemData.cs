@@ -1,10 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Item")]
 public class SOItemData : ScriptableObject
 {
-    [Header("IdentificaÃ§Ã£o")]
+    [Header("Identificação")]
     public string itemName;
-    [TextArea(3, 5)]
     public string description;
     [Header("Flag")]
     public SOZoneFlag itemFlag;

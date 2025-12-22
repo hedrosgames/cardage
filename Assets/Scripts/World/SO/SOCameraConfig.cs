@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Game.World;
 [CreateAssetMenu(menuName = "Config/Camera")]
 public class SOCameraConfig : ScriptableObject
 {
-    [Header("ReferÃªncia ObrigatÃ³ria")]
+    [Header("Referência Obrigatória")]
     public SOBoundaryLibrary boundaryLibrary;
-    [Header("ConfiguraÃ§Ã£o Global")]
+    [Header("Configuração Global")]
     public Vector2 globalFollowOffset;
     [System.Serializable]
     public class AreaSettings

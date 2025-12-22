@@ -2,7 +2,7 @@
 [CreateAssetMenu(menuName = "Config/Audio")]
 public class SOAudioConfig : ScriptableObject
 {
-    [Header("MÃºsica")]
+    [Header("Música")]
     public AudioClip mainMenuMusic;
     public AudioClip worldTheme;
     public AudioClip cardGameTheme;

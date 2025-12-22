@@ -3,7 +3,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName="Game/Rules/Roulette")]
 public class RuleRoulette : SOCapture
 {
-    [Header("Regras DisponÃ­veis")]
+    [Header("Regras Disponíveis")]
     public SOCapture[] availableRules;
     private SOCapture selectedRule;
     public override void OnMatchStart()

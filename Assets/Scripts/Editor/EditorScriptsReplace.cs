@@ -13,14 +13,14 @@ public class EditorScriptsReplace : EditorWindow
 
         if (string.IsNullOrEmpty(clip))
         {
-            EditorFeedback.ShowFeedback("Falha", "NÃ£o tem script no clipboard", false);
+            EditorFeedback.ShowFeedback("Falha", "Não tem script no clipboard", false);
             return;
         }
 
         string className = ExtractClassName(clip);
         if (string.IsNullOrEmpty(className))
         {
-            EditorFeedback.ShowFeedback("Falha", "Nome da classe nÃ£o encontrado no clipboard", false);
+            EditorFeedback.ShowFeedback("Falha", "Nome da classe não encontrado no clipboard", false);
             return;
         }
 
@@ -33,7 +33,7 @@ public class EditorScriptsReplace : EditorWindow
 
         if (string.IsNullOrEmpty(exactMatchGuid))
         {
-            EditorFeedback.ShowFeedback("Falha", $"Script NÃ£o Existente: {className}.cs", false);
+            EditorFeedback.ShowFeedback("Falha", $"Script Não Existente: {className}.cs", false);
             return;
         }
 
@@ -46,7 +46,7 @@ public class EditorScriptsReplace : EditorWindow
             AssetDatabase.Refresh();
             
             // Sucesso
-            EditorFeedback.ShowFeedback("Sucesso", $"Script SubstituÃ­do em: {path}", true);
+            EditorFeedback.ShowFeedback("Sucesso", $"Script Substituído em: {path}", true);
         }
         catch
         {

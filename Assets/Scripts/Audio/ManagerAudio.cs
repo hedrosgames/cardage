@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ManagerAudio : MonoBehaviour
 {
     public static ManagerAudio Instance { get; private set; }
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public SOAudioConfig audioConfig;
     public AudioMixer mainMixer;
     public SaveClientSettings settingsClient;

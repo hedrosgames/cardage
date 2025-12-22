@@ -11,17 +11,17 @@ public enum SightDirection
 }
 public class InteractableCardGame : Interactable, INotificationProvider
 {
-    [Header("ConfiguraÃ§Ã£o do Card Game")]
+    [Header("Configuração do Card Game")]
     public SOGameSetup gameSetup;
-    [Header("IdentificaÃ§Ã£o do NPC")]
+    [Header("Identificação do NPC")]
     public string npcId;
     public SOZoneFlag challengedNpcsFlag;
-    [Header("Modo: InteraÃ§Ã£o Normal (autoInteract = false)")]
+    [Header("Modo: Interação Normal (autoInteract = false)")]
     public SODialogueSequence dialogueBeforeGame;
-    [Header("Modo: Desafio AutomÃ¡tico (autoInteract = true)")]
+    [Header("Modo: Desafio Automático (autoInteract = true)")]
     public SightDirection sightDirection = SightDirection.Right;
     public float sightDistance = 5f;
-    [Header("NotificaÃ§Ãµes")]
+    [Header("Notificações")]
     public SOZoneFlag notificationItemFlag;
     public bool hasRareCard = false;
     public bool isInTournament = false;

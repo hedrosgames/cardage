@@ -2,7 +2,7 @@
 [RequireComponent(typeof(ParticleSystem))]
 public class FootstepDust : MonoBehaviour
 {
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public float movementThreshold = 0.001f;
     public bool respectTimeScale = true;
     private ParticleSystem ps;

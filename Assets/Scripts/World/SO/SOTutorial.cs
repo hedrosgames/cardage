@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/TutorialConfig")]
 public class SOTutorial : ScriptableObject
 {
@@ -6,7 +6,7 @@ public class SOTutorial : ScriptableObject
     public Sprite icon;
     public SOTutorialCondition condition;
     public bool runOnce = true;
-    [Header("RestriÃ§Ãµes")]
+    [Header("Restrições")]
     public bool blockMovement;
     public bool blockInteraction;
 }

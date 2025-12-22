@@ -10,7 +10,7 @@ public class ManagerMainMenu : MonoBehaviour
     public RectTransform panelSettings;
     public RectTransform panelAchievements;
     public RectTransform panelQuitConfirm;
-    [Header("Canvases (ReferÃªncias para Editor)")]
+    [Header("Canvases (Referências para Editor)")]
     public GameObject canvasMainMenu;
     public GameObject canvasSettings;
     public GameObject canvasAchievements;

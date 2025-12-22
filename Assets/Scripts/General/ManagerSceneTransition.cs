@@ -5,7 +5,7 @@ using System;
 public class ManagerSceneTransition : MonoBehaviour
 {
     public static ManagerSceneTransition Instance { get; private set; }
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public GameObject transitionPrefab;
     public bool fadeOnGameStart = true;
     public float startDelay = 1f;

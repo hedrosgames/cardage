@@ -10,7 +10,7 @@ public class PhoneApp_Drive : MonoBehaviour
     [Header("UI - Itens")]
     public Transform itemsContainer;
     public GameObject itemButtonPrefab;
-    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    [Header("Configuração - Primeira Vez")]
     public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
     private SaveClientGameFlow _saveGameFlow;
@@ -83,7 +83,7 @@ public class PhoneApp_Drive : MonoBehaviour
     {
         if (statusText != null) statusText.text = "Sincronizando...";
         yield return new WaitForSeconds(0.5f);
-        if (statusText != null) statusText.text = "Backup ConcluÃ­do.";
+        if (statusText != null) statusText.text = "Backup Concluído.";
         GameEvents.OnDriveSaved?.Invoke();
     }
     void RefreshItemsUI()

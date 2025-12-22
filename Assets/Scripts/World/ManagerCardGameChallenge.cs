@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 public class ManagerCardGameChallenge : MonoBehaviour
 {
     public static ManagerCardGameChallenge Instance { get; private set; }
-    [Header("ConfiguraÃ§Ã£o Atual")]
+    [Header("Configuração Atual")]
     public SOGameSetup pendingGameSetup;
     private string worldSceneName = "World";
     void Awake()

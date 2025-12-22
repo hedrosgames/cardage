@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class UIEntryAnimation : MonoBehaviour
 {
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public List<RectTransform> elements;
-    [Header("AnimaÃ§Ã£o")]
+    [Header("Animação")]
     public float startDelay = 2.0f;
     public float staggerTime = 0.1f;
     public float slideDuration = 0.5f;

@@ -2495,6 +2495,10 @@ PrefabInstance:
       propertyPath: flagToCheck
       value: 
       objectReference: {fileID: 11400000, guid: 47bed39a97d241d49b2dada5af8926e0, type: 2}
+    - target: {fileID: 9136628404674888195, guid: ec890f030c0b854409906eb3a20d6ee5, type: 3}
+      propertyPath: zoneFlagToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 47bed39a97d241d49b2dada5af8926e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4583,7 +4587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: a387266e7cdf0754eae69eaae8239c7f, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!114 &406653218
@@ -4598,7 +4603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: 47bed39a97d241d49b2dada5af8926e0, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!1 &407037943
@@ -12133,7 +12139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: b4790045a3010244185720d64fea918a, type: 2}
+  zoneFlagToCheck: {fileID: 11400000, guid: b4790045a3010244185720d64fea918a, type: 2}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!1 &1200773925
@@ -13273,6 +13280,10 @@ PrefabInstance:
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SOGameFlowFlag, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 9136628404674888195, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: flowFlagToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c4036c8ff058bf4493bbae773cfd55f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14575,7 +14586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: a387266e7cdf0754eae69eaae8239c7f, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!114 &1371472126
@@ -14590,7 +14602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: 47bed39a97d241d49b2dada5af8926e0, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!1 &1385077488
@@ -21579,7 +21592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: 51a80952c0e16f049be415d519edb626, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!1 &1573459895
@@ -33023,7 +33037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546fc3eca5a58d6419d98a8f3e04b8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagDestroyOnAwake
-  flagToCheck: {fileID: 11400000, guid: 93c76fdc2e96a814eacb764caa95a62d, type: 2}
+  zoneFlagToCheck: {fileID: 0}
+  flowFlagToCheck: {fileID: 0}
   disableInsteadOfDestroy: 0
   alsoCheckOnStart: 1
 --- !u!1001 &7313915691234641444

@@ -7,7 +7,7 @@ public class ScreenTransition : MonoBehaviour
 {
     public Canvas canvas;
     public CanvasGroup canvasGroup;
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public float fadeDuration = 1f;
     void Awake()
     {

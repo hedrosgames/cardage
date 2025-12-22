@@ -10,7 +10,7 @@ public class PlayerInteract : MonoBehaviour
     Interactable target;
     int mask;
     InputAction interactAction;
-    [Header("Cooldown de InteraÃ§Ã£o")]
+    [Header("Cooldown de Interação")]
     public float interactionCooldownAfterDialogue = 0.3f;
     private float canInteractTime = 0f;
     private float detectionCheckInterval = 0.1f;

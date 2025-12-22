@@ -3,7 +3,7 @@ using System.Collections.Generic;
 [DefaultExecutionOrder(-10000)]
 public class CheatAwake : MonoBehaviour
 {
-    [Header("ConfiguraÃ§Ã£o")]
+    [Header("Configuração")]
     public List<GameObject> objectsToWake;
     private void Awake()
     {

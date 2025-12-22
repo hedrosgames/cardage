@@ -18,21 +18,21 @@ public class EditorDeckCentral : EditorWindow
         "Samurai montado",
         "Samurai matador de ninja",
         "Samurai matador de oni",
-        "Espadachim da lÃ¢mina cega",
+        "Espadachim da lâmina cega",
         "Ultimo Samurai",
         "Ninja disfarce de vendedor",
         "Ninja da corda bamba",
         "Ninja fofoqueiro",
-        "Ninja do bambu que balanÃ§a",
+        "Ninja do bambu que balança",
         "Mestre da Estrela de 4 pontas",
         "Ninja dos mil jutsus",
-        "Monstro chorÃ£o",
+        "Monstro chorão",
         "Monstro da pele brilhante",
         "Monstro cego",
         "Monstro das asas pequenas",
-        "Kappa da Ã¡gua fervente",
+        "Kappa da água fervente",
         "Criatura do pantano",
-        "Kitsune de trÃªs caudas",
+        "Kitsune de três caudas",
         "Xounin do imposto",
         "Espadachim Zen"
     };
@@ -46,7 +46,7 @@ public class EditorDeckCentral : EditorWindow
         { CardRarity.Special, "â­" }
     };
     
-    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Decks")]
+    [MenuItem("Central de Configuração/Central de Decks")]
     public static void ShowWindow()
     {
         EditorDeckCentral window = GetWindow<EditorDeckCentral>("Central de Decks");
@@ -96,7 +96,7 @@ public class EditorDeckCentral : EditorWindow
         
         EditorGUILayout.BeginHorizontal();
         GUI.backgroundColor = showOnlyDemo ? Color.cyan : Color.white;
-        if (GUILayout.Button("Mostrar sÃ³ Demo", GUILayout.Height(25)))
+        if (GUILayout.Button("Mostrar só Demo", GUILayout.Height(25)))
         {
             showOnlyDemo = !showOnlyDemo;
         }
@@ -260,7 +260,7 @@ public class EditorDeckCentral : EditorWindow
             else
             {
                 GUI.color = Color.gray;
-                EditorGUILayout.LabelField("NÃ£o Demo", EditorStyles.miniLabel, GUILayout.Width(60));
+                EditorGUILayout.LabelField("Não Demo", EditorStyles.miniLabel, GUILayout.Width(60));
                 GUI.color = Color.white;
             }
             EditorGUILayout.EndHorizontal();

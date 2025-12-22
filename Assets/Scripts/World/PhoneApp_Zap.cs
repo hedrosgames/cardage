@@ -2,7 +2,7 @@
 using System.Collections;
 public class PhoneApp_Zap : MonoBehaviour
 {
-    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    [Header("Configuração - Primeira Vez")]
     public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
     [Header("UI")]

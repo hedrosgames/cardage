@@ -3,18 +3,18 @@ using UnityEngine.Events;
 using System.Collections;
 public class InteractableStoryNPC : Interactable, INotificationProvider
 {
-    [Header("DiÃ¡logos")]
+    [Header("Diálogos")]
     public SODialogueSequence dialogue;
     public SODialogueSequence dialogueClosing;
-    [Header("FinalizaÃ§Ã£o")]
+    [Header("Finalização")]
     public bool destroyOnFinish = true;
-    [Header("Linha de VisÃ£o")]
+    [Header("Linha de Visão")]
     public SightDirection sightDirection = SightDirection.Right;
     public float sightDistance = 5f;
     [Header("Pontos de Movimento")]
     public Transform pointB;
     public Transform pointC;
-    [Header("ConfiguraÃ§Ã£o de Movimento")]
+    [Header("Configuração de Movimento")]
     public float moveSpeed = 1.2f;
     public float arrivalDistance = 0.1f;
     [Header("Delays")]
