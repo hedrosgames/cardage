@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
 using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+
 public class ManagerSave : MonoBehaviour
 {
     public static ManagerSave Instance { get; private set;
@@ -47,12 +49,16 @@ public void RegisterClient(SOSaveDefinition definition, ISaveClient client)
 {
     if (definition == null || client == null) return;
     clients[definition.id] = client;
+    Debug.Log($"[ManagerSave] Cliente registrado: {definition.id}");
 }
 public void UnregisterClient(SOSaveDefinition definition, ISaveClient client)
 {
     if (definition == null) return;
     if (clients.TryGetValue(definition.id, out var existing) && existing == client)
-    clients.Remove(definition.id);
+    {
+        clients.Remove(definition.id);
+        Debug.Log($"[ManagerSave] Cliente desregistrado: {definition.id}");
+    }
 }
 public int GetRegisteredClientsCount()
 {
@@ -215,11 +221,23 @@ public void LoadSpecific(string saveId)
 }
 public void SaveSpecific(string saveId)
 {
+    Debug.Log($"[ManagerSave] Tentando SaveSpecific para ID: {saveId}");
     if (string.IsNullOrEmpty(saveId)) return;
     SOSaveDefinition definition = definitions.FirstOrDefault(d => d.id == saveId);
-    if (definition == null) return;
-    if (!clients.TryGetValue(saveId, out var client) || client == null) return;
+    if (definition == null)
+    {
+        Debug.LogWarning($"[ManagerSave] Definição de save não encontrada para ID: {saveId}");
+        return;
+    }
+    if (!clients.TryGetValue(saveId, out var client) || client == null)
+    {
+        Debug.LogWarning($"[ManagerSave] Cliente de save não registrado para ID: {saveId}. Verifique se o objeto que contém o script ISaveClient (ex: SaveClientWorld) está na cena e ativo.");
+        return;
+    }
+    
     string json = client.Save(definition);
+    Debug.Log($"[ManagerSave] JSON gerado pelo cliente {saveId}: {json}");
+    
     if (string.IsNullOrEmpty(json)) return;
     var file = new SaveFile();
     if (File.Exists(FilePath))
@@ -245,11 +263,16 @@ public void SaveSpecific(string saveId)
         var savedData = new Dictionary<string, string>();
         savedData[saveId] = json.Length > 100 ? json.Substring(0, 100) + "..." : json;
         SaveEvents.NotifySaveExecuted(caller, savedData);
+        Debug.Log($"[ManagerSave] Arquivo de save atualizado com sucesso para: {saveId}");
     }
-    catch { }
+    catch (System.Exception e)
+    {
+        Debug.LogError($"[ManagerSave] Erro ao gravar arquivo de save: {e.Message}");
+    }
 }
 public void SaveByEnum(SaveId saveId)
 {
+    Debug.Log($"[ManagerSave] SaveByEnum chamado com: {saveId}");
     string saveIdString = ConvertSaveIdToString(saveId);
     if (!string.IsNullOrEmpty(saveIdString))
     {

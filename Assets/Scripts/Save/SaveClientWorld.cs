@@ -101,30 +101,25 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
     public string Save(SOSaveDefinition definition)
     {
         var d = new Data();
-        if (hasTeleported)
+        var player = GameObject.FindWithTag("Player");
+        
+        if (player != null)
+        {
+            var p = player.transform.position;
+            d.px = RoundToTwoDecimals(p.x);
+            d.py = RoundToTwoDecimals(p.y);
+            d.pz = RoundToTwoDecimals(p.z);
+            Debug.Log($"[SaveClientWorld] Salvando posição atual do player: ({d.px}, {d.py}, {d.pz})");
+        }
+        else if (hasTeleported)
         {
             d.px = savedPlayerX;
             d.py = savedPlayerY;
             d.pz = savedPlayerZ;
+            Debug.Log($"[SaveClientWorld] Player não encontrado, usando posição de teleporte: ({d.px}, {d.py}, {d.pz})");
         }
-        else
-        {
-            var player = GameObject.FindWithTag("Player");
-            if (player != null)
-            {
-                var p = player.transform.position;
-                d.px = RoundToTwoDecimals(p.x);
-                d.py = RoundToTwoDecimals(p.y);
-                d.pz = RoundToTwoDecimals(p.z);
-            }
-        }
-        if (hasTeleported)
-        {
-            d.cx = savedCameraX;
-            d.cy = savedCameraY;
-            d.cz = savedCameraZ;
-        }
-        else
+
+        if (player != null)
         {
             var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
             if (cam != null && cam.cameraFollow != null)
@@ -135,11 +130,26 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
                 d.cz = RoundToTwoDecimals(camPos.z);
             }
         }
-        if (!string.IsNullOrEmpty(savedAreaId))
+        else if (hasTeleported)
         {
-            d.areaId = savedAreaId;
+            d.cx = savedCameraX;
+            d.cy = savedCameraY;
+            d.cz = savedCameraZ;
         }
         else
+        {
+            // Fallback para câmera se nem player nem teleporte existem
+            var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
+            if (cam != null && cam.cameraFollow != null)
+            {
+                var camPos = cam.cameraFollow.transform.position;
+                d.cx = RoundToTwoDecimals(camPos.x);
+                d.cy = RoundToTwoDecimals(camPos.y);
+                d.cz = RoundToTwoDecimals(camPos.z);
+            }
+        }
+
+        if (player != null)
         {
             var cam = UnityEngine.Object.FindFirstObjectByType<ManagerCamera>();
             if (cam != null)
@@ -154,14 +164,22 @@ public class SaveClientWorld : MonoBehaviour, ISaveClient
                 }
             }
         }
+        else if (!string.IsNullOrEmpty(savedAreaId))
+        {
+            d.areaId = savedAreaId;
+        }
+
         var tut = UnityEngine.Object.FindFirstObjectByType<ManagerTutorial>();
         if (tut != null)
         {
             List<string> list = tut.GetCompletedTutorialIds();
             if (list != null)
-            d.tutorialsDone = list.ToArray();
+                d.tutorialsDone = list.ToArray();
         }
-        return JsonUtility.ToJson(d);
+
+        string json = JsonUtility.ToJson(d);
+        Debug.Log($"[SaveClientWorld] Mundo salvo com sucesso. AreaId: {d.areaId}");
+        return json;
     }
     private string CreateFormattedJson(Data d)
     {
