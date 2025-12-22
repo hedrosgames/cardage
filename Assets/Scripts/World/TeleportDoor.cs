@@ -131,8 +131,7 @@ public class TeleportDoor : MonoBehaviour
             else
             {
                 finalPos += (offsetVector * targetDoor.landingDistance);
-                
-            }                
+            }
             finalPos.z = targetDoor.transform.position.z;
             player.position = finalPos;
             this.BlockExternal(cooldown);

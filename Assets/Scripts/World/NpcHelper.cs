@@ -1,50 +1,26 @@
 using UnityEngine;
 public class NpcHelper : MonoBehaviour
 {
-    [Header("Verifica a Flag e Ativa os componentes")]
     public SOZoneFlag flagToActivate;
-    [Header("Verifica a Flag e Troca o GameSetup")]
     public SOZoneFlag flagToChangeSetup;
-    [Header("Configurações Alternativas")]
-    [Tooltip("Game setup alternativo que será usado quando a flag for true")]
     public SOGameSetup alternateGameSetup;
-    [Tooltip("Diálogo alternativo que será usado quando a flag for true")]
     public SODialogueSequence alternateDialogue;
-    private bool alsoCheckOnStart = true;
     private SaveClientMoment saveMoment;
-    private Interactable interactable;
+    private SaveClientZone saveZone;
     private InteractableCardGame interactableCardGame;
     private InteractableSimple interactableSimple;
-    private InteractableLogical interactableLogical;
-    private InteractableStoryNPC interactableStoryNPC;
     private SOGameSetup originalGameSetup;
     private SODialogueSequence originalDialogue;
-    private SODialogueSequence originalDialogueFail;
-    private SODialogueSequence originalDialogueClosing;
     private SpriteRenderer spriteRenderer;
-    private BoxCollider boxCollider;
     private BoxCollider2D boxCollider2D;
     private void Awake()
     {
         saveMoment = FindFirstObjectByType<SaveClientMoment>();
-        interactable = GetComponent<Interactable>();
+        saveZone = FindFirstObjectByType<SaveClientZone>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         interactableCardGame = GetComponent<InteractableCardGame>();
         interactableSimple = GetComponent<InteractableSimple>();
-        interactableLogical = GetComponent<InteractableLogical>();
-        interactableStoryNPC = GetComponent<InteractableStoryNPC>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-
-        // Guarda os valores originais baseado no tipo de Interactable
-        StoreOriginalValues();
-
-        CheckFlagAndActivateComponents();
-        CheckFlagAndSwap();
-    }
-
-    private void StoreOriginalValues()
-    {
         if (interactableCardGame != null)
         {
             originalGameSetup = interactableCardGame.gameSetup;
@@ -54,206 +30,53 @@ public class NpcHelper : MonoBehaviour
         {
             originalDialogue = interactableSimple.dialogue;
         }
-        else if (interactableLogical != null)
-        {
-            originalDialogue = interactableLogical.dialogueOnSuccess;
-            originalDialogueFail = interactableLogical.dialogueOnFail;
-        }
-        else if (interactableStoryNPC != null)
-        {
-            originalDialogue = interactableStoryNPC.dialogue;
-            originalDialogueClosing = interactableStoryNPC.dialogueClosing;
-        }
-    }
-    private void CheckFlagAndActivateComponents()
-    {
-        if (flagToActivate == null) return;
-        if (saveMoment == null)
-        {
-            saveMoment = FindFirstObjectByType<SaveClientMoment>();
-            if (saveMoment == null) return;
-        }
-        if (saveMoment.HasFlag(flagToActivate))
-        {
-            // Ativa qualquer Interactable encontrado
-            if (interactable != null)
-            {
-                interactable.enabled = true;
-            }
-            // Ativa componentes visuais
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.enabled = true;
-            }
-            if (boxCollider != null)
-            {
-                boxCollider.enabled = true;
-            }
-            if (boxCollider2D != null)
-            {
-                boxCollider2D.enabled = true;
-            }
-        }
-    }
-    private void OnEnable()
-    {
-        CheckFlagAndSwap();
+        if (flagToActivate != null) SetComponentsEnabled(false);
     }
     private void Start()
     {
-        if (saveMoment != null)
-        {
-            if (alsoCheckOnStart)
-            {
-                CheckFlagAndSwap();
-            }
-            saveMoment.OnLoadComplete += OnSaveLoaded;
-        }
-        else
-        {
-            saveMoment = FindFirstObjectByType<SaveClientMoment>();
-            if (saveMoment != null)
-            {
-                saveMoment.OnLoadComplete += OnSaveLoaded;
-            }
-            if (alsoCheckOnStart)
-            {
-                CheckFlagAndSwap();
-            }
-        }
+        if (saveMoment != null) saveMoment.OnLoadComplete += RefreshNPC;
+        if (saveZone != null) saveZone.OnLoadComplete += RefreshNPC;
+        RefreshNPC();
     }
     private void OnDestroy()
     {
-        if (saveMoment != null)
-        {
-            saveMoment.OnLoadComplete -= OnSaveLoaded;
-        }
+        if (saveMoment != null) saveMoment.OnLoadComplete -= RefreshNPC;
+        if (saveZone != null) saveZone.OnLoadComplete -= RefreshNPC;
     }
-    private void OnSaveLoaded()
+    public void ForceCheckAndSwap() => RefreshNPC();
+    private void RefreshNPC()
     {
-        CheckFlagAndSwap();
-    }
-    public void ForceCheckAndSwap()
-    {
-        CheckFlagAndSwap();
-    }
-    private void CheckFlagAndSwap()
-    {
-        if (flagToChangeSetup == null) return;
-        if (interactable == null) return;
-        if (saveMoment == null)
+        if (flagToActivate != null)
         {
-            saveMoment = FindFirstObjectByType<SaveClientMoment>();
-            if (saveMoment == null) return;
+            bool active = CheckFlag(flagToActivate);
+            SetComponentsEnabled(active);
         }
-
-        bool hasFlag = saveMoment.HasFlag(flagToChangeSetup);
-
-        // Troca baseado no tipo de Interactable
-        if (interactableCardGame != null)
+        if (flagToChangeSetup != null)
         {
-            SwapCardGameValues(hasFlag);
-        }
-        else if (interactableSimple != null)
-        {
-            SwapSimpleValues(hasFlag);
-        }
-        else if (interactableLogical != null)
-        {
-            SwapLogicalValues(hasFlag);
-        }
-        else if (interactableStoryNPC != null)
-        {
-            SwapStoryNPCValues(hasFlag);
-        }
-    }
-
-    private void SwapCardGameValues(bool hasFlag)
-    {
-        if (hasFlag)
-        {
-            if (alternateGameSetup != null)
+            bool hasFlag = CheckFlag(flagToChangeSetup);
+            if (interactableCardGame != null)
             {
-                interactableCardGame.gameSetup = alternateGameSetup;
+                interactableCardGame.gameSetup = hasFlag && alternateGameSetup != null ? alternateGameSetup : originalGameSetup;
+                interactableCardGame.dialogueBeforeGame = hasFlag && alternateDialogue != null ? alternateDialogue : originalDialogue;
             }
-            if (alternateDialogue != null)
+            if (interactableSimple != null)
             {
-                interactableCardGame.dialogueBeforeGame = alternateDialogue;
-            }
-        }
-        else
-        {
-            if (originalGameSetup != null)
-            {
-                interactableCardGame.gameSetup = originalGameSetup;
-            }
-            if (originalDialogue != null)
-            {
-                interactableCardGame.dialogueBeforeGame = originalDialogue;
+                interactableSimple.dialogue = hasFlag && alternateDialogue != null ? alternateDialogue : originalDialogue;
             }
         }
     }
-
-    private void SwapSimpleValues(bool hasFlag)
+    private bool CheckFlag(SOZoneFlag flag)
     {
-        if (hasFlag)
-        {
-            if (alternateDialogue != null)
-            {
-                interactableSimple.dialogue = alternateDialogue;
-            }
-        }
-        else
-        {
-            if (originalDialogue != null)
-            {
-                interactableSimple.dialogue = originalDialogue;
-            }
-        }
+        if (saveZone != null && saveZone.HasFlag(flag)) return true;
+        if (saveMoment != null && saveMoment.HasFlag(flag)) return true;
+        return false;
     }
-
-    private void SwapLogicalValues(bool hasFlag)
+    private void SetComponentsEnabled(bool state)
     {
-        if (hasFlag)
-        {
-            if (alternateDialogue != null)
-            {
-                interactableLogical.dialogueOnSuccess = alternateDialogue;
-            }
-        }
-        else
-        {
-            if (originalDialogue != null)
-            {
-                interactableLogical.dialogueOnSuccess = originalDialogue;
-            }
-            if (originalDialogueFail != null)
-            {
-                interactableLogical.dialogueOnFail = originalDialogueFail;
-            }
-        }
-    }
-
-    private void SwapStoryNPCValues(bool hasFlag)
-    {
-        if (hasFlag)
-        {
-            if (alternateDialogue != null)
-            {
-                interactableStoryNPC.dialogue = alternateDialogue;
-            }
-        }
-        else
-        {
-            if (originalDialogue != null)
-            {
-                interactableStoryNPC.dialogue = originalDialogue;
-            }
-            if (originalDialogueClosing != null)
-            {
-                interactableStoryNPC.dialogueClosing = originalDialogueClosing;
-            }
-        }
+        if (spriteRenderer != null) spriteRenderer.enabled = state;
+        if (boxCollider2D != null) boxCollider2D.enabled = state;
+        if (interactableCardGame != null) interactableCardGame.enabled = state;
+        if (interactableSimple != null) interactableSimple.enabled = state;
     }
 }
 
