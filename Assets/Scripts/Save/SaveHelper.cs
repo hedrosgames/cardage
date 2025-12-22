@@ -3,7 +3,6 @@ public static class SaveHelper
 {
     public static void SaveByEnum(SaveId saveId)
     {
-        Debug.Log($"[SaveHelper] SaveByEnum solicitado: {saveId}");
         if (ManagerSave.Instance != null)
         {
             ManagerSave.Instance.SaveByEnum(saveId);
@@ -19,7 +18,6 @@ public static class SaveHelper
     }
     public static void SaveWorld()
     {
-        Debug.Log("[SaveHelper] Chamando SaveWorld estático.");
         SaveByEnum(SaveId.SaveWorld);
     }
     public static void SaveCard()
@@ -37,6 +35,10 @@ public static class SaveHelper
     public static void SaveQuit()
     {
         SaveByEnum(SaveId.SaveQuit);
+    }
+    public static void SaveMoment()
+    {
+        SaveByEnum(SaveId.SaveMoment);
     }
 }
 

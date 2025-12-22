@@ -32,6 +32,7 @@ public class SaveClientSettings : MonoBehaviour, ISaveClient
     }
     public string Save(SOSaveDefinition definition)
     {
+        if (ManagerSave.Instance != null) ManagerSave.Instance.RegisterClient(saveDefinition, this);
         var d = new Data
         {
             musicVolume = musicVolume,

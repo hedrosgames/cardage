@@ -54,10 +54,7 @@ public class InteractableLogical : Interactable, INotificationProvider
     public override void OnInteract()
     {
         if (isWaitingForDialogue || Time.time < interactionCooldown) return;
-        
-        // Executa o evento e o save centralizado
         TriggerSave();
-
         if (saveZone == null) saveZone = FindFirstObjectByType<SaveClientZone>();
         bool conditionMet = CheckCondition();
         if (conditionMet)

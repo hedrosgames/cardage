@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
-
 public class ManagerSave : MonoBehaviour
 {
     public static ManagerSave Instance { get; private set;
@@ -28,6 +27,17 @@ void Awake()
         transform.SetParent(null);
     }
     DontDestroyOnLoad(gameObject);
+    var localClients = GetComponents<ISaveClient>();
+    foreach (var client in localClients)
+    {
+        var field = client.GetType().GetField("saveDefinition");
+        if (field == null) field = client.GetType().GetField("_saveDefinition");
+        if (field != null)
+        {
+            SOSaveDefinition def = field.GetValue(client) as SOSaveDefinition;
+            if (def != null) RegisterClient(def, client);
+        }
+    }
     SceneManager.sceneLoaded += OnSceneLoaded;
     SaveEvents.RequestSave += SaveAll;
     SaveEvents.RequestLoad += LoadAll;
@@ -45,39 +55,33 @@ void OnDestroy()
         Instance = null;
     }
 }
-    public void RegisterClient(SOSaveDefinition definition, ISaveClient client)
+public void RegisterClient(SOSaveDefinition definition, ISaveClient client)
+{
+    if (definition == null || client == null) return;
+    if (clients.ContainsKey(definition.id) && client is MonoBehaviour mb)
     {
-        if (definition == null || client == null) return;
-        
-        // Registra o cliente no dicionário
-        clients[definition.id] = client;
-        
-        // Adiciona a definição na lista global se ela ainda não estiver lá
-        if (!definitions.Contains(definition))
-        {
-            definitions.Add(definition);
-        }
-        
-        Debug.Log($"[ManagerSave] Cliente registrado e pronto: {definition.id}");
+        if (Instance != null && mb.gameObject != Instance.gameObject) return;
     }
-
-    public void UnregisterClient(SOSaveDefinition definition, ISaveClient client)
+    clients[definition.id] = client;
+    if (!definitions.Contains(definition))
     {
-        if (definition == null) return;
-        if (clients.TryGetValue(definition.id, out var existing) && existing == client)
-        {
-            clients.Remove(definition.id);
-            Debug.Log($"[ManagerSave] Cliente removido: {definition.id}");
-        }
+        definitions.Add(definition);
     }
-
-    public int GetRegisteredClientsCount()
+}
+public void UnregisterClient(SOSaveDefinition definition, ISaveClient client)
+{
+    if (definition == null) return;
+    if (clients.TryGetValue(definition.id, out var existing) && existing == client)
     {
-        return clients.Count;
+        clients.Remove(definition.id);
     }
-
-    [Serializable]
-    class Entry
+}
+public int GetRegisteredClientsCount()
+{
+    return clients.Count;
+}
+[Serializable]
+class Entry
 {
     public string key;
     public string value;
@@ -233,23 +237,30 @@ public void LoadSpecific(string saveId)
 }
 public void SaveSpecific(string saveId)
 {
-    Debug.Log($"[ManagerSave] Tentando SaveSpecific para ID: {saveId}");
     if (string.IsNullOrEmpty(saveId)) return;
+    if (!clients.ContainsKey(saveId))
+    {
+        var localClients = GetComponents<ISaveClient>();
+        foreach (var c in localClients)
+        {
+            var field = c.GetType().GetField("saveDefinition");
+            if (field != null && field.GetValue(c) is SOSaveDefinition def && def.id == saveId)
+            {
+                RegisterClient(def, c);
+                break;
+            }
+        }
+    }
     SOSaveDefinition definition = definitions.FirstOrDefault(d => d.id == saveId);
     if (definition == null)
     {
-        Debug.LogWarning($"[ManagerSave] Definição de save não encontrada para ID: {saveId}");
         return;
     }
     if (!clients.TryGetValue(saveId, out var client) || client == null)
     {
-        Debug.LogWarning($"[ManagerSave] Cliente de save não registrado para ID: {saveId}. Verifique se o objeto que contém o script ISaveClient (ex: SaveClientWorld) está na cena e ativo.");
         return;
     }
-    
     string json = client.Save(definition);
-    Debug.Log($"[ManagerSave] JSON gerado pelo cliente {saveId}: {json}");
-    
     if (string.IsNullOrEmpty(json)) return;
     var file = new SaveFile();
     if (File.Exists(FilePath))
@@ -275,16 +286,13 @@ public void SaveSpecific(string saveId)
         var savedData = new Dictionary<string, string>();
         savedData[saveId] = json.Length > 100 ? json.Substring(0, 100) + "..." : json;
         SaveEvents.NotifySaveExecuted(caller, savedData);
-        Debug.Log($"[ManagerSave] Arquivo de save atualizado com sucesso para: {saveId}");
     }
-    catch (System.Exception e)
+    catch (System.Exception)
     {
-        Debug.LogError($"[ManagerSave] Erro ao gravar arquivo de save: {e.Message}");
     }
 }
 public void SaveByEnum(SaveId saveId)
 {
-    Debug.Log($"[ManagerSave] SaveByEnum chamado com: {saveId}");
     string saveIdString = ConvertSaveIdToString(saveId);
     if (!string.IsNullOrEmpty(saveIdString))
     {
@@ -330,11 +338,10 @@ public void WipeClientData(string idToWipe)
     string finalJson = JsonUtility.ToJson(file, true);
     File.WriteAllText(FilePath, finalJson);
 }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Carrega os dados imediatamente para todos os clientes que se registraram no Awake/OnEnable
-        LoadAll();
-    }
+void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    LoadAll();
+}
 public void LoadMoment()
 {
     LoadSpecific("savemoment");

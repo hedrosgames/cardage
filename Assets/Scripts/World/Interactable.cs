@@ -1,20 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
-
 public class Interactable : MonoBehaviour
 {
     public bool autoInteract = false;
-    
     [Header("Salvamento Automático")]
     [Tooltip("Tipo de salvamento que será executado ao interagir. Escolha 'None' para não salvar.")]
     public SaveId saveOnInteract = SaveId.None;
-    
     [Header("Eventos de Interação")]
     [Tooltip("Evento disparado no momento da interação.")]
     public UnityEvent OnInteractionStart;
-
     [HideInInspector]public GameObject interactionIcon;
-    
     protected virtual void Awake()
     {
         int layer = LayerMask.NameToLayer("Interactable");
@@ -27,24 +22,17 @@ public class Interactable : MonoBehaviour
         if (interactionIcon != null)
         interactionIcon.SetActive(false);
     }
-
     protected void TriggerSave()
     {
-        // 1. Dispara o evento do Inspector (se houver)
         if (OnInteractionStart != null && OnInteractionStart.GetPersistentEventCount() > 0)
         {
-            Debug.Log($"[Interactable] Invocando evento OnInteractionStart em '{gameObject.name}'");
             OnInteractionStart.Invoke();
         }
-
-        // 2. Executa o save baseado no Enum (Configuração direta no Inspector)
         if (saveOnInteract != SaveId.None)
         {
-            Debug.Log($"[Interactable] Salvamento automático solicitado: {saveOnInteract} em '{gameObject.name}'");
             SaveHelper.SaveByEnum(saveOnInteract);
         }
     }
-
     protected virtual void Reset()
     {
         FindIconAutomatically();

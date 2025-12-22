@@ -364,7 +364,6 @@ public class ManagerGameFlow : MonoBehaviour
     }
     public void StartCardGame()
     {
-        
         StartCardGame(defaultCardGameSetup);
     }
     public void StartCardGame(SOGameSetup gameSetup)

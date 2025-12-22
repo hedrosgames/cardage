@@ -28,15 +28,11 @@ public class InteractableSimple : Interactable, INotificationProvider
     public override void OnInteract()
     {
         if (runOnce && hasTriggered) return;
-        
-        // Executa o evento e o save centralizado
         TriggerSave();
-
         if (dialogue != null)
         {
             GameEvents.OnRequestDialogue?.Invoke(dialogue);
         }
-
         if (runOnce)
         {
             hasTriggered = true;

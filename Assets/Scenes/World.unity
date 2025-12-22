@@ -4759,7 +4759,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
@@ -4767,7 +4775,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1929659139}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929659139}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
@@ -4775,11 +4791,23 @@ PrefabInstance:
       value: SaveWorld
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveWorld
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SaveHelperComponent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveHelperComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5302223546113819804, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
@@ -24070,7 +24098,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
@@ -24078,7 +24114,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1929659139}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929659139}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
@@ -24086,11 +24130,23 @@ PrefabInstance:
       value: SaveWorld
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveWorld
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SaveHelperComponent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveHelperComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
       propertyPath: onBeforeStartGame.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160258888700052996, guid: eb4b119ae3caf9149810024388ae5090, type: 3}
+      propertyPath: OnInteractionStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5302223546113819804, guid: eb4b119ae3caf9149810024388ae5090, type: 3}

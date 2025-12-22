@@ -23,6 +23,7 @@ public class SaveClientCard : MonoBehaviour, ISaveClient
     }
     public string Save(SOSaveDefinition definition)
     {
+        if (ManagerSave.Instance != null) ManagerSave.Instance.RegisterClient(saveDefinition, this);
         var d = new Data();
         if (setup != null)
         {
