@@ -32,7 +32,7 @@ public class TeleportDoor : MonoBehaviour
     [Header("Ajustes de Chegada (Spawn)")]
     [Tooltip("Para qual direção o player será empurrado ao sair desta porta?")]
     public LandingDirection landingDirection = LandingDirection.Center;
-    float landingDistance = 1f;
+    float landingDistance = 1.5f;
     [Header("Cooldown")]
     public float cooldown = 0.5f;
     [Header("Estado da Porta")]
@@ -123,7 +123,16 @@ public class TeleportDoor : MonoBehaviour
         {
             Vector3 finalPos = targetDoor.transform.position;
             Vector3 offsetVector = targetDoor.GetDirectionVector();
-            finalPos += (offsetVector * targetDoor.landingDistance);
+            if ( landingDirection == LandingDirection.Up )
+            {
+                finalPos += (offsetVector * targetDoor.landingDistance);
+                finalPos.y -= 0.5f;
+            }
+            else
+            {
+                finalPos += (offsetVector * targetDoor.landingDistance);
+                
+            }                
             finalPos.z = targetDoor.transform.position.z;
             player.position = finalPos;
             this.BlockExternal(cooldown);
