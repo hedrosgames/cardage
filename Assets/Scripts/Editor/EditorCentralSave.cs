@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-
 public class EditorCentralSave : EditorWindow
 {
     Vector2 scroll;
@@ -11,11 +10,8 @@ public class EditorCentralSave : EditorWindow
     Dictionary<string, string> lastLoadResult = new Dictionary<string, string>();
     string lastSaveCaller = "";
     string lastLoadCaller = "";
-    string selectedFilter = ""; // ID do save selecionado para filtrar
-    
-    // Mapeamento automático: caller -> lista de saves afetados
+    string selectedFilter = "";
     static Dictionary<string, HashSet<string>> callerToSaveIds = new Dictionary<string, HashSet<string>>();
-    
     [System.Serializable]
     class SaveLocation
     {
@@ -24,15 +20,12 @@ public class EditorCentralSave : EditorWindow
         public string className;
         public string methodName;
         public bool isSave;
-        public List<string> affectedSaveIds = new List<string>(); 
-        public string personalNote = ""; // Observação pessoal do usuário
+        public List<string> affectedSaveIds = new List<string>();
+        public string personalNote = "";
     }
-    
     Dictionary<string, string> personalNotes = new Dictionary<string, string>();
-    
     static List<SaveLocation> saveLocations = new List<SaveLocation>
     {
-        // Save locations
         new SaveLocation { name = "SaveClientZone - SetFlag", description = "Quando uma flag de zona é definida", className = "SaveClientZone", methodName = "SetFlag", isSave = true },
         new SaveLocation { name = "SaveClientZone - SetFlagString", description = "Quando uma flag string de zona é definida", className = "SaveClientZone", methodName = "SetFlagString", isSave = true },
         new SaveLocation { name = "PhoneApp_Drive - OnAppOpen", description = "Quando o app Drive é aberto pela primeira vez", className = "PhoneApp_Drive", methodName = "OnAppOpen", isSave = true },
@@ -43,14 +36,11 @@ public class EditorCentralSave : EditorWindow
         new SaveLocation { name = "SliderSaveHandler - OnPointerUp", description = "Quando um slider é ajustado", className = "SliderSaveHandler", methodName = "OnPointerUp", isSave = true },
         new SaveLocation { name = "ManagerLocalization - SetLanguage", description = "Quando o idioma é alterado", className = "ManagerLocalization", methodName = "SetLanguage", isSave = true },
         new SaveLocation { name = "SaveClientAchievements - Unlock", description = "Quando uma conquista é desbloqueada", className = "SaveClientAchievements", methodName = "Unlock", isSave = true },
-        
-        // Load locations
         new SaveLocation { name = "SaveClientZone - Start", description = "Quando SaveClientZone inicia", className = "SaveClientZone", methodName = "Start", isSave = false },
         new SaveLocation { name = "SaveClientAchievements - Start", description = "Quando SaveClientAchievements inicia", className = "SaveClientAchievements", methodName = "Start", isSave = false },
         new SaveLocation { name = "ManagerSave - Awake", description = "Quando ManagerSave inicia", className = "ManagerSave", methodName = "Awake", isSave = false },
         new SaveLocation { name = "ManagerSave - OnSceneLoaded", description = "Quando uma cena é carregada", className = "ManagerSave", methodName = "OnSceneLoaded", isSave = false },
     };
-    
     [MenuItem("Central de Configuração/Central de Save")]
     static void Open()
     {
@@ -58,7 +48,6 @@ public class EditorCentralSave : EditorWindow
         window.DetectSaveMappings();
         window.LoadPersonalNotes();
     }
-    
     void OnEnable()
     {
         SaveEvents.OnSaveExecuted += OnSaveExecuted;
@@ -66,10 +55,8 @@ public class EditorCentralSave : EditorWindow
         DetectSaveMappings();
         LoadPersonalNotes();
     }
-    
     void LoadPersonalNotes()
     {
-        // Carrega observações pessoais salvas
         personalNotes.Clear();
         foreach (var location in saveLocations)
         {
@@ -82,21 +69,15 @@ public class EditorCentralSave : EditorWindow
             }
         }
     }
-    
     void SavePersonalNote(string locationKey, string note)
     {
-        // Salva observação pessoal
         personalNotes[locationKey] = note;
         UnityEditor.EditorPrefs.SetString($"EditorCentralSave_Note_{locationKey}", note);
     }
-    
     void DetectSaveMappings()
     {
-        // Mapeamento estático baseado no conhecimento do código
-        // Isso é mais confiável que análise dinâmica
         Dictionary<string, List<string>> staticMappings = new Dictionary<string, List<string>>
         {
-            // Save locations
             { "SaveClientZone.SetFlag", new List<string> { "savezone" } },
             { "SaveClientZone.SetFlagString", new List<string> { "savezone" } },
             { "PhoneApp_Drive.OnAppOpen", new List<string> { "savezone" } },
@@ -107,15 +88,11 @@ public class EditorCentralSave : EditorWindow
             { "SliderSaveHandler.OnPointerUp", new List<string> { "savesettings" } },
             { "ManagerLocalization.SetLanguage", new List<string> { "savesettings" } },
             { "SaveClientAchievements.Unlock", new List<string> { "saveachievements" } },
-            
-            // Load locations
             { "SaveClientZone.Start", new List<string> { "savezone" } },
             { "SaveClientAchievements.Start", new List<string> { "saveachievements" } },
             { "ManagerSave.Awake", new List<string> { "saveworld", "savezone", "savecard", "savesettings", "savemenu", "saveachievements" } },
             { "ManagerSave.OnSceneLoaded", new List<string> { "saveworld", "savezone", "savecard", "savesettings", "savemenu", "saveachievements" } }
         };
-        
-        // Aplica mapeamentos estáticos
         foreach (var location in saveLocations)
         {
             string key = $"{location.className}.{location.methodName}";
@@ -131,22 +108,17 @@ public class EditorCentralSave : EditorWindow
                 }
             }
         }
-        
         UpdateSaveLocationsFromMapping();
     }
-    
     void OnDisable()
     {
         SaveEvents.OnSaveExecuted -= OnSaveExecuted;
         SaveEvents.OnLoadExecuted -= OnLoadExecuted;
     }
-    
     void OnSaveExecuted(string caller, Dictionary<string, string> savedData)
     {
         lastSaveCaller = caller;
         lastSaveResult = new Dictionary<string, string>(savedData);
-        
-        // Atualiza mapeamento automático: caller -> saves afetados
         if (!string.IsNullOrEmpty(caller) && savedData != null && savedData.Count > 0)
         {
             if (!callerToSaveIds.ContainsKey(caller))
@@ -159,16 +131,12 @@ public class EditorCentralSave : EditorWindow
             }
             UpdateSaveLocationsFromMapping();
         }
-        
         Repaint();
     }
-    
     void OnLoadExecuted(string caller, Dictionary<string, string> loadedData)
     {
         lastLoadCaller = caller;
         lastLoadResult = new Dictionary<string, string>(loadedData);
-        
-        // Atualiza mapeamento automático para loads também
         if (!string.IsNullOrEmpty(caller) && loadedData != null && loadedData.Count > 0)
         {
             if (!callerToSaveIds.ContainsKey(caller))
@@ -181,17 +149,13 @@ public class EditorCentralSave : EditorWindow
             }
             UpdateSaveLocationsFromMapping();
         }
-        
         Repaint();
     }
-    
     void UpdateSaveLocationsFromMapping()
     {
-        // Atualiza os affectedSaveIds de cada SaveLocation baseado no mapeamento
         foreach (var location in saveLocations)
         {
             string key = $"{location.className}.{location.methodName}";
-            
             if (callerToSaveIds.ContainsKey(key))
             {
                 location.affectedSaveIds.Clear();
@@ -199,7 +163,6 @@ public class EditorCentralSave : EditorWindow
             }
         }
     }
-    
     void OnGUI()
     {
         GUILayout.Space(10);
@@ -211,30 +174,20 @@ public class EditorCentralSave : EditorWindow
         DrawResults();
         EditorGUILayout.EndScrollView();
     }
-    
     void DrawHeader()
     {
         EditorGUILayout.LabelField("FILTRO POR SAVE", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        
-        // Busca todos os SaveDefinitions
         var definitions = FindAllSaveDefinitions();
-        
         EditorGUILayout.LabelField("Filtrar por:", EditorStyles.miniLabel);
-        
         float buttonWidth = 120f;
         float buttonSpacing = 5f;
         float margin = 20f;
-        
-        // Calcula quantos botões cabem por linha baseado na largura da janela
         float windowWidth = position.width;
         float availableWidth = windowWidth - margin;
         int buttonsPerRow = Mathf.Max(1, Mathf.FloorToInt(availableWidth / (buttonWidth + buttonSpacing)));
-        
         int buttonCount = 0;
         EditorGUILayout.BeginHorizontal();
-        
-        // Botão "Todos" sempre visível na primeira linha
         bool isAllSelected = string.IsNullOrEmpty(selectedFilter);
         GUI.backgroundColor = isAllSelected ? new Color(0.4f, 0.8f, 0.4f) : Color.white;
         if (GUILayout.Button("Todos", GUILayout.Width(buttonWidth), GUILayout.ExpandWidth(false)))
@@ -243,19 +196,14 @@ public class EditorCentralSave : EditorWindow
         }
         GUI.backgroundColor = Color.white;
         buttonCount++;
-        
-        // Botões para cada SaveDefinition
         foreach (var def in definitions)
         {
             if (def == null) continue;
-            
-            // Quebra linha se necessário
             if (buttonCount > 0 && buttonCount % buttonsPerRow == 0)
             {
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
             }
-            
             bool isSelected = selectedFilter == def.id;
             GUI.backgroundColor = isSelected ? new Color(0.4f, 0.8f, 0.4f) : Color.white;
             if (GUILayout.Button(def.id, GUILayout.Width(buttonWidth), GUILayout.ExpandWidth(false)))
@@ -265,17 +213,13 @@ public class EditorCentralSave : EditorWindow
             GUI.backgroundColor = Color.white;
             buttonCount++;
         }
-        
         EditorGUILayout.EndHorizontal();
-        
         EditorGUILayout.Space(5);
-        
         if (!string.IsNullOrEmpty(selectedFilter))
         {
             EditorGUILayout.HelpBox($"Mostrando apenas locais que afetam: {selectedFilter}", MessageType.Info);
         }
     }
-    
     List<SOSaveDefinition> FindAllSaveDefinitions()
     {
         List<SOSaveDefinition> list = new List<SOSaveDefinition>();
@@ -288,18 +232,14 @@ public class EditorCentralSave : EditorWindow
         }
         return list;
     }
-    
     void DrawSaveLocations()
     {
         EditorGUILayout.LabelField("LOCAIS DE SAVE", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        
         bool hasAnyVisible = false;
         foreach (var location in saveLocations)
         {
             if (!location.isSave) continue;
-            
-            // Aplica filtro
             if (!string.IsNullOrEmpty(selectedFilter))
             {
                 bool matches = false;
@@ -313,7 +253,6 @@ public class EditorCentralSave : EditorWindow
                 }
                 if (!matches) continue;
             }
-            
             hasAnyVisible = true;
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             EditorGUILayout.BeginHorizontal();
@@ -325,7 +264,6 @@ public class EditorCentralSave : EditorWindow
             {
                 if (ManagerSave.Instance != null)
                 {
-                    // Salva apenas os saves específicos que este local afeta usando evento
                     if (location.affectedSaveIds.Count > 0)
                     {
                         foreach (var saveId in location.affectedSaveIds)
@@ -335,7 +273,6 @@ public class EditorCentralSave : EditorWindow
                     }
                     else
                     {
-                        // Se não há saves detectados, tenta salvar todos (comportamento antigo)
                         ManagerSave.Instance.SaveAll();
                     }
                 }
@@ -351,7 +288,6 @@ public class EditorCentralSave : EditorWindow
             }
             else
             {
-                // Mostra quantos clients estão registrados
                 int registeredCount = ManagerSave.Instance != null ? ManagerSave.Instance.GetRegisteredClientsCount() : 0;
                 if (registeredCount == 0)
                 {
@@ -375,29 +311,23 @@ public class EditorCentralSave : EditorWindow
             {
                 EditorGUILayout.LabelField("Afeta: (não detectado ainda - execute para detectar)", EditorStyles.miniLabel);
             }
-            
             EditorGUILayout.EndVertical();
             GUILayout.Space(2);
         }
-        
         if (!hasAnyVisible && !string.IsNullOrEmpty(selectedFilter))
         {
             EditorGUILayout.HelpBox($"Nenhum local de Save encontrado para: {selectedFilter}", MessageType.Info);
         }
     }
-    
     void DrawLoadLocations()
     {
         GUILayout.Space(10);
         EditorGUILayout.LabelField("LOCAIS DE LOAD", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        
         bool hasAnyVisible = false;
         foreach (var location in saveLocations)
         {
             if (location.isSave) continue;
-            
-            // Aplica filtro
             if (!string.IsNullOrEmpty(selectedFilter))
             {
                 bool matches = false;
@@ -411,7 +341,6 @@ public class EditorCentralSave : EditorWindow
                 }
                 if (!matches) continue;
             }
-            
             hasAnyVisible = true;
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             EditorGUILayout.BeginHorizontal();
@@ -448,24 +377,19 @@ public class EditorCentralSave : EditorWindow
             {
                 EditorGUILayout.LabelField("Afeta: (não detectado ainda - execute para detectar)", EditorStyles.miniLabel);
             }
-            
             EditorGUILayout.EndVertical();
             GUILayout.Space(2);
         }
-        
         if (!hasAnyVisible && !string.IsNullOrEmpty(selectedFilter))
         {
             EditorGUILayout.HelpBox($"Nenhum local de Load encontrado para: {selectedFilter}", MessageType.Info);
         }
     }
-    
     void DrawResults()
     {
         GUILayout.Space(10);
         EditorGUILayout.LabelField("RESULTADOS", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        
-        // Resultado do último Save
         if (!string.IsNullOrEmpty(lastSaveCaller))
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -489,10 +413,7 @@ public class EditorCentralSave : EditorWindow
             }
             EditorGUILayout.EndVertical();
         }
-        
         GUILayout.Space(5);
-        
-        // Resultado do último Load
         if (!string.IsNullOrEmpty(lastLoadCaller))
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -516,7 +437,6 @@ public class EditorCentralSave : EditorWindow
             }
             EditorGUILayout.EndVertical();
         }
-        
         if (string.IsNullOrEmpty(lastSaveCaller) && string.IsNullOrEmpty(lastLoadCaller))
         {
             EditorGUILayout.HelpBox("Execute um Save ou Load para ver os resultados aqui.", MessageType.Info);

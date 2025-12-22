@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
@@ -28,7 +28,6 @@ public class EditorSaveDebugger : EditorWindow
     static void InitializeFieldDescriptions()
     {
         fieldDescriptions.Clear();
-        // SaveClientWorld - campos: px, py, pz, cx, cy, cz, areaId, tutorialsDone
         var worldFields = new Dictionary<string, string>
         {
             { "px", "Posição Player X" },
@@ -37,14 +36,12 @@ public class EditorSaveDebugger : EditorWindow
             { "cx", "Posição Camera X" },
             { "cy", "Posição Camera Y" },
             { "cz", "Posição Camera Z" },
-            { "areaId", "Ãrea Atual" },
-            { "areaid", "Ãrea Atual" }, // minúsculo
-
+            { "areaId", "Área Atual" },
+            { "areaid", "Área Atual" },
         };
         fieldDescriptions["World"] = worldFields;
         fieldDescriptions["SaveWorld"] = worldFields;
-        fieldDescriptions["saveworld"] = worldFields; // minúsculo
-        // SaveClientCard - campos: deckId, opponentId, rules
+        fieldDescriptions["saveworld"] = worldFields;
         var cardFields = new Dictionary<string, string>
         {
             { "deckId", "Deck do Jogador" },
@@ -53,8 +50,7 @@ public class EditorSaveDebugger : EditorWindow
         };
         fieldDescriptions["Card"] = cardFields;
         fieldDescriptions["SaveCard"] = cardFields;
-        fieldDescriptions["savecard"] = cardFields; // minúsculo
-        // SaveClientSettings - campos: musicVolume, sfxVolume, language, resolution
+        fieldDescriptions["savecard"] = cardFields;
         var settingsFields = new Dictionary<string, string>
         {
             { "musicVolume", "Volume Música" },
@@ -64,8 +60,7 @@ public class EditorSaveDebugger : EditorWindow
         };
         fieldDescriptions["Settings"] = settingsFields;
         fieldDescriptions["SaveSettings"] = settingsFields;
-        fieldDescriptions["savesettings"] = settingsFields; // minúsculo
-        // SaveClientZone - campos: keys, values (arrays)
+        fieldDescriptions["savesettings"] = settingsFields;
         var zoneFields = new Dictionary<string, string>
         {
             { "keys", "Flags de Zona (IDs)" },
@@ -73,7 +68,7 @@ public class EditorSaveDebugger : EditorWindow
         };
         fieldDescriptions["Zone"] = zoneFields;
         fieldDescriptions["SaveZone"] = zoneFields;
-        fieldDescriptions["savezone"] = zoneFields; // minúsculo
+        fieldDescriptions["savezone"] = zoneFields;
     }
     [MenuItem("Save/Apagar Save")]
     static void QuickDelete()
@@ -186,7 +181,6 @@ public class EditorSaveDebugger : EditorWindow
     string FormatJson(string json, string saveId)
     {
         if (string.IsNullOrEmpty(json)) return "Vazio";
-        // Tenta encontrar o mapeamento baseado no ID do save
         Dictionary<string, string> fieldMap = null;
         bool isWorld = false;
         foreach (var kvp in fieldDescriptions)
@@ -201,257 +195,231 @@ public class EditorSaveDebugger : EditorWindow
                 break;
             }
         }
-        // Se for SaveClientZone, trata de forma especial (pode ter |STRING_DATA|)
         if (json.Contains("|STRING_DATA|"))
         {
             return FormatZoneJson(json, fieldMap);
         }
-        // Se for SaveClientWorld, agrupa posições do player e câmera
         if (isWorld)
         {
             return FormatWorldJson(json, fieldMap);
         }
-        // Usa regex para extrair pares chave-valor do JSON
-        // Padrão: "chave":"valor" ou "chave":valor
         var matches = Regex.Matches(json, @"""([^""]+)""\s*:\s*(""[^""]*""|\[[^\]]*\]|[^,}]+)");
-        List<string> formattedParts = new List<string>();
-        foreach (Match match in matches)
-        {
-            if (match.Groups.Count >= 3)
-            {
-                string key = match.Groups[1].Value;
-                string value = match.Groups[2].Value.Trim();
-                // Remove aspas se houver
-                if (value.StartsWith("\"") && value.EndsWith("\""))
-                {
-                    value = value.Substring(1, value.Length - 2);
-                }
-                // Formata arrays - remove colchetes e aspas
-                if (value.StartsWith("[") && value.EndsWith("]"))
-                {
-                    string arrayContent = value.Substring(1, value.Length - 2);
-                    // Remove aspas de cada item
-                    arrayContent = arrayContent.Replace("\"", "");
-                    if (key == "rules")
-                    {
-                        value = $"Regras: {arrayContent}";
-                    }
-                    else
-                    {
-                        value = arrayContent;
-                    }
-                }
-                string description = GetFieldDescription(key, saveId, fieldMap);
-                formattedParts.Add($"{description}: {value}");
-            }
-        }
-        if (formattedParts.Count == 0)
-        {
-            // Fallback: método simples se regex não funcionar
-            string clean = json.Replace("{", "").Replace("}", "").Replace("\"", "");
-            clean = clean.Replace(",", "  |  ");
-            clean = clean.Replace(":", ": ");
-            return clean;
-        }
-        return string.Join("  |  ", formattedParts);
-    }
-    string FormatWorldJson(string json, Dictionary<string, string> fieldMap)
+    List<string> formattedParts = new List<string>();
+    foreach (Match match in matches)
     {
-        // Extrai todos os campos do JSON (case-insensitive)
-        Dictionary<string, string> fields = new Dictionary<string, string>(System.StringComparer.OrdinalIgnoreCase);
-        var matches = Regex.Matches(json, @"""([^""]+)""\s*:\s*(""[^""]*""|\[[^\]]*\]|[^,}]+)");
-        foreach (Match match in matches)
+        if (match.Groups.Count >= 3)
         {
-            if (match.Groups.Count >= 3)
+            string key = match.Groups[1].Value;
+            string value = match.Groups[2].Value.Trim();
+            if (value.StartsWith("\"") && value.EndsWith("\""))
             {
-                string key = match.Groups[1].Value;
-                string value = match.Groups[2].Value.Trim();
-                // Remove aspas se houver
-                if (value.StartsWith("\"") && value.EndsWith("\""))
-                {
-                    value = value.Substring(1, value.Length - 2);
-                }
-                // Normaliza a chave para minúsculas para comparação
-                fields[key.ToLowerInvariant()] = value;
+                value = value.Substring(1, value.Length - 2);
             }
-        }
-        List<string> formattedParts = new List<string>();
-        // Agrupa posição do player
-        if (fields.ContainsKey("px") || fields.ContainsKey("py") || fields.ContainsKey("pz"))
-        {
-            string px = fields.ContainsKey("px") ? fields["px"] : "0";
-            string py = fields.ContainsKey("py") ? fields["py"] : "0";
-            string pz = fields.ContainsKey("pz") ? fields["pz"] : "0";
-            formattedParts.Add($"Posição Player: {px} {py} {pz}");
-        }
-        // Agrupa posição da câmera
-        if (fields.ContainsKey("cx") || fields.ContainsKey("cy") || fields.ContainsKey("cz"))
-        {
-            string cx = fields.ContainsKey("cx") ? fields["cx"] : "0";
-            string cy = fields.ContainsKey("cy") ? fields["cy"] : "0";
-            string cz = fields.ContainsKey("cz") ? fields["cz"] : "0";
-            formattedParts.Add($"Posição Camera: {cx} {cy} {cz}");
-        }
-        // Adiciona outros campos
-        foreach (var kvp in fields)
-        {
-            string key = kvp.Key;
-            if (key == "px" || key == "py" || key == "pz" || key == "cx" || key == "cy" || key == "cz")
-            {
-                continue; // Já foram processados acima
-            }
-            string value = kvp.Value;
-            // Formata arrays - remove colchetes e aspas
             if (value.StartsWith("[") && value.EndsWith("]"))
             {
                 string arrayContent = value.Substring(1, value.Length - 2);
-                // Remove aspas de cada item
                 arrayContent = arrayContent.Replace("\"", "");
-                value = arrayContent;
+                if (key == "rules")
+                {
+                    value = $"Regras: {arrayContent}";
+                }
+                else
+                {
+                    value = arrayContent;
+                }
             }
-            string description = GetFieldDescription(key, "World", fieldMap);
+            string description = GetFieldDescription(key, saveId, fieldMap);
             formattedParts.Add($"{description}: {value}");
         }
-        return string.Join("  |  ", formattedParts);
     }
-    string FormatZoneJson(string json, Dictionary<string, string> fieldMap)
+    if (formattedParts.Count == 0)
     {
-        string[] parts = json.Split(new[] { "|STRING_DATA|" }, System.StringSplitOptions.None);
-        List<string> results = new List<string>();
-        // Primeira parte: flags inteiras
-        if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
+        string clean = json.Replace("{", "").Replace("}", "").Replace("\"", "");
+        clean = clean.Replace(",", "  |  ");
+        clean = clean.Replace(":", ": ");
+        return clean;
+    }
+    return string.Join("  |  ", formattedParts);
+}
+string FormatWorldJson(string json, Dictionary<string, string> fieldMap)
+{
+    Dictionary<string, string> fields = new Dictionary<string, string>(System.StringComparer.OrdinalIgnoreCase);
+    var matches = Regex.Matches(json, @"""([^""]+)""\s*:\s*(""[^""]*""|\[[^\]]*\]|[^,}]+)");
+foreach (Match match in matches)
+{
+    if (match.Groups.Count >= 3)
+    {
+        string key = match.Groups[1].Value;
+        string value = match.Groups[2].Value.Trim();
+        if (value.StartsWith("\"") && value.EndsWith("\""))
         {
-            string flagsJson = parts[0];
-            // Usa regex para extrair keys e values arrays
-            var keysMatch = Regex.Match(flagsJson, @"""keys""\s*:\s*\[([^\]]*)\]");
-            var valuesMatch = Regex.Match(flagsJson, @"""values""\s*:\s*\[([^\]]*)\]");
-            if (keysMatch.Success && valuesMatch.Success)
+            value = value.Substring(1, value.Length - 2);
+        }
+        fields[key.ToLowerInvariant()] = value;
+    }
+}
+List<string> formattedParts = new List<string>();
+if (fields.ContainsKey("px") || fields.ContainsKey("py") || fields.ContainsKey("pz"))
+{
+    string px = fields.ContainsKey("px") ? fields["px"] : "0";
+    string py = fields.ContainsKey("py") ? fields["py"] : "0";
+    string pz = fields.ContainsKey("pz") ? fields["pz"] : "0";
+    formattedParts.Add($"Posição Player: {px} {py} {pz}");
+}
+if (fields.ContainsKey("cx") || fields.ContainsKey("cy") || fields.ContainsKey("cz"))
+{
+    string cx = fields.ContainsKey("cx") ? fields["cx"] : "0";
+    string cy = fields.ContainsKey("cy") ? fields["cy"] : "0";
+    string cz = fields.ContainsKey("cz") ? fields["cz"] : "0";
+    formattedParts.Add($"Posição Camera: {cx} {cy} {cz}");
+}
+foreach (var kvp in fields)
+{
+    string key = kvp.Key;
+    if (key == "px" || key == "py" || key == "pz" || key == "cx" || key == "cy" || key == "cz")
+    {
+        continue;
+    }
+    string value = kvp.Value;
+    if (value.StartsWith("[") && value.EndsWith("]"))
+    {
+        string arrayContent = value.Substring(1, value.Length - 2);
+        arrayContent = arrayContent.Replace("\"", "");
+        value = arrayContent;
+    }
+    string description = GetFieldDescription(key, "World", fieldMap);
+    formattedParts.Add($"{description}: {value}");
+}
+return string.Join("  |  ", formattedParts);
+}
+string FormatZoneJson(string json, Dictionary<string, string> fieldMap)
+{
+    string[] parts = json.Split(new[] { "|STRING_DATA|" }, System.StringSplitOptions.None);
+    List<string> results = new List<string>();
+    if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
+    {
+        string flagsJson = parts[0];
+        var keysMatch = Regex.Match(flagsJson, @"""keys""\s*:\s*\[([^\]]*)\]");
+        var valuesMatch = Regex.Match(flagsJson, @"""values""\s*:\s*\[([^\]]*)\]");
+        if (keysMatch.Success && valuesMatch.Success)
+        {
+            string keysStr = keysMatch.Groups[1].Value;
+            string valuesStr = valuesMatch.Groups[1].Value;
+            keysStr = keysStr.Replace("\"", "").Trim();
+            valuesStr = valuesStr.Trim();
+            string[] keys = string.IsNullOrEmpty(keysStr) ? new string[0] : keysStr.Split(',');
+            string[] values = string.IsNullOrEmpty(valuesStr) ? new string[0] : valuesStr.Split(',');
+            if (keys.Length > 0 && keys.Length == values.Length)
             {
-                string keysStr = keysMatch.Groups[1].Value;
-                string valuesStr = valuesMatch.Groups[1].Value;
-                // Remove aspas dos IDs
-                keysStr = keysStr.Replace("\"", "").Trim();
-                valuesStr = valuesStr.Trim();
-                // Divide por vírgulas
-                string[] keys = string.IsNullOrEmpty(keysStr) ? new string[0] : keysStr.Split(',');
-                string[] values = string.IsNullOrEmpty(valuesStr) ? new string[0] : valuesStr.Split(',');
-                if (keys.Length > 0 && keys.Length == values.Length)
+                List<string> flagPairs = new List<string>();
+                for (int i = 0; i < keys.Length; i++)
                 {
-                    List<string> flagPairs = new List<string>();
-                    for (int i = 0; i < keys.Length; i++)
-                    {
                     string flagId = keys[i].Trim().Replace("\"", "");
                     string flagValue = values[i].Trim();
                     flagPairs.Add($"{flagId}: {flagValue}");
                 }
                 results.Add($"Flags de Zona: {string.Join(", ", flagPairs)}");
-                }
-                else if (keys.Length > 0)
-                {
-                    string keysDesc = GetFieldDescription("keys", "Zone", fieldMap);
-                    string valuesDesc = GetFieldDescription("values", "Zone", fieldMap);
-                    results.Add($"{keysDesc}: {keysStr}");
-                    results.Add($"{valuesDesc}: {valuesStr}");
-                }
+            }
+            else if (keys.Length > 0)
+            {
+                string keysDesc = GetFieldDescription("keys", "Zone", fieldMap);
+                string valuesDesc = GetFieldDescription("values", "Zone", fieldMap);
+                results.Add($"{keysDesc}: {keysStr}");
+                results.Add($"{valuesDesc}: {valuesStr}");
             }
         }
-        // Segunda parte: flags string
-        if (parts.Length > 1 && !string.IsNullOrEmpty(parts[1]))
+    }
+    if (parts.Length > 1 && !string.IsNullOrEmpty(parts[1]))
+    {
+        string stringJson = parts[1];
+        var stringKeysMatch = Regex.Match(stringJson, @"""keys""\s*:\s*\[([^\]]*)\]");
+        var stringValuesMatch = Regex.Match(stringJson, @"""values""\s*:\s*\[([^\]]*)\]");
+        if (stringKeysMatch.Success && stringValuesMatch.Success)
         {
-            string stringJson = parts[1];
-            var stringKeysMatch = Regex.Match(stringJson, @"""keys""\s*:\s*\[([^\]]*)\]");
-            var stringValuesMatch = Regex.Match(stringJson, @"""values""\s*:\s*\[([^\]]*)\]");
-            if (stringKeysMatch.Success && stringValuesMatch.Success)
+            string keysStr = stringKeysMatch.Groups[1].Value.Replace("\"", "").Trim();
+            string valuesStr = stringValuesMatch.Groups[1].Value.Replace("\"", "").Trim();
+            string[] keys = string.IsNullOrEmpty(keysStr) ? new string[0] : keysStr.Split(',');
+            string[] values = string.IsNullOrEmpty(valuesStr) ? new string[0] : valuesStr.Split(',');
+            if (keys.Length > 0 && keys.Length == values.Length)
             {
-                string keysStr = stringKeysMatch.Groups[1].Value.Replace("\"", "").Trim();
-                string valuesStr = stringValuesMatch.Groups[1].Value.Replace("\"", "").Trim();
-                string[] keys = string.IsNullOrEmpty(keysStr) ? new string[0] : keysStr.Split(',');
-                string[] values = string.IsNullOrEmpty(valuesStr) ? new string[0] : valuesStr.Split(',');
-                if (keys.Length > 0 && keys.Length == values.Length)
+                List<string> stringPairs = new List<string>();
+                for (int i = 0; i < keys.Length; i++)
                 {
-                    List<string> stringPairs = new List<string>();
-                    for (int i = 0; i < keys.Length; i++)
-                    {
                     string flagId = keys[i].Trim().Replace("\"", "");
                     string flagValue = values[i].Trim().Replace("\"", "");
                     stringPairs.Add($"{flagId}: {flagValue}");
                 }
                 results.Add($"Flags String: {string.Join(", ", stringPairs)}");
-                }
-                else if (keys.Length > 0)
-                {
-                    results.Add($"Flags String (IDs): {keysStr}");
-                    results.Add($"Flags String (Valores): {valuesStr}");
-                }
+            }
+            else if (keys.Length > 0)
+            {
+                results.Add($"Flags String (IDs): {keysStr}");
+                results.Add($"Flags String (Valores): {valuesStr}");
             }
         }
-        return results.Count > 0 ? string.Join("\n", results) : json;
     }
-    string GetFieldDescription(string fieldName, string saveId, Dictionary<string, string> fieldMap)
-    {
-        if (fieldMap != null)
-        {
-            // Tenta encontrar com case-insensitive
-            foreach (var kvp in fieldMap)
-            {
-                if (string.Equals(kvp.Key, fieldName, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    return kvp.Value;
-                }
-            }
-        }
-        // Fallback: capitaliza o nome do campo
-        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fieldName);
-    }
-    void DrawFormattedJson(string json, string saveId)
-    {
-        string formatted = FormatJson(json, saveId);
-        // Divide por "  |  " para obter os elementos
-        string[] parts = formatted.Split(new[] { "  |  " }, System.StringSplitOptions.None);
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 0; i < parts.Length; i++)
-        {
-            // Alterna entre branco e cinza
-            if (i % 2 == 0)
-            {
-                GUI.color = Color.white;
-            }
-            else
-            {
-                GUI.color = new Color(0.7f, 0.7f, 0.7f); // Cinza
-            }
-            if (i > 0)
-            {
-                GUI.color = new Color(0.5f, 0.5f, 0.5f);
-                GUILayout.Label("|", GUILayout.Width(10));
-            }
-            GUI.color = (i % 2 == 0) ? Color.white : new Color(0.7f, 0.7f, 0.7f);
-            GUILayout.Label(parts[i], EditorStyles.wordWrappedLabel);
-        }
-        GUI.color = Color.white;
-        EditorGUILayout.EndHorizontal();
-    }
-    static string GetPath()
-    {
-        return Path.Combine(Application.persistentDataPath, "save.json");
-    }
-    void DeleteSpecificSave(string idToDelete)
-    {
-        string path = GetPath();
-        if (!File.Exists(path)) return;
-        try
-        {
-            string json = File.ReadAllText(path);
-            var file = JsonUtility.FromJson<DebugSaveFile>(json);
-            if (file != null && file.entries != null)
-            {
-                file.entries.RemoveAll(entry => entry.key == idToDelete);
-                string finalJson = JsonUtility.ToJson(file, true);
-                File.WriteAllText(path, finalJson);
-                AssetDatabase.Refresh();
-            }
-        }
-        catch { }
-    }
+    return results.Count > 0 ? string.Join("\n", results) : json;
 }
-
+string GetFieldDescription(string fieldName, string saveId, Dictionary<string, string> fieldMap)
+{
+    if (fieldMap != null)
+    {
+        foreach (var kvp in fieldMap)
+        {
+            if (string.Equals(kvp.Key, fieldName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return kvp.Value;
+            }
+        }
+    }
+    return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fieldName);
+}
+void DrawFormattedJson(string json, string saveId)
+{
+    string formatted = FormatJson(json, saveId);
+    string[] parts = formatted.Split(new[] { "  |  " }, System.StringSplitOptions.None);
+    EditorGUILayout.BeginHorizontal();
+    for (int i = 0; i < parts.Length; i++)
+    {
+        if (i % 2 == 0)
+        {
+            GUI.color = Color.white;
+        }
+        else
+        {
+            GUI.color = new Color(0.7f, 0.7f, 0.7f);
+        }
+        if (i > 0)
+        {
+            GUI.color = new Color(0.5f, 0.5f, 0.5f);
+            GUILayout.Label("|", GUILayout.Width(10));
+        }
+        GUI.color = (i % 2 == 0) ? Color.white : new Color(0.7f, 0.7f, 0.7f);
+        GUILayout.Label(parts[i], EditorStyles.wordWrappedLabel);
+    }
+    GUI.color = Color.white;
+    EditorGUILayout.EndHorizontal();
+}
+static string GetPath()
+{
+    return Path.Combine(Application.persistentDataPath, "save.json");
+}
+void DeleteSpecificSave(string idToDelete)
+{
+    string path = GetPath();
+    if (!File.Exists(path)) return;
+    try
+    {
+        string json = File.ReadAllText(path);
+        var file = JsonUtility.FromJson<DebugSaveFile>(json);
+        if (file != null && file.entries != null)
+        {
+            file.entries.RemoveAll(entry => entry.key == idToDelete);
+            string finalJson = JsonUtility.ToJson(file, true);
+            File.WriteAllText(path, finalJson);
+            AssetDatabase.Refresh();
+        }
+    }
+    catch { }
+}
+}

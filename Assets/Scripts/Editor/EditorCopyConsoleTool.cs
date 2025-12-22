@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Reflection;
@@ -53,4 +53,3 @@ public static class EditorCopyConsoleTool
         return "[Log]";
     }
 }
-

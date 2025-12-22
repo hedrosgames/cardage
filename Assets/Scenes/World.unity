@@ -2157,54 +2157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151186656}
   m_CullTransparentMesh: 1
---- !u!1 &155814505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155814507}
-  - component: {fileID: 155814506}
-  m_Layer: 0
-  m_Name: PerformanceDebugTool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &155814506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155814505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edde4299e6916084994e98af68c7f6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PerformanceDebugTool
-  showUI: 1
-  fontSize: 18
-  textColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  bottleneckThresholdMs: 33.3
---- !u!4 &155814507
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155814505}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45569, y: -1.68304, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170392460
 GameObject:
   m_ObjectHideFlags: 0
@@ -31537,7 +31489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715343557979080915, guid: 94be8ae0371de3c4fb5dcb670b841e96, type: 3}
       propertyPath: m_Name
-      value: _ManagerItems
+      value: _ItemsManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33411,7 +33363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3029470986970539775, guid: b5d9dff1cd6aeb54ea9ec3d151c942a6, type: 3}
       propertyPath: m_Name
-      value: _ManagerCardgameStart
+      value: _CardgameStartManager
       objectReference: {fileID: 0}
     - target: {fileID: 4814938079096129239, guid: b5d9dff1cd6aeb54ea9ec3d151c942a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34248,7 +34200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8301715564664423727, guid: aae43290f88fb96409456902e718d479, type: 3}
       propertyPath: m_Name
-      value: _ManagerNotification
+      value: _NotificationManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34970,4 +34922,3 @@ SceneRoots:
   - {fileID: 896167659}
   - {fileID: 835163093}
   - {fileID: 944633618}
-  - {fileID: 155814507}

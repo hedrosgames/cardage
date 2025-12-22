@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -367,7 +367,7 @@ public class MatchSimulator : MonoBehaviour
         }
         else
         {
-            report.AppendLine("âœ“ Nenhuma regra apresentou problemas!");
+            report.AppendLine("✓ Nenhuma regra apresentou problemas!");
         }
         #if UNITY_EDITOR
         string path = System.IO.Path.Combine(Application.dataPath, "SimulationReport.txt");

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
@@ -207,4 +207,3 @@ public class EditorUIFeelWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 }
-
