@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/AI/Defensive")]
 public class AI_Defensive : AIBehaviorBase

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/AI/MinimaxSimple")]
 public class AI_Minimax_Simple : AIBehaviorBase

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public enum PlayerGender { Male, Female }
 [CreateAssetMenu(menuName = "Config/PlayerData")]
 public class SOPlayerData : ScriptableObject

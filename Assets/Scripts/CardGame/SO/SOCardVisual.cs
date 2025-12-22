@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Config/CardVisual")]
 public class SOCardVisual : ScriptableObject

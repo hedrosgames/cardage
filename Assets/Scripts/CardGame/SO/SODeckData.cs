@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Deck")]
 public class SODeckData : ScriptableObject
 {

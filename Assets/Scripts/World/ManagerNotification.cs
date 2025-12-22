@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class ManagerNotification : MonoBehaviour
 {
     public static ManagerNotification Instance { get; private set; }
-    [Header("Configuração")]
+    [Header("ConfiguraÃ§Ã£o")]
     public SONotificationIcons notificationIcons;
     [Header("Flags de Itens")]
     public List<SOZoneFlag> itemFlags = new List<SOZoneFlag>();

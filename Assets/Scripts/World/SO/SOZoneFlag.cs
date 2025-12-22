@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Config/ZoneFlag")]
 public class SOZoneFlag : ScriptableObject
 {

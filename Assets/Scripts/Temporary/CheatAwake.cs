@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [DefaultExecutionOrder(-10000)]
 public class CheatAwake : MonoBehaviour
 {
-    [Header("Configuração")]
-    [Tooltip("Arraste aqui os objetos que devem ser ativados assim que der Play.")]
+    [Header("ConfiguraÃ§Ã£o")]
     public List<GameObject> objectsToWake;
     private void Awake()
     {

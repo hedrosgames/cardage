@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 public class ManagerAudio : MonoBehaviour
 {
     public static ManagerAudio Instance { get; private set; }
-    [Header("Configuração")]
+    [Header("ConfiguraÃ§Ã£o")]
     public SOAudioConfig audioConfig;
     public AudioMixer mainMixer;
     public SaveClientSettings settingsClient;

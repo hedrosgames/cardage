@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ public class EditorRuleAssetGenerator : EditorWindow
         EditorGUILayout.LabelField("Gerador de Assets de Regras", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         
-        EditorGUILayout.LabelField("Pasta de Saída:", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Pasta de SaÃ­da:", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
         outputPath = EditorGUILayout.TextField(outputPath);
         if (GUILayout.Button("Selecionar", GUILayout.Width(100)))
@@ -49,8 +49,8 @@ public class EditorRuleAssetGenerator : EditorWindow
         
         EditorGUILayout.Space();
         
-        EditorGUILayout.LabelField("Regras de Vitória:", EditorStyles.boldLabel);
-        if (GUILayout.Button("Criar Todas as Regras de Vitória"))
+        EditorGUILayout.LabelField("Regras de VitÃ³ria:", EditorStyles.boldLabel);
+        if (GUILayout.Button("Criar Todas as Regras de VitÃ³ria"))
         {
             CreateVictoryRules();
         }
@@ -83,7 +83,7 @@ public class EditorRuleAssetGenerator : EditorWindow
         CreateSpecialRules();
         
         EditorUtility.DisplayDialog(
-            "Concluído",
+            "ConcluÃ­do",
             "Todos os assets de regras foram criados com sucesso!",
             "OK"
         );
@@ -175,7 +175,7 @@ public class EditorRuleAssetGenerator : EditorWindow
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         
-        Debug.Log($"Regras de Vitória: {created} criadas, {updated} atualizadas");
+        Debug.Log($"Regras de VitÃ³ria: {created} criadas, {updated} atualizadas");
     }
     
     private void CreateSpecialRules()

@@ -1,11 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 public class ManagerItems : MonoBehaviour
 {
     public static ManagerItems Instance { get; private set; }
-    [Header("Configuração")]
-    [Tooltip("Lista de todos os itens disponíveis no jogo")]
+    [Header("ConfiguraÃ§Ã£o")]
     public List<SOItemData> allItems = new List<SOItemData>();
     private SaveClientZone saveZone;
     private Dictionary<SOItemData, bool> itemActiveStates = new Dictionary<SOItemData, bool>();

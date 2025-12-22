@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 public class InteractableLogical : Interactable, INotificationProvider
@@ -14,7 +14,7 @@ public class InteractableLogical : Interactable, INotificationProvider
     public SOZoneFlag setFlagOnSuccess;
     public GameObject disableObjectOnFinished;
     public UnityEvent onInteractSuccess;
-    [Header("[SE NÃO TIVER A FLAG]")]
+    [Header("[SE NÃƒO TIVER A FLAG]")]
     public SODialogueSequence dialogueOnFail;
     public UnityEvent onInteractFail;
     private SaveClientZone saveZone;

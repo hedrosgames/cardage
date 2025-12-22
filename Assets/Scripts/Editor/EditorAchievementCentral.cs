@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ public class EditorAchievementCentral : EditorWindow
     private bool showOnlyWithoutCode = false;
     private Dictionary<string, string> codeLocationCache = new Dictionary<string, string>();
     
-    [MenuItem("Central de Configuração/Central de Achievements")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Achievements")]
     public static void ShowWindow()
     {
         EditorAchievementCentral window = GetWindow<EditorAchievementCentral>("Central de Achievements");
@@ -56,9 +56,9 @@ public class EditorAchievementCentral : EditorWindow
         EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.BeginHorizontal();
-        showOnlyWithCode = EditorGUILayout.Toggle("Apenas com código encontrado", showOnlyWithCode);
-        showOnlyWithoutCode = EditorGUILayout.Toggle("Apenas sem código encontrado", showOnlyWithoutCode);
-        if (GUILayout.Button("Buscar no Código", GUILayout.Width(150)))
+        showOnlyWithCode = EditorGUILayout.Toggle("Apenas com cÃ³digo encontrado", showOnlyWithCode);
+        showOnlyWithoutCode = EditorGUILayout.Toggle("Apenas sem cÃ³digo encontrado", showOnlyWithoutCode);
+        if (GUILayout.Button("Buscar no CÃ³digo", GUILayout.Width(150)))
         {
             ScanCodeForAchievements();
         }
@@ -68,7 +68,7 @@ public class EditorAchievementCentral : EditorWindow
         
         if (library == null)
         {
-            EditorGUILayout.HelpBox("Biblioteca de Achievements não encontrada! Procure por um asset do tipo SOAchievementLibrary.", MessageType.Warning);
+            EditorGUILayout.HelpBox("Biblioteca de Achievements nÃ£o encontrada! Procure por um asset do tipo SOAchievementLibrary.", MessageType.Warning);
             if (GUILayout.Button("Criar Nova Biblioteca"))
             {
                 CreateNewLibrary();
@@ -82,15 +82,15 @@ public class EditorAchievementCentral : EditorWindow
             return;
         }
         
-        // Estatísticas
+        // EstatÃ­sticas
         int total = library.achievements.Count;
         int withCode = library.achievements.Count(a => a != null && codeLocationCache.ContainsKey(a.id));
         int withoutCode = total - withCode;
         
         EditorGUILayout.BeginHorizontal("box");
         EditorGUILayout.LabelField($"Total: {total}", GUILayout.Width(100));
-        EditorGUILayout.LabelField($"Com código encontrado: {withCode}", GUILayout.Width(180));
-        EditorGUILayout.LabelField($"Sem código encontrado: {withoutCode}", GUILayout.Width(180));
+        EditorGUILayout.LabelField($"Com cÃ³digo encontrado: {withCode}", GUILayout.Width(180));
+        EditorGUILayout.LabelField($"Sem cÃ³digo encontrado: {withoutCode}", GUILayout.Width(180));
         EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.Space();
@@ -132,25 +132,25 @@ public class EditorAchievementCentral : EditorWindow
     {
         EditorGUILayout.BeginVertical("box");
         
-        // Cabeçalho
+        // CabeÃ§alho
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField(achievement.name, EditorStyles.boldLabel, GUILayout.Width(200));
         
-        // Status do código (baseado na busca, não no asset)
+        // Status do cÃ³digo (baseado na busca, nÃ£o no asset)
         if (codeLocationCache.ContainsKey(achievement.id))
         {
             GUI.color = Color.green;
-            EditorGUILayout.LabelField("✓ ENCONTRADO", EditorStyles.miniLabel);
+            EditorGUILayout.LabelField("âœ“ ENCONTRADO", EditorStyles.miniLabel);
             GUI.color = Color.white;
         }
         else
         {
             GUI.color = Color.yellow;
-            EditorGUILayout.LabelField("⚠ NÃO ENCONTRADO", EditorStyles.miniLabel);
+            EditorGUILayout.LabelField("âš  NÃƒO ENCONTRADO", EditorStyles.miniLabel);
             GUI.color = Color.white;
         }
         
-        // Campo editável para descrição de como o jogador ganha
+        // Campo editÃ¡vel para descriÃ§Ã£o de como o jogador ganha
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Como ganha:", GUILayout.Width(80));
         string newDescription = EditorGUILayout.TextField(achievement.editorDescription ?? "", GUILayout.ExpandWidth(true));
@@ -174,9 +174,9 @@ public class EditorAchievementCentral : EditorWindow
         EditorGUILayout.LabelField(achievement.id, EditorStyles.wordWrappedLabel);
         EditorGUILayout.EndHorizontal();
         
-        // Localização do código (apenas mostra o resultado da busca)
+        // LocalizaÃ§Ã£o do cÃ³digo (apenas mostra o resultado da busca)
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Onde é desbloqueado:", GUILayout.Width(130));
+        EditorGUILayout.LabelField("Onde Ã© desbloqueado:", GUILayout.Width(130));
         if (codeLocationCache.ContainsKey(achievement.id))
         {
             GUI.color = Color.green;
@@ -186,19 +186,19 @@ public class EditorAchievementCentral : EditorWindow
         else
         {
             GUI.color = Color.gray;
-            EditorGUILayout.LabelField("(não encontrado no código)", EditorStyles.miniLabel);
+            EditorGUILayout.LabelField("(nÃ£o encontrado no cÃ³digo)", EditorStyles.miniLabel);
             GUI.color = Color.white;
         }
         EditorGUILayout.EndHorizontal();
         
-        // Chaves de localização
+        // Chaves de localizaÃ§Ã£o
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Título:", GUILayout.Width(50));
+        EditorGUILayout.LabelField("TÃ­tulo:", GUILayout.Width(50));
         EditorGUILayout.LabelField(achievement.titleKey, EditorStyles.miniLabel);
         EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Descrição:", GUILayout.Width(70));
+        EditorGUILayout.LabelField("DescriÃ§Ã£o:", GUILayout.Width(70));
         EditorGUILayout.LabelField(achievement.descriptionKey, EditorStyles.miniLabel);
         EditorGUILayout.EndHorizontal();
         
@@ -298,7 +298,7 @@ public class EditorAchievementCentral : EditorWindow
                     
                     if (Regex.IsMatch(content, pattern1) || foundViaConstant)
                     {
-                        // Encontrou! Agora precisa encontrar a classe e método
+                        // Encontrou! Agora precisa encontrar a classe e mÃ©todo
                         string[] lines = content.Split('\n');
                         string currentClass = "";
                         string currentMethod = "";
@@ -311,17 +311,17 @@ public class EditorAchievementCentral : EditorWindow
                             {
                                 Match match = Regex.Match(lines[i], @"class\s+(\w+)");
                                 if (match.Success) currentClass = match.Groups[1].Value;
-                                currentMethod = ""; // Reset método quando muda de classe
+                                currentMethod = ""; // Reset mÃ©todo quando muda de classe
                             }
                             
-                            // Detecta método (mais flexível)
+                            // Detecta mÃ©todo (mais flexÃ­vel)
                             Match methodMatch = Regex.Match(lines[i], @"^\s*(public|private|protected|internal|static)\s+(static\s+)?(async\s+)?(void|bool|int|string|IEnumerator|\w+)\s+(\w+)\s*\(");
                             if (methodMatch.Success)
                             {
                                 currentMethod = methodMatch.Groups[5].Value;
                             }
                             
-                            // Verifica se esta linha contém o Unlock
+                            // Verifica se esta linha contÃ©m o Unlock
                             bool lineHasUnlock = false;
                             if (lines[i].Contains($"Unlock(\"{achievement.id}\""))
                             {
@@ -343,10 +343,10 @@ public class EditorAchievementCentral : EditorWindow
                             }
                         }
                         
-                        // Se encontrou a linha mas não o método, tenta encontrar o método mais próximo acima
+                        // Se encontrou a linha mas nÃ£o o mÃ©todo, tenta encontrar o mÃ©todo mais prÃ³ximo acima
                         if (unlockLineIndex >= 0 && !codeLocationCache.ContainsKey(achievement.id))
                         {
-                            // Procura método acima da linha encontrada
+                            // Procura mÃ©todo acima da linha encontrada
                             for (int i = unlockLineIndex; i >= 0; i--)
                             {
                                 Match methodMatch = Regex.Match(lines[i], @"^\s*(public|private|protected|internal|static)\s+(static\s+)?(async\s+)?(void|bool|int|string|IEnumerator|\w+)\s+(\w+)\s*\(");
@@ -360,7 +360,7 @@ public class EditorAchievementCentral : EditorWindow
                                     }
                                 }
                                 
-                                // Se chegou na declaração da classe, para
+                                // Se chegou na declaraÃ§Ã£o da classe, para
                                 if (Regex.IsMatch(lines[i], @"^\s*(public\s+)?(abstract\s+)?(sealed\s+)?class\s+\w+"))
                                 {
                                     break;
@@ -368,7 +368,7 @@ public class EditorAchievementCentral : EditorWindow
                             }
                         }
                         
-                        // Se ainda não encontrou, usa o nome do arquivo
+                        // Se ainda nÃ£o encontrou, usa o nome do arquivo
                         if (!codeLocationCache.ContainsKey(achievement.id))
                         {
                             codeLocationCache[achievement.id] = fileName;

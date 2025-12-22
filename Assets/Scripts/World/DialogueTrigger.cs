@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class DialogueTrigger : Interactable
 {
     public SODialogueSequence dialogueSequence;

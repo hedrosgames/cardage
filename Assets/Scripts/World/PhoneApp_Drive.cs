@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
@@ -8,18 +8,16 @@ public class PhoneApp_Drive : MonoBehaviour
     [Header("UI - Status")]
     public TextMeshProUGUI statusText;
     [Header("UI - Itens")]
-    [Tooltip("Container onde os botões de itens serão criados")]
     public Transform itemsContainer;
-    [Tooltip("Prefab do botão de item (deve ter Image, Button e TextMeshProUGUI)")]
     public GameObject itemButtonPrefab;
-    [Header("Configuração - Primeira Vez")]
-    public SOZoneFlag flagIntroDone;
+    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
-    private SaveClientZone _saveZone;
+    private SaveClientGameFlow _saveGameFlow;
     private ManagerDialogue _managerDialogue;
     private ManagerItems _managerItems;
     private List<GameObject> itemButtonInstances = new List<GameObject>();
-    private SaveClientZone SaveZone => _saveZone ??= FindFirstObjectByType<SaveClientZone>();
+    private SaveClientGameFlow SaveGameFlow => _saveGameFlow ??= FindFirstObjectByType<SaveClientGameFlow>();
     private ManagerDialogue DialogueManager => _managerDialogue ??= FindFirstObjectByType<ManagerDialogue>();
     private ManagerItems ManagerItems => _managerItems ??= FindFirstObjectByType<ManagerItems>();
     public void OnAppOpen()
@@ -39,13 +37,13 @@ public class PhoneApp_Drive : MonoBehaviour
     {
         yield return null;
         bool isFirstTime = false;
-        if (SaveZone != null && flagIntroDone != null)
+        if (SaveGameFlow != null && flagIntroDone != null)
         {
-            if (!SaveZone.HasFlag(flagIntroDone)) isFirstTime = true;
+            if (!SaveGameFlow.HasFlag(flagIntroDone)) isFirstTime = true;
         }
         if (isFirstTime)
         {
-            SaveZone.SetFlag(flagIntroDone, 1);
+            SaveGameFlow.SetFlag(flagIntroDone, 1);
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);
@@ -85,7 +83,7 @@ public class PhoneApp_Drive : MonoBehaviour
     {
         if (statusText != null) statusText.text = "Sincronizando...";
         yield return new WaitForSeconds(0.5f);
-        if (statusText != null) statusText.text = "Backup Concluído.";
+        if (statusText != null) statusText.text = "Backup ConcluÃ­do.";
         GameEvents.OnDriveSaved?.Invoke();
     }
     void RefreshItemsUI()

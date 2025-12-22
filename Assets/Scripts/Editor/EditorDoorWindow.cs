@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ public class EditorDoorWindow : EditorWindow
     private int currentTab = 0;
     private string[] tabNames = { "Door List", "Enum Editor (WorldAreaId)" };
 
-    // --- VARIÁVEIS DA ABA DOOR LIST ---
+    // --- VARIÃVEIS DA ABA DOOR LIST ---
     private Vector2 scrollPosDoors;
     private List<TeleportDoor> doors = new List<TeleportDoor>();
     private SOCameraConfig cameraConfig;
@@ -22,7 +22,7 @@ public class EditorDoorWindow : EditorWindow
     private string[] cleanEnumNames;
     private int[] enumValuesArray;
 
-    // --- VARIÁVEIS DA ABA ENUM EDITOR ---
+    // --- VARIÃVEIS DA ABA ENUM EDITOR ---
     private Vector2 scrollPosEnum;
     private List<string> enumValues = new List<string>();
     private string newEnumName = "";
@@ -30,7 +30,7 @@ public class EditorDoorWindow : EditorWindow
     private bool enumFileFound = false;
     private ReorderableList reorderableList;
 
-    [MenuItem("Central de Configuração/Central de Door")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Door")]
     public static void ShowWindow()
     {
         GetWindow<EditorDoorWindow>("Door Manager");
@@ -47,7 +47,7 @@ public class EditorDoorWindow : EditorWindow
         if (enumValues != null) InitReorderableList();
     }
 
-    // --- NOVO MÉTODO: Cria a lista de nomes legíveis ---
+    // --- NOVO MÃ‰TODO: Cria a lista de nomes legÃ­veis ---
     private void UpdateEnumDisplayCache()
     {
         var values = System.Enum.GetValues(typeof(WorldAreaId));
@@ -58,7 +58,7 @@ public class EditorDoorWindow : EditorWindow
         {
             // Pega o valor original (ex: City1_Store)
             string rawName = System.Enum.GetName(typeof(WorldAreaId), values.GetValue(i));
-            // Substitui underline por espaço para visualização
+            // Substitui underline por espaÃ§o para visualizaÃ§Ã£o
             cleanEnumNames[i] = rawName.Replace("_", " ");
             // Guarda o valor inteiro correspondente
             enumValuesArray[i] = (int)values.GetValue(i);
@@ -76,7 +76,7 @@ public class EditorDoorWindow : EditorWindow
     }
 
     // ===================================================================================
-    // LISTA REORDENÁVEL (ENUM)
+    // LISTA REORDENÃVEL (ENUM)
     // ===================================================================================
     private void InitReorderableList()
     {
@@ -137,7 +137,7 @@ public class EditorDoorWindow : EditorWindow
     private string GetGroupName(int index)
     {
         Match match = Regex.Match(enumValues[index], @"^City(\d+)_");
-        return match.Success ? "City " + match.Groups[1].Value : "Outros / Genéricos";
+        return match.Success ? "City " + match.Groups[1].Value : "Outros / GenÃ©ricos";
     }
     private bool IsCityGroup(int index) => Regex.IsMatch(enumValues[index], @"^City(\d+)_");
 
@@ -163,7 +163,7 @@ public class EditorDoorWindow : EditorWindow
         if (GUILayout.Button("Refresh List", EditorStyles.toolbarButton)) 
         {
             RefreshDoorList();
-            UpdateEnumDisplayCache(); // Atualiza nomes se houve recompilação
+            UpdateEnumDisplayCache(); // Atualiza nomes se houve recompilaÃ§Ã£o
         }
         
         EditorGUILayout.LabelField("| Config:", GUILayout.Width(60));
@@ -179,7 +179,7 @@ public class EditorDoorWindow : EditorWindow
             return;
         }
 
-        // Cabeçalho da Tabela
+        // CabeÃ§alho da Tabela
         EditorGUILayout.BeginHorizontal("box");
         EditorGUILayout.LabelField("Parent", EditorStyles.boldLabel, GUILayout.Width(100));
         EditorGUILayout.LabelField("Object", EditorStyles.boldLabel, GUILayout.Width(100));
@@ -202,7 +202,7 @@ public class EditorDoorWindow : EditorWindow
 
             EditorGUI.BeginChangeCheck();
 
-            // --- AQUI ESTÁ A MUDANÇA ---
+            // --- AQUI ESTÃ A MUDANÃ‡A ---
             // Em vez de EnumPopup, usamos IntPopup com os nomes limpos
             
             // 1. Identification
@@ -229,7 +229,7 @@ public class EditorDoorWindow : EditorWindow
 
             if (cameraConfig != null && door.identification != WorldAreaId.None)
             {
-                if (GUILayout.Button("📷 Save Cam", GUILayout.Width(100)))
+                if (GUILayout.Button("ðŸ“· Save Cam", GUILayout.Width(100)))
                 {
                     SaveCameraPositionToConfig(door.identification);
                 }
@@ -250,7 +250,7 @@ public class EditorDoorWindow : EditorWindow
     {
         if (SceneView.lastActiveSceneView == null)
         {
-            EditorUtility.DisplayDialog("Erro", "Nenhuma Scene View ativa para capturar a câmera.", "OK");
+            EditorUtility.DisplayDialog("Erro", "Nenhuma Scene View ativa para capturar a cÃ¢mera.", "OK");
             return;
         }
 
@@ -285,7 +285,7 @@ public class EditorDoorWindow : EditorWindow
         }
 
         EditorUtility.SetDirty(cameraConfig);
-        Debug.Log($"<color=green>[Door Manager]</color> Posição de Câmera salva para <b>{id}</b> em: {camPos}");
+        Debug.Log($"<color=green>[Door Manager]</color> PosiÃ§Ã£o de CÃ¢mera salva para <b>{id}</b> em: {camPos}");
     }
 
     private void RefreshDoorList()
@@ -307,7 +307,7 @@ public class EditorDoorWindow : EditorWindow
     {
         if (!enumFileFound)
         {
-            EditorGUILayout.HelpBox("Arquivo 'WorldAreaId.cs' não encontrado.", MessageType.Error);
+            EditorGUILayout.HelpBox("Arquivo 'WorldAreaId.cs' nÃ£o encontrado.", MessageType.Error);
             if (GUILayout.Button("Tentar Localizar Novamente")) FindEnumFile();
             return;
         }
@@ -328,7 +328,7 @@ public class EditorDoorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
 
         EditorGUILayout.Space();
-        EditorGUILayout.HelpBox("Ao salvar, a ordem que você definiu acima será respeitada.", MessageType.Info);
+        EditorGUILayout.HelpBox("Ao salvar, a ordem que vocÃª definiu acima serÃ¡ respeitada.", MessageType.Info);
 
         GUI.backgroundColor = Color.green;
         if (GUILayout.Button("SALVAR ORDEM EXATA E RECOMPILAR", GUILayout.Height(40))) SaveEnumFile();
@@ -368,8 +368,8 @@ public class EditorDoorWindow : EditorWindow
     private void AddEnumEntry()
     {
         if (string.IsNullOrEmpty(newEnumName)) return;
-        if (!Regex.IsMatch(newEnumName, @"^[a-zA-Z_][a-zA-Z0-9_]*$")) { EditorUtility.DisplayDialog("Erro", "Nome inválido.", "OK"); return; }
-        if (enumValues.Contains(newEnumName) || newEnumName == "None") { EditorUtility.DisplayDialog("Erro", "ID já existe.", "OK"); return; }
+        if (!Regex.IsMatch(newEnumName, @"^[a-zA-Z_][a-zA-Z0-9_]*$")) { EditorUtility.DisplayDialog("Erro", "Nome invÃ¡lido.", "OK"); return; }
+        if (enumValues.Contains(newEnumName) || newEnumName == "None") { EditorUtility.DisplayDialog("Erro", "ID jÃ¡ existe.", "OK"); return; }
         enumValues.Add(newEnumName);
         newEnumName = "";
         GUI.FocusControl(null);

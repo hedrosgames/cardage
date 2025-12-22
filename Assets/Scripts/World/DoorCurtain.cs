@@ -1,12 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 public class DoorCurtain : MonoBehaviour
 {
     public Animator animator;
     [Header("Sincronia")]
-    [Tooltip("TEM QUE SER IGUAL OU MAIOR que o tempo da animação de fechar.")]
     public float closeDuration = 0.5f;
-    [Tooltip("Tempo da animação de abrir.")]
     public float openDuration = 0.5f;
     [Header("Animator")]
     public string closeTrigger = "Close";

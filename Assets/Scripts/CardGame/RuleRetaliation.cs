@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName="Game/Rules/CardEffects/RuleRetaliation")]
 public class RuleRetaliation : SOCapture

@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class NpcHelper : MonoBehaviour
 {
     public SOZoneFlag flagToActivate;
     public SOZoneFlag flagToChangeSetup;
     public SOGameSetup alternateGameSetup;
     public SODialogueSequence alternateDialogue;
-    private SaveClientMoment saveMoment;
+    private SaveClientGameFlow saveGameFlow;
     private SaveClientZone saveZone;
     private InteractableCardGame interactableCardGame;
     private InteractableSimple interactableSimple;
@@ -15,7 +15,7 @@ public class NpcHelper : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private void Awake()
     {
-        saveMoment = FindFirstObjectByType<SaveClientMoment>();
+        saveGameFlow = FindFirstObjectByType<SaveClientGameFlow>();
         saveZone = FindFirstObjectByType<SaveClientZone>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -34,13 +34,13 @@ public class NpcHelper : MonoBehaviour
     }
     private void Start()
     {
-        if (saveMoment != null) saveMoment.OnLoadComplete += RefreshNPC;
+        if (saveGameFlow != null) saveGameFlow.OnLoadComplete += RefreshNPC;
         if (saveZone != null) saveZone.OnLoadComplete += RefreshNPC;
         RefreshNPC();
     }
     private void OnDestroy()
     {
-        if (saveMoment != null) saveMoment.OnLoadComplete -= RefreshNPC;
+        if (saveGameFlow != null) saveGameFlow.OnLoadComplete -= RefreshNPC;
         if (saveZone != null) saveZone.OnLoadComplete -= RefreshNPC;
     }
     public void ForceCheckAndSwap() => RefreshNPC();
@@ -68,7 +68,7 @@ public class NpcHelper : MonoBehaviour
     private bool CheckFlag(SOZoneFlag flag)
     {
         if (saveZone != null && saveZone.HasFlag(flag)) return true;
-        if (saveMoment != null && saveMoment.HasFlag(flag)) return true;
+        if (saveGameFlow != null && saveGameFlow.HasFlag(flag.id)) return true;
         return false;
     }
     private void SetComponentsEnabled(bool state)

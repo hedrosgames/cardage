@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName="Game/Rules/SameWall")]
 public class RuleSameWall : SOCapture

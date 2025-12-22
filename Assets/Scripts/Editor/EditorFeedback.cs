@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 public class EditorFeedback : EditorWindow
@@ -30,7 +30,7 @@ public class EditorFeedback : EditorWindow
         float centerHeight = (main.height - pos.height) * 0.5f;
         window.position = new Rect(main.x + centerWidth, main.y + centerHeight, pos.width, pos.height);
         
-        window.ShowPopup(); // Mostra sem bordas padrões
+        window.ShowPopup(); // Mostra sem bordas padrÃµes
     }
 
     private void OnGUI()
@@ -75,7 +75,7 @@ public class EditorFeedback : EditorWindow
         {
             Close();
         }
-        // Força redesenho para animação se quiser, mas aqui garante responsividade
+        // ForÃ§a redesenho para animaÃ§Ã£o se quiser, mas aqui garante responsividade
         Repaint();
     }
 }

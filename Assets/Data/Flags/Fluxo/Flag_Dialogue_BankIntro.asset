@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a754a891b59e41e4f9c17dc2ef9ff3e1, type: 3}
-  m_Name: SaveQuit
-  m_EditorClassIdentifier: Assembly-CSharp::SOSaveDefinition
-  id: savequit
+  m_Script: {fileID: 11500000, guid: 4e589bc35b8ed764ca7351728781c32b, type: 3}
+  m_Name: Flag_Dialogue_BankIntro
+  m_EditorClassIdentifier: Assembly-CSharp::SOGameFlowFlag
+  id: 
+  description: 

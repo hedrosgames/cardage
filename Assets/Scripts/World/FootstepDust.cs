@@ -1,11 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class FootstepDust : MonoBehaviour
 {
-    [Header("Configuração")]
-    [Tooltip("Distância mínima percorrida no frame para emitir fumaça.")]
+    [Header("ConfiguraÃ§Ã£o")]
     public float movementThreshold = 0.001f;
-    [Tooltip("Se verdadeiro, a fumaça para se o tempo estiver pausado (Time.timeScale = 0)")]
     public bool respectTimeScale = true;
     private ParticleSystem ps;
     private ParticleSystem.EmissionModule emission;

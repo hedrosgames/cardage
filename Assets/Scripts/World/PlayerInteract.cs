@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.World;
 public class PlayerInteract : MonoBehaviour
@@ -10,8 +10,7 @@ public class PlayerInteract : MonoBehaviour
     Interactable target;
     int mask;
     InputAction interactAction;
-    [Header("Cooldown de Interação")]
-    [Tooltip("Tempo em segundos para ignorar interações após um diálogo terminar (evita conflito com input E)")]
+    [Header("Cooldown de InteraÃ§Ã£o")]
     public float interactionCooldownAfterDialogue = 0.3f;
     private float canInteractTime = 0f;
     private float detectionCheckInterval = 0.1f;

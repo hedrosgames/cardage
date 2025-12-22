@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,35 +18,35 @@ public class EditorDeckCentral : EditorWindow
         "Samurai montado",
         "Samurai matador de ninja",
         "Samurai matador de oni",
-        "Espadachim da lâmina cega",
+        "Espadachim da lÃ¢mina cega",
         "Ultimo Samurai",
         "Ninja disfarce de vendedor",
         "Ninja da corda bamba",
         "Ninja fofoqueiro",
-        "Ninja do bambu que balança",
+        "Ninja do bambu que balanÃ§a",
         "Mestre da Estrela de 4 pontas",
         "Ninja dos mil jutsus",
-        "Monstro chorão",
+        "Monstro chorÃ£o",
         "Monstro da pele brilhante",
         "Monstro cego",
         "Monstro das asas pequenas",
-        "Kappa da água fervente",
+        "Kappa da Ã¡gua fervente",
         "Criatura do pantano",
-        "Kitsune de três caudas",
+        "Kitsune de trÃªs caudas",
         "Xounin do imposto",
         "Espadachim Zen"
     };
     
     private readonly Dictionary<CardRarity, string> rarityEmojis = new Dictionary<CardRarity, string>
     {
-        { CardRarity.Common, "⚪" },
-        { CardRarity.Uncommon, "🔵" },
-        { CardRarity.Rare, "🟣" },
-        { CardRarity.Legendary, "🟡" },
-        { CardRarity.Special, "⭐" }
+        { CardRarity.Common, "âšª" },
+        { CardRarity.Uncommon, "ðŸ”µ" },
+        { CardRarity.Rare, "ðŸŸ£" },
+        { CardRarity.Legendary, "ðŸŸ¡" },
+        { CardRarity.Special, "â­" }
     };
     
-    [MenuItem("Central de Configuração/Central de Decks")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Decks")]
     public static void ShowWindow()
     {
         EditorDeckCentral window = GetWindow<EditorDeckCentral>("Central de Decks");
@@ -96,7 +96,7 @@ public class EditorDeckCentral : EditorWindow
         
         EditorGUILayout.BeginHorizontal();
         GUI.backgroundColor = showOnlyDemo ? Color.cyan : Color.white;
-        if (GUILayout.Button("Mostrar só Demo", GUILayout.Height(25)))
+        if (GUILayout.Button("Mostrar sÃ³ Demo", GUILayout.Height(25)))
         {
             showOnlyDemo = !showOnlyDemo;
         }
@@ -228,7 +228,7 @@ public class EditorDeckCentral : EditorWindow
             bool isDemoCard = IsDemoCard(cardDisplayName);
             string rarityEmoji = rarityEmojis.ContainsKey(card.rarity) ? rarityEmojis[card.rarity] : "";
             
-            EditorGUILayout.LabelField($"↑{card.top} →{card.right} ↓{card.bottom} ←{card.left}", EditorStyles.miniLabel, GUILayout.Width(140));
+            EditorGUILayout.LabelField($"â†‘{card.top} â†’{card.right} â†“{card.bottom} â†{card.left}", EditorStyles.miniLabel, GUILayout.Width(140));
             EditorGUILayout.LabelField($"{card.type} | {card.subType}", EditorStyles.miniLabel, GUILayout.Width(140));
             
             EditorGUILayout.BeginHorizontal(GUILayout.Width(140), GUILayout.ExpandWidth(false));
@@ -254,13 +254,13 @@ public class EditorDeckCentral : EditorWindow
             if (isDemoCard)
             {
                 GUI.color = Color.green;
-                EditorGUILayout.LabelField("✓ DEMO", EditorStyles.miniLabel, GUILayout.Width(60));
+                EditorGUILayout.LabelField("âœ“ DEMO", EditorStyles.miniLabel, GUILayout.Width(60));
                 GUI.color = Color.white;
             }
             else
             {
                 GUI.color = Color.gray;
-                EditorGUILayout.LabelField("Não Demo", EditorStyles.miniLabel, GUILayout.Width(60));
+                EditorGUILayout.LabelField("NÃ£o Demo", EditorStyles.miniLabel, GUILayout.Width(60));
                 GUI.color = Color.white;
             }
             EditorGUILayout.EndHorizontal();

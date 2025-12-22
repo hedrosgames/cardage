@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/CardBasics")]
 public class SOTutorialConditionCardBasics : SOTutorialCondition
 {

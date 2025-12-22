@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Game.World;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -15,9 +15,7 @@ public class ManagerGameFlow : MonoBehaviour
     public PlayerControl playerControl;
     public PlayerCutsceneAnimator playerCutscene;
     [Header("Card Game")]
-    [Tooltip("Setup padrão do card game (opcional, pode ser definido via parâmetro na função)")]
     public SOGameSetup defaultCardGameSetup;
-    [Tooltip("Evento que pode ser chamado via Unity Events passando um SOGameSetup como parâmetro")]
     public GameSetupEvent onStartCardGame;
     [Header("Zone 1 - Setup")]
     public SODialogueSequence introDialogue;
@@ -26,7 +24,7 @@ public class ManagerGameFlow : MonoBehaviour
     public GameObject fakeDoorObject;
     public SOZoneFlag flagUnlockDoor;
     [Header("Intro Dialogue Control")]
-    public SOZoneFlag flagIntroDone;
+    public SOGameFlowFlag flagIntroDone;
     [Header("City Name Display")]
     public CanvasGroup cityNameCanvasGroup;
     public TextMeshProUGUI cityNameText;
@@ -39,12 +37,12 @@ public class ManagerGameFlow : MonoBehaviour
     [HideInInspector]
     public float cityNameFloatDownDistance = 20f;
     [Header("City Name Localization Keys")]
-    [Tooltip("Keys de tradução para os nomes das 7 cidades. Ordem: City1, City2, City3, City4, City5, City6, City7")]
     public string[] cityNameKeys = new string[7];
     [Header("Debug - Estado Atual")]
     [SerializeField, Tooltip("Cidade atual detectada (somente leitura)")]
     private int _currentCityNumber = 0;
     private SaveClientZone _saveZone;
+    private SaveClientGameFlow _saveGameFlow;
     private HashSet<int> _citiesShownThisSession = new HashSet<int>();
     public UnityEvent onAwake;
     void Awake()
@@ -57,6 +55,7 @@ public class ManagerGameFlow : MonoBehaviour
         onStartCardGame.AddListener(StartCardGame);
         if (playerControl != null) playerControl.SetControl(false);
         _saveZone = FindFirstObjectByType<SaveClientZone>();
+        _saveGameFlow = FindFirstObjectByType<SaveClientGameFlow>();
         _citiesShownThisSession.Clear();
         if (cityNameCanvasGroup == null)
         {
@@ -307,7 +306,7 @@ public class ManagerGameFlow : MonoBehaviour
     }
     void StartIntroDialogue()
     {
-        if (_saveZone != null && flagIntroDone != null && _saveZone.HasFlag(flagIntroDone))
+        if (_saveGameFlow != null && flagIntroDone != null && _saveGameFlow.HasFlag(flagIntroDone))
         {
             StartGameplayPhase();
             return;
@@ -328,9 +327,9 @@ public class ManagerGameFlow : MonoBehaviour
         if (playerControl != null) playerControl.SetControl(true);
         if (sequence == introDialogue)
         {
-            if (_saveZone != null && flagIntroDone != null)
+            if (_saveGameFlow != null && flagIntroDone != null)
             {
-                _saveZone.SetFlag(flagIntroDone, 1);
+                _saveGameFlow.SetFlag(flagIntroDone, 1);
             }
             StartGameplayPhase();
         }

@@ -1,4 +1,4 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 public class EditorScriptsRecompile
@@ -6,7 +6,7 @@ public class EditorScriptsRecompile
     [MenuItem("Scripts/Reload")]
     public static void Reload()
     {
-        Debug.Log("🔄 Forçando recompilação dos scripts...");
+        Debug.Log("ðŸ”„ ForÃ§ando recompilaÃ§Ã£o dos scripts...");
         
         EditorUtility.RequestScriptReload();
     }

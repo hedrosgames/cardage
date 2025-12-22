@@ -1,13 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     public bool autoInteract = false;
-    [Header("Salvamento Automático")]
-    [Tooltip("Tipo de salvamento que será executado ao interagir. Escolha 'None' para não salvar.")]
+    [Header("Salvamento AutomÃ¡tico")]
     public SaveId saveOnInteract = SaveId.None;
-    [Header("Eventos de Interação")]
-    [Tooltip("Evento disparado no momento da interação.")]
+    [Header("Eventos de InteraÃ§Ã£o")]
     public UnityEvent OnInteractionStart;
     [HideInInspector]public GameObject interactionIcon;
     protected virtual void Awake()
@@ -30,7 +28,7 @@ public class Interactable : MonoBehaviour
         }
         if (saveOnInteract != SaveId.None)
         {
-            SaveHelper.SaveByEnum(saveOnInteract);
+            SaveHelper.Save(saveOnInteract);
         }
     }
     protected virtual void Reset()

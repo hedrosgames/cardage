@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ public class EditorDefaultExecutionOrder : EditorWindow
     }
     private void OnGUI()
     {
-        EditorGUILayout.LabelField("Configuração de Ordem de Execução", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("ConfiguraÃ§Ã£o de Ordem de ExecuÃ§Ã£o", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
         EditorGUILayout.BeginHorizontal();
         executionOrderValue = EditorGUILayout.IntField("Ordem (- primeiro)", executionOrderValue);

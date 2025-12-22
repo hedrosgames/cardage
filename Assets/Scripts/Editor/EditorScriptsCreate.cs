@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,17 +10,17 @@ public class EditorScriptsCreate : EditorWindow
     {
         string clip = EditorGUIUtility.systemCopyBuffer;
         
-        // Validação Inicial
+        // ValidaÃ§Ã£o Inicial
         if (string.IsNullOrEmpty(clip))
         {
-            EditorFeedback.ShowFeedback("Falha", "Não tem script no clipboard", false);
+            EditorFeedback.ShowFeedback("Falha", "NÃ£o tem script no clipboard", false);
             return;
         }
 
         string className = ExtractClassName(clip);
         if (string.IsNullOrEmpty(className))
         {
-            EditorFeedback.ShowFeedback("Falha", "Não encontrei 'class Nome' no código", false);
+            EditorFeedback.ShowFeedback("Falha", "NÃ£o encontrei 'class Nome' no cÃ³digo", false);
             return;
         }
 
@@ -47,14 +47,14 @@ public class EditorScriptsCreate : EditorWindow
 
         string finalPath = Path.Combine(targetFolder, className + ".cs");
 
-        // Verifica existência
+        // Verifica existÃªncia
         if (File.Exists(finalPath))
         {
             EditorFeedback.ShowFeedback("Falha", $"Script Existente: {className}", false);
             return;
         }
 
-        // Criação
+        // CriaÃ§Ã£o
         try
         {
             File.WriteAllText(finalPath, clip);
@@ -69,7 +69,7 @@ public class EditorScriptsCreate : EditorWindow
         }
         catch
         {
-            EditorFeedback.ShowFeedback("Erro Crítico", "Erro ao gravar arquivo no disco", false);
+            EditorFeedback.ShowFeedback("Erro CrÃ­tico", "Erro ao gravar arquivo no disco", false);
         }
     }
 

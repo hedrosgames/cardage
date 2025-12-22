@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public PlayerMove playerMove;

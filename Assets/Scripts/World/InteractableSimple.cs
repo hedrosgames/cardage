@@ -1,12 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 public class InteractableSimple : Interactable, INotificationProvider
 {
     public SODialogueSequence dialogue;
     [Header("Evento Extra")]
     public UnityEvent onInteract;
-    [Header("Configuração")]
-    [Tooltip("Se verdadeiro, o código executa apenas uma vez e depois desativa.")]
+    [Header("ConfiguraÃ§Ã£o")]
     public bool runOnce = false;
     private bool hasTriggered = false;
     private SpriteRenderer _cachedAlertRef;

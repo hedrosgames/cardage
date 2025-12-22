@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -64,6 +64,10 @@ public class ManagerAchievements : MonoBehaviour
                 RefreshAll();
             }
         }
+    }
+    public void UnlockQuitAchievement()
+    {
+        UnlockAchievement("achiev1");
     }
     public void SelectAchievement(UIAchievementSlot slot)
     {

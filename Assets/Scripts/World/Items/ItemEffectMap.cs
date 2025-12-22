@@ -1,8 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class ItemEffectMap : ItemEffect
 {
-    [Header("Configuração")]
-    [Tooltip("Flag que indica se o app do mapa está desbloqueado")]
+    [Header("ConfiguraÃ§Ã£o")]
     public SOZoneFlag mapAppUnlockFlag;
     private SaveClientZone saveZone;
     public override void Initialize(SOItemData item)

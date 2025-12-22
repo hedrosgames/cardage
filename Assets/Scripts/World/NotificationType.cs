@@ -1,4 +1,4 @@
-public enum NotificationType
+﻿public enum NotificationType
 {
     None,
     Alert,

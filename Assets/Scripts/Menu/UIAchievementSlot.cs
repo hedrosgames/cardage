@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(Image))]

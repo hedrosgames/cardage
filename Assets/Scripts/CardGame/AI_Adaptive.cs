@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/AI/Adaptive")]
 public class AI_Adaptive : AIBehaviorBase
 {
-    [Header("Configuração")]
-    [Tooltip("Diferença de pontos para considerar que está 'Ganhando Confortavelmente' e ativar modo defensivo.")]
+    [Header("ConfiguraÃ§Ã£o")]
     public int safetyMargin = 1;
     private CardSlot _chosenSlot;
     public override CardButton ChooseCard(List<CardButton> hand)

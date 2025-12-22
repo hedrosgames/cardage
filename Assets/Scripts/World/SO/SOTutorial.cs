@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/TutorialConfig")]
 public class SOTutorial : ScriptableObject
 {
@@ -6,10 +6,8 @@ public class SOTutorial : ScriptableObject
     public Sprite icon;
     public SOTutorialCondition condition;
     public bool runOnce = true;
-    [Header("Restrições")]
-    [Tooltip("Se marcado, impede o jogador de andar enquanto o tutorial estiver na tela.")]
+    [Header("RestriÃ§Ãµes")]
     public bool blockMovement;
-    [Tooltip("Se marcado, impede o jogador de interagir enquanto o tutorial estiver na tela.")]
     public bool blockInteraction;
 }
 

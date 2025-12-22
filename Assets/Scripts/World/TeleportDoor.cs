@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Game.World;
 using System.Collections.Generic;
@@ -13,12 +13,9 @@ public class TeleportDoor : MonoBehaviour
         Right
     }
     [Header("Identidade")]
-    [Tooltip("Define quem é esta porta E qual configuração de câmera carregar ao chegar nela.")]
     public WorldAreaId identification;
     [Header("Destino")]
-    [Tooltip("Para qual ID de porta eu mando o player?")]
     public WorldAreaId destination;
-    [Tooltip("Se marcado, usa a lista de condições. Se não, usa o destino simples acima.")]
     public bool multiDestination;
     [System.Serializable]
     public class DestinationEntry
@@ -30,24 +27,17 @@ public class TeleportDoor : MonoBehaviour
     }
     public List<DestinationEntry> conditionalDestinations = new List<DestinationEntry>();
     [Header("Ajustes de Chegada (Spawn)")]
-    [Tooltip("Para qual direção o player será empurrado ao sair desta porta?")]
     public LandingDirection landingDirection = LandingDirection.Center;
     float landingDistance = 1.5f;
     [Header("Cooldown")]
     public float cooldown = 0.5f;
     [Header("Estado da Porta")]
-    [Tooltip("Se marcado, a porta está trancada e o player não pode passar. Padrão: aberta (false)")]
     public bool isLocked = false;
-    [Tooltip("Flag que controla se a porta está aberta. Se configurada, sobrescreve isLocked. Flag = true = porta aberta")]
     public SOZoneFlag unlockFlag;
-    [Tooltip("Se marcado, a porta está trancada quando a flag é TRUE (inverte a lógica)")]
     public bool invertFlagLogic = false;
-    [Tooltip("Diálogo exibido quando o player encosta na porta trancada")]
     public SODialogueSequence lockedDialogue;
-    [Tooltip("Tempo de cooldown entre diálogos de porta trancada (evita spam)")]
     public float lockedDialogueCooldown = 1f;
     [Header("Eventos")]
-    [Tooltip("Evento executado no final do teleporte, após tudo ter sido processado")]
     public UnityEvent onTeleportComplete;
     private static Dictionary<WorldAreaId, TeleportDoor> doorRegistry = new Dictionary<WorldAreaId, TeleportDoor>();
     private SaveClientZone saveZone;

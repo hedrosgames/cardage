@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/SpecialRules")]
 public class SOTutorialConditionSpecialRules : SOTutorialCondition
 {

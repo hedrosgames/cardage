@@ -1,22 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 public class UISpecialCardCanvas : MonoBehaviour
 {
-    [Header("Referências")]
-    [Tooltip("CanvasGroup do grupo principal que terá o fade")]
+    [Header("ReferÃªncias")]
     public CanvasGroup canvasGroup;
-    [Header("Botões")]
-    [Tooltip("Os 3 botões que darão cartas ao jogador")]
+    [Header("BotÃµes")]
     public Button[] cardButtons = new Button[3];
     [Header("Cartas")]
-    [Tooltip("As 3 cartas que serão dadas ao jogador (uma para cada botão)")]
     public SOCardData[] cardsToGive = new SOCardData[3];
-    [Header("Configuração de Fade")]
-    [Tooltip("Duração do fade in")]
+    [Header("ConfiguraÃ§Ã£o de Fade")]
     public float fadeInDuration = 0.3f;
-    [Tooltip("Duração do fade out")]
     public float fadeOutDuration = 0.3f;
     private Coroutine fadeRoutine;
     private SaveClientCard saveClientCard;
@@ -98,7 +93,7 @@ public class UISpecialCardCanvas : MonoBehaviour
         var saveHelper = Object.FindFirstObjectByType<SaveHelperComponent>();
         if (saveHelper != null)
         {
-            saveHelper.SaveCard();
+            saveHelper.Save(SaveId.SaveCard);
         }
         CloseCanvas();
     }

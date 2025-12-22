@@ -1,67 +1,80 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
+
 public class FlagDestroyOnAwake : MonoBehaviour
 {
-    [Header("Configuração da Flag")]
-    [Tooltip("Flag que será verificada. Se esta flag existir (valor > 0), o objeto será destruído.")]
-    public SOZoneFlag flagToCheck;
-    [Header("Opções")]
-    [Tooltip("Se verdadeiro, desativa o GameObject ao invés de destruí-lo")]
+    [Header("ConfiguraÃ§Ã£o da Flag")]
+    public SOZoneFlag zoneFlagToCheck;
+    public SOGameFlowFlag flowFlagToCheck;
+
+    [Header("OpÃ§Ãµes")]
     public bool disableInsteadOfDestroy = false;
-    [Tooltip("Se verdadeiro, verifica no Start também (redundância útil para inicialização)")]
     public bool alsoCheckOnStart = true;
+
     private SaveClientZone saveZone;
+    private SaveClientGameFlow saveGameFlow;
+
     private void Awake()
     {
-        saveZone = FindFirstObjectByType<SaveClientZone>();
+        FindClients();
     }
+
+    private void FindClients()
+    {
+        if (saveZone == null) saveZone = FindFirstObjectByType<SaveClientZone>();
+        if (saveGameFlow == null) saveGameFlow = FindFirstObjectByType<SaveClientGameFlow>();
+    }
+
     private void OnEnable()
     {
         CheckFlagAndDestroy();
     }
+
     private void Start()
     {
-        if (saveZone != null)
+        FindClients();
+
+        if (saveZone != null) saveZone.OnLoadComplete += OnSaveLoaded;
+        if (saveGameFlow != null) saveGameFlow.OnLoadComplete += OnSaveLoaded;
+
+        if (alsoCheckOnStart)
         {
-            if (alsoCheckOnStart)
-            {
-                CheckFlagAndDestroy();
-            }
-            saveZone.OnLoadComplete += OnSaveLoaded;
-        }
-        else
-        {
-            saveZone = FindFirstObjectByType<SaveClientZone>();
-            if (saveZone != null)
-            {
-                saveZone.OnLoadComplete += OnSaveLoaded;
-            }
-            if (alsoCheckOnStart)
-            {
-                CheckFlagAndDestroy();
-            }
+            CheckFlagAndDestroy();
         }
     }
-    private void OnDestroy()
+
+    private void OnDisable()
     {
-        if (saveZone != null)
-        {
-            saveZone.OnLoadComplete -= OnSaveLoaded;
-        }
+        if (saveZone != null) saveZone.OnLoadComplete -= OnSaveLoaded;
+        if (saveGameFlow != null) saveGameFlow.OnLoadComplete -= OnSaveLoaded;
     }
+
     private void OnSaveLoaded()
     {
         CheckFlagAndDestroy();
     }
+
     private void CheckFlagAndDestroy()
     {
-        if (flagToCheck == null) return;
-        if (saveZone == null)
+        if (zoneFlagToCheck == null && flowFlagToCheck == null) return;
+
+        FindClients();
+
+        bool shouldDestroy = false;
+
+        // Verifica Zone Flag
+        if (zoneFlagToCheck != null && saveZone != null && saveZone.HasFlag(zoneFlagToCheck))
         {
-            saveZone = FindFirstObjectByType<SaveClientZone>();
-            if (saveZone == null) return;
+            shouldDestroy = true;
         }
-        if (saveZone.HasFlag(flagToCheck))
+
+        // Verifica Game Flow Flag
+        if (!shouldDestroy && flowFlagToCheck != null && saveGameFlow != null && saveGameFlow.HasFlag(flowFlagToCheck))
+        {
+            shouldDestroy = true;
+        }
+
+        if (shouldDestroy)
         {
             if (disableInsteadOfDestroy)
             {
@@ -74,4 +87,3 @@ public class FlagDestroyOnAwake : MonoBehaviour
         }
     }
 }
-

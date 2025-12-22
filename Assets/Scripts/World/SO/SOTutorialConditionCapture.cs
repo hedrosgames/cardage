@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/Capture")]
 public class SOTutorialConditionCapture : SOTutorialCondition
 {

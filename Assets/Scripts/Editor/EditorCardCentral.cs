@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ public class EditorCardCentral : EditorWindow
     private readonly Color camouflageColor = new Color(0.3f, 0.7f, 0.3f);
     private readonly Color auraColor = new Color(0.7f, 0.3f, 0.9f);
     
-    [MenuItem("Central de Configuração/Central de Cartas")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Cartas")]
     public static void ShowWindow()
     {
         EditorCardCentral window = GetWindow<EditorCardCentral>("Central de Cartas");
@@ -76,10 +76,10 @@ public class EditorCardCentral : EditorWindow
         EditorGUILayout.LabelField("Filtros", EditorStyles.boldLabel);
         
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Coleção:", GUILayout.Width(70));
+        EditorGUILayout.LabelField("ColeÃ§Ã£o:", GUILayout.Width(70));
         bool feudalJapanSelected = collectionFilter == CollectionType.FeudalJapan;
         GUI.backgroundColor = feudalJapanSelected ? Color.cyan : Color.white;
-        if (GUILayout.Button("Japão Feudal", GUILayout.Height(20)))
+        if (GUILayout.Button("JapÃ£o Feudal", GUILayout.Height(20)))
         {
             collectionFilter = feudalJapanSelected ? (CollectionType)(-1) : CollectionType.FeudalJapan;
         }
@@ -164,7 +164,7 @@ public class EditorCardCentral : EditorWindow
         EditorGUILayout.LabelField("Right", EditorStyles.boldLabel, GUILayout.Width(50));
         EditorGUILayout.LabelField("Bottom", EditorStyles.boldLabel, GUILayout.Width(60));
         EditorGUILayout.LabelField("Left", EditorStyles.boldLabel, GUILayout.Width(50));
-        EditorGUILayout.LabelField("Ações", EditorStyles.boldLabel, GUILayout.Width(80));
+        EditorGUILayout.LabelField("AÃ§Ãµes", EditorStyles.boldLabel, GUILayout.Width(80));
         EditorGUILayout.EndHorizontal();
         
         foreach (var card in filteredCards)
@@ -179,11 +179,11 @@ public class EditorCardCentral : EditorWindow
     {
         return rarity switch
         {
-            CardRarity.Common => "⚪",
-            CardRarity.Uncommon => "🔵",
-            CardRarity.Rare => "🟣",
-            CardRarity.Legendary => "🟡",
-            CardRarity.Special => "⭐",
+            CardRarity.Common => "âšª",
+            CardRarity.Uncommon => "ðŸ”µ",
+            CardRarity.Rare => "ðŸŸ£",
+            CardRarity.Legendary => "ðŸŸ¡",
+            CardRarity.Special => "â­",
             _ => ""
         };
     }
@@ -192,9 +192,9 @@ public class EditorCardCentral : EditorWindow
     {
         return type switch
         {
-            CardType.Samurai => "⚔️",
-            CardType.Ninja => "🥷",
-            CardType.Monster => "👹",
+            CardType.Samurai => "âš”ï¸",
+            CardType.Ninja => "ðŸ¥·",
+            CardType.Monster => "ðŸ‘¹",
             _ => ""
         };
     }
@@ -203,9 +203,9 @@ public class EditorCardCentral : EditorWindow
     {
         return subType switch
         {
-            CardSubType.Creature => "👤",
-            CardSubType.Equipment => "🛡️",
-            CardSubType.Magic => "✨",
+            CardSubType.Creature => "ðŸ‘¤",
+            CardSubType.Equipment => "ðŸ›¡ï¸",
+            CardSubType.Magic => "âœ¨",
             _ => ""
         };
     }

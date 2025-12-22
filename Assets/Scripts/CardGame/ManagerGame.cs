@@ -1,13 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 public class ManagerGame : MonoBehaviour
 {
-    [Header("Configuração da Partida")]
+    [Header("ConfiguraÃ§Ã£o da Partida")]
     public SOGameSetup setup;
     public ManagerBoard boardManager;
     public ManagerTurn turnManager;
     public GameObject boardCardPrefab;
-    [Header("UI & Interação")]
+    [Header("UI & InteraÃ§Ã£o")]
     public List<CardButton> playerHandButtons;
     public List<CardButton> opponentHandButtons;
     public Canvas canvas;

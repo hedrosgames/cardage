@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
@@ -10,7 +10,7 @@ public class ManagerMainMenu : MonoBehaviour
     public RectTransform panelSettings;
     public RectTransform panelAchievements;
     public RectTransform panelQuitConfirm;
-    [Header("Canvases (Referências para Editor)")]
+    [Header("Canvases (ReferÃªncias para Editor)")]
     public GameObject canvasMainMenu;
     public GameObject canvasSettings;
     public GameObject canvasAchievements;
@@ -122,7 +122,7 @@ public class ManagerMainMenu : MonoBehaviour
     {
         if(!isTransitioning)
         {
-            ManagerQuitLogic quitLogic = FindFirstObjectByType<ManagerQuitLogic>();
+            QuitLogic quitLogic = FindFirstObjectByType<QuitLogic>();
             if (quitLogic != null)
             {
                 quitLogic.ResetState();

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Config/SaveDefinition")]
 public class SOSaveDefinition : ScriptableObject
 {

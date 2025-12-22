@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Config/GameSetup")]
 public class SOGameSetup : ScriptableObject
 {

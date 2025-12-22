@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class ManagerBoard : MonoBehaviour
 {
     public CardSlot[] allSlots = new CardSlot[9];

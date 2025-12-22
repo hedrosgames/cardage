@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Game.World;
 [CreateAssetMenu(menuName = "Config/Camera")]
 public class SOCameraConfig : ScriptableObject
 {
-    [Header("Referência Obrigatória")]
+    [Header("ReferÃªncia ObrigatÃ³ria")]
     public SOBoundaryLibrary boundaryLibrary;
-    [Header("Configuração Global")]
+    [Header("ConfiguraÃ§Ã£o Global")]
     public Vector2 globalFollowOffset;
     [System.Serializable]
     public class AreaSettings
@@ -16,7 +16,6 @@ public class SOCameraConfig : ScriptableObject
         public bool followPlayer;
         public Vector3 fixedPosition;
         [Header("Boundary ID")]
-        [Tooltip("Selecione qual limite esta área deve respeitar (Definido na Library).")]
         public BoundaryId boundaryId;
     }
     public AreaSettings[] areas;

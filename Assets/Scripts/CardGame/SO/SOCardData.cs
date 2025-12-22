@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 public enum CardRarity { Common, Uncommon, Rare, Legendary, Special }
 public enum CardType { Samurai, Ninja, Monster }

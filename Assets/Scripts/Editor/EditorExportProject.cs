@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
@@ -35,20 +35,20 @@ public static class EditorExportProject
     static string GeneratePrompt()
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Você receberá um arquivo de exportação contendo todo o contexto do projeto Unity.");
+        sb.AppendLine("VocÃª receberÃ¡ um arquivo de exportaÃ§Ã£o contendo todo o contexto do projeto Unity.");
         sb.AppendLine("Regras importantes:");
-        sb.AppendLine("1. Considere o arquivo de exportação como a única fonte de verdade.");
-        sb.AppendLine("2. Sempre descartar versões antigas do entendimento do projeto.");
-        sb.AppendLine("3. Recriar sua visão do projeto APENAS baseado no arquivo mais recente.");
-        sb.AppendLine("4. Quando eu pedir código:");
+        sb.AppendLine("1. Considere o arquivo de exportaÃ§Ã£o como a Ãºnica fonte de verdade.");
+        sb.AppendLine("2. Sempre descartar versÃµes antigas do entendimento do projeto.");
+        sb.AppendLine("3. Recriar sua visÃ£o do projeto APENAS baseado no arquivo mais recente.");
+        sb.AppendLine("4. Quando eu pedir cÃ³digo:");
         sb.AppendLine(" - Sempre entregue arquivos C# completos (com using e classe).");
-        sb.AppendLine(" - Nunca use reticências ou placeholders.");
-        sb.AppendLine(" - Nunca descreva dentro do bloco de código.");
+        sb.AppendLine(" - Nunca use reticÃªncias ou placeholders.");
+        sb.AppendLine(" - Nunca descreva dentro do bloco de cÃ³digo.");
         sb.AppendLine("5. Ao responder:");
-        sb.AppendLine(" - Seja direto e técnico.");
-        sb.AppendLine(" - Não elogie, não enrole, não filosofe.");
-        sb.AppendLine("6. Nunca quebre a API que já existe no projeto.");
-        sb.AppendLine("7. Sempre leia o export inteiro antes de responder qualquer dúvida técnica.");
+        sb.AppendLine(" - Seja direto e tÃ©cnico.");
+        sb.AppendLine(" - NÃ£o elogie, nÃ£o enrole, nÃ£o filosofe.");
+        sb.AppendLine("6. Nunca quebre a API que jÃ¡ existe no projeto.");
+        sb.AppendLine("7. Sempre leia o export inteiro antes de responder qualquer dÃºvida tÃ©cnica.");
         return sb.ToString();
     }
 

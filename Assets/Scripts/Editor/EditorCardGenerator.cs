@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Linq;
@@ -38,11 +38,11 @@ public class EditorCardGenerator : EditorWindow
         EditorGUILayout.Space();
         
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Pasta de Saída:", GUILayout.Width(120));
+        EditorGUILayout.LabelField("Pasta de SaÃ­da:", GUILayout.Width(120));
         outputPath = EditorGUILayout.TextField(outputPath);
         if (GUILayout.Button("Procurar", GUILayout.Width(80)))
         {
-            string path = EditorUtility.SaveFolderPanel("Selecione a pasta de saída", outputPath, "");
+            string path = EditorUtility.SaveFolderPanel("Selecione a pasta de saÃ­da", outputPath, "");
             if (!string.IsNullOrEmpty(path))
             {
                 if (path.StartsWith(Application.dataPath))
@@ -76,10 +76,10 @@ public class EditorCardGenerator : EditorWindow
         EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Instruções:", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("InstruÃ§Ãµes:", EditorStyles.boldLabel);
         EditorGUILayout.HelpBox(
             "1. Selecione o arquivo CSV com os dados das cartas\n" +
-            "2. Escolha a pasta onde os ScriptableObjects serão criados\n" +
+            "2. Escolha a pasta onde os ScriptableObjects serÃ£o criados\n" +
             "3. Clique em 'Gerar Todas as Cartas'\n\n" +
             "O CSV deve ter as colunas: id, Type, Rarity, SubType, Name, Top., Rig., Down, Left, Triad, Special",
             MessageType.Info
@@ -90,13 +90,13 @@ public class EditorCardGenerator : EditorWindow
     {
         if (string.IsNullOrEmpty(csvPath) || !File.Exists(csvPath))
         {
-            EditorUtility.DisplayDialog("Erro", "Por favor, selecione um arquivo CSV válido.", "OK");
+            EditorUtility.DisplayDialog("Erro", "Por favor, selecione um arquivo CSV vÃ¡lido.", "OK");
             return;
         }
         
         if (string.IsNullOrEmpty(outputPath))
         {
-            EditorUtility.DisplayDialog("Erro", "Por favor, selecione uma pasta de saída.", "OK");
+            EditorUtility.DisplayDialog("Erro", "Por favor, selecione uma pasta de saÃ­da.", "OK");
             return;
         }
         
@@ -108,7 +108,7 @@ public class EditorCardGenerator : EditorWindow
         string[] lines = File.ReadAllLines(csvPath);
         if (lines.Length < 2)
         {
-            EditorUtility.DisplayDialog("Erro", "O arquivo CSV está vazio ou não tem dados.", "OK");
+            EditorUtility.DisplayDialog("Erro", "O arquivo CSV estÃ¡ vazio ou nÃ£o tem dados.", "OK");
             return;
         }
         
@@ -212,7 +212,7 @@ public class EditorCardGenerator : EditorWindow
         AssetDatabase.Refresh();
         
         EditorUtility.DisplayDialog(
-            "Concluído",
+            "ConcluÃ­do",
             $"Cartas geradas com sucesso!\n\n" +
             $"Criadas: {created}\n" +
             $"Atualizadas: {updated}\n" +
@@ -273,7 +273,7 @@ public class EditorCardGenerator : EditorWindow
         if (str.Contains("comum")) return CardRarity.Common;
         if (str.Contains("incomum")) return CardRarity.Uncommon;
         if (str.Contains("rara")) return CardRarity.Rare;
-        if (str.Contains("lendária") || str.Contains("lendaria")) return CardRarity.Legendary;
+        if (str.Contains("lendÃ¡ria") || str.Contains("lendaria")) return CardRarity.Legendary;
         if (str.Contains("especial")) return CardRarity.Special;
         return CardRarity.Common;
     }
@@ -291,7 +291,7 @@ public class EditorCardGenerator : EditorWindow
     {
         if (string.IsNullOrEmpty(str)) return SpecialType.None;
         str = str.ToLower().Trim();
-        if (str.Contains("domínio") || str.Contains("dominio")) return SpecialType.Domain;
+        if (str.Contains("domÃ­nio") || str.Contains("dominio")) return SpecialType.Domain;
         if (str.Contains("camuflagem")) return SpecialType.Camouflage;
         if (str.Contains("aura")) return SpecialType.Aura;
         return SpecialType.None;
@@ -330,7 +330,7 @@ public class EditorCardGenerator : EditorWindow
         
         if (!Directory.Exists(outputPath))
         {
-            EditorUtility.DisplayDialog("Info", "A pasta não existe. Nada para deletar.", "OK");
+            EditorUtility.DisplayDialog("Info", "A pasta nÃ£o existe. Nada para deletar.", "OK");
             return;
         }
         
@@ -356,7 +356,7 @@ public class EditorCardGenerator : EditorWindow
         AssetDatabase.Refresh();
         
         EditorUtility.DisplayDialog(
-            "Concluído",
+            "ConcluÃ­do",
             $"Cartas antigas deletadas: {deleted}",
             "OK"
         );

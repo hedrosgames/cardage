@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +34,11 @@ public class EditorGameSetupGenerator : EditorWindow
         EditorGUILayout.Space();
         
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Pasta de Saída:", GUILayout.Width(120));
+        EditorGUILayout.LabelField("Pasta de SaÃ­da:", GUILayout.Width(120));
         outputPath = EditorGUILayout.TextField(outputPath);
         if (GUILayout.Button("Procurar", GUILayout.Width(80)))
         {
-            string path = EditorUtility.SaveFolderPanel("Selecione a pasta de saída", outputPath, "");
+            string path = EditorUtility.SaveFolderPanel("Selecione a pasta de saÃ­da", outputPath, "");
             if (!string.IsNullOrEmpty(path))
             {
                 if (path.StartsWith(Application.dataPath))
@@ -119,8 +119,8 @@ public class EditorGameSetupGenerator : EditorWindow
         
         EditorGUILayout.EndHorizontal();
         
-        EditorGUILayout.LabelField($"Deck: {info.deck?.name ?? "NÃO ENCONTRADO"}", EditorStyles.miniLabel);
-        EditorGUILayout.LabelField($"Oponente: {info.opponent?.name ?? "NÃO ENCONTRADO"}", EditorStyles.miniLabel);
+        EditorGUILayout.LabelField($"Deck: {info.deck?.name ?? "NÃƒO ENCONTRADO"}", EditorStyles.miniLabel);
+        EditorGUILayout.LabelField($"Oponente: {info.opponent?.name ?? "NÃƒO ENCONTRADO"}", EditorStyles.miniLabel);
         
         if (info.existingSetup != null)
         {
@@ -234,7 +234,7 @@ public class EditorGameSetupGenerator : EditorWindow
     {
         if (string.IsNullOrEmpty(outputPath))
         {
-            EditorUtility.DisplayDialog("Erro", "Por favor, selecione uma pasta de saída.", "OK");
+            EditorUtility.DisplayDialog("Erro", "Por favor, selecione uma pasta de saÃ­da.", "OK");
             return;
         }
         
@@ -289,7 +289,7 @@ public class EditorGameSetupGenerator : EditorWindow
         AnalyzeAssets();
         
         EditorUtility.DisplayDialog(
-            "Concluído",
+            "ConcluÃ­do",
             $"Game Setups processados!\n\n" +
             $"Criados: {created}\n" +
             $"Atualizados: {updated}\n" +

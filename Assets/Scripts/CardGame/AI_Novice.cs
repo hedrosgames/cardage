@@ -1,11 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 [CreateAssetMenu(menuName = "Game/AI/Novice")]
 public class AI_Novice : AIBehaviorBase
 {
-    [Header("Nível de Erro")]
-    [Tooltip("Chance (0 a 1) de NÃO escolher a melhor jogada.")]
+    [Header("NÃ­vel de Erro")]
     public float errorRate = 0.4f;
     private CardSlot _chosenSlot;
     private struct Move

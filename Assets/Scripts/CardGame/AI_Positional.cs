@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/AI/Positional")]
 public class AI_Positional : AIBehaviorBase

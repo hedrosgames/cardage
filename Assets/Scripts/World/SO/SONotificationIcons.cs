@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Config/NotificationIcons")]
 public class SONotificationIcons : ScriptableObject
 {
-    [Header("Ícones de Notificação")]
+    [Header("Ãcones de NotificaÃ§Ã£o")]
     public Sprite iconAlert;
     public Sprite iconTournament;
     public Sprite iconRareCard;

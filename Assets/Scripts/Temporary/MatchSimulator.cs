@@ -1,15 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 public class MatchSimulator : MonoBehaviour
 {
-    [Header("Configuração")]
-    [Tooltip("Número de partidas por regra (reduza para testes mais rápidos)")]
+    [Header("ConfiguraÃ§Ã£o")]
     public int matchesPerRule = 100;
-    [Tooltip("Executar automaticamente ao iniciar")]
     public bool runOnStart = false;
-    [Tooltip("Mostrar progresso detalhado")]
     public bool showDetailedProgress = true;
     [Header("Resultados")]
     public List<RuleActivationStats> ruleStats = new List<RuleActivationStats>();
@@ -20,7 +17,7 @@ public class MatchSimulator : MonoBehaviour
             RunAllSimulations();
         }
     }
-    [ContextMenu("Executar Todas as Simulações")]
+    [ContextMenu("Executar Todas as SimulaÃ§Ãµes")]
     public void RunAllSimulations()
     {
         ruleStats.Clear();
@@ -322,26 +319,26 @@ public class MatchSimulator : MonoBehaviour
     {
         var report = new StringBuilder();
         report.AppendLine("========================================");
-        report.AppendLine("RELATÓRIO DE SIMULAÇÃO DE REGRAS");
+        report.AppendLine("RELATÃ“RIO DE SIMULAÃ‡ÃƒO DE REGRAS");
         report.AppendLine("========================================");
         report.AppendLine();
         report.AppendLine($"Total de Regras Testadas: {ruleStats.Count}");
         report.AppendLine($"Total de Partidas Simuladas: {ruleStats.Sum(s => s.totalMatches)}");
-        report.AppendLine($"Total de Ativações: {ruleStats.Sum(s => s.activations)}");
+        report.AppendLine($"Total de AtivaÃ§Ãµes: {ruleStats.Sum(s => s.activations)}");
         report.AppendLine($"Partidas por Regra: {matchesPerRule}");
         report.AppendLine();
-        report.AppendLine("=== ESTATÍSTICAS POR REGRA ===");
+        report.AppendLine("=== ESTATÃSTICAS POR REGRA ===");
         report.AppendLine();
         foreach (var stat in ruleStats.OrderByDescending(s => s.activations))
         {
             float successRate = stat.totalMatches > 0 ? (stat.successfulActivations / (float)stat.activations * 100f) : 0f;
             report.AppendLine($"[{stat.ruleName}]");
             report.AppendLine($"  Partidas: {stat.totalMatches}");
-            report.AppendLine($"  Ativações: {stat.activations}");
+            report.AppendLine($"  AtivaÃ§Ãµes: {stat.activations}");
             report.AppendLine($"  Sucessos: {stat.successfulActivations}");
             report.AppendLine($"  Falhas: {stat.failedActivations}");
             report.AppendLine($"  Taxa de Sucesso: {successRate:F2}%");
-            report.AppendLine($"  Média de Ativações/Partida: {stat.averageActivationsPerMatch:F2}");
+            report.AppendLine($"  MÃ©dia de AtivaÃ§Ãµes/Partida: {stat.averageActivationsPerMatch:F2}");
             if (stat.errors.Count > 0)
             {
                 report.AppendLine($"  Erros: {stat.errors.Count}");
@@ -356,7 +353,7 @@ public class MatchSimulator : MonoBehaviour
         var top10 = ruleStats.OrderByDescending(s => s.activations).Take(10);
         foreach (var stat in top10)
         {
-            report.AppendLine($"{stat.ruleName}: {stat.activations} ativações");
+            report.AppendLine($"{stat.ruleName}: {stat.activations} ativaÃ§Ãµes");
         }
         report.AppendLine();
         var problematic = ruleStats.Where(s => s.failedActivations > 0 || s.errors.Count > 0).ToList();
@@ -370,7 +367,7 @@ public class MatchSimulator : MonoBehaviour
         }
         else
         {
-            report.AppendLine("✓ Nenhuma regra apresentou problemas!");
+            report.AppendLine("âœ“ Nenhuma regra apresentou problemas!");
         }
         #if UNITY_EDITOR
         string path = System.IO.Path.Combine(Application.dataPath, "SimulationReport.txt");

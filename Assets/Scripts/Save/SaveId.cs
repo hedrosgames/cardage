@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public enum SaveId
 {
     None,
@@ -8,7 +8,6 @@ public enum SaveId
     SaveSettings,
     SaveMenu,
     SaveAchievements,
-    SaveQuit,
-    SaveMoment
+    SaveGameFlow
 }
 

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Canvas))]
@@ -7,8 +7,7 @@ public class ScreenTransition : MonoBehaviour
 {
     public Canvas canvas;
     public CanvasGroup canvasGroup;
-    [Header("Configuração")]
-    [Tooltip("Tempo em segundos para o fade acontecer")]
+    [Header("ConfiguraÃ§Ã£o")]
     public float fadeDuration = 1f;
     void Awake()
     {

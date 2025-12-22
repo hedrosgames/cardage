@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class VisualEffectFloating : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    [Header("Animação")]
+    [Header("AnimaÃ§Ã£o")]
     public float duration = 1.0f;
     public float floatSpeed = 2f;
     public Vector3 endScale = new Vector3(1.2f, 1.2f, 1f);

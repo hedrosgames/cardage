@@ -1,4 +1,4 @@
-namespace Game.World
+﻿namespace Game.World
 {
     public enum BoundaryId
     {

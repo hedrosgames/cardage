@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System;
@@ -13,7 +13,7 @@ public class EditorCentralSave : EditorWindow
     string lastLoadCaller = "";
     string selectedFilter = ""; // ID do save selecionado para filtrar
     
-    // Mapeamento automático: caller -> lista de saves afetados
+    // Mapeamento automÃ¡tico: caller -> lista de saves afetados
     static Dictionary<string, HashSet<string>> callerToSaveIds = new Dictionary<string, HashSet<string>>();
     
     [System.Serializable]
@@ -25,7 +25,7 @@ public class EditorCentralSave : EditorWindow
         public string methodName;
         public bool isSave;
         public List<string> affectedSaveIds = new List<string>(); 
-        public string personalNote = ""; // Observação pessoal do usuário
+        public string personalNote = ""; // ObservaÃ§Ã£o pessoal do usuÃ¡rio
     }
     
     Dictionary<string, string> personalNotes = new Dictionary<string, string>();
@@ -33,27 +33,25 @@ public class EditorCentralSave : EditorWindow
     static List<SaveLocation> saveLocations = new List<SaveLocation>
     {
         // Save locations
-        new SaveLocation { name = "SaveClientZone - SetFlag", description = "Quando uma flag de zona é definida", className = "SaveClientZone", methodName = "SetFlag", isSave = true },
-        new SaveLocation { name = "SaveClientZone - SetFlagString", description = "Quando uma flag string de zona é definida", className = "SaveClientZone", methodName = "SetFlagString", isSave = true },
-        new SaveLocation { name = "PhoneApp_Drive - OnAppOpen", description = "Quando o app Drive é aberto pela primeira vez", className = "PhoneApp_Drive", methodName = "OnAppOpen", isSave = true },
-        new SaveLocation { name = "PhoneApp_Zap - OnAppOpen", description = "Quando o app Zap é aberto", className = "PhoneApp_Zap", methodName = "OnAppOpen", isSave = true },
-        new SaveLocation { name = "PhoneApp_Bank - OnAppOpen", description = "Quando o app Bank é aberto", className = "PhoneApp_Bank", methodName = "OnAppOpen", isSave = true },
-        new SaveLocation { name = "ManagerGameFlow - OnAreaChanged", description = "Quando a área do jogo muda", className = "ManagerGameFlow", methodName = "OnAreaChanged", isSave = true },
+        new SaveLocation { name = "SaveClientZone - SetFlag", description = "Quando uma flag de zona Ã© definida", className = "SaveClientZone", methodName = "SetFlag", isSave = true },
+        new SaveLocation { name = "SaveClientZone - SetFlagString", description = "Quando uma flag string de zona Ã© definida", className = "SaveClientZone", methodName = "SetFlagString", isSave = true },
+        new SaveLocation { name = "PhoneApp_Drive - OnAppOpen", description = "Quando o app Drive Ã© aberto pela primeira vez", className = "PhoneApp_Drive", methodName = "OnAppOpen", isSave = true },
+        new SaveLocation { name = "PhoneApp_Zap - OnAppOpen", description = "Quando o app Zap Ã© aberto", className = "PhoneApp_Zap", methodName = "OnAppOpen", isSave = true },
+        new SaveLocation { name = "PhoneApp_Bank - OnAppOpen", description = "Quando o app Bank Ã© aberto", className = "PhoneApp_Bank", methodName = "OnAppOpen", isSave = true },
+        new SaveLocation { name = "ManagerGameFlow - OnAreaChanged", description = "Quando a Ã¡rea do jogo muda", className = "ManagerGameFlow", methodName = "OnAreaChanged", isSave = true },
         new SaveLocation { name = "ManagerGameFlow - OnCardGameFinished", description = "Quando um card game termina", className = "ManagerGameFlow", methodName = "OnCardGameFinished", isSave = true },
-        new SaveLocation { name = "Painel de Quit", description = "Quando o jogador ganha o achievement ele salva o quit e o achiev1", className = "ManagerQuitLogic", methodName = "OnQuit", isSave = true },
-        new SaveLocation { name = "SliderSaveHandler - OnPointerUp", description = "Quando um slider é ajustado", className = "SliderSaveHandler", methodName = "OnPointerUp", isSave = true },
-        new SaveLocation { name = "ManagerLocalization - SetLanguage", description = "Quando o idioma é alterado", className = "ManagerLocalization", methodName = "SetLanguage", isSave = true },
-        new SaveLocation { name = "SaveClientAchievements - Unlock", description = "Quando uma conquista é desbloqueada", className = "SaveClientAchievements", methodName = "Unlock", isSave = true },
+        new SaveLocation { name = "SliderSaveHandler - OnPointerUp", description = "Quando um slider Ã© ajustado", className = "SliderSaveHandler", methodName = "OnPointerUp", isSave = true },
+        new SaveLocation { name = "ManagerLocalization - SetLanguage", description = "Quando o idioma Ã© alterado", className = "ManagerLocalization", methodName = "SetLanguage", isSave = true },
+        new SaveLocation { name = "SaveClientAchievements - Unlock", description = "Quando uma conquista Ã© desbloqueada", className = "SaveClientAchievements", methodName = "Unlock", isSave = true },
         
         // Load locations
         new SaveLocation { name = "SaveClientZone - Start", description = "Quando SaveClientZone inicia", className = "SaveClientZone", methodName = "Start", isSave = false },
         new SaveLocation { name = "SaveClientAchievements - Start", description = "Quando SaveClientAchievements inicia", className = "SaveClientAchievements", methodName = "Start", isSave = false },
-        new SaveLocation { name = "Painel de Quit", description = "Quando ManagerQuitLogic inicia", className = "ManagerQuitLogic", methodName = "Start", isSave = false },
         new SaveLocation { name = "ManagerSave - Awake", description = "Quando ManagerSave inicia", className = "ManagerSave", methodName = "Awake", isSave = false },
-        new SaveLocation { name = "ManagerSave - OnSceneLoaded", description = "Quando uma cena é carregada", className = "ManagerSave", methodName = "OnSceneLoaded", isSave = false },
+        new SaveLocation { name = "ManagerSave - OnSceneLoaded", description = "Quando uma cena Ã© carregada", className = "ManagerSave", methodName = "OnSceneLoaded", isSave = false },
     };
     
-    [MenuItem("Central de Configuração/Central de Save")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Save")]
     static void Open()
     {
         var window = GetWindow<EditorCentralSave>("Central de Save");
@@ -71,7 +69,7 @@ public class EditorCentralSave : EditorWindow
     
     void LoadPersonalNotes()
     {
-        // Carrega observações pessoais salvas
+        // Carrega observaÃ§Ãµes pessoais salvas
         personalNotes.Clear();
         foreach (var location in saveLocations)
         {
@@ -87,15 +85,15 @@ public class EditorCentralSave : EditorWindow
     
     void SavePersonalNote(string locationKey, string note)
     {
-        // Salva observação pessoal
+        // Salva observaÃ§Ã£o pessoal
         personalNotes[locationKey] = note;
         UnityEditor.EditorPrefs.SetString($"EditorCentralSave_Note_{locationKey}", note);
     }
     
     void DetectSaveMappings()
     {
-        // Mapeamento estático baseado no conhecimento do código
-        // Isso é mais confiável que análise dinâmica
+        // Mapeamento estÃ¡tico baseado no conhecimento do cÃ³digo
+        // Isso Ã© mais confiÃ¡vel que anÃ¡lise dinÃ¢mica
         Dictionary<string, List<string>> staticMappings = new Dictionary<string, List<string>>
         {
             // Save locations
@@ -106,7 +104,6 @@ public class EditorCentralSave : EditorWindow
             { "PhoneApp_Bank.OnAppOpen", new List<string> { "savezone" } },
             { "ManagerGameFlow.OnAreaChanged", new List<string> { "saveworld" } },
             { "ManagerGameFlow.OnCardGameFinished", new List<string> { "saveworld", "savecard" } },
-            { "ManagerQuitLogic.OnQuit", new List<string> { "savequit", "saveachievements" } },
             { "SliderSaveHandler.OnPointerUp", new List<string> { "savesettings" } },
             { "ManagerLocalization.SetLanguage", new List<string> { "savesettings" } },
             { "SaveClientAchievements.Unlock", new List<string> { "saveachievements" } },
@@ -114,12 +111,11 @@ public class EditorCentralSave : EditorWindow
             // Load locations
             { "SaveClientZone.Start", new List<string> { "savezone" } },
             { "SaveClientAchievements.Start", new List<string> { "saveachievements" } },
-            { "ManagerQuitLogic.Start", new List<string> { "savequit" } },
             { "ManagerSave.Awake", new List<string> { "saveworld", "savezone", "savecard", "savesettings", "savemenu", "saveachievements" } },
             { "ManagerSave.OnSceneLoaded", new List<string> { "saveworld", "savezone", "savecard", "savesettings", "savemenu", "saveachievements" } }
         };
         
-        // Aplica mapeamentos estáticos
+        // Aplica mapeamentos estÃ¡ticos
         foreach (var location in saveLocations)
         {
             string key = $"{location.className}.{location.methodName}";
@@ -150,7 +146,7 @@ public class EditorCentralSave : EditorWindow
         lastSaveCaller = caller;
         lastSaveResult = new Dictionary<string, string>(savedData);
         
-        // Atualiza mapeamento automático: caller -> saves afetados
+        // Atualiza mapeamento automÃ¡tico: caller -> saves afetados
         if (!string.IsNullOrEmpty(caller) && savedData != null && savedData.Count > 0)
         {
             if (!callerToSaveIds.ContainsKey(caller))
@@ -172,7 +168,7 @@ public class EditorCentralSave : EditorWindow
         lastLoadCaller = caller;
         lastLoadResult = new Dictionary<string, string>(loadedData);
         
-        // Atualiza mapeamento automático para loads também
+        // Atualiza mapeamento automÃ¡tico para loads tambÃ©m
         if (!string.IsNullOrEmpty(caller) && loadedData != null && loadedData.Count > 0)
         {
             if (!callerToSaveIds.ContainsKey(caller))
@@ -230,7 +226,7 @@ public class EditorCentralSave : EditorWindow
         float buttonSpacing = 5f;
         float margin = 20f;
         
-        // Calcula quantos botões cabem por linha baseado na largura da janela
+        // Calcula quantos botÃµes cabem por linha baseado na largura da janela
         float windowWidth = position.width;
         float availableWidth = windowWidth - margin;
         int buttonsPerRow = Mathf.Max(1, Mathf.FloorToInt(availableWidth / (buttonWidth + buttonSpacing)));
@@ -238,7 +234,7 @@ public class EditorCentralSave : EditorWindow
         int buttonCount = 0;
         EditorGUILayout.BeginHorizontal();
         
-        // Botão "Todos" sempre visível na primeira linha
+        // BotÃ£o "Todos" sempre visÃ­vel na primeira linha
         bool isAllSelected = string.IsNullOrEmpty(selectedFilter);
         GUI.backgroundColor = isAllSelected ? new Color(0.4f, 0.8f, 0.4f) : Color.white;
         if (GUILayout.Button("Todos", GUILayout.Width(buttonWidth), GUILayout.ExpandWidth(false)))
@@ -248,12 +244,12 @@ public class EditorCentralSave : EditorWindow
         GUI.backgroundColor = Color.white;
         buttonCount++;
         
-        // Botões para cada SaveDefinition
+        // BotÃµes para cada SaveDefinition
         foreach (var def in definitions)
         {
             if (def == null) continue;
             
-            // Quebra linha se necessário
+            // Quebra linha se necessÃ¡rio
             if (buttonCount > 0 && buttonCount % buttonsPerRow == 0)
             {
                 EditorGUILayout.EndHorizontal();
@@ -329,7 +325,7 @@ public class EditorCentralSave : EditorWindow
             {
                 if (ManagerSave.Instance != null)
                 {
-                    // Salva apenas os saves específicos que este local afeta usando evento
+                    // Salva apenas os saves especÃ­ficos que este local afeta usando evento
                     if (location.affectedSaveIds.Count > 0)
                     {
                         foreach (var saveId in location.affectedSaveIds)
@@ -339,27 +335,27 @@ public class EditorCentralSave : EditorWindow
                     }
                     else
                     {
-                        // Se não há saves detectados, tenta salvar todos (comportamento antigo)
+                        // Se nÃ£o hÃ¡ saves detectados, tenta salvar todos (comportamento antigo)
                         ManagerSave.Instance.SaveAll();
                     }
                 }
                 else
                 {
-                    UnityEditor.EditorUtility.DisplayDialog("Aviso", "ManagerSave.Instance não está disponível. Inicie o jogo primeiro.", "OK");
+                    UnityEditor.EditorUtility.DisplayDialog("Aviso", "ManagerSave.Instance nÃ£o estÃ¡ disponÃ­vel. Inicie o jogo primeiro.", "OK");
                 }
             }
             EditorGUI.EndDisabledGroup();
             if (!canSave)
             {
-                EditorGUILayout.LabelField("(Jogo não está rodando)", EditorStyles.miniLabel);
+                EditorGUILayout.LabelField("(Jogo nÃ£o estÃ¡ rodando)", EditorStyles.miniLabel);
             }
             else
             {
-                // Mostra quantos clients estão registrados
+                // Mostra quantos clients estÃ£o registrados
                 int registeredCount = ManagerSave.Instance != null ? ManagerSave.Instance.GetRegisteredClientsCount() : 0;
                 if (registeredCount == 0)
                 {
-                    EditorGUILayout.LabelField("(Nenhum client registrado - nada será salvo)", EditorStyles.miniLabel);
+                    EditorGUILayout.LabelField("(Nenhum client registrado - nada serÃ¡ salvo)", EditorStyles.miniLabel);
                 }
                 else
                 {
@@ -369,7 +365,7 @@ public class EditorCentralSave : EditorWindow
             GUI.backgroundColor = Color.white;
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.LabelField(location.description, EditorStyles.miniLabel);
-            EditorGUILayout.LabelField($"Classe: {location.className} | Método: {location.methodName}", EditorStyles.miniLabel);
+            EditorGUILayout.LabelField($"Classe: {location.className} | MÃ©todo: {location.methodName}", EditorStyles.miniLabel);
             if (location.affectedSaveIds.Count > 0)
             {
                 string savesList = string.Join(", ", location.affectedSaveIds);
@@ -377,7 +373,7 @@ public class EditorCentralSave : EditorWindow
             }
             else
             {
-                EditorGUILayout.LabelField("Afeta: (não detectado ainda - execute para detectar)", EditorStyles.miniLabel);
+                EditorGUILayout.LabelField("Afeta: (nÃ£o detectado ainda - execute para detectar)", EditorStyles.miniLabel);
             }
             
             EditorGUILayout.EndVertical();
@@ -431,18 +427,18 @@ public class EditorCentralSave : EditorWindow
                 }
                 else
                 {
-                    UnityEditor.EditorUtility.DisplayDialog("Aviso", "ManagerSave.Instance não está disponível. Inicie o jogo primeiro.", "OK");
+                    UnityEditor.EditorUtility.DisplayDialog("Aviso", "ManagerSave.Instance nÃ£o estÃ¡ disponÃ­vel. Inicie o jogo primeiro.", "OK");
                 }
             }
             EditorGUI.EndDisabledGroup();
             if (!canLoad)
             {
-                EditorGUILayout.LabelField("(Jogo não está rodando)", EditorStyles.miniLabel);
+                EditorGUILayout.LabelField("(Jogo nÃ£o estÃ¡ rodando)", EditorStyles.miniLabel);
             }
             GUI.backgroundColor = Color.white;
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.LabelField(location.description, EditorStyles.miniLabel);
-            EditorGUILayout.LabelField($"Classe: {location.className} | Método: {location.methodName}", EditorStyles.miniLabel);
+            EditorGUILayout.LabelField($"Classe: {location.className} | MÃ©todo: {location.methodName}", EditorStyles.miniLabel);
             if (location.affectedSaveIds.Count > 0)
             {
                 string savesList = string.Join(", ", location.affectedSaveIds);
@@ -450,7 +446,7 @@ public class EditorCentralSave : EditorWindow
             }
             else
             {
-                EditorGUILayout.LabelField("Afeta: (não detectado ainda - execute para detectar)", EditorStyles.miniLabel);
+                EditorGUILayout.LabelField("Afeta: (nÃ£o detectado ainda - execute para detectar)", EditorStyles.miniLabel);
             }
             
             EditorGUILayout.EndVertical();
@@ -469,12 +465,12 @@ public class EditorCentralSave : EditorWindow
         EditorGUILayout.LabelField("RESULTADOS", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
         
-        // Resultado do último Save
+        // Resultado do Ãºltimo Save
         if (!string.IsNullOrEmpty(lastSaveCaller))
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             GUI.color = new Color(0.4f, 0.8f, 0.4f);
-            EditorGUILayout.LabelField($"ÚLTIMO SAVE - Chamado por: {lastSaveCaller}", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField($"ÃšLTIMO SAVE - Chamado por: {lastSaveCaller}", EditorStyles.boldLabel);
             GUI.color = Color.white;
             if (lastSaveResult.Count > 0)
             {
@@ -496,12 +492,12 @@ public class EditorCentralSave : EditorWindow
         
         GUILayout.Space(5);
         
-        // Resultado do último Load
+        // Resultado do Ãºltimo Load
         if (!string.IsNullOrEmpty(lastLoadCaller))
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             GUI.color = new Color(0.4f, 0.4f, 0.8f);
-            EditorGUILayout.LabelField($"ÚLTIMO LOAD - Chamado por: {lastLoadCaller}", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField($"ÃšLTIMO LOAD - Chamado por: {lastLoadCaller}", EditorStyles.boldLabel);
             GUI.color = Color.white;
             if (lastLoadResult.Count > 0)
             {

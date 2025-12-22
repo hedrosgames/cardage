@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using Game.World;
 using System.IO;
@@ -12,7 +12,7 @@ public class EditorBoundaryManager : EditorWindow
     private Vector2 scrollPos;
     private string newBoundaryName = "";
 
-    [MenuItem("Central de Configuração/Central de Boundaries")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de Boundaries")]
     public static void ShowWindow()
     {
         GetWindow<EditorBoundaryManager>("Boundary Manager");
@@ -32,13 +32,13 @@ public class EditorBoundaryManager : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Configuração de Limites", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("ConfiguraÃ§Ã£o de Limites", EditorStyles.boldLabel);
         
         library = (SOBoundaryLibrary)EditorGUILayout.ObjectField("Library Asset", library, typeof(SOBoundaryLibrary), false);
 
         if (library == null)
         {
-            EditorGUILayout.HelpBox("Crie ou atribua um SOBoundaryLibrary para começar.", MessageType.Warning);
+            EditorGUILayout.HelpBox("Crie ou atribua um SOBoundaryLibrary para comeÃ§ar.", MessageType.Warning);
             if (GUILayout.Button("Criar Nova Library"))
             {
                 CreateLibraryAsset();
@@ -112,14 +112,14 @@ public class EditorBoundaryManager : EditorWindow
     {
         if (string.IsNullOrEmpty(newBoundaryName)) return;
         
-        // Sanitiza o nome para ser um Enum válido
+        // Sanitiza o nome para ser um Enum vÃ¡lido
         string cleanName = Regex.Replace(newBoundaryName, @"[^a-zA-Z0-9_]", "");
         if (string.IsNullOrEmpty(cleanName) || char.IsDigit(cleanName[0])) 
             cleanName = "B_" + cleanName;
 
         if (library.boundaries.Any(b => b.idName == cleanName))
         {
-            EditorUtility.DisplayDialog("Erro", "ID já existe!", "OK");
+            EditorUtility.DisplayDialog("Erro", "ID jÃ¡ existe!", "OK");
             return;
         }
 

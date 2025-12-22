@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
@@ -11,32 +11,21 @@ public enum SightDirection
 }
 public class InteractableCardGame : Interactable, INotificationProvider
 {
-    [Header("Configuração do Card Game")]
-    [Tooltip("Setup do jogo de cartas (oponente, deck, etc)")]
+    [Header("ConfiguraÃ§Ã£o do Card Game")]
     public SOGameSetup gameSetup;
-    [Header("Identificação do NPC")]
-    [Tooltip("ID único deste NPC (usado para salvar se já desafiou)")]
+    [Header("IdentificaÃ§Ã£o do NPC")]
     public string npcId;
-    [Tooltip("Flag que armazena a lista de IDs de NPCs que já desafiaram")]
     public SOZoneFlag challengedNpcsFlag;
-    [Header("Modo: Interação Normal (autoInteract = false)")]
-    [Tooltip("Diálogo exibido antes de iniciar o card game")]
+    [Header("Modo: InteraÃ§Ã£o Normal (autoInteract = false)")]
     public SODialogueSequence dialogueBeforeGame;
-    [Header("Modo: Desafio Automático (autoInteract = true)")]
-    [Tooltip("Direção da linha de detecção")]
+    [Header("Modo: Desafio AutomÃ¡tico (autoInteract = true)")]
     public SightDirection sightDirection = SightDirection.Right;
-    [Tooltip("Distância máxima da linha de detecção")]
     public float sightDistance = 5f;
-    [Header("Notificações")]
-    [Tooltip("Flag de item necessária para mostrar notificações especiais")]
+    [Header("NotificaÃ§Ãµes")]
     public SOZoneFlag notificationItemFlag;
-    [Tooltip("Este NPC tem carta rara no deck")]
     public bool hasRareCard = false;
-    [Tooltip("Este NPC está participando do torneio")]
     public bool isInTournament = false;
-    [Tooltip("Este NPC tem carta recuperável")]
     public bool hasRecoverableCard = false;
-    [Tooltip("Ícone de duelo disponível (mostra quando item ativo)")]
     public bool canDuel = false;
     private bool isWaitingForDialogue = false;
     private SODialogueSequence activeDialogue;

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/DeckBuilder")]
 public class SOTutorialConditionDeckBuilder : SOTutorialCondition
 {

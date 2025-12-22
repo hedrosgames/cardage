@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -184,7 +184,6 @@ public void LoadAll()
     foreach (var def in definitions)
     {
         if (def == null) continue;
-        if (def.id == "savequit") continue;
         if (!clients.TryGetValue(def.id, out var client) || client == null)
         {
             continue;
@@ -315,10 +314,8 @@ private string ConvertSaveIdToString(SaveId saveId)
         return "savemenu";
         case SaveId.SaveAchievements:
         return "saveachievements";
-        case SaveId.SaveQuit:
-        return "savequit";
-        case SaveId.SaveMoment:
-        return "savemoment";
+        case SaveId.SaveGameFlow:
+        return "savegameflow";
         default:
         return string.Empty;
     }
@@ -342,9 +339,9 @@ void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
     LoadAll();
 }
-public void LoadMoment()
+public void LoadGameFlow()
 {
-    LoadSpecific("savemoment");
+    LoadSpecific("savegameflow");
     NpcHelper[] allSwapScripts = FindObjectsByType<NpcHelper>(FindObjectsInactive.Include, FindObjectsSortMode.None);
     foreach (var swapScript in allSwapScripts)
     {

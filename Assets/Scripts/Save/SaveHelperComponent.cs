@@ -1,82 +1,57 @@
-using UnityEngine;
+﻿using UnityEngine;
+
 public class SaveHelperComponent : MonoBehaviour
 {
-    void Awake()
+    /// <summary>
+    /// MÃ©todo genÃ©rico para ser usado em UnityEvents. 
+    /// No Inspector, selecione o tipo de save no dropdown do Enum.
+    /// </summary>
+    public void Save(SaveId id)
     {
+        SaveHelper.Save(id);
     }
-    public void SaveByName(string saveType)
-    {
-        switch (saveType.ToLower())
-        {
-            case "world": SaveWorld(); break;
-            case "zone": SaveZone(); break;
-            case "card": SaveCard(); break;
-            case "inventory": SaveCard(); break;
-            case "settings": SaveSettings(); break;
-            case "achievements": SaveAchievements(); break;
-            case "moment": SaveMoment(); break;
-            case "menu": SaveMenu(); break;
-            case "quit": SaveQuit(); break;
-            default:
-            SaveWorld();
-            break;
-        }
-    }
-    public void SaveByEnum(SaveId saveId)
-    {
-        SaveHelper.SaveByEnum(saveId);
-    }
-    public void SaveWorld()
-    {
-        SaveHelper.SaveWorld();
-    }
-    public void SaveZone()
-    {
-        SaveHelper.SaveZone();
-    }
-    public void SaveCard()
-    {
-        SaveHelper.SaveCard();
-    }
-    public void SaveAchievements()
-    {
-        SaveHelper.SaveAchievements();
-    }
-    public void SaveSettings()
-    {
-        SaveHelper.SaveSettings();
-    }
-    public void SaveMenu()
-    {
-        SaveHelper.SaveByEnum(SaveId.SaveMenu);
-    }
-    public void SaveQuit()
-    {
-        SaveHelper.SaveByEnum(SaveId.SaveQuit);
-    }
-    public void SaveMoment()
-    {
-        SaveHelper.SaveByEnum(SaveId.SaveMoment);
-    }
-    public void SetFlag(SOZoneFlag flag)
-    {
-        if (flag == null) return;
-        SaveClientZone saveZone = Object.FindFirstObjectByType<SaveClientZone>();
-        if (saveZone != null)
-        {
-            saveZone.SetFlag(flag, 1);
-            SaveZone();
-        }
-    }
-    public void SetFlagValue(SOZoneFlag flag, int value)
-    {
-        if (flag == null) return;
-        SaveClientZone saveZone = Object.FindFirstObjectByType<SaveClientZone>();
-        if (saveZone != null)
-        {
-            saveZone.SetFlag(flag, value);
-            SaveZone();
-        }
-    }
-}
 
+    // --- ATALHOS PARA FLAGS (Comuns em Triggers e BotÃµes) ---
+
+    public void SetZoneFlag(SOZoneFlag flag) => SaveHelper.SetZoneFlag(flag, 1);
+    
+    public void SetZoneFlagValue(SOZoneFlag flag, int value) => SaveHelper.SetZoneFlag(flag, value);
+
+    public void SetFlowFlag(SOGameFlowFlag flag) => SaveHelper.SetFlowFlag(flag, 1);
+
+    public void SetFlowFlagValue(SOGameFlowFlag flag, int value) => SaveHelper.SetFlowFlag(flag, value);
+
+    public void SetFlowFlagString(string flagId) => SaveHelper.SetFlowFlag(flagId, 1);
+
+    // --- MÃ‰TODOS OBSOLETOS (Para nÃ£o quebrar referÃªncias no Inspector) ---
+
+    [System.Obsolete("Use SetZoneFlag em vez disso")]
+    public void SetFlag(SOZoneFlag flag) => SetZoneFlag(flag);
+
+    [System.Obsolete("Use SetZoneFlagValue em vez disso")]
+    public void SetFlagValue(SOZoneFlag flag, int value) => SetZoneFlagValue(flag, value);
+
+    [System.Obsolete("Use SetFlowFlagString em vez disso")]
+    public void SetFlowFlag(string flagId) => SetFlowFlagString(flagId);
+
+    [System.Obsolete("Use Save(SaveId.SaveWorld)")]
+    public void SaveWorld() => Save(SaveId.SaveWorld);
+
+    [System.Obsolete("Use Save(SaveId.SaveZone)")]
+    public void SaveZone() => Save(SaveId.SaveZone);
+
+    [System.Obsolete("Use Save(SaveId.SaveCard)")]
+    public void SaveCard() => Save(SaveId.SaveCard);
+
+    [System.Obsolete("Use Save(SaveId.SaveAchievements)")]
+    public void SaveAchievements() => Save(SaveId.SaveAchievements);
+
+    [System.Obsolete("Use Save(SaveId.SaveSettings)")]
+    public void SaveSettings() => Save(SaveId.SaveSettings);
+
+    [System.Obsolete("Use Save(SaveId.SaveMenu)")]
+    public void SaveMenu() => Save(SaveId.SaveMenu);
+
+    [System.Obsolete("Use Save(SaveId.SaveGameFlow)")]
+    public void SaveGameFlow() => Save(SaveId.SaveGameFlow);
+}

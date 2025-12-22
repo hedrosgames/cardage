@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Text;
@@ -15,7 +15,7 @@ public class EditorScriptsCleaner : EditorWindow
         foreach (var g in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(g);
-            // Filtros de segurança
+            // Filtros de seguranÃ§a
             if (!path.StartsWith("Assets")) continue;
             if (path.Contains("/Plugins/") || path.Contains("/PackageCache/")) continue;
             if (path.Contains("/Tests/") || path.Contains("/Editor/")) continue;
@@ -41,17 +41,17 @@ public class EditorScriptsCleaner : EditorWindow
 
         if (changedCount > 0)
         {
-            EditorFeedback.ShowFeedback("Sucesso", $"Códigos Limpos ({changedCount} arquivos)", true);
+            EditorFeedback.ShowFeedback("Sucesso", $"CÃ³digos Limpos ({changedCount} arquivos)", true);
         }
         else
         {
-            // Se rodou e não achou nada pra limpar, tecnicamente não é uma "falha" do script,
-            // mas como você pediu a mensagem específica de falha/erro caso não limpe:
-            EditorFeedback.ShowFeedback("Info", "Nenhum código precisou ser limpo", false); 
+            // Se rodou e nÃ£o achou nada pra limpar, tecnicamente nÃ£o Ã© uma "falha" do script,
+            // mas como vocÃª pediu a mensagem especÃ­fica de falha/erro caso nÃ£o limpe:
+            EditorFeedback.ShowFeedback("Info", "Nenhum cÃ³digo precisou ser limpo", false); 
         }
     }
 
-    // --- Lógica de Limpeza Mantida ---
+    // --- LÃ³gica de Limpeza Mantida ---
     public static string CleanCode(string code)
     {
         code = RemoveCommentsSafe(code);

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
@@ -9,20 +9,18 @@ public class ManagerPhone : MonoBehaviour
     [Header("UI Geral")]
     public CanvasGroup phoneCanvasGroup;
     public CanvasGroup homeScreenGroup;
-    [Header("Navegação")]
+    [Header("NavegaÃ§Ã£o")]
     public Button btnHome;
     public Button btnClose;
-    [Header("Painéis dos Apps")]
+    [Header("PainÃ©is dos Apps")]
     public GameObject pnlBank;
     public GameObject pnlZap;
     public GameObject pnlDrive;
-    [Header("Configuração - Geral")]
+    [Header("ConfiguraÃ§Ã£o - Geral")]
     public SOZoneFlag unlockFlag;
     public float fadeDuration = 0.3f;
-    [Header("Configuração - Diálogo ao Fechar")]
-    [Tooltip("A flag que indica que o jogador completou a tarefa (Porta Destravada).")]
+    [Header("ConfiguraÃ§Ã£o - DiÃ¡logo ao Fechar")]
     public SOZoneFlag flagConditionToPlayDialogue;
-    [Tooltip("O diálogo para tocar (ex: 'Agora posso sair').")]
     public SODialogueSequence dialogueOnClose;
     private bool isOpen = false;
     private bool hasPlayedCloseDialogueSession = false;

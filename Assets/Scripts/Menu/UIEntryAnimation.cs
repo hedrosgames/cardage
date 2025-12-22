@@ -1,13 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 public class UIEntryAnimation : MonoBehaviour
 {
-    [Header("Configuração")]
-    [Tooltip("Lista dos objetos (botões) que vão animar.")]
+    [Header("ConfiguraÃ§Ã£o")]
     public List<RectTransform> elements;
-    [Header("Animação")]
+    [Header("AnimaÃ§Ã£o")]
     public float startDelay = 2.0f;
     public float staggerTime = 0.1f;
     public float slideDuration = 0.5f;

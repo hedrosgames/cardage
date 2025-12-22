@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 [CreateAssetMenu(menuName = "Tutorial/WASD")]
 public class SOTutorialConditionWASD : SOTutorialCondition

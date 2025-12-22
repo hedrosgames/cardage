@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Text;
 using System.IO;
@@ -39,10 +39,10 @@ public class EditorExportScene : EditorWindow
         sb.AppendLine("===== CONTEXTO DE CENA (SCENE DUMP) =====");
         sb.AppendLine("Este arquivo representa o estado atual da hierarquia e inspector da cena aberta no Unity.");
         sb.AppendLine("Regras importantes:");
-        sb.AppendLine("1. Esta é a fonte da verdade sobre como os objetos estão configurados na cena.");
+        sb.AppendLine("1. Esta Ã© a fonte da verdade sobre como os objetos estÃ£o configurados na cena.");
         sb.AppendLine("2. [A] = Ativo, [I] = Inativo (Desativado).");
-        sb.AppendLine("3. Scripts customizados mostram suas variáveis públicas/serializadas.");
-        sb.AppendLine("4. Componentes padrões da Unity (Transform, Image, Collider) estão resumidos para economizar espaço.");
+        sb.AppendLine("3. Scripts customizados mostram suas variÃ¡veis pÃºblicas/serializadas.");
+        sb.AppendLine("4. Componentes padrÃµes da Unity (Transform, Image, Collider) estÃ£o resumidos para economizar espaÃ§o.");
         sb.AppendLine("=========================================");
         return sb.ToString();
     }

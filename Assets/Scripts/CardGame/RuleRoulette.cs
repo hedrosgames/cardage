@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName="Game/Rules/Roulette")]
 public class RuleRoulette : SOCapture
 {
-    [Header("Regras Disponíveis")]
+    [Header("Regras DisponÃ­veis")]
     public SOCapture[] availableRules;
     private SOCapture selectedRule;
     public override void OnMatchStart()

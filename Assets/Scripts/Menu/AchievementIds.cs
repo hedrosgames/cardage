@@ -1,4 +1,4 @@
-public static class AchievementIds
+﻿public static class AchievementIds
 {
     public const string FIRST_MATCH_WIN = "achiev_first_win";
     public const string FIRST_MATCH_LOSS = "achiev_first_loss";

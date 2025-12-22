@@ -12252,10 +12252,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747488446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a8994219bc7cb84b902bbab722999bf, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a67ce8e06790340809451d364d1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManagerQuitLogic
-  saveDefinition: {fileID: 11400000, guid: 4a79c6a74eea175499913df5743d5228, type: 2}
   mainMenu: {fileID: 901693528}
   messageText: {fileID: 1990580207}
   buttonsContainer: {fileID: 2009949168}
@@ -15801,6 +15800,26 @@ PrefabInstance:
       propertyPath: playButtonLocalizer
       value: 
       objectReference: {fileID: 322180717}
+    - target: {fileID: 6368517073785416939, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+      propertyPath: definitions.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368517073785416939, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+      propertyPath: 'definitions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
+    - target: {fileID: 6368517073785416939, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+      propertyPath: 'definitions.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
+    - target: {fileID: 6368517073785416939, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+      propertyPath: 'definitions.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
+    - target: {fileID: 6368517073785416939, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
+      propertyPath: 'definitions.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a79c6a74eea175499913df5743d5228, type: 2}
     - target: {fileID: 6533388253181073329, guid: f15f9b55873a26e4994feaf67f48076c, type: 3}
       propertyPath: m_Name
       value: _SaveManager

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using System.Collections;
 public class PhoneApp_Bank : MonoBehaviour
@@ -6,12 +6,12 @@ public class PhoneApp_Bank : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI txtBalance;
     public string initialBalance = "R$ 4,20";
-    [Header("Configuração - Primeira Vez")]
-    public SOZoneFlag flagIntroDone;
+    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
-    private SaveClientZone _saveZone;
+    private SaveClientGameFlow _saveGameFlow;
     private ManagerDialogue _managerDialogue;
-    private SaveClientZone SaveZone => _saveZone ??= FindFirstObjectByType<SaveClientZone>();
+    private SaveClientGameFlow SaveGameFlow => _saveGameFlow ??= FindFirstObjectByType<SaveClientGameFlow>();
     private ManagerDialogue DialogueManager => _managerDialogue ??= FindFirstObjectByType<ManagerDialogue>();
     public void OnAppOpen()
     {
@@ -22,10 +22,10 @@ public class PhoneApp_Bank : MonoBehaviour
     IEnumerator CheckSequenceRoutine()
     {
         yield return null;
-        if (flagIntroDone == null || SaveZone == null) yield break;
-        if (!SaveZone.HasFlag(flagIntroDone))
+        if (flagIntroDone == null || SaveGameFlow == null) yield break;
+        if (!SaveGameFlow.HasFlag(flagIntroDone))
         {
-            SaveZone.SetFlag(flagIntroDone, 1);
+            SaveGameFlow.SetFlag(flagIntroDone, 1);
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);

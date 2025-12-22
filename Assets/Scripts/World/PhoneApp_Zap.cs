@@ -1,15 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 public class PhoneApp_Zap : MonoBehaviour
 {
-    [Header("Configuração - Primeira Vez")]
-    public SOZoneFlag flagIntroDone;
+    [Header("ConfiguraÃ§Ã£o - Primeira Vez")]
+    public SOGameFlowFlag flagIntroDone;
     public SODialogueSequence introDialogue;
     [Header("UI")]
     public GameObject contactsListContainer;
-    private SaveClientZone _saveZone;
+    private SaveClientGameFlow _saveGameFlow;
     private ManagerDialogue _managerDialogue;
-    private SaveClientZone SaveZone => _saveZone ??= FindFirstObjectByType<SaveClientZone>();
+    private SaveClientGameFlow SaveGameFlow => _saveGameFlow ??= FindFirstObjectByType<SaveClientGameFlow>();
     private ManagerDialogue DialogueManager => _managerDialogue ??= FindFirstObjectByType<ManagerDialogue>();
     public void OnAppOpen()
     {
@@ -20,14 +20,14 @@ public class PhoneApp_Zap : MonoBehaviour
     {
         yield return null;
         bool isFirstTime = false;
-        if (SaveZone != null && flagIntroDone != null && !SaveZone.HasFlag(flagIntroDone))
+        if (SaveGameFlow != null && flagIntroDone != null && !SaveGameFlow.HasFlag(flagIntroDone))
         {
             isFirstTime = true;
         }
         if (isFirstTime)
         {
             if (contactsListContainer != null) contactsListContainer.SetActive(false);
-            SaveZone.SetFlag(flagIntroDone, 1);
+            SaveGameFlow.SetFlag(flagIntroDone, 1);
             if (DialogueManager != null && introDialogue != null)
             {
                 GameEvents.OnRequestDialogue?.Invoke(introDialogue);

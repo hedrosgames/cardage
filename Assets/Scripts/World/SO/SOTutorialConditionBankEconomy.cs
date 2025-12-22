@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Tutorial/BankEconomy")]
 public class SOTutorialConditionBankEconomy : SOTutorialCondition
 {

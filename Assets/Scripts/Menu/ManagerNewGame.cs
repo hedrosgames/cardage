@@ -1,14 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 public class ManagerNewGame : MonoBehaviour
 {
     public static ManagerNewGame Instance { get; private set; }
-    [Header("Painéis")]
+    [Header("PainÃ©is")]
     public RectTransform pnlStartGame;
     public RectTransform pnlCutscene;
-    [Header("Customização - Start Game")]
+    [Header("CustomizaÃ§Ã£o - Start Game")]
     public Button btnMale;
     public Button btnFemale;
     public Button btnColor1;

@@ -1,15 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 public class ManagerSceneTransition : MonoBehaviour
 {
     public static ManagerSceneTransition Instance { get; private set; }
-    [Header("Configuração")]
+    [Header("ConfiguraÃ§Ã£o")]
     public GameObject transitionPrefab;
-    [Tooltip("Se marcado, o jogo começa com a tela preta e faz fade-in.")]
     public bool fadeOnGameStart = true;
-    [Tooltip("Tempo que a tela fica preta antes de começar a clarear (em segundos).")]
     public float startDelay = 1f;
     private ScreenTransition currentTransitionInstance;
     void Awake()

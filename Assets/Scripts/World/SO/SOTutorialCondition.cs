@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public abstract class SOTutorialCondition : ScriptableObject
 {
     public virtual void OnStart(ManagerTutorial manager)

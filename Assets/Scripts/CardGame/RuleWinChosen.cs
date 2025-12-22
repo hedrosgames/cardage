@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 [CreateAssetMenu(menuName="Game/Rules/Victory/WinChosen")]
 public class RuleWinChosen : SOVictoryRule

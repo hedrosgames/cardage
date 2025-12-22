@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 public class ManagerTutorial : MonoBehaviour
@@ -8,7 +8,6 @@ public class ManagerTutorial : MonoBehaviour
     public UITutorial uiTutorial;
     public PlayerControl playerControl;
     [Header("Input Cooldown")]
-    [Tooltip("Tempo em segundos para ignorar inputs após a ativação do tutorial (evita inputs durante fade in)")]
     public float inputCooldown = 0.5f;
     private HashSet<string> completedTutorials = new HashSet<string>();
     private SOTutorialCondition currentCondition;

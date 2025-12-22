@@ -1,4 +1,4 @@
-public class SOCardInstance
+﻿public class SOCardInstance
 {
     public SOCardData cardData;
     public int ownerId;

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName="Game/Rules/CardEffects/RuleBonus2")]
 public class RuleBonus2 : SOCapture

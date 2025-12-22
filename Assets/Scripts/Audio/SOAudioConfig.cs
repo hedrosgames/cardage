@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Config/Audio")]
 public class SOAudioConfig : ScriptableObject
 {
-    [Header("Música")]
+    [Header("MÃºsica")]
     public AudioClip mainMenuMusic;
     public AudioClip worldTheme;
     public AudioClip cardGameTheme;

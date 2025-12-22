@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7907779566517253824}
+  - component: {fileID: 6003837613090330767}
   - component: {fileID: 6368517073785416939}
   - component: {fileID: 8485521162462639239}
   - component: {fileID: 3041233866593208719}
@@ -16,9 +17,8 @@ GameObject:
   - component: {fileID: 6527885251428018592}
   - component: {fileID: 2636112344374939081}
   - component: {fileID: 2757872995530906924}
-  - component: {fileID: 2162806936409578985}
   - component: {fileID: 3802680729848954006}
-  - component: {fileID: 6003837613090330767}
+  - component: {fileID: 4241537080611410287}
   m_Layer: 0
   m_Name: _SaveManager
   m_TagString: Untagged
@@ -41,6 +41,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6003837613090330767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533388253181073329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb832476252a96d4e94a57a67e316586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveHelperComponent
 --- !u!114 &6368517073785416939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +71,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58adbca078e8bae43843aa0a89fedd0a, type: 2}
   - {fileID: 11400000, guid: 2ac2cf730c650524598b8100300cbc84, type: 2}
   - {fileID: 11400000, guid: c0a5c3d4175c8884c894605a2f74fb55, type: 2}
-  - {fileID: 11400000, guid: 4a79c6a74eea175499913df5743d5228, type: 2}
   - {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
   - {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
   - {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
@@ -150,19 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveClientZone
   saveDefinition: {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
---- !u!114 &2162806936409578985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6533388253181073329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07359f173b4ddf0409884821cb2335b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveClientMoment
-  saveDefinition: {fileID: 11400000, guid: 2ac2cf730c650524598b8100300cbc84, type: 2}
 --- !u!114 &3802680729848954006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SaveClientPlayer
   saveDefinition: {fileID: 11400000, guid: c0a5c3d4175c8884c894605a2f74fb55, type: 2}
   playerData: {fileID: 11400000, guid: 36709ab65105c4e45b503d41c5fc4331, type: 2}
---- !u!114 &6003837613090330767
+--- !u!114 &4241537080611410287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,6 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6533388253181073329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb832476252a96d4e94a57a67e316586, type: 3}
+  m_Script: {fileID: 11500000, guid: d01e04994db2edd4db132df272cf13d8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveHelperComponent
+  m_EditorClassIdentifier: Assembly-CSharp::SaveClientGameFlow
+  saveDefinition: {fileID: 11400000, guid: 2ac2cf730c650524598b8100300cbc84, type: 2}

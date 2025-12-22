@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +17,14 @@ public class EditorDialogueWindow : EditorWindow
         public SODialogueSequence.DialogueLine line;
         public int lineIndex;
         public string soName;
-        public string uniqueKey; // Chave única para identificar este diálogo
+        public string uniqueKey; // Chave Ãºnica para identificar este diÃ¡logo
         public bool isChecked = false;
     }
 
-    [MenuItem("Central de Configuração/Central de Diálogos")]
+    [MenuItem("Central de ConfiguraÃ§Ã£o/Central de DiÃ¡logos")]
     public static void ShowWindow()
     {
-        GetWindow<EditorDialogueWindow>("Central de Diálogos");
+        GetWindow<EditorDialogueWindow>("Central de DiÃ¡logos");
     }
 
     private void OnEnable()
@@ -35,10 +35,10 @@ public class EditorDialogueWindow : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Central de Diálogos", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Central de DiÃ¡logos", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
-        // Botão de refresh
+        // BotÃ£o de refresh
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Atualizar Lista", GUILayout.Width(120)))
         {
@@ -48,27 +48,27 @@ public class EditorDialogueWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Informações
+        // InformaÃ§Ãµes
         if (allDialogues.Count == 0)
         {
-            EditorGUILayout.HelpBox("Nenhum diálogo encontrado no projeto. Crie diálogos usando: Create > Game > Dialogue", MessageType.Info);
+            EditorGUILayout.HelpBox("Nenhum diÃ¡logo encontrado no projeto. Crie diÃ¡logos usando: Create > Game > Dialogue", MessageType.Info);
             return;
         }
 
-        EditorGUILayout.HelpBox($"Total de linhas de diálogo: {allDialogues.Count}", MessageType.Info);
+        EditorGUILayout.HelpBox($"Total de linhas de diÃ¡logo: {allDialogues.Count}", MessageType.Info);
         EditorGUILayout.Space();
 
-        // Cabeçalho da tabela
+        // CabeÃ§alho da tabela
         EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
         EditorGUILayout.LabelField("Nome do SO", EditorStyles.boldLabel, GUILayout.Width(200));
         EditorGUILayout.LabelField("Text", EditorStyles.boldLabel, GUILayout.Width(200));
         EditorGUILayout.LabelField("Speaker", EditorStyles.boldLabel, GUILayout.Width(200));
-        EditorGUILayout.LabelField("✓", EditorStyles.boldLabel, GUILayout.Width(30));
+        EditorGUILayout.LabelField("âœ“", EditorStyles.boldLabel, GUILayout.Width(30));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space(2);
 
-        // Lista scrollável
+        // Lista scrollÃ¡vel
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
         foreach (var entry in allDialogues)
@@ -86,7 +86,7 @@ public class EditorDialogueWindow : EditorWindow
         // Salvar cor original
         Color originalColor = GUI.backgroundColor;
 
-        // Se o checkbox está marcado, pintar de verde
+        // Se o checkbox estÃ¡ marcado, pintar de verde
         if (entry.isChecked)
         {
             GUI.backgroundColor = Color.green;
@@ -94,31 +94,31 @@ public class EditorDialogueWindow : EditorWindow
 
         EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
 
-        // Nome do SO (não editável)
+        // Nome do SO (nÃ£o editÃ¡vel)
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.LabelField(entry.soName, GUILayout.Width(200));
         EditorGUI.EndDisabledGroup();
 
-        // Text (editável)
+        // Text (editÃ¡vel)
         EditorGUI.BeginChangeCheck();
         string newText = EditorGUILayout.TextField(entry.line.text, GUILayout.Width(200));
         bool textChanged = EditorGUI.EndChangeCheck();
         if (textChanged)
         {
             entry.line.text = newText;
-            entry.isChecked = false; // Desmarca quando há alteração
+            entry.isChecked = false; // Desmarca quando hÃ¡ alteraÃ§Ã£o
             SaveCheckboxState(entry); // Salvar estado (false)
             MarkDirty(entry.sequence);
         }
 
-        // Speaker (editável)
+        // Speaker (editÃ¡vel)
         EditorGUI.BeginChangeCheck();
         string newSpeaker = EditorGUILayout.TextField(entry.line.speaker, GUILayout.Width(200));
         bool speakerChanged = EditorGUI.EndChangeCheck();
         if (speakerChanged)
         {
             entry.line.speaker = newSpeaker;
-            entry.isChecked = false; // Desmarca quando há alteração
+            entry.isChecked = false; // Desmarca quando hÃ¡ alteraÃ§Ã£o
             SaveCheckboxState(entry); // Salvar estado (false)
             MarkDirty(entry.sequence);
         }
@@ -164,7 +164,7 @@ public class EditorDialogueWindow : EditorWindow
                     var line = sequence.lines[i];
                     if (line != null)
                     {
-                        // Criar chave única: GUID do SO + índice da linha
+                        // Criar chave Ãºnica: GUID do SO + Ã­ndice da linha
                         string uniqueKey = guid + "_" + i;
                         
                         var entry = new DialogueEntry
@@ -185,7 +185,7 @@ public class EditorDialogueWindow : EditorWindow
             }
         }
 
-        // Ordenar alfabeticamente por text com ordenação natural (considera números corretamente)
+        // Ordenar alfabeticamente por text com ordenaÃ§Ã£o natural (considera nÃºmeros corretamente)
         allDialogues = allDialogues.OrderBy(d => NaturalCompareKey(d.line.text ?? "")).ToList();
     }
     
@@ -210,11 +210,11 @@ public class EditorDialogueWindow : EditorWindow
         if (string.IsNullOrEmpty(str))
             return "";
 
-        // Converte para minúsculas e adiciona padding zero para números de até 4 dígitos
+        // Converte para minÃºsculas e adiciona padding zero para nÃºmeros de atÃ© 4 dÃ­gitos
         return Regex.Replace(str.ToLowerInvariant(), @"\d+", match =>
         {
             int number = int.Parse(match.Value);
-            return number.ToString("D4"); // Preenche com zeros à esquerda até 4 dígitos
+            return number.ToString("D4"); // Preenche com zeros Ã  esquerda atÃ© 4 dÃ­gitos
         });
     }
 }

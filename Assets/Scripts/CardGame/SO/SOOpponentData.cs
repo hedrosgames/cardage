@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Opponent")]
 public class SOOpponentData : ScriptableObject
 {

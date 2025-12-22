@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d904c7634e286c1428023925f6d7392e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneApp_Zap
-  flagIntroDone: {fileID: 11400000, guid: 632e7384d71da464abebcdc0c9c0e34a, type: 2}
+  flagIntroDone: {fileID: 11400000, guid: 1112434db2d9a64499e193a57f500f09, type: 2}
   introDialogue: {fileID: 11400000, guid: dc97ebff039a4864eaf092b1b4fa1208, type: 2}
   contactsListContainer: {fileID: 728775099}
 --- !u!114 &15336073
@@ -13254,9 +13254,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1363297852}
     - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
       propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929659139}
+    - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFlowFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c4036c8ff058bf4493bbae773cfd55f, type: 2}
+    - target: {fileID: 4343420118838355882, guid: 645271421a11f3f4da77fa8977af801e, type: 3}
+      propertyPath: onDialogueClosingFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: SOGameFlowFlag, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14502,7 +14518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhoneApp_Bank
   txtBalance: {fileID: 1721686280}
   initialBalance: R$ 500,00
-  flagIntroDone: {fileID: 11400000, guid: 2af372fdd18389140a0bf43f26148020, type: 2}
+  flagIntroDone: {fileID: 11400000, guid: c0f21b9680aa1454ab9c07d3a34df3fa, type: 2}
   introDialogue: {fileID: 11400000, guid: 6e6ef7bb6b667ad4f9500105cc977afc, type: 2}
 --- !u!114 &1369912447
 MonoBehaviour:
@@ -20761,7 +20777,7 @@ MonoBehaviour:
   statusText: {fileID: 1782787743}
   itemsContainer: {fileID: 1781266076}
   itemButtonPrefab: {fileID: 7758741197849271947, guid: 3082a47488fb6f14eae4be7c800bbb10, type: 3}
-  flagIntroDone: {fileID: 11400000, guid: 65ab2a8f4ab789c4fad561eaa45e97d8, type: 2}
+  flagIntroDone: {fileID: 11400000, guid: 8488367f37e55d14eb4e5ed47027efed, type: 2}
   introDialogue: {fileID: 11400000, guid: f95dd0bab765ed947af71bbc6f772754, type: 2}
 --- !u!114 &1498185248
 MonoBehaviour:
@@ -29462,7 +29478,7 @@ PrefabInstance:
     - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: flagIntroDone
       value: 
-      objectReference: {fileID: 11400000, guid: fd60854a7df6b694aa3b088d6b99ad9a, type: 2}
+      objectReference: {fileID: 11400000, guid: 918ecf51329004d44bec05e31cf89073, type: 2}
     - target: {fileID: 1788693698102750502, guid: 5be53b83f6c9d424aaae8afbc6e2f649, type: 3}
       propertyPath: playerControl
       value: 

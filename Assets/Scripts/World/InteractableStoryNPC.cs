@@ -1,20 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 public class InteractableStoryNPC : Interactable, INotificationProvider
 {
-    [Header("Diálogos")]
+    [Header("DiÃ¡logos")]
     public SODialogueSequence dialogue;
     public SODialogueSequence dialogueClosing;
-    [Header("Finalização")]
+    [Header("FinalizaÃ§Ã£o")]
     public bool destroyOnFinish = true;
-    [Header("Linha de Visão")]
+    [Header("Linha de VisÃ£o")]
     public SightDirection sightDirection = SightDirection.Right;
     public float sightDistance = 5f;
     [Header("Pontos de Movimento")]
     public Transform pointB;
     public Transform pointC;
-    [Header("Configuração de Movimento")]
+    [Header("ConfiguraÃ§Ã£o de Movimento")]
     public float moveSpeed = 1.2f;
     public float arrivalDistance = 0.1f;
     [Header("Delays")]

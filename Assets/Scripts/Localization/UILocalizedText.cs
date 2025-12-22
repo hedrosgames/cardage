@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 [RequireComponent(typeof(TMP_Text))]
 public class UILocalizedText : MonoBehaviour
