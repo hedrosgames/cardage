@@ -4,121 +4,106 @@ public class SaveHelperComponent : MonoBehaviour
 {
     void Awake()
     {
-        Debug.Log($"[SaveHelperComponent] Presente no objeto: {gameObject.name}");
+        Debug.Log($"[SaveHelperComponent] Inicializado no objeto: {gameObject.name}");
     }
 
-    // Função genérica que centraliza a chamada de salvamento no Manager
+    // Permite que você chame via UnityEvent passando uma string como "world", "zone", "card", etc.
+    public void SaveByName(string saveType)
+    {
+        Debug.Log($"[SaveHelperComponent] SaveByName chamado via evento com o parâmetro: {saveType}");
+        switch (saveType.ToLower())
+        {
+            case "world": SaveWorld(); break;
+            case "zone": SaveZone(); break;
+            case "card": SaveCard(); break;
+            case "inventory": SaveCard(); break;
+            case "settings": SaveSettings(); break;
+            case "achievements": SaveAchievements(); break;
+            case "moment": SaveMoment(); break;
+            case "menu": SaveMenu(); break;
+            case "quit": SaveQuit(); break;
+            default: 
+                Debug.LogWarning($"[SaveHelperComponent] Tipo de save '{saveType}' não reconhecido. Tentando salvar World por padrão.");
+                SaveWorld(); 
+                break;
+        }
+    }
+
     public void SaveByEnum(SaveId saveId)
     {
-        Debug.Log($"[SaveHelperComponent] Tentando salvar via Enum: {saveId}");
-        if (ManagerSave.Instance != null)
-        {
-            ManagerSave.Instance.SaveByEnum(saveId);
-        }
-        else
-        {
-            Debug.LogError("[SaveHelperComponent] ManagerSave.Instance não encontrado! O save não será realizado.");
-        }
+        Debug.Log($"[SaveHelperComponent] SaveByEnum chamado para: {saveId}");
+        SaveHelper.SaveByEnum(saveId);
     }
 
-    // Salva especificamente os dados da Zona (Progresso local, NPCs derrotados, etc)
-    public void SaveZone()
-    {
-        SaveByEnum(SaveId.SaveZone);
-    }
-
-    // Salva conquistas desbloqueadas
-    public void SaveAchievements()
-    {
-        SaveByEnum(SaveId.SaveAchievements);
-    }
-
-    // Salva o estado global do mundo
     public void SaveWorld()
     {
-        Debug.Log("[SaveHelperComponent] SaveWorld solicitado via Evento Unity.");
-        SaveByEnum(SaveId.SaveWorld);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveWorld");
+        SaveHelper.SaveWorld();
     }
 
-    // Salva o Deck e a coleção de cartas do jogador
+    public void SaveZone()
+    {
+        Debug.Log("[SaveHelperComponent] -> Executando SaveZone");
+        SaveHelper.SaveZone();
+    }
+
     public void SaveCard()
     {
-        SaveByEnum(SaveId.SaveCard);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveCard (Deck/Inventário)");
+        SaveHelper.SaveCard();
     }
 
-    // Salva configurações de volume, vídeo, etc
+    public void SaveAchievements()
+    {
+        Debug.Log("[SaveHelperComponent] -> Executando SaveAchievements");
+        SaveHelper.SaveAchievements();
+    }
+
     public void SaveSettings()
     {
-        SaveByEnum(SaveId.SaveSettings);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveSettings");
+        SaveHelper.SaveSettings();
     }
 
-    // Salva dados específicos do Menu Principal
     public void SaveMenu()
     {
-        SaveByEnum(SaveId.SaveMenu);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveMenu");
+        SaveHelper.SaveByEnum(SaveId.SaveMenu);
     }
 
-    // Executa um salvamento rápido antes de fechar o jogo
     public void SaveQuit()
     {
-        SaveByEnum(SaveId.SaveQuit);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveQuit");
+        SaveHelper.SaveByEnum(SaveId.SaveQuit);
     }
 
-    // Salva o "Momento" atual (checkpoint temporário ou estado de cena)
     public void SaveMoment()
     {
-        SaveByEnum(SaveId.SaveMoment);
+        Debug.Log("[SaveHelperComponent] -> Executando SaveMoment");
+        SaveHelper.SaveByEnum(SaveId.SaveMoment);
     }
 
-    // Modifica uma Flag de Zona e salva automaticamente a Zona
     public void SetFlag(SOZoneFlag flag)
     {
         if (flag == null) return;
+        Debug.Log($"[SaveHelperComponent] Definindo flag: {flag.name} e salvando zona.");
         SaveClientZone saveZone = Object.FindFirstObjectByType<SaveClientZone>();
         if (saveZone != null)
         {
             saveZone.SetFlag(flag, 1);
-            SaveZone(); // Garante a persistência após a alteração
+            SaveZone();
         }
     }
 
-    // Define um valor específico para uma Flag de Zona e salva
     public void SetFlagValue(SOZoneFlag flag, int value)
     {
         if (flag == null) return;
+        Debug.Log($"[SaveHelperComponent] Definindo flag: {flag.name} com valor {value} e salvando zona.");
         SaveClientZone saveZone = Object.FindFirstObjectByType<SaveClientZone>();
         if (saveZone != null)
         {
             saveZone.SetFlag(flag, value);
             SaveZone();
-        }
-    }
-
-    // Define uma Flag de "Momento" (curto prazo) e salva o Momento
-    public void SetMomentFlag(SOZoneFlag flag, int value)
-    {
-        if (flag == null) return;
-        SaveClientMoment saveMoment = Object.FindFirstObjectByType<SaveClientMoment>();
-        if (saveMoment != null)
-        {
-            saveMoment.SetFlag(flag, value);
-            SaveMoment();
-        }
-    }
-
-    // Define flag, salva e recarrega o estado (útil para mudanças de estado imediatas)
-    public void SetMomentFlagAndLoad(SOZoneFlag flag)
-    {
-        if (flag == null) return;
-        SaveClientMoment saveMoment = Object.FindFirstObjectByType<SaveClientMoment>();
-        if (saveMoment != null)
-        {
-            saveMoment.SetFlag(flag, 1);
-            SaveMoment();
-            if (ManagerSave.Instance != null)
-            {
-                ManagerSave.Instance.LoadMoment();
-            }
         }
     }
 }

@@ -17,11 +17,6 @@ public class InteractableCardGame : Interactable, INotificationProvider
     [Tooltip("Setup do jogo de cartas (oponente, deck, etc)")]
     public SOGameSetup gameSetup;
 
-    // --- NOVO CAMPO ADICIONADO ---
-    [Header("Eventos")]
-    public UnityEvent OnDialogueStart;
-    // ----------------------------
-
     [Header("Identificação do NPC")]
     [Tooltip("ID único deste NPC (usado para salvar se já desafiou)")]
     public string npcId;
@@ -147,17 +142,8 @@ public class InteractableCardGame : Interactable, INotificationProvider
         if (autoInteract) return;
         Debug.Log($"[InteractableCardGame] Executando lógica de interação manual.");
         
-        // Aciona o evento de início de interação/diálogo
-        if (OnDialogueStart != null && OnDialogueStart.GetPersistentEventCount() > 0)
-        {
-            Debug.Log($"[InteractableCardGame] Invocando UnityEvent OnDialogueStart.");
-            OnDialogueStart.Invoke();
-        }
-        else
-        {
-            Debug.Log("[InteractableCardGame] OnDialogueStart vazio ou sem ouvintes. Chamando SaveWorld via Fallback Estático.");
-            SaveHelper.SaveWorld();
-        }
+        // Executa o evento e o save centralizado
+        TriggerSave();
 
         if (dialogueBeforeGame != null)
         {
@@ -226,17 +212,8 @@ public class InteractableCardGame : Interactable, INotificationProvider
             Debug.Log($"[InteractableCardGame] Interação automática (Line of Sight) detectada para NPC: {npcId}");
             MarkAsChallenged();
 
-            // Aciona o evento de início de interação/diálogo também no modo automático
-            if (OnDialogueStart != null && OnDialogueStart.GetPersistentEventCount() > 0)
-            {
-                Debug.Log($"[InteractableCardGame] Invocando UnityEvent OnDialogueStart (Modo Automático).");
-                OnDialogueStart.Invoke();
-            }
-            else
-            {
-                Debug.Log("[InteractableCardGame] OnDialogueStart vazio no modo automático. Chamando SaveWorld via Fallback Estático.");
-                SaveHelper.SaveWorld();
-            }
+            // Executa o evento e o save centralizado (Modo Automático)
+            TriggerSave();
 
             if (dialogueBeforeGame != null)
             {
@@ -272,9 +249,7 @@ public class InteractableCardGame : Interactable, INotificationProvider
     {
         if (gameSetup == null) return;
 
-        // --- INVOCAÇÃO DO EVENTO (DEBUG) ---
-        Debug.Log($"[InteractableCardGame] StartCardGame executado para NPC: {npcId}. O evento OnDialogueStart deve ter sido disparado.");
-        // ----------------------------
+        Debug.Log($"[InteractableCardGame] StartCardGame executado para NPC: {npcId}.");
 
         if (!string.IsNullOrEmpty(npcId) && challengedNpcsFlag != null && saveZone != null)
         {

@@ -29738,6 +29738,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableLogical
   autoInteract: 1
+  saveOnInteract: 0
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
   interactionIcon: {fileID: 0}
   requiredFlag: {fileID: 0}
   invertCondition: 0
@@ -31657,6 +31661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
   autoInteract: 0
+  saveOnInteract: 0
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
   interactionIcon: {fileID: 8509819606669026249}
   dialogue: {fileID: 11400000, guid: 286b976b74bce0a478520c82cde8cd4f, type: 2}
   onInteract:
@@ -34572,6 +34580,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableSimple
   autoInteract: 0
+  saveOnInteract: 0
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
   interactionIcon: {fileID: 2880517682463015936}
   dialogue: {fileID: 11400000, guid: e00eda7958e74524e8af1f3f10a61396, type: 2}
   onInteract:

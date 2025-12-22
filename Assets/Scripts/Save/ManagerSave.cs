@@ -45,27 +45,39 @@ void OnDestroy()
         Instance = null;
     }
 }
-public void RegisterClient(SOSaveDefinition definition, ISaveClient client)
-{
-    if (definition == null || client == null) return;
-    clients[definition.id] = client;
-    Debug.Log($"[ManagerSave] Cliente registrado: {definition.id}");
-}
-public void UnregisterClient(SOSaveDefinition definition, ISaveClient client)
-{
-    if (definition == null) return;
-    if (clients.TryGetValue(definition.id, out var existing) && existing == client)
+    public void RegisterClient(SOSaveDefinition definition, ISaveClient client)
     {
-        clients.Remove(definition.id);
-        Debug.Log($"[ManagerSave] Cliente desregistrado: {definition.id}");
+        if (definition == null || client == null) return;
+        
+        // Registra o cliente no dicionário
+        clients[definition.id] = client;
+        
+        // Adiciona a definição na lista global se ela ainda não estiver lá
+        if (!definitions.Contains(definition))
+        {
+            definitions.Add(definition);
+        }
+        
+        Debug.Log($"[ManagerSave] Cliente registrado e pronto: {definition.id}");
     }
-}
-public int GetRegisteredClientsCount()
-{
-    return clients.Count;
-}
-[Serializable]
-class Entry
+
+    public void UnregisterClient(SOSaveDefinition definition, ISaveClient client)
+    {
+        if (definition == null) return;
+        if (clients.TryGetValue(definition.id, out var existing) && existing == client)
+        {
+            clients.Remove(definition.id);
+            Debug.Log($"[ManagerSave] Cliente removido: {definition.id}");
+        }
+    }
+
+    public int GetRegisteredClientsCount()
+    {
+        return clients.Count;
+    }
+
+    [Serializable]
+    class Entry
 {
     public string key;
     public string value;
@@ -318,63 +330,11 @@ public void WipeClientData(string idToWipe)
     string finalJson = JsonUtility.ToJson(file, true);
     File.WriteAllText(FilePath, finalJson);
 }
-void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-{
-    StartCoroutine(LoadAllDelayed(scene.name));
-}
-System.Collections.IEnumerator LoadAllDelayed(string sceneName)
-{
-    if (sceneName == "World")
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        yield return null;
-        yield return null;
-        SaveClientWorld saveWorld = FindFirstObjectByType<SaveClientWorld>();
-        if (saveWorld == null)
-        {
-            SaveClientWorld[] allSaveWorlds = FindObjectsByType<SaveClientWorld>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            if (allSaveWorlds != null && allSaveWorlds.Length > 0)
-            {
-                saveWorld = allSaveWorlds[0];
-            }
-        }
-        if (saveWorld != null && saveWorld.saveDefinition != null)
-        {
-            if (!saveWorld.gameObject.activeInHierarchy)
-            {
-                saveWorld.gameObject.SetActive(true);
-            }
-            RegisterClient(saveWorld.saveDefinition, saveWorld);
-        }
-        SaveClientZone saveZone = FindFirstObjectByType<SaveClientZone>();
-        if (saveZone == null)
-        {
-            SaveClientZone[] allSaveZones = FindObjectsByType<SaveClientZone>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            if (allSaveZones != null && allSaveZones.Length > 0)
-            {
-                saveZone = allSaveZones[0];
-            }
-        }
-        if (saveZone != null && saveZone.saveDefinition != null)
-        {
-            if (!saveZone.gameObject.activeInHierarchy)
-            {
-                saveZone.gameObject.SetActive(true);
-            }
-            RegisterClient(saveZone.saveDefinition, saveZone);
-            if (!definitions.Contains(saveZone.saveDefinition))
-            {
-                definitions.Add(saveZone.saveDefinition);
-            }
-        }
-        yield return null;
+        // Carrega os dados imediatamente para todos os clientes que se registraram no Awake/OnEnable
         LoadAll();
     }
-    else
-    {
-        yield return null;
-        LoadAll();
-    }
-}
 public void LoadMoment()
 {
     LoadSpecific("savemoment");

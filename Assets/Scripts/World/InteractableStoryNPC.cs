@@ -100,6 +100,10 @@ public class InteractableStoryNPC : Interactable, INotificationProvider
         if (hasTriggered) return;
         hasTriggered = true;
         isClosingPhase = false;
+        
+        // Executa o evento e o save centralizado
+        TriggerSave();
+
         ShowAlert();
         StartCoroutine(StartSequenceAfterNotification());
     }
