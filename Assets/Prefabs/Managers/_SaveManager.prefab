@@ -54,12 +54,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManagerSave
   definitions:
-  - {fileID: 11400000, guid: 58adbca078e8bae43843aa0a89fedd0a, type: 2}
-  - {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
+  - {fileID: 11400000, guid: e713b66d2358736488b4d52e3264cb05, type: 2}
   - {fileID: 11400000, guid: a94da1d2a33a649428ac643879fbd75b, type: 2}
+  - {fileID: 11400000, guid: 58adbca078e8bae43843aa0a89fedd0a, type: 2}
+  - {fileID: 11400000, guid: 2ac2cf730c650524598b8100300cbc84, type: 2}
+  - {fileID: 11400000, guid: c0a5c3d4175c8884c894605a2f74fb55, type: 2}
   - {fileID: 11400000, guid: 4a79c6a74eea175499913df5743d5228, type: 2}
   - {fileID: 11400000, guid: 7fa2747158f6dd34d8d86606a9b9a07c, type: 2}
-  - {fileID: 11400000, guid: e713b66d2358736488b4d52e3264cb05, type: 2}
+  - {fileID: 11400000, guid: 099a78716e0289842876c91e51d8fca5, type: 2}
   - {fileID: 11400000, guid: 3723679364d9e434f9a04dd45c77f8d5, type: 2}
 --- !u!114 &8485521162462639239
 MonoBehaviour:
